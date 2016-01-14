@@ -89,26 +89,26 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				</div>
 			</div>
 
-			<label class="h3"><?php echo __d('registrations', 'Counting result display start date'); ?></label>
-			<div class="row form-group registration-group">
-
-				<?php /* 集計結果表示期間設定 */
-					echo $this->QuestionEdit->registrationAttributeCheckbox('total_show_timing',
-						__d('registrations', 'set the aggregate display period'),
-						array(),
-						__d('registrations', 'If not set , it will be displayed after the respondent answers.'));
-				?>
-				<div class="row" ng-show="registrations.registration.totalShowTiming != 0">
-					<div class="col-sm-5">
-						<?php
-							echo $this->QuestionEdit->registrationAttributeDatetime('publish_start', false);
-						?>
-					</div>
-					<div class="col-sm-6">
-						<?php echo __d('registrations', 'Result will display at this time.'); ?>
-					</div>
-				</div>
-			</div>
+			<!--<label class="h3">--><?php //echo __d('registrations', 'Counting result display start date'); ?><!--</label>-->
+			<!--<div class="row form-group registration-group">-->
+			<!---->
+			<!--	--><?php ///* 集計結果表示期間設定 */
+			//		echo $this->QuestionEdit->registrationAttributeCheckbox('total_show_timing',
+			//			__d('registrations', 'set the aggregate display period'),
+			//			array(),
+			//			__d('registrations', 'If not set , it will be displayed after the respondent answers.'));
+			//	?>
+			<!--	<div class="row" ng-show="registrations.registration.totalShowTiming != 0">-->
+			<!--		<div class="col-sm-5">-->
+			<!--			--><?php
+			//				echo $this->QuestionEdit->registrationAttributeDatetime('publish_start', false);
+			//			?>
+			<!--		</div>-->
+			<!--		<div class="col-sm-6">-->
+			<!--			--><?php //echo __d('registrations', 'Result will display at this time.'); ?>
+			<!--		</div>-->
+			<!--	</div>-->
+			<!--</div>-->
 
 			<label class="h3"><?php echo __d('registrations', 'Registration method'); ?></label>
 			<div class="form-group registration-group">
@@ -141,23 +141,23 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				?>
 			</div>
 
-			<label class="h3"><?php echo __d('registrations', 'Registration open mail'); ?></label>
-			<div class="form-group registration-group">
-				<?php
-					echo $this->QuestionEdit->registrationAttributeCheckbox('is_open_mail_send',
-						__d('registrations', 'Deliver e-mail when registration has opened'));
-				?>
-				<div ng-show="registrations.registration.isOpenMailSend == <?php echo RegistrationsComponent::USES_USE; ?>">
-					<?php
-						echo $this->NetCommonsForm->input('open_mail_subject', array(
-							'label' => __d('registrations', 'open mail subject'),
-							'ng-model' => 'registrations.registration.openMailSubject'));
-						echo $this->NetCommonsForm->wysiwyg('open_mail_body', array(
-							'label' => __d('registrations', 'open mail text'),
-							'ng-model' => 'registrations.registration.openMailBody'));
-					?>
-				</div>
-			</div>
+			<!--<label class="h3">--><?php //echo __d('registrations', 'Registration open mail'); ?><!--</label>-->
+			<!--<div class="form-group registration-group">-->
+			<!--	--><?php
+			//		echo $this->QuestionEdit->registrationAttributeCheckbox('is_open_mail_send',
+			//			__d('registrations', 'Deliver e-mail when registration has opened'));
+			//	?>
+			<!--	<div ng-show="registrations.registration.isOpenMailSend == --><?php //echo RegistrationsComponent::USES_USE; ?><!--">-->
+			<!--		--><?php
+			//			echo $this->NetCommonsForm->input('open_mail_subject', array(
+			//				'label' => __d('registrations', 'open mail subject'),
+			//				'ng-model' => 'registrations.registration.openMailSubject'));
+			//			echo $this->NetCommonsForm->wysiwyg('open_mail_body', array(
+			//				'label' => __d('registrations', 'open mail text'),
+			//				'ng-model' => 'registrations.registration.openMailBody'));
+			//		?>
+			<!--	</div>-->
+			<!--</div>-->
 
 			<label class="h3"><?php echo __d('registrations', 'Thanks page message settings'); ?></label>
 			<div class="form-group registration-group">
