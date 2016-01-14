@@ -1,0 +1,935 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: 2015-12-22 17:20+0900\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: \n"
+"Language: ja\n"
+"X-Generator: Poedit 1.8.6\n"
+
+#: /Controller/RegistrationBlocksController.php:148
+msgid "Setting of password is required always to download answers."
+msgstr "回答データをダウンロードする場合は必ず圧縮パスワードの設定が必要です。"
+
+#: /Controller/RegistrationBlocksController.php:178
+msgid "download error"
+msgstr "ダウンロードエラー"
+
+#: /Controller/RegistrationBlocksController.php:228
+msgid "export error"
+msgstr "エクスポートエラー"
+
+#: /Controller/RegistrationEditController.php:331
+msgid "page"
+msgstr "ページ"
+
+#: /Controller/RegistrationEditController.php:332
+#: /Model/RegistrationQuestion.php:220
+msgid "New Question"
+msgstr "新規質問"
+
+#: /Controller/RegistrationEditController.php:333
+#: /Model/RegistrationChoice.php:140
+msgid "new choice"
+msgstr "新規選択肢"
+
+#: /Controller/RegistrationEditController.php:334
+msgid "new column choice"
+msgstr "新規選択肢（列）"
+
+#: /Controller/RegistrationEditController.php:335
+msgid "other choice"
+msgstr "その他"
+
+#: /Controller/Component/RegistrationsComponent.php:512;513;514;515;516
+msgid "item"
+msgstr "件"
+
+#: /Controller/Component/RegistrationsComponent.php:527
+msgid "New Modified"
+msgstr "新着順"
+
+#: /Controller/Component/RegistrationsComponent.php:528
+msgid "Registration order"
+msgstr "登録順"
+
+#: /Controller/Component/RegistrationsComponent.php:529
+#: /Model/ActionRegistrationAdd.php:60 /Model/Registration.php:98
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:34
+#: /View/RegistrationBlocks/index.ctp:37 /View/RegistrationEdit/edit.ctp:46
+msgid "Title"
+msgstr "タイトル"
+
+#: /Controller/Component/RegistrationsComponent.php:530
+msgid "End period"
+msgstr "期限順"
+
+#: /Controller/Component/RegistrationsComponent.php:541
+msgid "Single choice"
+msgstr "択一選択"
+
+#: /Controller/Component/RegistrationsComponent.php:542
+msgid "Multiple choice"
+msgstr "複数選択"
+
+#: /Controller/Component/RegistrationsComponent.php:543
+msgid "Single text"
+msgstr "１行テキスト"
+
+#: /Controller/Component/RegistrationsComponent.php:544
+msgid "Multiple text"
+msgstr "複数行テキスト"
+
+#: /Controller/Component/RegistrationsComponent.php:545
+msgid "Single choice matrix"
+msgstr "択一選択マトリクス"
+
+#: /Controller/Component/RegistrationsComponent.php:546
+msgid "Multiple choice matrix"
+msgstr "複数選択マトリクス"
+
+#: /Controller/Component/RegistrationsComponent.php:547
+msgid "Date and time"
+msgstr "日付と時間"
+
+#: /Controller/Component/RegistrationsComponent.php:548
+msgid "List select"
+msgstr "リスト選択"
+
+#: /Model/ActionRegistrationAdd.php:54
+msgid "Please choose create option."
+msgstr "作成方法を選択してください。"
+
+#: /Model/ActionRegistrationAdd.php:66;70
+msgid "Please select past registration."
+msgstr "過去の登録フォームを選んでください。"
+
+#: /Model/ActionRegistrationAdd.php:254
+msgid "file upload error."
+msgstr "ファイルアップロードエラー"
+
+#: /Model/ActionRegistrationAdd.php:263;270;277
+msgid "illegal import file."
+msgstr "不正なインポートファイルです。"
+
+#: /Model/ActionRegistrationAdd.php:290
+msgid "version is different."
+msgstr "エクスポートした登録フォームと現在お使いの登録フォームではバージョンが異なります。"
+
+#: /Model/Registration.php:110;136
+msgid "if you set the period, please set time."
+msgstr "期間を設定する場合は、日時を設定してください。"
+
+#: /Model/Registration.php:116;122;142
+msgid "Invalid datetime format."
+msgstr "入力された期間が不正です。正しい日付を入力してください。"
+
+#: /Model/Registration.php:126
+msgid "start period must be smaller than end period"
+msgstr "開始日時は終了日時より前の日時を指定する必要があります。"
+
+#: /Model/Registration.php:164
+msgid "if you set the use key phrase period, please set key phrase text."
+msgstr "認証キーを使う場合、キーフレーズを設定してください"
+
+#: /Model/Registration.php:168;184
+msgid "Authentication key setting , image authentication , either only one can not be selected."
+msgstr "認証キーと画像認証を同時に使うことはできません。どちらか一つにしてください。"
+
+#: /Model/Registration.php:199
+msgid "please set at least one page."
+msgstr "少なくとも１ページは作成してください。"
+
+#: /Model/RegistrationAnswer.php:118
+msgid "Input required"
+msgstr "必須項目です。"
+
+#: /Model/RegistrationAnswer.php:122
+msgid "the answer is too long. Please enter under %d letters."
+msgstr "回答が長すぎます。%d文字以下にしてください。"
+
+#: /Model/RegistrationAnswerSummaryCsv.php:152
+msgid "Respondent"
+msgstr "回答者"
+
+#: /Model/RegistrationAnswerSummaryCsv.php:153
+msgid "Answer Date"
+msgstr "回答日"
+
+#: /Model/RegistrationAnswerSummaryCsv.php:154
+msgid "Number"
+msgstr "回答回数"
+
+#: /Model/RegistrationAnswerSummaryCsv.php:191
+msgid "Anonymity"
+msgstr "匿名"
+
+#: /Model/RegistrationChoice.php:80
+msgid "Please input choice text."
+msgstr "選択肢内容を入力してください。"
+
+#: /Model/RegistrationChoice.php:84
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:71
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:89
+msgid "You can not use the character of |, : for choice text "
+msgstr "選択肢に「|」、「:」を使ってはいけません"
+
+#: /Model/RegistrationChoice.php:103
+msgid "choice sequence is illegal."
+msgstr "選択肢の順番が不正です。最初からやり直してください。"
+
+#: /Model/RegistrationChoice.php:108
+msgid "First character is \"#\". And input the hexadecimal numbers by six digits."
+msgstr "最初の１文字目は\"#\"です。続けて16進数6桁で指定してください。"
+
+#: /Model/RegistrationChoice.php:196
+msgid "Invalid skip page. Please set forward page."
+msgstr "スキップページの指定が不正です。質問があるページよりも先のページを設定してください。"
+
+#: /Model/RegistrationChoice.php:200
+msgid "Invalid skip page. page does not exist."
+msgstr "スキップページが不正です。指定されたページが存在しません。"
+
+#: /Model/RegistrationPage.php:85
+msgid "First Page"
+msgstr "１ページ"
+
+#: /Model/RegistrationPage.php:198
+msgid "page sequence is illegal."
+msgstr "ページの順番が不正です。最初からやり直してください。"
+
+#: /Model/RegistrationPage.php:230
+msgid "please set at least one question."
+msgstr "１ページ中に少なくとも１つは質問を作成してください。"
+
+#: /Model/RegistrationQuestion.php:97
+msgid "question sequence is illegal."
+msgstr "質問の順番が不正です。最初からやり直してください。"
+
+#: /Model/RegistrationQuestion.php:109
+msgid "Please input question text."
+msgstr "質問文を入力してください。"
+
+#: /Model/RegistrationQuestion.php:155;165
+msgid "Please enter both the maximum and minimum values."
+msgstr "上限値と下限値の両方を入力してください。"
+
+#: /Model/RegistrationQuestion.php:159
+msgid "Please enter smaller value than max."
+msgstr "最大値よりも小さな値を入力してください。"
+
+#: /Model/RegistrationQuestion.php:169
+msgid "Please enter bigger value than min."
+msgstr "最小値よりも大きな値を入力してください。"
+
+#: /Model/RegistrationQuestion.php:318
+msgid "please set at least one choice."
+msgstr "少なくとも１つは選択肢を作成してください。"
+
+#: /Model/RegistrationQuestion.php:329
+msgid "please set at least one choice at row and column."
+msgstr "行と列には、それぞれ１つ以上の選択肢が必要です。"
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:75
+msgid "Please enter a valid date in YY-MM-DD format."
+msgstr "日付を正しいフォーマット YY-MM-DD で入力してください。"
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:80
+msgid "Please enter the time."
+msgstr "時間を入力してください。"
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:85
+msgid "Please enter a valid date and time."
+msgstr "正しい日付と時間を設定してください。"
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:104
+#: /Model/Behavior/RegistrationAnswerTextBehavior.php:69
+msgid "Please enter the answer between %s and %s."
+msgstr "回答は%sから%sの範囲で入力してください。"
+
+#: /Model/Behavior/RegistrationAnswerMatrixSingleChoiceBehavior.php:113;119
+#: /Model/Behavior/RegistrationAnswerSingleListBehavior.php:90
+msgid "Invalid choice"
+msgstr "不正な選択です"
+
+#: /Model/Behavior/RegistrationAnswerMatrixSingleChoiceBehavior.php:143
+msgid "Please enter something in other item"
+msgstr "その他の内容を入力してください。"
+
+#: /Model/Behavior/RegistrationAnswerMatrixSingleChoiceBehavior.php:181
+msgid "Please answer about all rows."
+msgstr "回答するときは全ての行に対して回答をしてください。"
+
+#: /Model/Behavior/RegistrationAnswerSingleListBehavior.php:98
+msgid "Please enter something, if you chose the other item"
+msgstr "その他を選択する場合は、内容を入力してください。"
+
+#: /Model/Behavior/RegistrationAnswerTextBehavior.php:64
+msgid "Number required"
+msgstr "数字を入力してください。"
+
+#: /Model/Behavior/RegistrationAnswerTextBehavior.php:76
+msgid "Please enter the answer between %s letters and %s letters."
+msgstr "回答は%s文字から%s文字の範囲で入力してください。"
+
+#: /View/Elements/ng_status_label.ctp:18
+#: /View/Helper/RegistrationStatusLabelHelper.php:49
+msgid "Before public"
+msgstr "公開前"
+
+#: /View/Elements/ng_status_label.ctp:19
+#: /View/Helper/RegistrationStatusLabelHelper.php:53
+msgid "End"
+msgstr "終了"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_footer.ctp:15
+msgid "Note: Which may not be 100% because of rounding of numeric total."
+msgstr "注: 四捨五入しているため、合計は必ずしも100%にはなりません。"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_footer.ctp:20
+msgid "Note: Matrix if the number in parentheses is a percentage of the total number of responses."
+msgstr "注: 表中の割合は、全回答数に占める割合です。"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_footer.ctp:26
+msgid "Note: If multiple selection is possible, total more than 100% to be."
+msgstr ": 複数選択式の場合、合計が100%を超える場合があります。"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:21
+msgid "The total number of answers: "
+msgstr "全回答数:"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:29
+msgid "Select one"
+msgstr "択一選択"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:32
+msgid "Select more than one"
+msgstr "複数選択"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:35
+msgid "Matrix (selection list)"
+msgstr "マトリクス（択一選択）"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:38
+msgid "Matrix (multiple)"
+msgstr "マトリクス（複数選択）"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:41
+msgid "List selection"
+msgstr "リスト選択"
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:44
+msgid "Not selection"
+msgstr "未選択"
+
+#: /View/Elements/AnswerSummaries/aggregate_matrix_table.ctp:18
+#: /View/Elements/AnswerSummaries/aggregate_table.ctp:17
+msgid "Item name"
+msgstr "アイテム名"
+
+#: /View/Elements/AnswerSummaries/aggregate_table.ctp:18
+msgid "Aggregate value"
+msgstr "回答数"
+
+#: /View/Elements/AnswerSummaries/aggregate_table.ctp:19
+msgid "The percentage"
+msgstr "割合"
+
+#: /View/Elements/Answers/answer_test_mode_header.ctp:31
+msgid "Test Mode"
+msgstr "一時保存（テストモード）"
+
+#: /View/Elements/Answers/answer_test_mode_header.ctp:34
+msgid "This registration is being temporarily stored . You can registration test before performed in this page . If you want to modify or change the registration , you will be able to edit by pressing the [ Edit question ] button in the upper-right corner ."
+msgstr "この登録フォームは一時保存中です。このページで実施前の登録フォームテストをすることができます。<br />登録フォームを修正・変更したい場合は、上部にある編集ボタンを押すと編集することができます。"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:12
+msgid "select display registrations."
+msgstr "表示したい登録フォーム"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:18
+msgid "Display"
+msgstr "表示"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:31
+#: /View/RegistrationBlocks/index.ctp:34
+msgid "Status"
+msgstr "状態"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:37
+msgid "Implementation date"
+msgstr "実施期間"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:40
+msgid "Aggregates"
+msgstr "集計結果"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:84
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:50
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:69
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:88
+#: /View/RegistrationAnswers/test_mode.ctp:28;41
+#: /View/RegistrationEdit/edit.ctp:81 /View/Registrations/index.ctp:36
+msgid " - "
+msgstr "～"
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:90
+msgid "On"
+msgstr "表示"
+
+#: /View/Elements/FrameSettings/edit_display_type.ctp:12
+msgid "Registration display setting"
+msgstr "登録フォーム表示設定"
+
+#: /View/Elements/FrameSettings/edit_display_type.ctp:17
+msgid "Show only one registration"
+msgstr "登録フォームを単独で表示"
+
+#: /View/Elements/FrameSettings/edit_display_type.ctp:18
+msgid "Show registrations list"
+msgstr "登録フォームを一覧表示"
+
+#: /View/Elements/FrameSettings/edit_list_display_option.ctp:15
+msgid "Visible registration row"
+msgstr "1ページあたりの表示件数"
+
+#: /View/Elements/FrameSettings/edit_list_display_option.ctp:26
+msgid "Visible row order"
+msgstr "表示順"
+
+#: /View/Elements/RegistrationAdd/create_new.ctp:14
+msgid "Create new registration"
+msgstr "新規に登録フォーム作成"
+
+#: /View/Elements/RegistrationAdd/create_new.ctp:21
+msgid "Registration title"
+msgstr "登録フォームタイトル"
+
+#: /View/Elements/RegistrationAdd/create_new.ctp:23
+msgid "Please input registration title"
+msgstr "登録フォームタイトルを入力して下さい"
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:14
+msgid "Re-use past registration"
+msgstr "過去の登録フォームを流用して作成"
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:25
+msgid "Past registration"
+msgstr "過去の登録フォーム"
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:34
+msgid "Refine by entering the part of the registration name"
+msgstr "ここに登録フォーム名の一部を入力すると、下のリストの内容を絞り込むことができます"
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:52
+msgid "Implementation"
+msgstr "実施"
+
+#: /View/Elements/RegistrationAdd/create_template.ctp:13
+msgid "Create from Template"
+msgstr "テンプレートを読み込んで作成"
+
+#: /View/Elements/RegistrationAdd/create_template.ctp:23
+msgid "Registration template file"
+msgstr "登録フォームテンプレートファイル"
+
+#: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:14
+msgid "Set questions"
+msgstr "質問の作成"
+
+#: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:15
+msgid "Set result display"
+msgstr "集計結果表示の設定"
+
+#: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:16
+msgid "Set registration"
+msgstr "登録フォームの設定"
+
+#: /View/Elements/RegistrationEdit/registration_title.ctp:14
+msgid "If you want to change the registration title, please edit in \"Set registration\" step."
+msgstr "タイトルを変更したい場合は、「登録フォームの設定」にて再編集できます。"
+
+#: /View/Elements/RegistrationEdit/Edit/delete_form.ctp:31
+msgid "Registration"
+msgstr "登録フォーム"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:16
+msgid "copy to another page"
+msgstr "質問をコピー"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:20
+msgid "destination page number"
+msgstr "コピー先ページ番号"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:28
+msgid "Do you want to delete this question ?"
+msgstr "この質問を削除してもよろしいですか？"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:58
+msgid "Skip"
+msgstr "スキップ"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/add_question_button.ctp:18
+msgid "Add Question"
+msgstr "質問の追加"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/choice.ctp:14
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/choice.ctp:18
+msgid "(This is [other] choice. Area to enter the text is automatically granted at the time of implementation.)"
+msgstr "(「その他」の選択肢です。)"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:21
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:30
+msgid "Date"
+msgstr "日付"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:22
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:31
+msgid "Time"
+msgstr "時間"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:23
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:32
+msgid "Date and Time"
+msgstr "日付と時間"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:49
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:59
+msgid "set range to answer date and time"
+msgstr "期間を設定する"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/matrix_choice_option.ctp:16
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:24
+msgid "Line choices"
+msgstr "行の選択肢"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/matrix_choice_option.ctp:27
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:52
+msgid "Column choices"
+msgstr "列の選択肢"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/simple_choice_option.ctp:26
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:30
+msgid "randomaize choices"
+msgstr "選択肢をランダムに表示する"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/simple_choice_option.ctp:37
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:41
+msgid "set page skip"
+msgstr "スキップロジックを設定する"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:24
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:32
+msgid "Numeric"
+msgstr "回答を数値で求める"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:37
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:44
+msgid "Please check if you want to set limit(or length) value."
+msgstr "範囲(文字数)を指定する"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:42
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:57
+msgid "Minimum"
+msgstr "最小値"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:50
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:73
+msgid "Maximum"
+msgstr "最大値"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:28;47
+msgid "Add line choices"
+msgstr "行の選択肢を追加する"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:55;78
+msgid "Add column choices"
+msgstr "列の選択肢"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:62
+msgid "Do you want to delete this choice ?"
+msgstr "この選択肢を削除してもよろしいですか？"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:91
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:103
+msgid "add another choice"
+msgstr "その他の選択肢を追加する"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:20;98
+msgid "add choices"
+msgstr "選択肢の追加"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:64
+msgid "goto end"
+msgstr "終了へ"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:68
+msgid "(new page will be created)"
+msgstr "(新しいページはすでに作成されています)"
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:69
+msgid "create new page for this skip"
+msgstr "このスキップのためのページを作成する"
+
+#: /View/Elements/RegistrationEdit/EditResult/accordion_heading.ctp:23
+msgid "There is an error"
+msgstr "エラーがあります"
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:13
+msgid "display type"
+msgstr "表示形式"
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:28
+msgid "Bar Chart"
+msgstr "棒グラフ"
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:36
+msgid "Pie Chart"
+msgstr "円グラフ"
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:44
+msgid "Table"
+msgstr "表"
+
+#: /View/Elements/RegistrationEdit/EditResult/graph_color_set.ctp:13
+msgid "graph color"
+msgstr "グラフ色設定"
+
+#: /View/Elements/RegistrationEdit/EditResult/is_display_set.ctp:14
+msgid "aggregate display"
+msgstr "集計結果の表示"
+
+#: /View/Elements/RegistrationEdit/EditResult/is_display_set.ctp:29
+msgid "The results of this question will not be displayed"
+msgstr "集計結果を表示しない"
+
+#: /View/Elements/RegistrationEdit/EditResult/is_display_set.ctp:38
+msgid "The results of this question will be displayed"
+msgstr "集計結果を表示する"
+
+#: /View/Elements/Registrations/add_button.ctp:23
+msgid "Create article"
+msgstr "新規に登録フォームを作成する"
+
+#: /View/Elements/Registrations/answer_status.ctp:13
+msgid "View All"
+msgstr "全て表示"
+
+#: /View/Elements/Registrations/answer_status.ctp:14
+msgid "Unanswered"
+msgstr "未回答"
+
+#: /View/Elements/Registrations/answer_status.ctp:15
+msgid "Answered"
+msgstr "回答済み"
+
+#: /View/Elements/Registrations/answer_status.ctp:18
+#: /View/Helper/RegistrationUtilHelper.php:90
+msgid "Test"
+msgstr "テスト"
+
+#: /View/Elements/Registrations/answer_status.ctp:30
+msgid "Answer status"
+msgstr "回答状態"
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:24
+msgid "Author"
+msgstr "作成者"
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:26
+msgid "Modified by"
+msgstr "修正者"
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:32
+msgid "Pages"
+msgstr "ページ数"
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:34
+msgid "Questions"
+msgstr "質問数"
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:36
+msgid "Answers"
+msgstr "回答数"
+
+#: /View/Helper/RegistrationAnswerHelper.php:181
+msgid "Please enter a number between %s and %s"
+msgstr "%s から %s の間の数値を入力してください"
+
+#: /View/Helper/RegistrationAnswerHelper.php:183
+msgid "Please enter between %s letters and %s letters"
+msgstr "%s文字から%s文字の入力をしてください"
+
+#: /View/Helper/RegistrationAnswerHelper.php:235
+msgid "Please choose one"
+msgstr "一つ選択してください"
+
+#: /View/Helper/RegistrationAnswerHelper.php:314;323;331
+msgid "Please enter at %s to %s"
+msgstr "%s から %sまでの間で入力してください"
+
+#: /View/Helper/RegistrationStatusLabelHelper.php:31
+msgid "Undefined"
+msgstr "未設定"
+
+#: /View/Helper/RegistrationUtilHelper.php:110
+msgid "Answer"
+msgstr "回答"
+
+#: /View/Helper/RegistrationUtilHelper.php:127
+msgid "Unpublished"
+msgstr "未公開"
+
+#: /View/Helper/RegistrationUtilHelper.php:131
+msgid "Finished"
+msgstr "回答済"
+
+#: /View/RegistrationAdd/add.ctp:27
+msgid "You can create a new registration. Please choose how to create."
+msgstr "新しい登録フォームを作成します。作成方法を選んでください。"
+
+#: /View/RegistrationAnswerSummaries/view.ctp:86
+#: /View/RegistrationAnswers/no_more_answer.ctp:14
+msgid "Back to Top"
+msgstr "Topに戻る"
+
+#: /View/RegistrationAnswers/confirm.ctp:22
+msgid "Please confirm your answers."
+msgstr "回答内容を確認してください。"
+
+#: /View/RegistrationAnswers/confirm.ctp:64
+msgid "Start over"
+msgstr "最初からやり直す"
+
+#: /View/RegistrationAnswers/no_more_answer.ctp:12
+msgid "you will not be able to answer this registration."
+msgstr "この登録フォームには回答することはできません。"
+
+#: /View/RegistrationAnswers/test_mode.ctp:25
+#: /View/RegistrationEdit/edit.ctp:58
+msgid "Registration answer period"
+msgstr "登録フォーム回答期間"
+
+#: /View/RegistrationAnswers/test_mode.ctp:31
+msgid "do not set the answer period"
+msgstr "回答期間を制限しない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:38
+#: /View/RegistrationEdit/edit.ctp:92
+msgid "Counting result display start date"
+msgstr "集計結果公開期間"
+
+#: /View/RegistrationAnswers/test_mode.ctp:43
+msgid "do not set the aggregate display period"
+msgstr "公開期間を制限しない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:50
+#: /View/RegistrationEdit/edit.ctp:113
+msgid "Registration method"
+msgstr "登録フォーム方式"
+
+#: /View/RegistrationAnswers/test_mode.ctp:54
+#: /View/RegistrationEdit/edit.ctp:117
+msgid "accept the non-members answer"
+msgstr "非会員の回答を受け付ける"
+
+#: /View/RegistrationAnswers/test_mode.ctp:56
+msgid "do not accept the non-members answer"
+msgstr "非会員の回答を受け付けない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:62
+#: /View/RegistrationEdit/edit.ctp:120
+msgid "use key phrase"
+msgstr "認証キーを使う"
+
+#: /View/RegistrationAnswers/test_mode.ctp:64
+msgid "key phrase"
+msgstr "認証キー"
+
+#: /View/RegistrationAnswers/test_mode.ctp:68
+msgid "do not use key phrase"
+msgstr "認証キーは使わない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:74
+#: /View/RegistrationEdit/edit.ctp:129
+msgid "anonymous answer"
+msgstr "匿名の回答とする"
+
+#: /View/RegistrationAnswers/test_mode.ctp:76
+msgid "register answer"
+msgstr "記名式回答とする"
+
+#: /View/RegistrationAnswers/test_mode.ctp:82
+#: /View/RegistrationEdit/edit.ctp:132
+msgid "forgive the repetition of the answer"
+msgstr "繰り返しの回答をさせる"
+
+#: /View/RegistrationAnswers/test_mode.ctp:84
+msgid "do not forgive the repetition of the answer"
+msgstr "繰り返し回答は許さない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:90
+#: /View/RegistrationEdit/edit.ctp:135
+msgid "do image authentication"
+msgstr "画像認証を行う"
+
+#: /View/RegistrationAnswers/test_mode.ctp:92
+msgid "do not image authentication"
+msgstr "画像認証は行わない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:98
+#: /View/RegistrationEdit/edit.ctp:140
+msgid "Deliver e-mail when submitted"
+msgstr "提出されたらメールで通知する"
+
+#: /View/RegistrationAnswers/test_mode.ctp:100
+msgid "do not deliver e-mail when submitted"
+msgstr "回答時のメール通知は行わない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:106
+msgid "Deliver e-mail when started"
+msgstr "登録フォームが開始されたらメールで通知する"
+
+#: /View/RegistrationAnswers/test_mode.ctp:108
+msgid "do not deliver e-mail when started"
+msgstr "登録フォームの開始時のメール通知は行わない"
+
+#: /View/RegistrationAnswers/test_mode.ctp:117
+msgid "Start the test answers of this registration"
+msgstr "この登録フォームのテスト回答を始める"
+
+#: /View/RegistrationAnswers/thanks.ctp:32
+msgid "Back to page"
+msgstr "登録フォーム一覧に戻る"
+
+#: /View/RegistrationAnswers/thanks.ctp:37
+msgid "Aggregate"
+msgstr "集計結果を表示する"
+
+#: /View/RegistrationBlockRolePermissions/noRegistrationBlock.ctp:19
+msgid "There is no registration. First, please create a  registration."
+msgstr "登録フォームがまだありません。初めに登録フォームを作成してください。"
+
+#: /View/RegistrationBlocks/index.ctp:43
+msgid "Answer CSV"
+msgstr "回答CSV"
+
+#: /View/RegistrationBlocks/index.ctp:46
+msgid "Templates"
+msgstr "テンプレート"
+
+#: /View/RegistrationEdit/edit.ctp:51
+msgid "Sub Title"
+msgstr "サブタイトル"
+
+#: /View/RegistrationEdit/edit.ctp:53
+msgid "Please enter if there is a sub title"
+msgstr "サブタイトルを入力してください"
+
+#: /View/RegistrationEdit/edit.ctp:63
+msgid "set the answer period"
+msgstr "回答期間を設定する"
+
+#: /View/RegistrationEdit/edit.ctp:71
+msgid "After approval will be immediately published . Stop of the registration to select the stop from the registration data list ."
+msgstr "承認後即時公開されます。登録フォームの停止は登録フォームデータ一覧から停止を選びます。"
+
+#: /View/RegistrationEdit/edit.ctp:97
+msgid "set the aggregate display period"
+msgstr "公開期間を設定する"
+
+#: /View/RegistrationEdit/edit.ctp:99
+msgid "If not set , it will be displayed after the respondent answers."
+msgstr "設定しない場合、回答者が回答した後すぐに表示されます。"
+
+#: /View/RegistrationEdit/edit.ctp:108
+msgid "Result will display at this time."
+msgstr "から集計結果を表示する"
+
+#: /View/RegistrationEdit/edit.ctp:144
+msgid "Registration open mail"
+msgstr "登録フォーム開始メール"
+
+#: /View/RegistrationEdit/edit.ctp:148
+msgid "Deliver e-mail when registration has opened"
+msgstr "登録フォームが開始されたらメールで通知する"
+
+#: /View/RegistrationEdit/edit.ctp:153
+msgid "open mail subject"
+msgstr "開始メールタイトル"
+
+#: /View/RegistrationEdit/edit.ctp:156
+msgid "open mail text"
+msgstr "開始メール本文"
+
+#: /View/RegistrationEdit/edit.ctp:162
+msgid "Thanks page message settings"
+msgstr "サンクスページメッセージ設定"
+
+#: /View/RegistrationEdit/edit_question.ctp:88
+msgid "Required"
+msgstr "必須"
+
+#: /View/RegistrationEdit/edit_question.ctp:95
+msgid "set answer to this question is required"
+msgstr "この質問の回答を必須とする"
+
+#: /View/RegistrationEdit/edit_question.ctp:98
+msgid "question title"
+msgstr "質問タイトル"
+
+#: /View/RegistrationEdit/edit_question.ctp:106
+msgid "question sentence"
+msgstr "質問文"
+
+#: /View/RegistrationEdit/edit_question.ctp:116
+msgid "Question type"
+msgstr "質問の形式"
+
+#: /View/RegistrationEdit/edit_question.ctp:165
+msgid "Do you want to delete this page?"
+msgstr "このページを削除してよろしいですか？"
+
+#: /View/RegistrationEdit/edit_question.ctp:166
+msgid "Delete this page"
+msgstr "このページを削除"
+
+#: /View/RegistrationEdit/edit_question.ctp:174
+msgid "Add Page"
+msgstr "ページの追加"
+
+#: /View/RegistrationEdit/edit_result.ctp:48
+msgid "Published aggregate results"
+msgstr "集計結果の公開"
+
+#: /View/RegistrationEdit/edit_result.ctp:51
+msgid "not disclose the total result"
+msgstr "集計結果を公開しない"
+
+#: /View/RegistrationEdit/edit_result.ctp:51
+msgid "publish aggregate result"
+msgstr "集計結果を公開する"
+
+#: /View/RegistrationEdit/edit_result.ctp:65
+msgid "Text to be displayed in the aggregate results page"
+msgstr "解説文の設定"
+
+#: /View/RegistrationEdit/edit_result.ctp:78
+msgid "Question you want to display the aggregate results"
+msgstr "集計結果を表示する質問"
+
+#: /View/Registrations/noRegistration.ctp:28
+msgid "no registration"
+msgstr "登録フォームがありません。"
+
+#: /View/Registrations/noRegistration.ctp:33
+msgid "Please create new registration by pressing the \"+\" button."
+msgstr "+ボタンをクリックして登録フォームを作成してください。"

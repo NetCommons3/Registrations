@@ -1,0 +1,937 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /Controller/RegistrationBlocksController.php:148
+msgid "Setting of password is required always to download answers."
+msgstr ""
+
+#: /Controller/RegistrationBlocksController.php:178
+msgid "download error"
+msgstr ""
+
+#: /Controller/RegistrationBlocksController.php:228
+msgid "export error"
+msgstr ""
+
+#: /Controller/RegistrationEditController.php:331
+msgid "page"
+msgstr ""
+
+#: /Controller/RegistrationEditController.php:332
+#: /Model/RegistrationQuestion.php:220
+msgid "New Question"
+msgstr ""
+
+#: /Controller/RegistrationEditController.php:333
+#: /Model/RegistrationChoice.php:140
+msgid "new choice"
+msgstr ""
+
+#: /Controller/RegistrationEditController.php:334
+msgid "new column choice"
+msgstr ""
+
+#: /Controller/RegistrationEditController.php:335
+msgid "other choice"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:512;513;514;515;516
+msgid "item"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:527
+msgid "New Modified"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:528
+msgid "Registration order"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:529
+#: /Model/ActionRegistrationAdd.php:60
+#: /Model/Registration.php:98
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:34
+#: /View/RegistrationBlocks/index.ctp:37
+#: /View/RegistrationEdit/edit.ctp:46
+msgid "Title"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:530
+msgid "End period"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:541
+msgid "Single choice"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:542
+msgid "Multiple choice"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:543
+msgid "Single text"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:544
+msgid "Multiple text"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:545
+msgid "Single choice matrix"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:546
+msgid "Multiple choice matrix"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:547
+msgid "Date and time"
+msgstr ""
+
+#: /Controller/Component/RegistrationsComponent.php:548
+msgid "List select"
+msgstr ""
+
+#: /Model/ActionRegistrationAdd.php:54
+msgid "Please choose create option."
+msgstr ""
+
+#: /Model/ActionRegistrationAdd.php:66;70
+msgid "Please select past registration."
+msgstr ""
+
+#: /Model/ActionRegistrationAdd.php:254
+msgid "file upload error."
+msgstr ""
+
+#: /Model/ActionRegistrationAdd.php:263;270;277
+msgid "illegal import file."
+msgstr ""
+
+#: /Model/ActionRegistrationAdd.php:290
+msgid "version is different."
+msgstr ""
+
+#: /Model/Registration.php:110;136
+msgid "if you set the period, please set time."
+msgstr ""
+
+#: /Model/Registration.php:116;122;142
+msgid "Invalid datetime format."
+msgstr ""
+
+#: /Model/Registration.php:126
+msgid "start period must be smaller than end period"
+msgstr ""
+
+#: /Model/Registration.php:164
+msgid "if you set the use key phrase period, please set key phrase text."
+msgstr ""
+
+#: /Model/Registration.php:168;184
+msgid "Authentication key setting , image authentication , either only one can not be selected."
+msgstr ""
+
+#: /Model/Registration.php:199
+msgid "please set at least one page."
+msgstr ""
+
+#: /Model/RegistrationAnswer.php:118
+msgid "Input required"
+msgstr ""
+
+#: /Model/RegistrationAnswer.php:122
+msgid "the answer is too long. Please enter under %d letters."
+msgstr ""
+
+#: /Model/RegistrationAnswerSummaryCsv.php:152
+msgid "Respondent"
+msgstr ""
+
+#: /Model/RegistrationAnswerSummaryCsv.php:153
+msgid "Answer Date"
+msgstr ""
+
+#: /Model/RegistrationAnswerSummaryCsv.php:154
+msgid "Number"
+msgstr ""
+
+#: /Model/RegistrationAnswerSummaryCsv.php:191
+msgid "Anonymity"
+msgstr ""
+
+#: /Model/RegistrationChoice.php:80
+msgid "Please input choice text."
+msgstr ""
+
+#: /Model/RegistrationChoice.php:84
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:71
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:89
+msgid "You can not use the character of |, : for choice text "
+msgstr ""
+
+#: /Model/RegistrationChoice.php:103
+msgid "choice sequence is illegal."
+msgstr ""
+
+#: /Model/RegistrationChoice.php:108
+msgid "First character is \"#\". And input the hexadecimal numbers by six digits."
+msgstr ""
+
+#: /Model/RegistrationChoice.php:196
+msgid "Invalid skip page. Please set forward page."
+msgstr ""
+
+#: /Model/RegistrationChoice.php:200
+msgid "Invalid skip page. page does not exist."
+msgstr ""
+
+#: /Model/RegistrationPage.php:85
+msgid "First Page"
+msgstr ""
+
+#: /Model/RegistrationPage.php:198
+msgid "page sequence is illegal."
+msgstr ""
+
+#: /Model/RegistrationPage.php:230
+msgid "please set at least one question."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:97
+msgid "question sequence is illegal."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:109
+msgid "Please input question text."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:155;165
+msgid "Please enter both the maximum and minimum values."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:159
+msgid "Please enter smaller value than max."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:169
+msgid "Please enter bigger value than min."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:318
+msgid "please set at least one choice."
+msgstr ""
+
+#: /Model/RegistrationQuestion.php:329
+msgid "please set at least one choice at row and column."
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:75
+msgid "Please enter a valid date in YY-MM-DD format."
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:80
+msgid "Please enter the time."
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:85
+msgid "Please enter a valid date and time."
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerDatetimeBehavior.php:104
+#: /Model/Behavior/RegistrationAnswerTextBehavior.php:69
+msgid "Please enter the answer between %s and %s."
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerMatrixSingleChoiceBehavior.php:113;119
+#: /Model/Behavior/RegistrationAnswerSingleListBehavior.php:90
+msgid "Invalid choice"
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerMatrixSingleChoiceBehavior.php:143
+msgid "Please enter something in other item"
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerMatrixSingleChoiceBehavior.php:181
+msgid "Please answer about all rows."
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerSingleListBehavior.php:98
+msgid "Please enter something, if you chose the other item"
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerTextBehavior.php:64
+msgid "Number required"
+msgstr ""
+
+#: /Model/Behavior/RegistrationAnswerTextBehavior.php:76
+msgid "Please enter the answer between %s letters and %s letters."
+msgstr ""
+
+#: /View/Elements/ng_status_label.ctp:18
+#: /View/Helper/RegistrationStatusLabelHelper.php:49
+msgid "Before public"
+msgstr ""
+
+#: /View/Elements/ng_status_label.ctp:19
+#: /View/Helper/RegistrationStatusLabelHelper.php:53
+msgid "End"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_footer.ctp:15
+msgid "Note: Which may not be 100% because of rounding of numeric total."
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_footer.ctp:20
+msgid "Note: Matrix if the number in parentheses is a percentage of the total number of responses."
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_footer.ctp:26
+msgid "Note: If multiple selection is possible, total more than 100% to be."
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:21
+msgid "The total number of answers: "
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:29
+msgid "Select one"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:32
+msgid "Select more than one"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:35
+msgid "Matrix (selection list)"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:38
+msgid "Matrix (multiple)"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:41
+msgid "List selection"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_common_header.ctp:44
+msgid "Not selection"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_matrix_table.ctp:18
+#: /View/Elements/AnswerSummaries/aggregate_table.ctp:17
+msgid "Item name"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_table.ctp:18
+msgid "Aggregate value"
+msgstr ""
+
+#: /View/Elements/AnswerSummaries/aggregate_table.ctp:19
+msgid "The percentage"
+msgstr ""
+
+#: /View/Elements/Answers/answer_test_mode_header.ctp:31
+msgid "Test Mode"
+msgstr ""
+
+#: /View/Elements/Answers/answer_test_mode_header.ctp:34
+msgid "This registration is being temporarily stored . You can registration test before performed in this page . If you want to modify or change the registration , you will be able to edit by pressing the [ Edit question ] button in the upper-right corner ."
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:12
+msgid "select display registrations."
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:18
+msgid "Display"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:31
+#: /View/RegistrationBlocks/index.ctp:34
+msgid "Status"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:37
+msgid "Implementation date"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:40
+msgid "Aggregates"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:84
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:50
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:69
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:88
+#: /View/RegistrationAnswers/test_mode.ctp:28;41
+#: /View/RegistrationEdit/edit.ctp:81
+#: /View/Registrations/index.ctp:36
+msgid " - "
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_registration.ctp:90
+msgid "On"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_type.ctp:12
+msgid "Registration display setting"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_type.ctp:17
+msgid "Show only one registration"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_display_type.ctp:18
+msgid "Show registrations list"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_list_display_option.ctp:15
+msgid "Visible registration row"
+msgstr ""
+
+#: /View/Elements/FrameSettings/edit_list_display_option.ctp:26
+msgid "Visible row order"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_new.ctp:14
+msgid "Create new registration"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_new.ctp:21
+msgid "Registration title"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_new.ctp:23
+msgid "Please input registration title"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:14
+msgid "Re-use past registration"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:25
+msgid "Past registration"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:34
+msgid "Refine by entering the part of the registration name"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_reuse.ctp:52
+msgid "Implementation"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_template.ctp:13
+msgid "Create from Template"
+msgstr ""
+
+#: /View/Elements/RegistrationAdd/create_template.ctp:23
+msgid "Registration template file"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:14
+msgid "Set questions"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:15
+msgid "Set result display"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:16
+msgid "Set registration"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/registration_title.ctp:14
+msgid "If you want to change the registration title, please edit in \"Set registration\" step."
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/Edit/delete_form.ctp:31
+msgid "Registration"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:16
+msgid "copy to another page"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:20
+msgid "destination page number"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:28
+msgid "Do you want to delete this question ?"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:58
+msgid "Skip"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/add_question_button.ctp:18
+msgid "Add Question"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/choice.ctp:14
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/choice.ctp:18
+msgid "(This is [other] choice. Area to enter the text is automatically granted at the time of implementation.)"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:21
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:30
+msgid "Date"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:22
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:31
+msgid "Time"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:23
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:32
+msgid "Date and Time"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/date_option.ctp:49
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/date_option.ctp:59
+msgid "set range to answer date and time"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/matrix_choice_option.ctp:16
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:24
+msgid "Line choices"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/matrix_choice_option.ctp:27
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:52
+msgid "Column choices"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/simple_choice_option.ctp:26
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:30
+msgid "randomaize choices"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/simple_choice_option.ctp:37
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:41
+msgid "set page skip"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:24
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:32
+msgid "Numeric"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:37
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:44
+msgid "Please check if you want to set limit(or length) value."
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:42
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:57
+msgid "Minimum"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/text_option.ctp:50
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/text_option.ctp:73
+msgid "Maximum"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:28;47
+msgid "Add line choices"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:55;78
+msgid "Add column choices"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:62
+msgid "Do you want to delete this choice ?"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/matrix_choice_option.ctp:91
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:103
+msgid "add another choice"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:20;98
+msgid "add choices"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:64
+msgid "goto end"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:68
+msgid "(new page will be created)"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/simple_choice_option.ctp:69
+msgid "create new page for this skip"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/accordion_heading.ctp:23
+msgid "There is an error"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:13
+msgid "display type"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:28
+msgid "Bar Chart"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:36
+msgid "Pie Chart"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/display_type_set.ctp:44
+msgid "Table"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/graph_color_set.ctp:13
+msgid "graph color"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/is_display_set.ctp:14
+msgid "aggregate display"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/is_display_set.ctp:29
+msgid "The results of this question will not be displayed"
+msgstr ""
+
+#: /View/Elements/RegistrationEdit/EditResult/is_display_set.ctp:38
+msgid "The results of this question will be displayed"
+msgstr ""
+
+#: /View/Elements/Registrations/add_button.ctp:23
+msgid "Create article"
+msgstr ""
+
+#: /View/Elements/Registrations/answer_status.ctp:13
+msgid "View All"
+msgstr ""
+
+#: /View/Elements/Registrations/answer_status.ctp:14
+msgid "Unanswered"
+msgstr ""
+
+#: /View/Elements/Registrations/answer_status.ctp:15
+msgid "Answered"
+msgstr ""
+
+#: /View/Elements/Registrations/answer_status.ctp:18
+#: /View/Helper/RegistrationUtilHelper.php:90
+msgid "Test"
+msgstr ""
+
+#: /View/Elements/Registrations/answer_status.ctp:30
+msgid "Answer status"
+msgstr ""
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:24
+msgid "Author"
+msgstr ""
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:26
+msgid "Modified by"
+msgstr ""
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:32
+msgid "Pages"
+msgstr ""
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:34
+msgid "Questions"
+msgstr ""
+
+#: /View/Elements/Registrations/detail_for_editor.ctp:36
+msgid "Answers"
+msgstr ""
+
+#: /View/Helper/RegistrationAnswerHelper.php:181
+msgid "Please enter a number between %s and %s"
+msgstr ""
+
+#: /View/Helper/RegistrationAnswerHelper.php:183
+msgid "Please enter between %s letters and %s letters"
+msgstr ""
+
+#: /View/Helper/RegistrationAnswerHelper.php:235
+msgid "Please choose one"
+msgstr ""
+
+#: /View/Helper/RegistrationAnswerHelper.php:314;323;331
+msgid "Please enter at %s to %s"
+msgstr ""
+
+#: /View/Helper/RegistrationStatusLabelHelper.php:31
+msgid "Undefined"
+msgstr ""
+
+#: /View/Helper/RegistrationUtilHelper.php:110
+msgid "Answer"
+msgstr ""
+
+#: /View/Helper/RegistrationUtilHelper.php:127
+msgid "Unpublished"
+msgstr ""
+
+#: /View/Helper/RegistrationUtilHelper.php:131
+msgid "Finished"
+msgstr ""
+
+#: /View/RegistrationAdd/add.ctp:27
+msgid "You can create a new registration. Please choose how to create."
+msgstr ""
+
+#: /View/RegistrationAnswerSummaries/view.ctp:86
+#: /View/RegistrationAnswers/no_more_answer.ctp:14
+msgid "Back to Top"
+msgstr ""
+
+#: /View/RegistrationAnswers/confirm.ctp:22
+msgid "Please confirm your answers."
+msgstr ""
+
+#: /View/RegistrationAnswers/confirm.ctp:64
+msgid "Start over"
+msgstr ""
+
+#: /View/RegistrationAnswers/no_more_answer.ctp:12
+msgid "you will not be able to answer this registration."
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:25
+#: /View/RegistrationEdit/edit.ctp:58
+msgid "Registration answer period"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:31
+msgid "do not set the answer period"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:38
+#: /View/RegistrationEdit/edit.ctp:92
+msgid "Counting result display start date"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:43
+msgid "do not set the aggregate display period"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:50
+#: /View/RegistrationEdit/edit.ctp:113
+msgid "Registration method"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:54
+#: /View/RegistrationEdit/edit.ctp:117
+msgid "accept the non-members answer"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:56
+msgid "do not accept the non-members answer"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:62
+#: /View/RegistrationEdit/edit.ctp:120
+msgid "use key phrase"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:64
+msgid "key phrase"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:68
+msgid "do not use key phrase"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:74
+#: /View/RegistrationEdit/edit.ctp:129
+msgid "anonymous answer"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:76
+msgid "register answer"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:82
+#: /View/RegistrationEdit/edit.ctp:132
+msgid "forgive the repetition of the answer"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:84
+msgid "do not forgive the repetition of the answer"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:90
+#: /View/RegistrationEdit/edit.ctp:135
+msgid "do image authentication"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:92
+msgid "do not image authentication"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:98
+#: /View/RegistrationEdit/edit.ctp:140
+msgid "Deliver e-mail when submitted"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:100
+msgid "do not deliver e-mail when submitted"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:106
+msgid "Deliver e-mail when started"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:108
+msgid "do not deliver e-mail when started"
+msgstr ""
+
+#: /View/RegistrationAnswers/test_mode.ctp:117
+msgid "Start the test answers of this registration"
+msgstr ""
+
+#: /View/RegistrationAnswers/thanks.ctp:32
+msgid "Back to page"
+msgstr ""
+
+#: /View/RegistrationAnswers/thanks.ctp:37
+msgid "Aggregate"
+msgstr ""
+
+#: /View/RegistrationBlockRolePermissions/noRegistrationBlock.ctp:19
+msgid "There is no registration. First, please create a  registration."
+msgstr ""
+
+#: /View/RegistrationBlocks/index.ctp:43
+msgid "Answer CSV"
+msgstr ""
+
+#: /View/RegistrationBlocks/index.ctp:46
+msgid "Templates"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:51
+msgid "Sub Title"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:53
+msgid "Please enter if there is a sub title"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:63
+msgid "set the answer period"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:71
+msgid "After approval will be immediately published . Stop of the registration to select the stop from the registration data list ."
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:97
+msgid "set the aggregate display period"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:99
+msgid "If not set , it will be displayed after the respondent answers."
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:108
+msgid "Result will display at this time."
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:144
+msgid "Registration open mail"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:148
+msgid "Deliver e-mail when registration has opened"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:153
+msgid "open mail subject"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:156
+msgid "open mail text"
+msgstr ""
+
+#: /View/RegistrationEdit/edit.ctp:162
+msgid "Thanks page message settings"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:88
+msgid "Required"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:95
+msgid "set answer to this question is required"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:98
+msgid "question title"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:106
+msgid "question sentence"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:116
+msgid "Question type"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:165
+msgid "Do you want to delete this page?"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:166
+msgid "Delete this page"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_question.ctp:174
+msgid "Add Page"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_result.ctp:48
+msgid "Published aggregate results"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_result.ctp:51
+msgid "not disclose the total result"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_result.ctp:51
+msgid "publish aggregate result"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_result.ctp:65
+msgid "Text to be displayed in the aggregate results page"
+msgstr ""
+
+#: /View/RegistrationEdit/edit_result.ctp:78
+msgid "Question you want to display the aggregate results"
+msgstr ""
+
+#: /View/Registrations/noRegistration.ctp:28
+msgid "no registration"
+msgstr ""
+
+#: /View/Registrations/noRegistration.ctp:33
+msgid "Please create new registration by pressing the \"+\" button."
+msgstr ""
+

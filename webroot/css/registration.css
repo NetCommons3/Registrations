@@ -1,0 +1,99 @@
+/*--登録フォーム一覧画面セレクトボックス---*/
+.registration-list-select {
+    margin: 1em!important;
+}
+/*--登録フォーム一覧画面の編集者向け詳細情報枠---*/
+.registration-editor-dl {
+    margin:0px;
+    clear: left;
+}
+.registration-editor-dl dt {
+    float:left;
+    margin-right:1em;
+}
+.registration-editor-dl dd {
+    float:left;
+    margin-right:4em;
+}
+/*--登録フォーム追加画面の過去の登録フォームセレクトリスト用---*/
+.registration-select-box {
+    height:150px;
+    overflow-y: scroll;
+    list-style:none;
+    padding:0px;
+}
+.registration-select-box li {
+    padding:0px 0.5em
+}
+/*--登録フォーム編集画面のform-group枠への追加スタイル---*/
+.registration-group { margin-top:0.5em ;margin-bottom:1.5em;margin-left: 2em;
+}
+/*--登録フォーム編集画面の登録フォームタイトルスタイル---*/
+.registration-setting-ttl {
+    padding: 10px 20px 0px;
+}
+.registration-setting-ttl-help {
+    padding-bottom:1em;
+    padding-left: 2em;
+}
+/*--登録フォーム編集画面の質問アコーディオンスタイル---*/
+.registration-accordion-header-title {
+    line-height:2em;
+    padding-left:0.5em;
+}
+/*--登録フォーム編集画面の選択肢リスト---*/
+.registration-edit-choice-list-group {
+    margin-bottom: 5px;
+}
+/*
+ * 編集画面ステップメニュー
+ */
+.registration-steps {
+    height:auto;
+}
+.registration-step-item {
+    float: left;
+    height: 100%;
+    padding: 6px 1em 3px 0px;
+    text-align: center;
+    font-size: 12px;
+}
+.registration-step-item .glyphicon {
+    float:right;
+}
+
+/*--登録フォームマトリクス回答画面---*/
+.registration-matrix-table td input[type="radio"],
+.registration-matrix-table td input[type="checkbox"] {
+    display:block;
+    width:100%;
+    height:1em;
+}
+.registration-matrix-table td input[type="checkbox"] {
+    margin-left: 0px;
+}
+/*
+ * 集計画面グラフ
+ */
+.registration-chart-wrapper {
+    margin:1em;
+}
+.registration-chart {
+    width: 480px;
+    height: 240px;
+}
+/*------------------------------------------------------------------*/
+td.q-btn .registration-listbtn {
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+table.table.registration-table-vcenter tbody td {
+   vertical-align: middle;
+}
+/*
+ * 縦スクロールバー付き
+ */
+.registration-list-wrapper {
+    height:200px;
+    overflow-y: scroll;
+}
