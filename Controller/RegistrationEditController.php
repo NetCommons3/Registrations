@@ -159,7 +159,8 @@ class RegistrationEditController extends RegistrationsAppController {
 			$this->Session->write(self::REGISTRATION_EDIT_SESSION_INDEX . $this->_sessionIndex, $registration);
 
 			// 次の画面へリダイレクト
-			$this->redirect($this->_getActionUrl('edit_result'));
+			//$this->redirect($this->_getActionUrl('edit_result'));
+			$this->redirect($this->_getActionUrl('edit'));
 		} else {
 			// 登録フォームデータが取り出せている場合、それをキャッシュに書く
 			$this->Session->write(

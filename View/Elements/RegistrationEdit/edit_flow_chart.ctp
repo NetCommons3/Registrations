@@ -12,8 +12,8 @@
 <?php
 	$steps = array(
 	1 => __d('registrations', 'Set questions'),
-	2 => __d('registrations', 'Set result display'),
-	3 => __d('registrations', 'Set registration'));
+	//2 => __d('registrations', 'Set result display'),
+	2 => __d('registrations', 'Set registration'));
 	$stepCount = count($steps);
 	$stepWidth = 'style="width: ' . 100 / $stepCount . '%;"';
 	$check = $steps;
