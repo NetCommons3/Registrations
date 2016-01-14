@@ -20,7 +20,7 @@ echo $this->NetCommonsHtml->script(array(
 $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppController::changeBooleansToNumbers($this->data));
 ?>
 
-<?php echo $this->element('Registrations.RegistrationEdit/edit_flow_chart', array('current' => '3')); ?>
+<?php echo $this->element('Registrations.RegistrationEdit/edit_flow_chart', array('current' => '2')); ?>
 
 <div
 	id="nc-registrations-setting-edit"
