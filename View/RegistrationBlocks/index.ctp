@@ -42,9 +42,9 @@ echo $this->NetCommonsHtml->script(array(
 					<th>
 						<?php echo __d('registrations', 'Answer CSV'); ?>
 					</th>
-					<th>
-						<?php echo __d('registrations', 'Templates'); ?>
-					</th>
+					<!--<th>-->
+					<!--	--><?php //echo __d('registrations', 'Templates'); ?>
+					<!--</th>-->
 				</tr>
 				</thead>
 				<tbody>
@@ -81,20 +81,20 @@ echo $this->NetCommonsHtml->script(array(
 							</a>
 							<?php endif; ?>
 						</td>
-						<td>
-							<?php if ($registration['Registration']['status'] == WorkflowComponent::STATUS_PUBLISHED): ?>
-							<a class="btn btn-warning"
-							   href="<?php echo NetCommonsUrl::actionUrl(array(
-										'plugin' => 'registrations',
-										'controller' => 'registration_blocks',
-										'action' => 'export',
-										Current::read('Block.id'),
-										$registration['Registration']['key'],
-										'frame_id' => Current::read('Frame.id'))); ?>">
-								<span class="glyphicon glyphicon-export" ></span>
-							</a>
-							<?php endif; ?>
-						</td>
+						<!--<td>-->
+						<!--	--><?php //if ($registration['Registration']['status'] == WorkflowComponent::STATUS_PUBLISHED): ?>
+						<!--	<a class="btn btn-warning"-->
+						<!--	   href="--><?php //echo NetCommonsUrl::actionUrl(array(
+						//				'plugin' => 'registrations',
+						//				'controller' => 'registration_blocks',
+						//				'action' => 'export',
+						//				Current::read('Block.id'),
+						//				$registration['Registration']['key'],
+						//				'frame_id' => Current::read('Frame.id'))); ?><!--">-->
+						<!--		<span class="glyphicon glyphicon-export" ></span>-->
+						<!--	</a>-->
+						<!--	--><?php //endif; ?>
+						<!--</td>-->
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
