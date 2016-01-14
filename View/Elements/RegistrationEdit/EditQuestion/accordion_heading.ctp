@@ -11,18 +11,18 @@
 ?>
 
 <div class="pull-right" ng-if="isPublished == 0">
-	<div class="btn-group" dropdown dropdown-append-to-body>
-		<button type="button" class="btn btn-default" dropdown-toggle >
-			<?php echo __d('registrations', 'copy to another page'); ?>
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" role="menu">
-			<li role="presentation" class="dropdown-header"><?php echo __d('registrations', 'destination page number'); ?></li>
-			<li ng-repeat="(copyPageIndex, copyPage) in registration.registrationPage">
-				<a href="#" ng-click="copyQuestionToAnotherPage($event, pageIndex, qIndex, copyPage.pageSequence)">{{1 * copyPage.pageSequence + 1}}</a>
-			</li>
-		</ul>
-	</div>
+	<!--<div class="btn-group" dropdown dropdown-append-to-body>-->
+	<!--	<button type="button" class="btn btn-default" dropdown-toggle >-->
+	<!--		--><?php //echo __d('registrations', 'copy to another page'); ?>
+	<!--		<span class="caret"></span>-->
+	<!--	</button>-->
+	<!--	<ul class="dropdown-menu" role="menu">-->
+	<!--		<li role="presentation" class="dropdown-header">--><?php //echo __d('registrations', 'destination page number'); ?><!--</li>-->
+	<!--		<li ng-repeat="(copyPageIndex, copyPage) in registration.registrationPage">-->
+	<!--			<a href="#" ng-click="copyQuestionToAnotherPage($event, pageIndex, qIndex, copyPage.pageSequence)">{{1 * copyPage.pageSequence + 1}}</a>-->
+	<!--		</li>-->
+	<!--	</ul>-->
+	<!--</div>-->
 	<button class="btn btn-danger " type="button"
 			ng-disabled="page.registrationQuestion.length < 2"
 			ng-click="deleteQuestion($event, pageIndex, qIndex, '<?php echo __d('registrations', 'Do you want to delete this question ?'); ?>')">
