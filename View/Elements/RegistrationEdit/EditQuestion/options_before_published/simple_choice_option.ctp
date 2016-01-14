@@ -19,27 +19,27 @@
 		<button type="button" class="btn btn-default pull-right" ng-click="addChoice($event, pageIndex, qIndex, question.registrationChoice.length, '<?php echo RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED ?>', '<?php echo RegistrationsComponent::MATRIX_TYPE_ROW_OR_NO_MATRIX; ?>');">
 			<span class="glyphicon glyphicon-plus"></span><?php echo __d('registrations', 'add choices'); ?>
 		</button>
-		<label class="checkbox-inline" ng-show="question.questionType != <?php echo RegistrationsComponent::TYPE_SINGLE_SELECT_BOX; ?>">
-			<?php echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_choice_random',
-			array(
-			'value' => RegistrationsComponent::USES_USE,
-			'ng-model' => 'question.isChoiceRandom',
-			'ng-checked' => 'question.isChoiceRandom == ' . RegistrationsComponent::USES_USE
-			));
-			?>
-			<?php echo __d('registrations', 'randomaize choices'); ?>
-		</label>
-		<label class="checkbox-inline" ng-show="question.questionType != <?php echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?>">
-			<?php echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
-			array(
-			'value' => RegistrationsComponent::SKIP_FLAGS_SKIP,
-			'ng-model' => 'question.isSkip',
-			'ng-checked' => 'question.isSkip == ' . RegistrationsComponent::SKIP_FLAGS_SKIP,
-			'ng-disabled' => 'isDisabledSetSkip(page, question)'
-			));
-			?>
-			<?php echo __d('registrations', 'set page skip'); ?>
-		</label>
+		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_SINGLE_SELECT_BOX; ?><!--">-->
+		<!--	--><?php //echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_choice_random',
+		//	array(
+		//	'value' => RegistrationsComponent::USES_USE,
+		//	'ng-model' => 'question.isChoiceRandom',
+		//	'ng-checked' => 'question.isChoiceRandom == ' . RegistrationsComponent::USES_USE
+		//	));
+		//	?>
+		<!--	--><?php //echo __d('registrations', 'randomaize choices'); ?>
+		<!--</label>-->
+		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?><!--">-->
+		<!--	--><?php //echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
+		//	array(
+		//	'value' => RegistrationsComponent::SKIP_FLAGS_SKIP,
+		//	'ng-model' => 'question.isSkip',
+		//	'ng-checked' => 'question.isSkip == ' . RegistrationsComponent::SKIP_FLAGS_SKIP,
+		//	'ng-disabled' => 'isDisabledSetSkip(page, question)'
+		//	));
+		//	?>
+		<!--	--><?php //echo __d('registrations', 'set page skip'); ?>
+		<!--</label>-->
 	</div>
 </div>
 <div class="row">
