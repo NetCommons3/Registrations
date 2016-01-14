@@ -60,7 +60,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			'mainTabs' => array(
 				'block_index' => array('url' => array('controller' => 'registration_blocks')),
 				'role_permissions' => array('url' => array('controller' => 'registration_block_role_permissions')),
-				//'frame_settings' => array('url' => array('controller' => 'registration_frame_settings')),
+				'frame_settings' => array('url' => array('controller' => 'registration_frame_settings')),
 			),
 		),
 		'NetCommons.Permission' => array(

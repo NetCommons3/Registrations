@@ -77,6 +77,19 @@ class RegistrationsController extends RegistrationsAppController {
  * @return void
  */
 	public function index() {
+		// 作成権限なければ emptyRender
+		if (Current::permission('content_creatable')) {
+			// 追加ボタン表示
+			$this->view = 'Registrations/noRegistration';
+			return;
+		} else {
+			$this->setAction('emptyRender');
+			return;
+		}
+		//if (! $this->FaqQuestion->canCreateWorkflowContent()) {
+		//	$this->throwBadRequest();
+		//	return false;
+		//}
 		// 表示方法設定値取得
 		list(, $displayNum, $sort, $dir) =
 			$this->RegistrationFrameSetting->getRegistrationFrameSetting(Current::read('Frame.key'));
