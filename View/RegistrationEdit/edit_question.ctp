@@ -138,12 +138,12 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_TEXT_AREA; ?>">
 											<?php /* 複数行テキストの場合は詳細設定がないです */ ?>
 										</div>
-										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_MATRIX_SELECTION_LIST; ?>">
-											<?php echo $this->element($elementFolder . 'matrix_choice_option'); ?>
-										</div>
-										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_MATRIX_MULTIPLE; ?>">
-											<?php echo $this->element($elementFolder . 'matrix_choice_option'); ?>
-										</div>
+										<!--<div ng-if="question.questionType == --><?php //echo RegistrationsComponent::TYPE_MATRIX_SELECTION_LIST; ?><!--">-->
+										<!--	--><?php //echo $this->element($elementFolder . 'matrix_choice_option'); ?>
+										<!--</div>-->
+										<!--<div ng-if="question.questionType == --><?php //echo RegistrationsComponent::TYPE_MATRIX_MULTIPLE; ?><!--">-->
+										<!--	--><?php //echo $this->element($elementFolder . 'matrix_choice_option'); ?>
+										<!--</div>-->
 										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_DATE_AND_TIME; ?>">
 											<?php echo $this->element($elementFolder . 'date_option'); ?>
 										</div>

@@ -542,8 +542,8 @@ class RegistrationsComponent extends Component {
 			self::TYPE_MULTIPLE_SELECTION => __d('registrations', 'Multiple choice'),
 			self::TYPE_TEXT => __d('registrations', 'Single text'),
 			self::TYPE_TEXT_AREA => __d('registrations', 'Multiple text'),
-			self::TYPE_MATRIX_SELECTION_LIST => __d('registrations', 'Single choice matrix'),
-			self::TYPE_MATRIX_MULTIPLE => __d('registrations', 'Multiple choice matrix'),
+			//self::TYPE_MATRIX_SELECTION_LIST => __d('registrations', 'Single choice matrix'),
+			//self::TYPE_MATRIX_MULTIPLE => __d('registrations', 'Multiple choice matrix'),
 			self::TYPE_DATE_AND_TIME => __d('registrations', 'Date and time'),
 			self::TYPE_SINGLE_SELECT_BOX => __d('registrations', 'List select')
 		);
