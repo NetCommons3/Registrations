@@ -98,6 +98,9 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			'conditions' => $conditions,
 		));
 		if (! $this->__registration) {
+			// 単純に期間外のこともある
+			$this->setAction('emptyRender');
+			return;
 			$this->setAction('throwBadRequest');
 			return;
 		}

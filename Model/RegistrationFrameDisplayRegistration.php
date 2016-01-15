@@ -103,15 +103,15 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
  */
 	public function saveFrameDisplayRegistration($data) {
 		//トランザクションは親元のRegistrationFrameSettingでやっているので不要
-		if ($data['RegistrationFrameSetting']['display_type'] == RegistrationsComponent::DISPLAY_TYPE_SINGLE) {
-			// このフレームに設定されている全てのレコードを消す
-			// POSTされた登録フォームのレコードのみ作成する
-			$ret = $this->saveDisplayRegistrationForSingle($data);
-		} else {
+		//if ($data['RegistrationFrameSetting']['display_type'] == RegistrationsComponent::DISPLAY_TYPE_SINGLE) {
+		//	// このフレームに設定されている全てのレコードを消す
+		//	// POSTされた登録フォームのレコードのみ作成する
+		//	$ret = $this->saveDisplayRegistrationForSingle($data);
+		//} else {
 			// hiddenでPOSTされたレコードについて全て処理する
 			// POSTのis_displayが０，１によってdeleteかinsertで処理する
 			$ret = $this->saveDisplayRegistrationForList($data);
-		}
+		//}
 		return $ret;
 	}
 
@@ -190,6 +190,12 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		}
 		$this->create();
 		if (!$this->save($data)) {
+			return false;
+		}
+		// フレームのデフォルトにする
+
+		$action = "'" . 'registration_answers/view/' . Current::read('Block.id') . '/' . $data['registration_key'] . "'";
+		if (!$this->updateFrameDefaultAction($action)) {
 			return false;
 		}
 		return true;
