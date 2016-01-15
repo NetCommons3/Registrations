@@ -52,7 +52,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 		<div class="modal-body">
 
-			<?php echo $this->element('Registrations.RegistrationEdit/edit_flow_chart', array('current' => '1')); ?>
+			<?php //echo $this->element('Registrations.RegistrationEdit/edit_flow_chart', array('current' => '1')); ?>
 
 			<?php echo $this->element('Registrations.RegistrationEdit/registration_title'); ?>
 
