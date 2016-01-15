@@ -17,6 +17,7 @@ echo $this->NetCommonsHtml->script(array(
 	'/net_commons/js/wysiwyg.js',
 	'/registrations/js/registrations_edit.js',
 ));
+
 $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppController::changeBooleansToNumbers($this->data));
 ?>
 
@@ -116,20 +117,25 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
 						__d('registrations', 'accept the non-members answer'));
 
+
+
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_key_pass_use',
 						__d('registrations', 'use key phrase'),
 						array(
 							'ng-disabled' => 'registrations.registration.isImageAuthentication == ' . RegistrationsComponent::USES_USE));
 					echo $this->element('AuthorizationKeys.edit_form', [
 						'options' => array(
+							'div' => 'checkbox',
 						'ng-show' => 'registrations.registration.isKeyPassUse != 0',
 					)]);
 
-					echo $this->QuestionEdit->registrationAttributeCheckbox('is_anonymity',
-						__d('registrations', 'anonymous answer'));
 
-					echo $this->QuestionEdit->registrationAttributeCheckbox('is_repeat_allow',
-						__d('registrations', 'forgive the repetition of the answer'));
+
+					//echo $this->QuestionEdit->registrationAttributeCheckbox('is_anonymity',
+					//	__d('registrations', 'anonymous answer'));
+
+					//echo $this->QuestionEdit->registrationAttributeCheckbox('is_repeat_allow',
+					//	__d('registrations', 'forgive the repetition of the answer'));
 
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_image_authentication',
 						__d('registrations', 'do image authentication'),
@@ -138,6 +144,12 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
 						__d('registrations', 'Deliver e-mail when submitted'));
+				echo $this->QuestionEdit->registrationAttributeCheckbox('is_limit_number',
+					__d('registrations', '登録数を制限する'));
+				echo $this->Html->div(null,
+					$this->NetCommonsForm->input('limit_number',array('label' => '登録数')),
+					['ng-show' => 'registrations.registration.isLimitNumber != 0']
+				);
 				?>
 			</div>
 

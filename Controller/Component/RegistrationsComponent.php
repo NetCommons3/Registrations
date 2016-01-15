@@ -198,6 +198,10 @@ class RegistrationsComponent extends Component {
  */
 	const TYPE_SINGLE_SELECT_BOX = '8';
 
+	const TYPE_FROM_EMAIL = '9';
+	const TYPE_EMAIL = '10';
+	const TYPE_FILE = '11';
+
 /**
  * types list
  *
@@ -545,7 +549,10 @@ class RegistrationsComponent extends Component {
 			//self::TYPE_MATRIX_SELECTION_LIST => __d('registrations', 'Single choice matrix'),
 			//self::TYPE_MATRIX_MULTIPLE => __d('registrations', 'Multiple choice matrix'),
 			self::TYPE_DATE_AND_TIME => __d('registrations', 'Date and time'),
-			self::TYPE_SINGLE_SELECT_BOX => __d('registrations', 'List select')
+			self::TYPE_SINGLE_SELECT_BOX => __d('registrations', 'List select'),
+			self::TYPE_FROM_EMAIL => __d('registrations', '送信者メールアドレス'),
+			self::TYPE_EMAIL => __d('registrations', 'メールアドレス'),
+			self::TYPE_FILE => __d('registrations', 'ファイル'),
 		);
 	}
 
