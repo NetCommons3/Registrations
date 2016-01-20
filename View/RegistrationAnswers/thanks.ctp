@@ -28,16 +28,16 @@
 		</p>
 		<hr>
 
-		<div class="text-center">
-			<?php echo $this->BackTo->pageLinkButton(__d('registrations', 'Back to page'), array(
-				'icon' => 'remove',
-				'iconSize' => 'lg')); ?>
-			<?php
-				echo $this->RegistrationUtil->getAggregateButtons($registration,
-					array('title' => __d('registrations', 'Aggregate'),
-							'class' => 'primary',
-							'size' => 'lg'));
-			?>
-		</div>
+		<!--<div class="text-center">-->
+		<!--	--><?php //echo $this->BackTo->pageLinkButton(__d('registrations', 'Back to page'), array(
+		//		'icon' => 'remove',
+		//		'iconSize' => 'lg')); ?>
+		<!--	--><?php
+		//		echo $this->RegistrationUtil->getAggregateButtons($registration,
+		//			array('title' => __d('registrations', 'Aggregate'),
+		//					'class' => 'primary',
+		//					'size' => 'lg'));
+		//	?>
+		<!--</div>-->
 	<?php echo $this->NetCommonsForm->end(); ?>
 </article>

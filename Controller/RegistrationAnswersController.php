@@ -219,7 +219,9 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			}
 		}
 		if (! ($this->request->isPost() && $nextPageSeq == $this->data['RegistrationPage']['page_sequence'])) {
+			// 確認画面から戻ってきたときもDBからデータを取り出してる。
 			$summary = $this->RegistrationsOwnAnswer->getProgressiveSummaryOfThisUser($registrationKey);
+			//$summary = false;
 			$setAnswers = $this->RegistrationAnswer->getProgressiveAnswerOfThisSummary($summary);
 			$this->set('answers', $setAnswers);
 			$this->request->data['RegistrationAnswer'] = $setAnswers;

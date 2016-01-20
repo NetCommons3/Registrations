@@ -39,25 +39,26 @@ class RegistrationsOwnAnswerComponent extends Component {
 		$summary = false;
 		$answerSummary = ClassRegistry::init('Registrations.RegistrationAnswerSummary');
 		// 未ログインの人の場合はセッションにある回答中データを参照する
-		if (! Current::read('User.id')) {
+		//if (! Current::read('User.id')) {
+		// 登録フォームとしてはセッションだけで充分
 			$session = $this->_Collection->load('Session');
 			$summaryId = $session->read('Registrations.progressiveSummary.' . $registrationKey);
 			if ($summaryId) {
 				$summary = $answerSummary->findById($summaryId);
 			}
 			return $summary;
-		}
-		// ログインユーザーはDBから探す
-		$conditions = array(
-			'answer_status' => RegistrationsComponent::ACTION_NOT_ACT,
-			'registration_key' => $registrationKey,
-			'user_id' => Current::read('User.id'),
-		);
-		$summary = $answerSummary->find('first', array(
-			'conditions' => $conditions,
-			'order' => 'RegistrationAnswerSummary.created DESC'	// 最も新しいものを一つ選ぶ
-		));
-		return $summary;
+		//}
+		//// ログインユーザーはDBから探す
+		//$conditions = array(
+		//	'answer_status' => RegistrationsComponent::ACTION_NOT_ACT,
+		//	'registration_key' => $registrationKey,
+		//	'user_id' => Current::read('User.id'),
+		//);
+		//$summary = $answerSummary->find('first', array(
+		//	'conditions' => $conditions,
+		//	'order' => 'RegistrationAnswerSummary.created DESC'	// 最も新しいものを一つ選ぶ
+		//));
+		//return $summary;
 	}
 /**
  * 指定された登録フォームに対応する回答中サマリを作成
@@ -173,9 +174,10 @@ class RegistrationsOwnAnswerComponent extends Component {
 		// 回答済み登録フォーム配列に追加
 		$this->__ownAnsweredKeys[] = $registrationKey;
 		// ログイン状態の人の場合はこれ以上の処理は不要
-		if (Current::read('User.id')) {
-			return;
-		}
+		// 登録フォームではどちらもセッション保存にしたのでログインユーザでもセッション削除を行う
+		//if (Current::read('User.id')) {
+		//	return;
+		//}
 		// 未ログインの人の場合はセッションに書いておく
 		$session = $this->_Collection->load('Session');
 		$blockId = Current::read('Block.id');
