@@ -16,6 +16,8 @@ App::uses('RegistrationsAppModel', 'Registrations.Model');
 
 /**
  * Summary for RegistrationFrameSetting Model
+ *
+ * @property RegistrationFrameDisplayRegistration RegistrationFrameDisplayRegistration
  */
 class RegistrationFrameSetting extends RegistrationsAppModel {
 
@@ -72,18 +74,18 @@ class RegistrationFrameSetting extends RegistrationsAppModel {
 					'message' => __d('net_commons', 'Invalid request.'),
 				),
 			),
-			'display_num_per_page' => array(
-				'inList' => array(
-					'rule' => array('inList', array_keys(RegistrationsComponent::getDisplayNumberOptions())),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
-			'sort_type' => array(
-				'inList' => array(
-					'rule' => array('inList', array_keys(RegistrationsComponent::getSortOrders())),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
+			//'display_num_per_page' => array(
+			//	'inList' => array(
+			//		'rule' => array('inList', array_keys(RegistrationsComponent::getDisplayNumberOptions())),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
+			//'sort_type' => array(
+			//	'inList' => array(
+			//		'rule' => array('inList', array_keys(RegistrationsComponent::getSortOrders())),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
 		));
 
 		parent::beforeValidate($options);

@@ -16,6 +16,8 @@ App::uses('RegistrationBlocksController', 'Registrations.Controller');
  *
  * @author Allcreator <info@allcreator.net>
  * @package NetCommons\Registrations\Controller
+ *
+ * @property RegistrationFrameSetting RegistrationFrameSetting
  */
 class RegistrationFrameSettingsController extends RegistrationBlocksController {
 

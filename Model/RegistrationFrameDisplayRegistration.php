@@ -106,11 +106,11 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		//if ($data['RegistrationFrameSetting']['display_type'] == RegistrationsComponent::DISPLAY_TYPE_SINGLE) {
 		//	// このフレームに設定されている全てのレコードを消す
 		//	// POSTされた登録フォームのレコードのみ作成する
-		//	$ret = $this->saveDisplayRegistrationForSingle($data);
+			$ret = $this->saveDisplayRegistrationForSingle($data);
 		//} else {
 			// hiddenでPOSTされたレコードについて全て処理する
 			// POSTのis_displayが０，１によってdeleteかinsertで処理する
-			$ret = $this->saveDisplayRegistrationForList($data);
+			//$ret = $this->saveDisplayRegistrationForList($data);
 		//}
 		return $ret;
 	}

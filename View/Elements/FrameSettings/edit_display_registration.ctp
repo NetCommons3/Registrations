@@ -46,6 +46,7 @@
 		<?php foreach ((array)$registrations as $index => $quest): ?>
 		<tr class="animate-repeat btn-default">
 			<td>
+
 				<div class="text-center" ng-show="registrationFrameSettings.displayType == <?php echo RegistrationsComponent::DISPLAY_TYPE_LIST; ?>">
 					<?php echo $this->NetCommonsForm->checkbox('List.RegistrationFrameDisplayRegistrations.' . $index . '.is_display', array(
 					'options' => array(true => ''),
@@ -59,6 +60,7 @@
 					?>
 					<?php echo $this->NetCommonsForm->hidden('RegistrationFrameDisplayRegistrations.' . $index . '.registration_key', array('value' => $quest['Registration']['key'])); ?>
 				</div>
+
 				<div class="text-center"  ng-show="registrationFrameSettings.displayType == <?php echo RegistrationsComponent::DISPLAY_TYPE_SINGLE; ?>">
 					<?php echo $this->NetCommonsForm->radio('Single.RegistrationFrameDisplayRegistrations.registration_key',
 					array($quest['Registration']['key'] => ''), array(
@@ -71,6 +73,7 @@
 					));
 					?>
 				</div>
+
 			</td>
 			<td>
 				<?php echo $this->RegistrationStatusLabel->statusLabelManagementWidget($quest);?>
