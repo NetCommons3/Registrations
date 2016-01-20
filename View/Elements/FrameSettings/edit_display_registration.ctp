@@ -37,9 +37,6 @@
 				<?php echo $this->Paginator->sort('Registration.publish_start', __d('registrations', 'Implementation date')); ?>
 			</th>
 			<th>
-				<?php echo $this->Paginator->sort('Registration.is_total_show', __d('registrations', 'Aggregates')); ?>
-			</th>
-			<th>
 				<?php echo $this->Paginator->sort('Registration.modified', __d('net_commons', 'Updated date')); ?>
 			</th>
 		</tr>
@@ -86,11 +83,6 @@
 					<?php echo $this->Date->dateFormat($quest['Registration']['publish_start']); ?>
 					<?php echo __d('registrations', ' - '); ?>
 					<?php echo $this->Date->dateFormat($quest['Registration']['publish_end']); ?>
-				<?php endif ?>
-			</td>
-			<td>
-				<?php if ($quest['Registration']['is_total_show'] == RegistrationsComponent::EXPRESSION_SHOW): ?>
-					<?php echo __d('registrations', 'On'); ?>
 				<?php endif ?>
 			</td>
 			<td>
