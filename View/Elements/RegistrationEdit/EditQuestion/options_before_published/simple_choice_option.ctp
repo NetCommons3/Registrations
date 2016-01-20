@@ -30,14 +30,14 @@
 		<!--	--><?php //echo __d('registrations', 'randomaize choices'); ?>
 		<!--</label>-->
 		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?><!--">-->
-		<!--	--><?php //echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
-		//	array(
-		//	'value' => RegistrationsComponent::SKIP_FLAGS_SKIP,
-		//	'ng-model' => 'question.isSkip',
-		//	'ng-checked' => 'question.isSkip == ' . RegistrationsComponent::SKIP_FLAGS_SKIP,
-		//	'ng-disabled' => 'isDisabledSetSkip(page, question)'
-		//	));
-		//	?>
+			<?php echo $this->NetCommonsForm->hidden('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
+			array(
+			'value' => RegistrationsComponent::SKIP_FLAGS_NO_SKIP,
+			'ng-model' => 'question.isSkip',
+			'ng-checked' => 'question.isSkip == ' . RegistrationsComponent::SKIP_FLAGS_NO_SKIP,
+			'ng-disabled' => 'isDisabledSetSkip(page, question)'
+			));
+			?>
 		<!--	--><?php //echo __d('registrations', 'set page skip'); ?>
 		<!--</label>-->
 	</div>

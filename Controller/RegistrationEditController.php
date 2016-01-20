@@ -141,12 +141,14 @@ class RegistrationEditController extends RegistrationsAppController {
 
 			// 発行後の登録フォームは質問情報は書き換えない
 			// 未発行の場合はPostデータを上書き設定して
-			if ($this->Registration->hasPublished($registration) == 0) {
-				$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
-			} else {
-				// booleanの値がPOST時と同じようになるように調整
-				$registration['RegistrationPage'] = RegistrationsAppController::changeBooleansToNumbers($registration['RegistrationPage']);
-			}
+			//if ($this->Registration->hasPublished($registration) == 0) {
+			//	$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
+			//} else {
+			//	// booleanの値がPOST時と同じようになるように調整
+			//	$registration['RegistrationPage'] = RegistrationsAppController::changeBooleansToNumbers($registration['RegistrationPage']);
+			//}
+			// いつも編集OK
+			$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
 
 			// バリデート
 			$this->Registration->set($registration);
@@ -236,7 +238,8 @@ class RegistrationEditController extends RegistrationsAppController {
 			// エラー
 			if ($saveRegistration == false) {
 				$registration['Registration']['status'] = $beforeStatus;
-				$this->__setupViewParameters($registration, $this->_getActionUrl('edit_result'));
+				//$this->__setupViewParameters($registration, $this->_getActionUrl('edit_result'));
+				$this->__setupViewParameters($registration, $this->_getActionUrl('edit_question'));
 				return;
 			}
 			// 成功時 セッションに書き溜めた編集情報を削除
@@ -247,7 +250,7 @@ class RegistrationEditController extends RegistrationsAppController {
 		} else {
 			// 指定されて取り出した登録フォームデータをセッションキャッシュに書く
 			$this->Session->write($this->_getRegistrationEditSessionIndex(), $this->_registration);
-			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_result'));
+			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_question'));
 		}
 	}
 
@@ -334,7 +337,8 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->set('newChoiceLabel', __d('registrations', 'new choice'));
 		$this->set('newChoiceColumnLabel', __d('registrations', 'new column choice'));
 		$this->set('newChoiceOtherLabel', __d('registrations', 'other choice'));
-		$this->set('isPublished', $isPublished);
+		//$this->set('isPublished', $isPublished);
+		$this->set('isPublished', false);
 		$this->request->data = $registration;
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
