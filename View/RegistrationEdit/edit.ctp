@@ -114,11 +114,12 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 			<label class="h3"><?php echo __d('registrations', 'Registration method'); ?></label>
 			<div class="form-group registration-group">
 				<?php
-					echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
-						__d('registrations', 'accept the non-members answer'));
+					//echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
+					//	__d('registrations', 'accept the non-members answer'));
+				echo $this->NetCommonsForm->hidden('is_no_member_allow');
 				?>
 
-				<div ng-hide="registrations.registration.isNoMemberAllow != 1">
+<!--				<div ng-hide="registrations.registration.isNoMemberAllow != 1">-->
 				<?php
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_key_pass_use',
 						__d('registrations', 'use key phrase'),
@@ -143,7 +144,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 							array(
 								'ng-disabled' => 'registrations.registration.isKeyPassUse == ' . RegistrationsComponent::USES_USE));
 				?>
-				</div>
+				<!--</div>-->
 
 				<?php
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
