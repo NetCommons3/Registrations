@@ -42,6 +42,11 @@ NetCommonsApp.controller('Registrations.setting',
       $scope.initialize = function(frameId, registrations) {
         $scope.frameId = frameId;
         $scope.registrations = registrations;
+        console.log($scope.registrations);
+      };
+
+      $scope.ddd = function() {
+        console.log($scope.registrations);
       };
 
       /**

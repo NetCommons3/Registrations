@@ -64,9 +64,9 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 						__d('registrations', 'set the answer period'),
 						array(
 						'value' => WorkflowBehavior::PUBLIC_TYPE_LIMITED,
-						'ng-checked' => 'registrations.registration.publicType==' . "'" . WorkflowBehavior::PUBLIC_TYPE_LIMITED . "'",
-						'ng-true-value' => WorkflowBehavior::PUBLIC_TYPE_LIMITED,
-						'ng-false-value' => WorkflowBehavior::PUBLIC_TYPE_PUBLIC,
+						//'ng-checked' => 'registrations.registration.publicType==' . "'" . WorkflowBehavior::PUBLIC_TYPE_LIMITED . "'",
+						'ng-true-value' => '"' . WorkflowBehavior::PUBLIC_TYPE_LIMITED . '"',
+						'ng-false-value' => '"' . WorkflowBehavior::PUBLIC_TYPE_PUBLIC .'"' ,
 						'hiddenField' => WorkflowBehavior::PUBLIC_TYPE_PUBLIC
 						),
 						__d('registrations', 'After approval will be immediately published . Stop of the registration to select the stop from the registration data list .'));
@@ -116,9 +116,10 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				<?php
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
 						__d('registrations', 'accept the non-members answer'));
+				?>
 
-
-
+				<div ng-hide="registrations.registration.isNoMemberAllow != 1">
+				<?php
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_key_pass_use',
 						__d('registrations', 'use key phrase'),
 						array(
@@ -141,11 +142,15 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 						__d('registrations', 'do image authentication'),
 							array(
 								'ng-disabled' => 'registrations.registration.isKeyPassUse == ' . RegistrationsComponent::USES_USE));
+				?>
+				</div>
 
+				<?php
 					echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
 						__d('registrations', 'Deliver e-mail when submitted'));
 				echo $this->QuestionEdit->registrationAttributeCheckbox('is_limit_number',
 					__d('registrations', '登録数を制限する'));
+
 				echo $this->Html->div(null,
 					$this->NetCommonsForm->input('limit_number',array('label' => '登録数')),
 					['ng-show' => 'registrations.registration.isLimitNumber != 0']
@@ -182,6 +187,9 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				</div>
 			</div>
 			<?php echo $this->Workflow->inputComment('Registration.status'); ?>
+			<!--<a href="#" ng-click="ddd()">LOG</a>-->
+
+
 		</div>
 		<?php echo $this->Workflow->buttons('Registration.status', $cancelUrl, true, $backUrl); ?>
 

@@ -136,7 +136,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 											<?php echo $this->element($elementFolder . 'text_option'); ?>
 										</div>
 										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_TEXT_AREA; ?>">
-											<?php /* 複数行テキストの場合は詳細設定がないです */ ?>
+											<?php echo $this->element($elementFolder . 'text_area_option'); ?>
 										</div>
 										<!--<div ng-if="question.questionType == --><?php //echo RegistrationsComponent::TYPE_MATRIX_SELECTION_LIST; ?><!--">-->
 										<!--	--><?php //echo $this->element($elementFolder . 'matrix_choice_option'); ?>
