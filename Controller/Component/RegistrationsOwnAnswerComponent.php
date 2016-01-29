@@ -22,23 +22,23 @@ class RegistrationsOwnAnswerComponent extends Component {
 /**
  * Answered registration keys
  *
- * 回答済み登録フォームキー配列
+ * 登録済み登録フォームキー配列
  *
  * @var array
  */
 	private $__ownAnsweredKeys = null;
 
 /**
- * 指定された登録フォームに該当する回答中登録フォームのサマリを取得する
+ * 指定された登録フォームに該当する登録中登録フォームのサマリを取得する
  *
- * @param string $registrationKey 回答済に追加する登録フォームキー
+ * @param string $registrationKey 登録済に追加する登録フォームキー
  * @return progressive Answer Summary id list
  */
 	public function getProgressiveSummaryOfThisUser($registrationKey) {
 		// 戻り値初期化
 		$summary = false;
 		$answerSummary = ClassRegistry::init('Registrations.RegistrationAnswerSummary');
-		// 未ログインの人の場合はセッションにある回答中データを参照する
+		// 未ログインの人の場合はセッションにある登録中データを参照する
 		//if (! Current::read('User.id')) {
 		// 登録フォームとしてはセッションだけで充分
 			$session = $this->_Collection->load('Session');
@@ -61,7 +61,7 @@ class RegistrationsOwnAnswerComponent extends Component {
 		//return $summary;
 	}
 /**
- * 指定された登録フォームに対応する回答中サマリを作成
+ * 指定された登録フォームに対応する登録中サマリを作成
  *
  * @param array $registration 登録フォーム
  * @return progressive Answer Summary data
@@ -81,10 +81,10 @@ class RegistrationsOwnAnswerComponent extends Component {
 	}
 
 /**
- * 指定された登録フォームのサマリIDを回答中サマリIDとしてセッションに記録
+ * 指定された登録フォームのサマリIDを登録中サマリIDとしてセッションに記録
  *
- * @param string $registrationKey 回答中の登録フォームキー
- * @param int $summaryId 回答中のサマリのID
+ * @param string $registrationKey 登録中の登録フォームキー
+ * @param int $summaryId 登録中のサマリのID
  * @return void
  */
 	public function saveProgressiveSummaryOfThisUser($registrationKey, $summaryId) {
@@ -92,7 +92,7 @@ class RegistrationsOwnAnswerComponent extends Component {
 		$session->write('Registrations.progressiveSummary.' . $registrationKey, $summaryId);
 	}
 /**
- * セッションから指定された登録フォームの回答中サマリIDを削除
+ * セッションから指定された登録フォームの登録中サマリIDを削除
  *
  * @param string $registrationKey 登録フォームキー
  * @return void
@@ -103,7 +103,7 @@ class RegistrationsOwnAnswerComponent extends Component {
 	}
 
 /**
- * 回答済み登録フォームリストを取得する
+ * 登録済み登録フォームリストを取得する
  *
  * @return Answered Registration keys list
  */
@@ -145,13 +145,13 @@ class RegistrationsOwnAnswerComponent extends Component {
 		return $this->__ownAnsweredKeys;
 	}
 /**
- * 登録フォーム回答済みかどうかを返す
+ * 登録フォーム登録済みかどうかを返す
  *
- * @param string $registrationKey 回答済に追加する登録フォームキー
+ * @param string $registrationKey 登録済に追加する登録フォームキー
  * @return bool
  */
 	public function checkOwnAnsweredKeys($registrationKey) {
-		// まだ回答済データが初期状態のときはまずは確保
+		// まだ登録済データが初期状態のときはまずは確保
 		if ($this->__ownAnsweredKeys === null) {
 			$this->getOwnAnsweredKeys();
 		}
@@ -161,17 +161,17 @@ class RegistrationsOwnAnswerComponent extends Component {
 		return false;
 	}
 /**
- * セッションの回答済み登録フォームリストに新しい登録フォームを追加する
+ * セッションの登録済み登録フォームリストに新しい登録フォームを追加する
  *
- * @param string $registrationKey 回答済に追加する登録フォームキー
+ * @param string $registrationKey 登録済に追加する登録フォームキー
  * @return void
  */
 	public function saveOwnAnsweredKeys($registrationKey) {
-		// まだ回答済データが初期状態のときはまずは確保
+		// まだ登録済データが初期状態のときはまずは確保
 		if ($this->__ownAnsweredKeys === null) {
 			$this->getOwnAnsweredKeys();
 		}
-		// 回答済み登録フォーム配列に追加
+		// 登録済み登録フォーム配列に追加
 		$this->__ownAnsweredKeys[] = $registrationKey;
 		// ログイン状態の人の場合はこれ以上の処理は不要
 		// 登録フォームではどちらもセッション保存にしたのでログインユーザでもセッション削除を行う
@@ -183,7 +183,7 @@ class RegistrationsOwnAnswerComponent extends Component {
 		$blockId = Current::read('Block.id');
 		$session->write('Registrations.ownAnsweredKeys.' . $blockId, implode(',', $this->__ownAnsweredKeys));
 
-		// 回答中登録フォームからは削除しておく
+		// 登録中登録フォームからは削除しておく
 		$this->deleteProgressiveSummaryOfThisUser($registrationKey);
 	}
 

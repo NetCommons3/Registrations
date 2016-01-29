@@ -112,12 +112,12 @@ class RegistrationsAppController extends AppController {
  * @return bool
  */
 	public function isAbleTo($registration) {
-		// 指定の登録フォームの状態と回答者の権限を照らし合わせてガードをかける
+		// 指定の登録フォームの状態と登録者の権限を照らし合わせてガードをかける
 		// 編集権限を持っていない場合
 		//   公開状態にない
 		//   期間外
 		//   停止中
-		//   繰り返し回答
+		//   繰り返し登録
 		//   会員以外には許してないのに未ログインである
 
 		// 編集権限を持っている場合
@@ -126,7 +126,7 @@ class RegistrationsAppController extends AppController {
 		// 　公開状態になっている場合は
 		//   期間外
 		//   停止中
-		//   繰り返し回答
+		//   繰り返し登録
 		//   会員以外には許してないのに未ログインである
 
 		// 公開状態が「公開」になっている場合は編集権限の有無にかかわらず共通だ
@@ -162,13 +162,13 @@ class RegistrationsAppController extends AppController {
 		return true;
 	}
 /**
- * isAbleToAnswer 指定されたIDに回答できるかどうか
+ * isAbleToAnswer 指定されたIDに登録できるかどうか
  * 強制URLハックのガード
- * 指定の登録フォームの状態と回答者の権限を照らし合わせてガードをかける
+ * 指定の登録フォームの状態と登録者の権限を照らし合わせてガードをかける
  * 公開状態にない
  * 期間外
  * 停止中
- * 繰り返し回答
+ * 繰り返し登録
  * 会員以外には許してないのに未ログインである
  *
  * @param array $registration 対象となる登録フォームデータ
@@ -178,7 +178,7 @@ class RegistrationsAppController extends AppController {
 		if ($registration['Registration']['status'] != WorkflowComponent::STATUS_PUBLISHED) {
 			return true;
 		}
-		// 繰り返し回答を許していないのにすでに回答済みか
+		// 繰り返し登録を許していないのにすでに登録済みか
 		if ($registration['Registration']['is_repeat_allow'] == RegistrationsComponent::PERMISSION_NOT_PERMIT) {
 			if ($this->RegistrationsOwnAnswer->checkOwnAnsweredKeys($registration['Registration']['key'])) {
 				return false;
@@ -215,12 +215,12 @@ class RegistrationsAppController extends AppController {
 		}
 
 		// していない または 公開期間内
-		// 本人回答があるかどうがか表示有無の判断基準
+		// 本人登録があるかどうがか表示有無の判断基準
 		if (! $this->RegistrationsOwnAnswer->checkOwnAnsweredKeys($registration['Registration']['key'])) {
-			//本人による「回答」データなし
+			//本人による「登録」データなし
 			return false;	// 見てはいけない
 		}
-		//本人による「回答」データあり
+		//本人による「登録」データあり
 		return true;	// みてよし
 	}
 

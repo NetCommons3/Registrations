@@ -83,7 +83,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 	);
 
 /**
- * getNowSummaryOfThisUser 指定された登録フォームIDと指定ユーザーに合致する登録フォーム回答を取得する
+ * getNowSummaryOfThisUser 指定された登録フォームIDと指定ユーザーに合致する登録フォーム登録を取得する
  *
  * @param int $registrationKey 登録フォームKey
  * @param int $userId ユーザID （指定しない場合は null)
@@ -162,7 +162,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			'RegistrationAnswerSummary.answer_status' => RegistrationsComponent::ACTION_ACT,
 			'RegistrationAnswerSummary.registration_key' => $registration['Registration']['key']
 		);
-		//公開時は本番時回答のみ、テスト時(=非公開時)は本番回答＋テスト回答を対象とする。
+		//公開時は本番時登録のみ、テスト時(=非公開時)は本番登録＋テスト登録を対象とする。
 		if ($registration['Registration']['status'] == WorkflowComponent::STATUS_PUBLISHED) {
 			$baseConditions['RegistrationAnswerSummary.test_status'] = RegistrationsComponent::TEST_ANSWER_STATUS_PEFORM;
 		}
@@ -193,7 +193,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				//集計表示をしない、なので飛ばす
 				continue;
 			}
-			// 戻り値の、この質問の合計回答数を記録しておく。
+			// 戻り値の、この質問の合計登録数を記録しておく。
 			// skip ロジックがあるため、単純にsummaryのcountじゃない..
 			$questionConditions = $baseConditions + array(
 					'RegistrationAnswer.registration_question_key' => $question['key'],

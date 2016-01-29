@@ -27,11 +27,11 @@ class RegistrationAnswerTextAreaBehavior extends RegistrationAnswerBehavior {
 	protected $_myType = RegistrationsComponent::TYPE_TEXT_AREA;
 
 /**
- * answerMaxLength 回答が登録フォームが許す最大長を超えていないかの確認
+ * answerMaxLength 登録が登録フォームが許す最大長を超えていないかの確認
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
+ * @param array $question 登録データに対応する質問
  * @param int $max 最大長
  * @return bool
  */

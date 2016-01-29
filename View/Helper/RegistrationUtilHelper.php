@@ -40,23 +40,23 @@ class RegistrationUtilHelper extends AppHelper {
 	}
 
 /**
- * getAnswerButtons 回答済み 回答する テストのボタン表示
+ * getAnswerButtons 登録済み 登録する テストのボタン表示
  *
- * @param array $registration 回答データ
+ * @param array $registration 登録データ
  * @return string
  */
 	public function getAnswerButtons($registration) {
 		//
-		//回答ボタンの(回答済み|回答する|テスト)の決定
+		//登録ボタンの(登録済み|登録する|テスト)の決定
 		//
 		// satus != 公開状態 つまり編集者が見ている場合は「テスト」
 		//
 		// 公開状態の場合が枝分かれする
-		// 公開時期にマッチしていない = 回答前＝回答する（disabled） 回答後＝回答済み（disabled）
+		// 公開時期にマッチしていない = 登録前＝登録する（disabled） 登録後＝登録済み（disabled）
 		//
 		// 公開期間中
-		// 繰り返しの回答を許さない = 回答前＝回答する　回答後＝回答済み（Disabled）
-		// 繰り返しの回答を許す = いずれの状態でも「回答する」
+		// 繰り返しの登録を許さない = 登録前＝登録する　登録後＝登録済み（Disabled）
+		// 繰り返しの登録を許す = いずれの状態でも「登録する」
 
 		$key = $registration['Registration']['key'];
 
@@ -94,14 +94,14 @@ class RegistrationUtilHelper extends AppHelper {
 			));
 		}
 
-		// 何事もなければ回答可能のボタン
+		// 何事もなければ登録可能のボタン
 		$answerButtonLabel = __d('registrations', 'Answer');
 		$answerButtonClass = 'success';
 		$answerButtonDisabled = '';
 
 		// 操作できるかできないかの決定
 		// 期間外だったら操作不可能
-		// 繰り返し回答不可で回答済なら操作不可能
+		// 繰り返し登録不可で登録済なら操作不可能
 		if ($registration['Registration']['period_range_stat'] != RegistrationsComponent::REGISTRATION_PERIOD_STAT_IN
 			|| (in_array($key, $this->_View->viewVars['ownAnsweredKeys'])
 				&& $registration['Registration']['is_repeat_allow'] == RegistrationsComponent::PERMISSION_NOT_PERMIT)) {
@@ -116,7 +116,7 @@ class RegistrationUtilHelper extends AppHelper {
 			$answerButtonLabel = __d('registrations', 'Unpublished');
 		}
 		if (in_array($key, $this->_View->viewVars['ownAnsweredKeys'])) {
-			// 回答済み
+			// 登録済み
 			$answerButtonLabel = __d('registrations', 'Finished');
 		}
 
@@ -126,7 +126,7 @@ class RegistrationUtilHelper extends AppHelper {
 /**
  * getAggregateButtons 集計のボタン表示
  *
- * @param array $registration 回答データ
+ * @param array $registration 登録データ
  * @param array $options option
  * @return string
  */
@@ -134,9 +134,9 @@ class RegistrationUtilHelper extends AppHelper {
 		//
 		// 集計ボタン
 		// 集計表示しない＝ボタン自体ださない
-		// 集計表示する＝回答すみ、または回答期間終了　  集計ボタン
+		// 集計表示する＝登録すみ、または登録期間終了　  集計ボタン
 		// 　　　　　　　登録フォーム自体が公開状態にない(not editor)
-		//			     未回答＆回答期間内　　　　　　　集計ボタン（disabled）
+		//			     未登録＆登録期間内　　　　　　　集計ボタン（disabled）
 		$key = $registration['Registration']['key'];
 
 		if ($registration['Registration']['is_total_show'] == RegistrationsComponent::EXPRESSION_NOT_SHOW) {
@@ -157,9 +157,9 @@ class RegistrationUtilHelper extends AppHelper {
 				$disabled = 'disabled';
 			} else {
 				// 集計結果公開期間内である
-				// 一つでも回答している
+				// 一つでも登録している
 				if (!in_array($key, $this->_View->viewVars['ownAnsweredKeys'])) {
-					// 未回答
+					// 未登録
 					$disabled = 'disabled';
 				}
 			}

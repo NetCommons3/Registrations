@@ -109,12 +109,12 @@ class RegistrationsControllerIndexTest extends WorkflowControllerIndexTest {
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'answer_status' => 'test'),
 			'assert' => array('method' => 'assertContains', 'expected' => __d('registrations', 'no registration')),
 		);
-		// ログイン無しで未回答は全て出てくる　画面には何らかの表示が現れていること
+		// ログイン無しで未登録は全て出てくる　画面には何らかの表示が現れていること
 		$results[2] = array(
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'answer_status' => 'unanswered'),
 			'assert' => array('method' => 'assertNotEmpty'),
 		);
-		// ログイン無しで回答済は０になる　画面には"no registration"のテキストが現れていること
+		// ログイン無しで登録済は０になる　画面には"no registration"のテキストが現れていること
 		$results[3] = array(
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'answer_status' => 'answered'),
 			'assert' => array('method' => 'assertContains', 'expected' => __d('registrations', 'no registration')),

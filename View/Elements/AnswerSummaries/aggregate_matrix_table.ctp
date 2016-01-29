@@ -54,7 +54,7 @@
 
 				echo '&nbsp;&nbsp;&nbsp;&nbsp;';
 
-				//合計回答数に対する割合
+				//合計登録数に対する割合
 				$thePercentage = RegistrationsComponent::NOT_OPERATION_MARK;
 				if (isset($question['answer_total_cnt'])) {
 				$percent = round( (intval($cnt) / intval($question['answer_total_cnt'])) * 100, 1, PHP_ROUND_HALF_UP );

@@ -91,7 +91,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 	public function getAnswerSummaryCsv($registration, $limit, $offset) {
 		$this->RegistrationAnswer = ClassRegistry::init('Registrations.RegistrationAnswer', true);
 
-		// 指定された登録フォームの回答データをＣｓｖに出力しやすい行形式で返す
+		// 指定された登録フォームの登録データをＣｓｖに出力しやすい行形式で返す
 		$retArray = array();
 
 		// $offset == 0 のときのみヘッダ行を出す
@@ -123,7 +123,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		foreach ($summaries as $summary) {
 			//$answers = $summary['RegistrationAnswer'];
 			// 何回もSQLを発行するのは無駄かなと思いつつも
-			// RegistrationAnswerに回答データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
+			// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
 			// このクラスからでも利用できないかと試みたが
 			// AnswerとQuestionがJOINされた形でFindしないと整備機能が発動しない
 			// そうするためにはrecursive=2でないといけないわけだが、recursive=2にするとRoleのFindでSQLエラーになる
@@ -148,7 +148,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 	protected function _putHeader($registration) {
 		$cols = array();
 
-		// "回答者","回答日","回数"
+		// "登録者","登録日","回数"
 		$cols[] = __d('registrations', 'Respondent');
 		$cols[] = __d('registrations', 'Answer Date');
 		$cols[] = __d('registrations', 'Number');
@@ -182,7 +182,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		// ページ、質問のループから、取り出すべき質問のIDを順番に取り出す
 		// question loop
 		// 返却用配列にquestionのIDにマッチするAnswerを配列要素として追加、Answerがないときは空文字
-		// なお選択肢系のものはchoice_idが回答にくっついているのでそれを削除する
+		// なお選択肢系のものはchoice_idが登録にくっついているのでそれを削除する
 		// MatrixのものはMatrixの行数分返却行の列を加える
 		// その他の選択肢の場合は、入力されたその他のテキストを入れる
 
@@ -217,16 +217,16 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
  */
 	protected function _getAns($question, $answers) {
 		$retAns = '';
-		// 回答配列データの中から、現在指定された質問に該当するものを取り出す
+		// 登録配列データの中から、現在指定された質問に該当するものを取り出す
 		$ans = Hash::extract($answers, '{n}.RegistrationAnswer[registration_question_key=' . $question['key'] . ']');
-		// 回答が存在するとき処理
+		// 登録が存在するとき処理
 		if ($ans) {
 			$ans = $ans[0];
-			// 単純入力タイプのときは回答の値をそのまま返す
+			// 単純入力タイプのときは登録の値をそのまま返す
 			if (RegistrationsComponent::isOnlyInputType($question['question_type'])) {
 				$retAns = $ans['answer_value'];
 			} elseif (RegistrationsComponent::isSelectionInputType($question['question_type'])) {
-				// choice_id と choice_valueに分けられた回答選択肢配列を得る
+				// choice_id と choice_valueに分けられた登録選択肢配列を得る
 				// 選択されていた数分処理
 				foreach ($ans['answer_values'] as $choiceKey => $dividedAns) {
 					// idから判断して、その他が選ばれていた場合、other_answer_valueを入れる
@@ -256,7 +256,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
  */
 	protected function _getMatrixAns($question, $choice, $answers) {
 		$retAns = '';
-		// 回答配列データの中から、現在指定された質問に該当するものを取り出す
+		// 登録配列データの中から、現在指定された質問に該当するものを取り出す
 		// マトリクスタイプのときは複数存在する（行数分）
 		$anss = Hash::extract($answers, '{n}.RegistrationAnswer[registration_question_key=' . $question['key'] . ']');
 		if (empty($anss)) {
@@ -264,7 +264,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		}
 		// その中かから現在指定された選択肢行に該当するものを取り出す
 		$ans = Hash::extract($anss, '{n}[matrix_choice_key=' . $choice['key'] . ']');
-		// 回答が存在するとき処理
+		// 登録が存在するとき処理
 		if ($ans) {
 			$ans = $ans[0];
 			// idから判断して、その他が選ばれていた場合、other_answer_valueを入れる

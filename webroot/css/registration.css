@@ -62,7 +62,7 @@
     float:right;
 }
 
-/*--登録フォームマトリクス回答画面---*/
+/*--登録フォームマトリクス登録画面---*/
 .registration-matrix-table td input[type="radio"],
 .registration-matrix-table td input[type="checkbox"] {
     display:block;

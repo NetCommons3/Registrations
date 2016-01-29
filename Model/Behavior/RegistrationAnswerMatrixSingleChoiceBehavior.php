@@ -69,12 +69,12 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
 	}
 
 /**
- * answerValidation 回答内容の正当性
+ * answerValidation 登録内容の正当性
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
- * @param array $allAnswers 入力された回答すべて
+ * @param array $question 登録データに対応する質問
+ * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
 	public function answerValidation(&$model, $data, $question, $allAnswers) {
@@ -154,15 +154,15 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
  * @param object &$model use model
  * @param array $question question
  * @param string $answers all row answer value
- * @param array $allAnswers 入力された回答すべて
+ * @param array $allAnswers 入力された登録すべて
  * @return array error message
  */
 	public function checkMatrixAnswerFill(&$model, $question, $answers, $allAnswers) {
 		if ($model->oneTimeValidateFlag) {	// チェック済
 			return true;
 		}
-		// マトリクスの場合は全行回答するか全行回答しないかでないと集計計算が狂うので
-		// 全行回答か全行無回答かを確認している
+		// マトリクスの場合は全行登録するか全行登録しないかでないと集計計算が狂うので
+		// 全行登録か全行無登録かを確認している
 		$answerCount = 0;
 		$noAnswerCount = 0;
 		$checkAnswer = $allAnswers[$question['key']];

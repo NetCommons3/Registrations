@@ -111,7 +111,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 			<!--	</div>-->
 			<!--</div>-->
 
-			<label class="h3"><?php echo __d('registrations', 'Registration method'); ?></label>
+			<label class="h3"><?php echo __d('registrations', '設定'); ?></label>
 			<div class="form-group registration-group">
 				<?php
 					//echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
@@ -147,8 +147,6 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				<!--</div>-->
 
 				<?php
-					echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
-						__d('registrations', 'Deliver e-mail when submitted'));
 				echo $this->QuestionEdit->registrationAttributeCheckbox('is_limit_number',
 					__d('registrations', '登録数を制限する'));
 
@@ -159,6 +157,16 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				?>
 			</div>
 
+			<label class="h3"><?php echo __d('registrations', 'メール設定'); ?></label>
+			<div class="form-group registration-group">
+
+			<?php
+			echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
+				__d('registrations', 'Deliver e-mail when submitted'));
+			?>
+				<img src="/registrations/mail.png" ng-show="registrations.registration.isAnswerMailSend==1"/>
+
+			</div>
 			<!--<label class="h3">--><?php //echo __d('registrations', 'Registration open mail'); ?><!--</label>-->
 			<!--<div class="form-group registration-group">-->
 			<!--	--><?php

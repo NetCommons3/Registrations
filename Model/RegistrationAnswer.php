@@ -175,7 +175,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
  * saveAnswer
  * save the answer data
  *
- * @param array $data Postされた回答データ
+ * @param array $data Postされた登録データ
  * @param array $registration registration data
  * @param array $summary answer summary data
  * @throws $ex

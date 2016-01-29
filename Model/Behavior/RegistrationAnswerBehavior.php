@@ -56,7 +56,7 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 /**
  * beforeSave is called before a model is saved. Returning false from a beforeSave callback
  * will abort the save operation.
- * 選択肢系の回答の場合、answer_value に　[id:value|id:value....]の形で収めなくてはいけない
+ * 選択肢系の登録の場合、answer_value に　[id:value|id:value....]の形で収めなくてはいけない
  * 保存前に整える
  *
  * @param Model $model Model using this behavior
@@ -82,7 +82,7 @@ class RegistrationAnswerBehavior extends ModelBehavior {
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	public function afterFind(Model $model, $results, $primary = false) {
-		// afterFind 選択肢系の回答の場合、answer_value に　[id:value|id:value....]の形で収まっているので
+		// afterFind 選択肢系の登録の場合、answer_value に　[id:value|id:value....]の形で収まっているので
 		// それをデータ入力画面から渡されるデータ形式と同じにする
 		foreach ($results as &$val) {
 			if (isset($val['RegistrationAnswer']['answer_value']) && isset($val['RegistrationQuestion']['question_type'])) {
@@ -157,11 +157,11 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 	}
 
 /**
- * answerRequire 回答必須の質問の場合回答されているかの確認
+ * answerRequire 登録必須の質問の場合登録されているかの確認
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
+ * @param array $question 登録データに対応する質問
  * @return bool
  */
 	public function answerRequire(&$model, $data, $question) {
@@ -176,11 +176,11 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 	}
 
 /**
- * answerMaxLength 回答が登録フォームが許す最大長を超えていないかの確認
+ * answerMaxLength 登録が登録フォームが許す最大長を超えていないかの確認
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
+ * @param array $question 登録データに対応する質問
  * @param int $max 最大長
  * @return bool
  */
@@ -189,12 +189,12 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 	}
 
 /**
- * answerValidation 回答内容の正当性
+ * answerValidation 登録内容の正当性
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
- * @param array $allAnswers 入力された回答すべて
+ * @param array $question 登録データに対応する質問
+ * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
 	public function answerValidation(&$model, $data, $question, $allAnswers) {

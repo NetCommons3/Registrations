@@ -27,11 +27,11 @@ class RegistrationAnswerTextBehavior extends RegistrationAnswerBehavior {
 	protected $_myType = RegistrationsComponent::TYPE_TEXT;
 
 /**
- * answerMaxLength 回答が登録フォームが許す最大長を超えていないかの確認
+ * answerMaxLength 登録が登録フォームが許す最大長を超えていないかの確認
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
+ * @param array $question 登録データに対応する質問
  * @param int $max 最大長
  * @return bool
  */
@@ -43,12 +43,12 @@ class RegistrationAnswerTextBehavior extends RegistrationAnswerBehavior {
 	}
 
 /**
- * answerValidation 回答内容の正当性
+ * answerValidation 登録内容の正当性
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
- * @param array $allAnswers 入力された回答すべて
+ * @param array $question 登録データに対応する質問
+ * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
 	public function answerValidation(&$model, $data, $question, $allAnswers) {
@@ -57,7 +57,7 @@ class RegistrationAnswerTextBehavior extends RegistrationAnswerBehavior {
 		}
 		$ret = true;
 
-		// 数値型回答を望まれている場合
+		// 数値型登録を望まれている場合
 		if ($question['question_type_option'] == RegistrationsComponent::TYPE_OPTION_NUMERIC) {
 			if (!Validation::numeric($data['answer_value'])) {
 				$ret = false;

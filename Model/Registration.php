@@ -443,7 +443,7 @@ class Registration extends RegistrationsAppModel {
 				$this->rollback();
 				return false;
 			}
-			// これまでのテスト回答データを消す
+			// これまでのテスト登録データを消す
 			$this->RegistrationAnswerSummary->deleteTestAnswerSummary($saveRegistration['Registration']['key'], $status);
 
 			$this->commit();
@@ -484,7 +484,7 @@ class Registration extends RegistrationsAppModel {
 				'registration_key' => $data['Registration']['key']), true, false)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
-			// 登録フォーム回答削除
+			// 登録フォーム登録削除
 			if (! $this->RegistrationAnswerSummary->deleteAll(array(
 				'registration_key' => $data['Registration']['key']), true, false)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));

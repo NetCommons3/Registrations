@@ -64,12 +64,12 @@ class RegistrationAnswerSingleListBehavior extends RegistrationAnswerBehavior {
 		}
 	}
 /**
- * answerValidation 回答内容の正当性
+ * answerValidation 登録内容の正当性
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 回答データに対応する質問
- * @param array $allAnswers 入力された回答すべて
+ * @param array $question 登録データに対応する質問
+ * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
 	public function answerValidation(&$model, $data, $question, $allAnswers) {

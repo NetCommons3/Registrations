@@ -157,7 +157,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			$csvFile = new CsvFileWriter(array(
 				'folder' => $tmpFolder->path
 			));
-			// 回答データを一気に全部取得するのは、データ爆発の可能性があるので
+			// 登録データを一気に全部取得するのは、データ爆発の可能性があるので
 			// REGISTRATION_CSV_UNIT_NUMBER分に制限して取得する
 			$offset = 0;
 			do {

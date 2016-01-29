@@ -105,7 +105,7 @@ class RegistrationPage extends RegistrationsAppModel {
 	public function getNextPage($registration, $nowPageSeq, $nowAnswers) {
 		// 次ページはデフォルトならば＋１です
 		$nextPageSeq = $nowPageSeq + 1;
-		// 回答にスキップロジックで指定されたものがないかチェックし、行き先があるならそのページ番号を返す
+		// 登録にスキップロジックで指定されたものがないかチェックし、行き先があるならそのページ番号を返す
 		foreach ($nowAnswers as $answer) {
 			$targetQuestion = Hash::extract($registration['RegistrationPage'], '{n}.RegistrationQuestion.{n}[key=' . $answer[0]['registration_question_key'] . ']');
 			if ($targetQuestion) {

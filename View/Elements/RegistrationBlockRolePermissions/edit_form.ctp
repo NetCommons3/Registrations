@@ -15,11 +15,11 @@
 <?php echo $this->NetCommonsForm->hidden('RegistrationSetting.block_key'); ?>
 <?php echo $this->NetCommonsForm->hidden('RegistrationSetting.id'); ?>
 
-<?php echo $this->element('Blocks.block_creatable_setting', array(
-		'settingPermissions' => array(
-			'content_creatable' => __d('blocks', 'Content creatable roles'),
-		),
-	)); ?>
+<?php //echo $this->element('Blocks.block_creatable_setting', array(
+//		'settingPermissions' => array(
+//			'content_creatable' => __d('blocks', 'Content creatable roles'),
+//		),
+//	)); ?>
 
 <?php echo $this->element('Blocks.block_approval_setting', array(
 		'model' => 'RegistrationSetting',

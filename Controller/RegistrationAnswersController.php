@@ -108,19 +108,19 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		// 以下のisAbleto..の内部関数にてNetCommonsお約束である編集権限、参照権限チェックを済ませています
 		// 閲覧可能か
 		if (!$this->isAbleTo($this->__registration)) {
-			// 不可能な時は「回答できません」画面を出すだけ
+			// 不可能な時は「登録できません」画面を出すだけ
 			$this->setAction('no_more_answer');
 			return;
 		}
 		if (in_array($this->action, $this->__ableToAnswerAction)) {
-			// 回答可能か
+			// 登録可能か
 			if (!$this->isAbleToAnswer($this->__registration)) {
-				// 回答が不可能な時は「回答できません」画面を出すだけ
+				// 登録が不可能な時は「登録できません」画面を出すだけ
 				$this->setAction('no_more_answer');
 				return;
 			}
 		}
-		// 回答の初めのページであることが各種認証行う条件
+		// 登録の初めのページであることが各種認証行う条件
 		if (!$this->request->isPost() || !isset($this->request->data['RegistrationPage']['page_sequence'])) {
 			// 認証キーコンポーネントお約束：
 			// 取り出した登録フォームが認証キー確認を求めているなら、operationTypeをすり替える
@@ -138,7 +138,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 /**
  * test_mode
  *
- * テストモード回答のとき、一番最初に表示するページ
+ * テストモード登録のとき、一番最初に表示するページ
  * 一覧表示画面で「テスト」ボタンがここへ誘導するようになっている。
  * どのような登録フォームであるのかの各種属性設定をわかりやすくまとめて表示する表紙的な役割を果たす。
  *
@@ -185,7 +185,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 
 		// POSTチェック
 		if ($this->request->isPost()) {
-			// 回答データがある場合は回答をDBに書きこむ
+			// 登録データがある場合は登録をDBに書きこむ
 			if (isset($this->data['RegistrationAnswer'])) {
 				$summary = $this->RegistrationsOwnAnswer->forceGetProgressiveAnswerSummary($this->__registration);
 				if (! $summary) {
@@ -196,7 +196,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 						// 保存エラーの場合は今のページを再表示
 						$nextPageSeq = $this->data['RegistrationPage']['page_sequence'];
 					} else {
-						// 回答データがあり、無事保存できたら次ページを取得する
+						// 登録データがあり、無事保存できたら次ページを取得する
 						$nextPageSeq = $this->RegistrationPage->getNextPage(
 							$registration,
 							$this->data['RegistrationPage']['page_sequence'],
@@ -226,7 +226,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			$this->set('answers', $setAnswers);
 			$this->request->data['RegistrationAnswer'] = $setAnswers;
 
-			// 入力される回答データですがsetで設定するデータとして扱います
+			// 入力される登録データですがsetで設定するデータとして扱います
 			// 誠にCake流儀でなくて申し訳ないのですが、様々な種別のAnswerデータを
 			// 特殊な文字列加工して統一化した形状でDBに入れている都合上、このような仕儀になっています
 		} else {
@@ -250,7 +250,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		// 解答入力画面で表示していたときのシャッフルを取り出す
 		$this->__shuffleChoice($this->__registration);
 
-		// 回答中サマリレコード取得
+		// 登録中サマリレコード取得
 		$summary = $this->RegistrationsOwnAnswer->getProgressiveSummaryOfThisUser(
 			$this->_getRegistrationKey($this->__registration));
 		if (!$summary) {
@@ -277,8 +277,8 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			$this->redirect($url);
 		}
 
-		// 回答情報取得
-		// 回答情報並べ替え
+		// 登録情報取得
+		// 登録情報並べ替え
 		$setAnswers = $this->RegistrationAnswer->getProgressiveAnswerOfThisSummary($summary);
 
 		// 質問情報をView変数にセット
@@ -295,7 +295,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
  */
 	public function thanks() {
 		// 後始末
-		// 回答中にたまっていたセッションキャッシュをクリア
+		// 登録中にたまっていたセッションキャッシュをクリア
 		$this->Session->delete('Registrations.' . $this->__registration['Registration']['key']);
 
 		// View変数にセット
@@ -306,7 +306,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 	}
 /**
  * no_more_answer method
- * 条件によって回答できない登録フォームにアクセスしたときに表示
+ * 条件によって登録できない登録フォームにアクセスしたときに表示
  *
  * @return void
  */

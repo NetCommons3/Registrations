@@ -44,16 +44,16 @@ class RegistrationAnswerHelper extends AppHelper {
 	);
 
 /**
- * 回答作成
+ * 登録作成
  *
  * @param array $question 質問データ
  * @param bool $readonly 読み取り専用
- * @return string 回答HTML
+ * @return string 登録HTML
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	public function answer($question, $readonly = false) {
 		// 質問セットをもらう
-		// 種別に応じて質問＆回答の要素を作成し返す
+		// 種別に応じて質問＆登録の要素を作成し返す
 		$index = $question['key'];
 		$fieldName = 'RegistrationAnswer.' . $index . '.0.answer_value';
 
@@ -71,13 +71,13 @@ class RegistrationAnswerHelper extends AppHelper {
 		return $ret;
 	}
 /**
- * 択一選択回答作成
+ * 択一選択登録作成
  *
- * @param string $index 回答データのPOST用dataのインデックス値
+ * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question 質問データ
  * @param bool $readonly 読み取り専用
- * @return string 択一選択肢回答のHTML
+ * @return string 択一選択肢登録のHTML
  */
 	public function singleChoice($index, $fieldName, $question, $readonly) {
 		$ret = '';
@@ -112,13 +112,13 @@ class RegistrationAnswerHelper extends AppHelper {
 	}
 
 /**
- * 複数選択回答作成
+ * 複数選択登録作成
  *
- * @param string $index 回答データのPOST用dataのインデックス値
+ * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question 質問データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢回答のHTML
+ * @return string 複数選択肢登録のHTML
  */
 	public function multipleChoice($index, $fieldName, $question, $readonly) {
 		$ret = '';
@@ -156,13 +156,13 @@ class RegistrationAnswerHelper extends AppHelper {
 		return $ret;
 	}
 /**
- * テキスト回答作成
+ * テキスト登録作成
  *
- * @param string $index  回答データのPOST用dataのインデックス値
+ * @param string $index  登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question  質問データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢回答のHTML
+ * @return string 複数選択肢登録のHTML
  */
 	public function singleText($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
@@ -187,13 +187,13 @@ class RegistrationAnswerHelper extends AppHelper {
 		return $ret;
 	}
 /**
- * 長文テキスト回答作成
+ * 長文テキスト登録作成
  *
- * @param string $index 回答データのPOST用dataのインデックス値
+ * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question 質問データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢回答のHTML
+ * @return string 複数選択肢登録のHTML
  */
 	public function textArea($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
@@ -210,13 +210,13 @@ class RegistrationAnswerHelper extends AppHelper {
 		return $ret;
 	}
 /**
- * リストボックス回答作成
+ * リストボックス登録作成
  *
- * @param string $index 回答データのPOST用dataのインデックス値
+ * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question 質問データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢回答のHTML
+ * @return string 複数選択肢登録のHTML
  */
 	public function singleList($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
@@ -238,13 +238,13 @@ class RegistrationAnswerHelper extends AppHelper {
 		return $ret;
 	}
 /**
- * マトリクス回答作成
+ * マトリクス登録作成
  *
- * @param string $index  回答データのPOST用dataのインデックス値
+ * @param string $index  登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question  質問データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢回答のHTML
+ * @return string 複数選択肢登録のHTML
  */
 	public function matrix($index, $fieldName, $question, $readonly) {
 		if (isset($question['RegistrationChoice'])) {
@@ -289,13 +289,13 @@ class RegistrationAnswerHelper extends AppHelper {
 		return $ret;
 	}
 /**
- * 日付・時間回答作成
+ * 日付・時間登録作成
  *
- * @param string $index 回答データのPOST用dataのインデックス値
+ * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
  * @param array $question 質問データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢回答のHTML
+ * @return string 複数選択肢登録のHTML
  */
 	public function dateTimeInput($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
