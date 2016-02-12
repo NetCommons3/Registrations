@@ -10,6 +10,7 @@
 
 App::uses('RegistrationsAppModel', 'Registrations.Model');
 App::uses('WysIsWygDownloader', 'Registrations.Utility');
+App::uses('RegistrationsComponent', 'Registrations.Controller/Component');
 
 /**
  * Summary for Registration Model

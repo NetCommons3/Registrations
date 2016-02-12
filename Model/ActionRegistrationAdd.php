@@ -13,6 +13,8 @@ App::uses('TemporaryUploadFile', 'Files.Utility');
 App::uses('UnZip', 'Files.Utility');
 App::uses('WysIsWygDownloader', 'Registrations.Utility');
 
+App::uses('RegistrationsComponent', 'Registrations.Controller/Component');
+
 /**
  * Summary for ActionRegistrationAdd Model
  */

@@ -10,6 +10,7 @@
  */
 
 App::uses('ModelBehavior', 'Model');
+App::uses('RegistrationsComponent', 'Registrations.Controller/Component');
 
 /**
  * Answer Behavior
