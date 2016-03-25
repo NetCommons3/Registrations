@@ -47,13 +47,6 @@ class RegistrationFrameSettingsController extends RegistrationBlocksController {
  * @var array
  */
 	public $components = array(
-		'Blocks.BlockTabs' => array(
-			'mainTabs' => array(
-				'block_index' => array('url' => array('controller' => 'registration_blocks')),
-				'role_permissions' => array('url' => array('controller' => 'registration_block_role_permissions')),
-				'frame_settings' => array('url' => array('controller' => 'registration_frame_settings')),
-			),
-		),
 		'NetCommons.Permission' => array(
 			//アクセスの権限
 			'allow' => array(
@@ -62,6 +55,13 @@ class RegistrationFrameSettingsController extends RegistrationBlocksController {
 		),
 		'Registrations.Registrations',
 		'Paginator',
+		'Blocks.BlockTabs' => array(
+			'mainTabs' => array(
+				'block_index' => array('url' => array('controller' => 'registration_blocks')),
+				'role_permissions' => array('url' => array('controller' => 'registration_block_role_permissions')),
+				'frame_settings' => array('url' => array('controller' => 'registration_frame_settings')),
+			),
+		),
 	);
 
 /**
