@@ -13,9 +13,9 @@ echo $this->element('Registrations.scripts');
 echo $this->NetCommonsHtml->script(array(
 	'/components/moment/min/moment.min.js',
 	'/components/moment/min/moment-with-locales.min.js',
-	'/components/tinymce-dist/tinymce.min.js',
-	'/components/angular-ui-tinymce/src/tinymce.js',
-	'/net_commons/js/wysiwyg.js',
+	//'/components/tinymce-dist/tinymce.min.js',
+	//'/components/angular-ui-tinymce/src/tinymce.js',
+	//'/wysiwyg/js/wysiwyg.js',
 	'/registrations/js/registrations_edit_question.js',
 ));
 $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppController::changeBooleansToNumbers($this->data));
@@ -104,7 +104,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 								/* 質問文 */
 								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.description',
 									__d('registrations', 'question sentence'),
-									array('type' => 'wysiswyg',
+									array('type' => 'wysiwyg',
 										'id' => false,
 										'ng-model' => 'question.description',
 										'ui-tinymce' => 'tinymce.options',

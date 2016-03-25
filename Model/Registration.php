@@ -143,12 +143,12 @@ class Registration extends RegistrationsAppModel {
 					'message' => __d('registrations', 'Invalid datetime format.')
 				)
 			),
-			'is_no_member_allow' => array(
-				'boolean' => array(
-					'rule' => array('boolean'),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
+			//'is_no_member_allow' => array(
+			//	'boolean' => array(
+			//		'rule' => array('boolean'),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
 			'is_anonymity' => array(
 				'boolean' => array(
 					'rule' => array('boolean'),

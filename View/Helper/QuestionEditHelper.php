@@ -54,19 +54,24 @@ class QuestionEditHelper extends AppHelper {
 		if ($type == 'checkbox') {
 			$ret .= '<div class="checkbox ' . $disabled . '"><label>';
 		}
-		if ($type == 'wysiswyg') {
-			$ret .= '<div class="nc-wysiwyg-alert">';
-		}
+		//if ($type == 'wysiwyg') {
+		//	$ret .= '<div class="nc-wysiwyg-alert">';
+		//}
 
 		$options = Hash::merge($options, array('div' => false, 'label' => false));
-		$ret .= $this->NetCommonsForm->input($fieldName, $options);
+		//$ret .= $this->NetCommonsForm->input($fieldName, $options);
+		if ($type == 'wysiwyg') {
+			$ret .= $this->NetCommonsForm->wysiwyg($fieldName, $options);
+		} else {
+			$ret .= $this->NetCommonsForm->input($fieldName, $options);
+		}
 
 		if ($type == 'checkbox') {
 			$ret .= $label . '</label></div>';
 		}
-		if ($type == 'wysiswyg') {
-			$ret .= '</div>';
-		}
+		//if ($type == 'wysiwyg') {
+		//	$ret .= '</div>';
+		//}
 		$ret .= '</div></div>';
 		return $ret;
 	}
