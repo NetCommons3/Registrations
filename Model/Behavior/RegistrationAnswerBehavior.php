@@ -169,8 +169,9 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 		if ($question['is_require'] != RegistrationsComponent::REQUIRES_REQUIRE) {
 			return true;
 		}
-		if ($question['question_type'] == RegistrationsComponent::TYPE_MULTIPLE_SELECTION) {
-			return Validation::multiple($data['answer_value']);
+
+		if (isset($model->data['RegistrationAnswer']['multi_answer_values'])) {
+			return Validation::notBlank($model->data['RegistrationAnswer']['multi_answer_values']);
 		} else {
 			return Validation::notBlank($data['answer_value']);
 		}

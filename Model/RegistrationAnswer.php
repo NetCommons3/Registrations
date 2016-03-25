@@ -149,7 +149,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
 			'conditions' => array(
 				'registration_answer_summary_id' => $summary['RegistrationAnswerSummary']['id']
 			),
-			'recursive' => -1
+			'recursive' => 0
 		));
 		if (!empty($answer)) {
 			foreach ($answer as $ans) {
