@@ -34,6 +34,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		'Registrations.RegistrationAnswerMatrixSingleChoice',
 		'Registrations.RegistrationAnswerMatrixMultipleChoice',
 		'Registrations.RegistrationAnswerDatetime',
+		'Registrations.RegistrationAnswerEmail',
 	);
 
 /**
@@ -126,6 +127,16 @@ class RegistrationAnswer extends RegistrationsAppModel {
 					'rule' => array('answerValidation', $question, $allAnswers),
 					'last' => true,
 					'message' => ''
+				),
+				'answerEmailValidation' => array(
+					'rule' => array('answerEmailValidation', $question, $allAnswers),
+					'last' => true,
+					'message' => __d('registrations', 'メールアドレスを正しく入力してください'),
+				),
+				'answerEmailConfirmValidation' => array(
+					'rule' => array('answerEmailConfirmValidation', $question, $allAnswers),
+					'last' => true,
+					'message' => __d('registrations', 'メールアドレスが確認用と一致しません'),
 				),
 			),
 		);

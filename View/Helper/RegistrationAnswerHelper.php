@@ -40,7 +40,9 @@ class RegistrationAnswerHelper extends AppHelper {
 		RegistrationsComponent::TYPE_MATRIX_SELECTION_LIST => 'matrix',
 		RegistrationsComponent::TYPE_MATRIX_MULTIPLE => 'matrix',
 		RegistrationsComponent::TYPE_SINGLE_SELECT_BOX => 'singleList',
-		RegistrationsComponent::TYPE_DATE_AND_TIME => 'dateTimeInput'
+		RegistrationsComponent::TYPE_DATE_AND_TIME => 'dateTimeInput',
+		RegistrationsComponent::TYPE_EMAIL => 'emailInput',
+		RegistrationsComponent::TYPE_FILE => 'dateTimeInput' // Fix TODO
 	);
 
 /**
@@ -186,7 +188,33 @@ class RegistrationAnswerHelper extends AppHelper {
 		}
 		return $ret;
 	}
-/**
+
+	public function emailInput($index, $fieldName, $question, $readonly) {
+		if ($readonly) {
+			$ret = nl2br($this->value($fieldName));
+			return $ret;
+		}
+		$ret = $this->NetCommonsForm->input($fieldName, array(
+			'div' => 'form-inline',
+			'type' => 'text',
+			'label' => false,
+			'error' => false,
+		));
+		$ret .= '<div class="form-group">';
+		$ret .= '<label class="control-label" style="margin-top: 5px;">
+					メールアドレス(確認用)				</label>';
+		$ret .= $this->NetCommonsForm->input($fieldName . '_confirm', array(
+			'div' => 'form-inline',
+			'type' => 'text',
+			'label' => false,
+			'error' => false,
+			//'after' => '（確認用）'
+		));
+		$ret .='</div>';
+		return $ret;
+	}
+
+	/**
  * 長文テキスト登録作成
  *
  * @param string $index 登録データのPOST用dataのインデックス値

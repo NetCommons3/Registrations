@@ -81,6 +81,8 @@ NetCommonsApp.controller('Registrations.edit.question',
         TYPE_MATRIX_MULTIPLE: '6',
         TYPE_DATE_AND_TIME: '7',
         TYPE_SINGLE_SELECT_BOX: '8',
+        TYPE_EMAIL: '9',
+        TYPE_FILE: '10',
 
         MATRIX_TYPE_ROW_OR_NO_MATRIX: '0',
 
@@ -151,6 +153,8 @@ NetCommonsApp.controller('Registrations.edit.question',
             // テキスト、１行テキスト、日付け型は集計結果を出さない設定
             if (question.questionType == variables.TYPE_TEXT ||
                 question.questionType == variables.TYPE_TEXT_AREA ||
+                question.questionType == variables.TYPE_EMAIL ||
+                question.questionType == variables.TYPE_FILE ||
                 question.questionType == variables.TYPE_DATE_AND_TIME) {
               $scope.registration.registrationPage[pIdx].
                   registrationQuestion[qIdx].isResultDisplay =
@@ -758,6 +762,8 @@ NetCommonsApp.controller('Registrations.edit.question',
       $scope.isDisabledDisplayResult = function(questionType) {
         if (questionType == variables.TYPE_TEXT ||
             questionType == variables.TYPE_TEXT_AREA ||
+            questionType == variables.TYPE_EMAIL ||
+            questionType == variables.TYPE_FILE ||
             questionType == variables.TYPE_DATE_AND_TIME) {
           return true;
         }
