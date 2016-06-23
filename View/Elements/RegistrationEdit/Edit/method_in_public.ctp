@@ -11,12 +11,15 @@
 ?>
 <div class="form-group">
 	<?php
-		echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
-			__d('registrations', 'accept the non-members answer')
-		);
+		//echo $this->QuestionEdit->registrationAttributeCheckbox('is_no_member_allow',
+		//	__d('registrations', 'accept the non-members answer')
+		//);
+	echo $this->NetCommonsForm->hidden('is_no_member_allow', array(
+		'value' => RegistrationsComponent::USES_USE,
+		//'ng-model' => 'registration.registration.isNoMemberAllow'
+	));
 	?>
-	<div class="row" ng-show="registration.registration.isNoMemberAllow==<?php echo RegistrationsComponent::USES_USE; ?>">
-		<div class="col-xs-11 col-xs-offset-1">
+	<div>
 		<?php
 			echo $this->QuestionEdit->registrationAttributeCheckbox('is_key_pass_use',
 				__d('registrations', 'use key phrase'), array(
@@ -32,14 +35,15 @@
 				'ng-disabled' => 'registration.registration.isKeyPassUse == ' . RegistrationsComponent::USES_USE . ' || registration.registration.isNoMemberAllow != ' . RegistrationsComponent::USES_USE
 			));
 		?>
-		<span class="help-block">
-			<?php echo __d('registrations', 'If you allowed to say also to non-members , the registration will be possible to repeatedly answer.'); ?>
-		</span>
-		</div>
 	</div>
 	<?php
-		echo $this->QuestionEdit->registrationAttributeCheckbox('is_anonymity',
-			__d('registrations', 'anonymous answer'
-		));
+		//echo $this->QuestionEdit->registrationAttributeCheckbox('is_anonymity',
+		//	__d('registrations', 'anonymous answer'
+		//));
+	echo $this->NetCommonsForm->hidden('is_anonymity', array(
+		'value' => RegistrationsComponent::USES_NOT_USE,
+		//'ng-model' => 'registration.registration.isNoMemberAllow'
+	));
+
 	?>
 </div>
