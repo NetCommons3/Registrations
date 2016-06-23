@@ -950,3 +950,9 @@ msgstr "「%s」が公開されました。"
 
 msgid "Content creatable roles"
 msgstr "登録フォームを作成できる権限"
+
+msgid "Email"
+msgstr "メールアドレス"
+
+msgid "File"
+msgstr "ファイル"

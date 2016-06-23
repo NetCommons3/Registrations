@@ -194,6 +194,20 @@ class RegistrationsComponent extends Component {
 	const TYPE_SINGLE_SELECT_BOX = '8';
 
 /**
+ * type. Email
+ *
+ * @var string
+ */
+	const TYPE_EMAIL = '9';
+
+/**
+ * type. File
+ *
+ * @var string
+ */
+	const TYPE_FILE = '10';
+
+/**
  * types list
  *
  * @var array
@@ -283,7 +297,7 @@ class RegistrationsComponent extends Component {
 		self::TYPE_OPTION_TIME,
 		self::TYPE_OPTION_EMAIL,
 		self::TYPE_OPTION_URL,
-		self::TYPE_OPTION_PHONE_NUMBER
+		self::TYPE_OPTION_PHONE_NUMBER,
 	);
 
 /**
@@ -475,7 +489,9 @@ class RegistrationsComponent extends Component {
 			//self::TYPE_MATRIX_SELECTION_LIST => __d('registrations', 'Single choice matrix'),
 			//self::TYPE_MATRIX_MULTIPLE => __d('registrations', 'Multiple choice matrix'),
 			self::TYPE_DATE_AND_TIME => __d('registrations', 'Date and time'),
-			self::TYPE_SINGLE_SELECT_BOX => __d('registrations', 'List select')
+			self::TYPE_SINGLE_SELECT_BOX => __d('registrations', 'List select'),
+			self::TYPE_EMAIL => __d('registrations', 'Email'),
+			self::TYPE_FILE => __d('registrations', 'File'),
 		);
 	}
 
