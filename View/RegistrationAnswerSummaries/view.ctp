@@ -68,7 +68,7 @@ $jsQuestions = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppCon
 		?>
 		<div class="row">
 			<?php
-			//各質問ごと集計表示の共通ヘッダー
+			//各項目ごと集計表示の共通ヘッダー
 			echo $this->element('Registrations.AnswerSummaries/aggregate_common_header',
 				array('question' => $question));
 
@@ -78,7 +78,7 @@ $jsQuestions = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppCon
 						'question' => $question,
 						'questionId' => $registrationQuestionId));
 
-			//各質問ごと集計表示の共通フッター
+			//各項目ごと集計表示の共通フッター
 			echo $this->element('Registrations.AnswerSummaries/aggregate_common_footer',
 				array('question' => $question));
 			?>

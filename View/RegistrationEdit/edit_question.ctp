@@ -76,15 +76,15 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 								is-open="question.isOpen">
 
 							<uib-accordion-heading>
-								<?php /* 質問ヘッダーセット（移動ボタン、削除ボタンなどの集合体 */
+								<?php /* 項目ヘッダーセット（移動ボタン、削除ボタンなどの集合体 */
 									echo $this->element('Registrations.RegistrationEdit/EditQuestion/accordion_heading', array('isPublished' => $isPublished)); ?>
 								<div class="clearfix"></div>
 							</uib-accordion-heading>
 
 							<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/hidden_question_info_set'); ?>
 
-							<?php /* ここから質問本体設定 */
-								/* 質問タイトル */
+							<?php /* ここから項目本体設定 */
+								/* 項目タイトル */
 								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.question_value',
 									__d('registrations', 'question title'),
 									array('type' => 'text',
@@ -100,14 +100,14 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 								'ng-model' => 'question.isRequire',
 								),
 								__d('registrations', 'set answer to this question is required'));
-								/* 質問文 */
+								/* 項目文 */
 								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.description',
 									__d('registrations', 'question sentence'),
 									array('type' => 'wysiwyg',
 										'id' => false,
 										'ng-model' => 'question.description',
 									));
-								/* 質問種別 */
+								/* 項目種別 */
 								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.question_type',
 									__d('registrations', 'Question type'),
 									array('type' => 'select',

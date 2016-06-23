@@ -27,7 +27,7 @@
     padding: 10px 25px;
     float: left;
 }
-/*--登録フォーム編集画面の質問アコーディオンスタイル---*/
+/*--登録フォーム編集画面の項目アコーディオンスタイル---*/
 #RegistrationQuestionEditQuestionForm .panel-title,
 #RegistrationQuestionEditResultForm .panel-title {
     margin:0px;

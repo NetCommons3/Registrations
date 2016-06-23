@@ -51,7 +51,7 @@ class RegistrationAnswerDatetimeBehavior extends RegistrationAnswerBehavior {
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 登録データに対応する質問
+ * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
@@ -108,7 +108,7 @@ class RegistrationAnswerDatetimeBehavior extends RegistrationAnswerBehavior {
  * _validateDatetime 日付・時間の正当性
  *
  * @param object &$model use model
- * @param array $question 登録データに対応する質問
+ * @param array $question 登録データに対応する項目
  * @param string $answer 登録データ
  * @return bool
  */

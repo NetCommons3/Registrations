@@ -86,7 +86,7 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 登録データに対応する質問
+ * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */

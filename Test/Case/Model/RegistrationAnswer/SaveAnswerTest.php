@@ -450,7 +450,7 @@ class SaveAnswerTest extends NetCommonsModelTestCase {
 		);
 	}
 /**
- * ターゲット質問取り出しのExceptionErrorテスト
+ * ターゲット項目取り出しのExceptionErrorテスト
  *
  * @return void
  */

@@ -36,7 +36,7 @@ msgstr "ページ"
 #: /Controller/RegistrationEditController.php:332
 #: /Model/RegistrationQuestion.php:220
 msgid "New Question"
-msgstr "新規質問"
+msgstr "新規項目"
 
 #: /Controller/RegistrationEditController.php:333
 #: /Model/RegistrationChoice.php:140
@@ -196,7 +196,7 @@ msgstr "最初の１文字目は\"#\"です。続けて16進数6桁で指定し�
 
 #: /Model/RegistrationChoice.php:196
 msgid "Invalid skip page. Please set forward page."
-msgstr "スキップページの指定が不正です。質問があるページよりも先のページを設定してください。"
+msgstr "スキップページの指定が不正です。項目があるページよりも先のページを設定してください。"
 
 #: /Model/RegistrationChoice.php:200
 msgid "Invalid skip page. page does not exist."
@@ -212,15 +212,15 @@ msgstr "ページの順番が不正です。最初からやり直してくださ
 
 #: /Model/RegistrationPage.php:230
 msgid "please set at least one question."
-msgstr "１ページ中に少なくとも１つは質問を作成してください。"
+msgstr "１ページ中に少なくとも１つは項目を作成してください。"
 
 #: /Model/RegistrationQuestion.php:97
 msgid "question sequence is illegal."
-msgstr "質問の順番が不正です。最初からやり直してください。"
+msgstr "項目の順番が不正です。最初からやり直してください。"
 
 #: /Model/RegistrationQuestion.php:109
 msgid "Please input question text."
-msgstr "質問文を入力してください。"
+msgstr "項目文を入力してください。"
 
 #: /Model/RegistrationQuestion.php:155;165
 msgid "Please enter both the maximum and minimum values."
@@ -447,7 +447,7 @@ msgstr "登録フォームテンプレートファイル"
 
 #: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:14
 msgid "Set questions"
-msgstr "質問の作成"
+msgstr "項目の作成"
 
 #: /View/Elements/RegistrationEdit/edit_flow_chart.ctp:15
 msgid "Set result display"
@@ -467,7 +467,7 @@ msgstr "登録フォーム"
 
 #: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:16
 msgid "copy to another page"
-msgstr "質問をコピー"
+msgstr "項目をコピー"
 
 #: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:20
 msgid "destination page number"
@@ -475,7 +475,7 @@ msgstr "コピー先ページ番号"
 
 #: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:28
 msgid "Do you want to delete this question ?"
-msgstr "この質問を削除してもよろしいですか？"
+msgstr "この項目を削除してもよろしいですか？"
 
 #: /View/Elements/RegistrationEdit/EditQuestion/accordion_heading.ctp:58
 msgid "Skip"
@@ -483,7 +483,7 @@ msgstr "スキップ"
 
 #: /View/Elements/RegistrationEdit/EditQuestion/add_question_button.ctp:18
 msgid "Add Question"
-msgstr "質問の追加"
+msgstr "項目の追加"
 
 #: /View/Elements/RegistrationEdit/EditQuestion/options_after_published/choice.ctp:14
 #: /View/Elements/RegistrationEdit/EditQuestion/options_before_published/choice.ctp:18
@@ -660,7 +660,7 @@ msgstr "ページ数"
 
 #: /View/Elements/Registrations/detail_for_editor.ctp:34
 msgid "Questions"
-msgstr "質問数"
+msgstr "項目数"
 
 #: /View/Elements/Registrations/detail_for_editor.ctp:36
 msgid "Answers"
@@ -883,19 +883,19 @@ msgstr "必須"
 
 #: /View/RegistrationEdit/edit_question.ctp:95
 msgid "set answer to this question is required"
-msgstr "この質問の登録を必須とする"
+msgstr "この項目の登録を必須とする"
 
 #: /View/RegistrationEdit/edit_question.ctp:98
 msgid "question title"
-msgstr "質問タイトル"
+msgstr "項目タイトル"
 
 #: /View/RegistrationEdit/edit_question.ctp:106
 msgid "question sentence"
-msgstr "質問文"
+msgstr "項目文"
 
 #: /View/RegistrationEdit/edit_question.ctp:116
 msgid "Question type"
-msgstr "質問の形式"
+msgstr "項目の形式"
 
 #: /View/RegistrationEdit/edit_question.ctp:165
 msgid "Do you want to delete this page?"
@@ -927,7 +927,7 @@ msgstr "解説文の設定"
 
 #: /View/RegistrationEdit/edit_result.ctp:78
 msgid "Question you want to display the aggregate results"
-msgstr "集計結果を表示する質問"
+msgstr "集計結果を表示する項目"
 
 #: /View/Registrations/noRegistration.ctp:28
 msgid "no registration"

@@ -200,7 +200,7 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_44'),
 			'assert' => array('method' => 'assertNotEmpty'),
 		);
-		//--自分の記事の編集(一度も公開していない)=編集用「質問追加」ボタンがあるはず
+		//--自分の記事の編集(一度も公開していない)=編集用「項目追加」ボタンがあるはず
 		$results[2] = array(
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_44'),
 			'assert' => array('method' => 'assertContains', 'expected' => __d('registrations', 'Add Question')),
@@ -255,7 +255,7 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 		 * ごく一部に限って確認を行うことにする
 		 */
 
-		// ページタブ,ページ追加リンク,質問追加ボタン,質問LI、質問種別選択,質問削除ボタン, 選択肢追加ボタン, 選択肢削除ボタン、キャンセルボタン、次へボタンの存在の確認
+		// ページタブ,ページ追加リンク,項目追加ボタン,項目LI、項目種別選択,項目削除ボタン, 選択肢追加ボタン, 選択肢削除ボタン、キャンセルボタン、次へボタンの存在の確認
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][page_sequence]', 'value' => null),
 		)));
@@ -353,7 +353,7 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => null),
 		)));
 		// いったん公開して、その後の一時保存データに対して編集している
-		// その場合でも質問変更は不可能だ
+		// その場合でも項目変更は不可能だ
 		array_push($results, Hash::merge($results[0], array(
 			'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_2'),
 			'assert' => array('method' => 'assertNotContains', 'expected' => __d('registrations', 'Add Question')),

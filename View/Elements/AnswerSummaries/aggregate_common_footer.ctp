@@ -14,7 +14,7 @@
 	<p>
 		<?php echo __d('registrations', 'Note: Which may not be 100% because of rounding of numeric total.'); ?>
 		<?php
-			//各質問ごと集計表示の共通フッター
+			//各項目ごと集計表示の共通フッター
 
 			if (RegistrationsComponent::isMatrixInputType($question['question_type'])) {
 				echo '<br />' . __d('registrations', 'Note: Matrix if the number in parentheses is a percentage of the total number of responses.');

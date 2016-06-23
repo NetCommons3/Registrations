@@ -133,7 +133,7 @@ class RegistrationPage extends RegistrationsAppModel {
 
 			if ($targetQuestion) {
 				$q = $targetQuestion[0];
-				// skipロジック対象の質問ならば次ページのチェックを行う
+				// skipロジック対象の項目ならば次ページのチェックを行う
 				if ($q['is_skip'] == RegistrationsComponent::SKIP_FLAGS_SKIP) {
 					if ($answer[0]['answer_value'] == '') {
 						// スキップロジックのところで未登録とされたら無条件に次ページとする
@@ -235,14 +235,14 @@ class RegistrationPage extends RegistrationsAppModel {
 
 		parent::beforeValidate($options);
 
-		// 付属の質問以下のvalidate
+		// 付属の項目以下のvalidate
 		if (! isset($this->data['RegistrationQuestion'][0])) {
 			$this->validationErrors['page_sequence'][] =
 				__d('registrations', 'please set at least one question.');
 		} else {
 			$validationErrors = array();
 			foreach ($this->data['RegistrationQuestion'] as $qIndex => $question) {
-				// 質問データバリデータ
+				// 項目データバリデータ
 				$this->RegistrationQuestion->create();
 				$this->RegistrationQuestion->set($question);
 				$options['questionIndex'] = $qIndex;

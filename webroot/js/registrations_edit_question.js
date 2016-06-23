@@ -83,7 +83,7 @@ NetCommonsApp.controller('Registrations.edit.question',
 
           var page = $scope.registration.registrationPage[pIdx];
 
-          // 質問アコーディオンクローズ
+          // 項目アコーディオンクローズ
           //$scope.registration.registrationPage[pIdx].isOpen = false;
 
           // このページの中にエラーがあるか
@@ -96,7 +96,7 @@ NetCommonsApp.controller('Registrations.edit.question',
             continue;
           }
 
-          // 各質問処理
+          // 各項目処理
           for (var qIdx = 0; qIdx < page.registrationQuestion.length; qIdx++) {
 
             var question = $scope.registration.registrationPage[pIdx].
@@ -110,7 +110,7 @@ NetCommonsApp.controller('Registrations.edit.question',
                   registrationQuestion[qIdx].isResultDisplay =
                   variables.EXPRESSION_NOT_SHOW;
             }
-            // この質問の中にエラーがあるか
+            // この項目の中にエラーがあるか
             if (question.errorMessages) {
               $scope.registration.registrationPage[pIdx].
                   registrationQuestion[qIdx].hasError = true;
@@ -121,8 +121,8 @@ NetCommonsApp.controller('Registrations.edit.question',
             if (!question.registrationChoice) {
               continue;
             }
-            // 各質問の選択肢があればその選択肢の中に「その他」が入っているかの確認とフラグ設定
-            // また質問の選択肢の中にエラーがあるかのフラグ設定
+            // 各項目の選択肢があればその選択肢の中に「その他」が入っているかの確認とフラグ設定
+            // また項目の選択肢の中にエラーがあるかのフラグ設定
             for (var cIdx = 0; cIdx < question.registrationChoice.length; cIdx++) {
 
               var choice = question.registrationChoice[cIdx];
@@ -628,7 +628,7 @@ NetCommonsApp.controller('Registrations.edit.question',
       $scope.changeQuestionType = function($event, pIdx, qIdx) {
         var questionType = $scope.registration.registrationPage[pIdx].
             registrationQuestion[qIdx].questionType;
-        // スキップロジックが使えない種類の質問になっていたら
+        // スキップロジックが使えない種類の項目になっていたら
         // スキップ設定をなくす
         if (questionType != variables.TYPE_SELECTION &&
             questionType != variables.TYPE_SINGLE_SELECT_BOX) {
@@ -637,7 +637,7 @@ NetCommonsApp.controller('Registrations.edit.question',
           $scope.registration.registrationPage[pIdx].
               registrationQuestion[qIdx].isChoiceRandom = 0;
         }
-        // 集計結果表示ができない種類の質問になっていたら
+        // 集計結果表示ができない種類の項目になっていたら
         // 集計表示設定をなくす
         if ($scope.isDisabledDisplayResult(questionType)) {
           $scope.registration.registrationPage[pIdx].
@@ -684,9 +684,9 @@ NetCommonsApp.controller('Registrations.edit.question',
        * @return {bool}
        */
       $scope.isDisabledSetSkip = function(page, question) {
-        // ページの中の質問をチェック
+        // ページの中の項目をチェック
         for (var i = 0; i < page.registrationQuestion.length; i++) {
-          // もしも質問が引数で指定されているものである場合はチェックしない（continue)
+          // もしも項目が引数で指定されているものである場合はチェックしない（continue)
           if (question && page.registrationQuestion[i] == question) {
             continue;
           }

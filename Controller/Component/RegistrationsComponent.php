@@ -462,9 +462,9 @@ class RegistrationsComponent extends Component {
 	}
 
 /**
- * 登録フォーム質問タイプのデータ配列を返す
+ * 登録フォーム項目タイプのデータ配列を返す
  *
- * @return array 質問タイプの定値とそれに相応するラベル
+ * @return array 項目タイプの定値とそれに相応するラベル
  */
 	public function getQuestionTypeOptionsWithLabel() {
 		return array(

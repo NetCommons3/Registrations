@@ -132,7 +132,7 @@ class GetAggregateTest extends NetCommonsGetTest {
 /**
  * _getRegistration
  *
- * @param int $id 質問ID
+ * @param int $id 項目ID
  * @return array
  */
 	protected function _getRegistration($id) {

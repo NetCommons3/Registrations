@@ -254,7 +254,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 		 * ごく一部に限って確認を行うことにする
 		 */
 
-		// ページタブ,ページ追加リンク,質問追加ボタン,質問LI、質問種別選択,質問削除ボタン, 選択肢追加ボタン, 選択肢削除ボタン、キャンセルボタン、次へボタンの存在の確認
+		// ページタブ,ページ追加リンク,項目追加ボタン,項目LI、項目種別選択,項目削除ボタン, 選択肢追加ボタン, 選択肢削除ボタン、キャンセルボタン、次へボタンの存在の確認
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][title]', 'value' => null),
 		)));

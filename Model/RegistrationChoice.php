@@ -172,7 +172,7 @@ class RegistrationChoice extends RegistrationsAppModel {
 		if ($isSkip != RegistrationsComponent::SKIP_FLAGS_SKIP) {
 			return;
 		}
-		// 質問がスキップ質問である場合
+		// 項目がスキップ項目である場合
 		// 未設定時はデフォルトの次ページ移動となります
 		if (! isset($this->data['RegistrationChoice']['skip_page_sequence'])) {
 			$this->data['RegistrationChoice']['skip_page_sequence'] = $pageIndex + 1;

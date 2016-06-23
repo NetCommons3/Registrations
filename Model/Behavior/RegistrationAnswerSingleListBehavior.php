@@ -79,7 +79,7 @@ class RegistrationAnswerSingleListBehavior extends RegistrationAnswerBehavior {
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 登録データに対応する質問
+ * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
@@ -90,7 +90,7 @@ class RegistrationAnswerSingleListBehavior extends RegistrationAnswerBehavior {
 		if (! isset($model->data['RegistrationAnswer']['answer_values'])) {
 			return true;
 		}
-		// 質問に設定されている選択肢を配列にまとめる
+		// 項目に設定されている選択肢を配列にまとめる
 		$list = Hash::combine($question['RegistrationChoice'], '{n}.id', '{n}.key');
 
 		$ret = true;

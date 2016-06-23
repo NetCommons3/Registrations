@@ -29,7 +29,7 @@ class QuestionEditHelper extends AppHelper {
 	);
 
 /**
- * 質問属性設定作成
+ * 項目属性設定作成
  *
  * @param string $fieldName フィールド名
  * @param string $title 見出しラベル

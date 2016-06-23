@@ -353,7 +353,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			$this->set('answers', $this->request->data['RegistrationAnswer']);
 		}
 
-		// 質問情報をView変数にセット
+		// 項目情報をView変数にセット
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
 		$this->request->data['RegistrationPage'] = $registration['RegistrationPage'][$nextPageSeq];
@@ -409,7 +409,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			$this->__registration,
 			$summary);
 
-		// 質問情報をView変数にセット
+		// 項目情報をView変数にセット
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
 		$this->set('registration', $this->__registration);

@@ -116,7 +116,7 @@ class RegistrationExportPutToZipTest extends NetCommonsGetTest {
 			$records = Hash::extract($addFiles, 'Registrations.{n}.Registration.' . $file . '.zip');
 			$this->assertEqual(count($records), $langCount);
 		}
-		// 質問文が言語数×質問数文あるかチェック
+		// 項目文が言語数×項目数文あるかチェック
 		$records = Hash::extract($addFiles, 'Registrations.{n}.RegistrationPage.{n}.RegistrationQuestion.{n}.description.zip');
 		$this->assertEqual(count($records), $langCount * $expected['questionCount']);
 
@@ -162,7 +162,7 @@ class RegistrationExportPutToZipTest extends NetCommonsGetTest {
  */
 	public function dataProviderGet() {
 		return array(
-			// 登録フォームキー,ページ数,質問数
+			// 登録フォームキー,ページ数,項目数
 			array('registration_6', array(
 				'pageCount' => 1,
 				'questionCount' => 1,
@@ -173,7 +173,7 @@ class RegistrationExportPutToZipTest extends NetCommonsGetTest {
 /**
  * _getRegistration
  *
- * @param int $id 質問ID
+ * @param int $id 項目ID
  * @return array
  */
 	protected function _getRegistration($id) {

@@ -25,7 +25,7 @@ class ValidateAnswerTextAreaTest extends RegistrationAnswerValidateTest {
 /**
  * __getData
  *
- * @param string $qKey 質問キー
+ * @param string $qKey 項目キー
  * @param int $summaryId サマリID
  * @return array
  */
@@ -54,9 +54,9 @@ class ValidateAnswerTextAreaTest extends RegistrationAnswerValidateTest {
  */
 	public function dataProviderValidationError() {
 		$data = $this->__getData('qKey_17', 5);
-		// 通常の質問
+		// 通常の項目
 		$normalQuestion = Hash::merge($this->_getQuestion(18), array('is_range' => 0, 'is_require' => 0));
-		// 解答必須質問
+		// 解答必須項目
 		$requireQuestion = Hash::merge($normalQuestion, array('is_require' => RegistrationsComponent::REQUIRES_REQUIRE));
 		return array(
 			array($data, 3, $normalQuestion, 'answer_value', str_repeat('MaxLength', RegistrationsComponent::REGISTRATION_MAX_ANSWER_LENGTH),

@@ -350,8 +350,8 @@ class Registration extends RegistrationsAppModel {
 				$val['Registration']['answer_end_period']);
 
 			//
-			// ページ配下の質問データも取り出す
-			// かつ、ページ数、質問数もカウントする
+			// ページ配下の項目データも取り出す
+			// かつ、ページ数、項目数もカウントする
 			$val['Registration']['page_count'] = 0;
 			$val['Registration']['question_count'] = 0;
 			$this->RegistrationPage->setPageToRegistration($val);
@@ -605,7 +605,7 @@ class Registration extends RegistrationsAppModel {
 	public function deleteRegistration($data) {
 		$this->begin();
 		try {
-			// 登録フォーム質問データ削除
+			// 登録フォーム項目データ削除
 			$this->contentKey = $data['Registration']['key'];
 			if (! $this->deleteAll(array(
 					'Registration.key' => $data['Registration']['key']), true, true)) {

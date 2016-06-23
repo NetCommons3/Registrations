@@ -20,9 +20,9 @@
 		<?php echo __d('registrations', 'The total number of answers: ') . h($question['answer_total_cnt']); ?>
 
 		<?php
-			//各質問ごと集計表示の共通ヘッダー
+			//各項目ごと集計表示の共通ヘッダー
 			$questionTypeStr = '';
-			//質問タイプ(選択型用)
+			//項目タイプ(選択型用)
 			switch ($question['question_type']) {
 			case RegistrationsComponent::TYPE_SELECTION:
 				$questionTypeStr = __d('registrations', 'Select one');

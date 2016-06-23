@@ -48,14 +48,14 @@ class RegistrationAnswerHelper extends AppHelper {
 /**
  * 登録作成
  *
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
  * @return string 登録HTML
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	public function answer($question, $readonly = false) {
-		// 質問セットをもらう
-		// 種別に応じて質問＆登録の要素を作成し返す
+		// 項目セットをもらう
+		// 種別に応じて項目＆登録の要素を作成し返す
 		$index = $question['key'];
 		$baseFieldName = 'RegistrationAnswer.' . $index . '.0.';
 		$fieldName = $baseFieldName . 'answer_value';
@@ -80,7 +80,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
  * @return string 択一選択肢登録のHTML
  */
@@ -132,7 +132,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
  * @return string 複数選択肢登録のHTML
  */
@@ -183,7 +183,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index  登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question  質問データ
+ * @param array $question  項目データ
  * @param bool $readonly 読み取り専用
  * @return string 複数選択肢登録のHTML
  */
@@ -220,7 +220,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
  * @return string 複数選択肢登録のHTML
  */
@@ -243,7 +243,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
  * @return string 複数選択肢登録のHTML
  */
@@ -272,7 +272,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index  登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question  質問データ
+ * @param array $question  項目データ
  * @param bool $readonly 読み取り専用
  * @return string 複数選択肢登録のHTML
  */
@@ -334,7 +334,7 @@ class RegistrationAnswerHelper extends AppHelper {
  *
  * @param string $index 登録データのPOST用dataのインデックス値
  * @param string $fieldName フィールド名
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
  * @return string 複数選択肢登録のHTML
  */
@@ -431,7 +431,7 @@ class RegistrationAnswerHelper extends AppHelper {
 /**
  * マトリクス選択肢要素作成
  *
- * @param int $questionType 質問種別
+ * @param int $questionType 項目種別
  * @param string $fieldName フィールド名
  * @param array $options 選択肢データ
  * @param bool $readonly 読み取り専用

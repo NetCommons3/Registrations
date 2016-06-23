@@ -67,7 +67,7 @@ class RegistrationAnswerValidateTest extends NetCommonsModelTestCase {
  *
  * @param array $data 登録データ
  * @param int $summaryId サマリID
- * @param array $targetQuestion 質問データ
+ * @param array $targetQuestion 項目データ
  * @param string $field フィールド名
  * @param string $value セットする値
  * @param string $message エラーメッセージ
@@ -114,7 +114,7 @@ class RegistrationAnswerValidateTest extends NetCommonsModelTestCase {
 /**
  * _getQuestion
  *
- * @param int $id 質問ID
+ * @param int $id 項目ID
  * @return array
  */
 	protected function _getQuestion($id) {
@@ -130,7 +130,7 @@ class RegistrationAnswerValidateTest extends NetCommonsModelTestCase {
 /**
  * _getRegistration
  *
- * @param int $id 質問ID
+ * @param int $id 項目ID
  * @return array
  */
 	protected function _getRegistration($id) {

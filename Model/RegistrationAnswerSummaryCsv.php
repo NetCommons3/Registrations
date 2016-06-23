@@ -118,7 +118,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 			$retArray[] = $this->_putHeader($registration);
 		}
 
-		// $registrationにはページデータ、質問データが入っていることを前提とする
+		// $registrationにはページデータ、項目データが入っていることを前提とする
 
 		// 登録フォームのkeyを取得
 		$key = $registration['Registration']['key'];
@@ -150,7 +150,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 			return $retArray;
 		}
 
-		// 質問のIDを取得
+		// 項目のIDを取得
 		$questionIds = Hash::extract(
 			$registration['RegistrationPage'],
 			'{n}.RegistrationQuestion.{n}.id');
@@ -238,7 +238,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
  * @return array
  */
 	protected function _getRows($registration, $summary, $answers) {
-		// ページ、質問のループから、取り出すべき質問のIDを順番に取り出す
+		// ページ、項目のループから、取り出すべき項目のIDを順番に取り出す
 		// question loop
 		// 返却用配列にquestionのIDにマッチするAnswerを配列要素として追加、Answerがないときは空文字
 		// なお選択肢系のものはchoice_idが登録にくっついているのでそれを削除する
@@ -292,7 +292,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
  */
 	protected function _getAns($question, $answers) {
 		$retAns = '';
-		// 登録配列データの中から、現在指定された質問に該当するものを取り出す
+		// 登録配列データの中から、現在指定された項目に該当するものを取り出す
 		$ans = Hash::extract(
 			$answers,
 			'{n}.RegistrationAnswer[registration_question_key=' . $question['key'] . ']');
@@ -345,7 +345,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
  */
 	protected function _getMatrixAns($question, $choice, $answers) {
 		$retAns = '';
-		// 登録配列データの中から、現在指定された質問に該当するものを取り出す
+		// 登録配列データの中から、現在指定された項目に該当するものを取り出す
 		// マトリクスタイプのときは複数存在する（行数分）
 		$anss = Hash::extract(
 			$answers,

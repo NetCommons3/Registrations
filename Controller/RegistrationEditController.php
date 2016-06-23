@@ -185,14 +185,14 @@ class RegistrationEditController extends RegistrationsAppController {
 		// Postの場合
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$postRegistration = $this->request->data;
-			// 登録フォームデータに作成されたPost質問データをかぶせる
-			// （質問作成画面では質問データ属性全てをPOSTしているのですり替えでOK）
+			// 登録フォームデータに作成されたPost項目データをかぶせる
+			// （項目作成画面では項目データ属性全てをPOSTしているのですり替えでOK）
 			$registration = $this->_registration;
 			$registration['Registration'] = Hash::merge(
 				$this->_registration['Registration'],
 				$postRegistration['Registration']);
 
-			// 発行後の登録フォームは質問情報は書き換えない
+			// 発行後の登録フォームは項目情報は書き換えない
 			// 未発行の場合はPostデータを上書き設定して
 			if ($this->Registration->hasPublished($registration) == 0) {
 				$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
@@ -363,7 +363,7 @@ class RegistrationEditController extends RegistrationsAppController {
 	private function __setupViewParameters($registration, $backUrl) {
 		$isPublished = $this->Registration->hasPublished($registration);
 
-		// エラーメッセージはページ、質問、選択肢要素のそれぞれの場所に割り当てる
+		// エラーメッセージはページ、項目、選択肢要素のそれぞれの場所に割り当てる
 		$this->NetCommons->handleValidationError($this->Registration->validationErrors);
 		$flatError = Hash::flatten($this->Registration->validationErrors);
 		$newFlatError = array();

@@ -74,7 +74,7 @@ class RegistrationEditControllerDeleteTest extends WorkflowControllerDeleteTest 
 /**
  * テストDataの取得
  *
- * @param string $registrationKey 質問ID
+ * @param string $registrationKey 項目ID
  * @return array
  */
 	private function __getData($registrationKey = 'registration_2') {

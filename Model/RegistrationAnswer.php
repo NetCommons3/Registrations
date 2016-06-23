@@ -165,14 +165,14 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		if (empty($summary)) {
 			return $answers;
 		}
-		// 指定のサマリに該当する登録フォームの質問ID配列を取得
+		// 指定のサマリに該当する登録フォームの項目ID配列を取得
 		$questionIds = Hash::extract(
 			$registration,
 			'RegistrationPage.{n}.RegistrationQuestion.{n}.id');
 		$choiceIds = Hash::extract(
 			$registration,
 			'RegistrationPage.{n}.RegistrationQuestion.{n}.RegistrationChoice.{n}.id');
-		// その質問配列を取得条件に加える（間違った質問が入らないよう）
+		// その項目配列を取得条件に加える（間違った項目が入らないよう）
 		$answer = $this->find('all', array(
 			'conditions' => array(
 				'registration_answer_summary_id' => $summary['RegistrationAnswerSummary']['id'],

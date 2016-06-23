@@ -159,7 +159,7 @@ class RegistrationAnswerBehavior extends ModelBehavior {
  * その他オプションにチェックが入っていないのにその他欄に何か書いてあったら空にする
  *
  * @param Model $model Model using this behavior
- * @param array $question 質問データ
+ * @param array $question 項目データ
  * @return void
  */
 	protected function _setupOtherAnswerValue(Model $model, $question) {
@@ -177,11 +177,11 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 	}
 
 /**
- * answerRequire 登録必須の質問の場合登録されているかの確認
+ * answerRequire 登録必須の項目の場合登録されているかの確認
  *
  * @param object &$model use model
  * @param array $data Validation対象データ
- * @param array $question 登録データに対応する質問
+ * @param array $question 登録データに対応する項目
  * @return bool
  */
 	public function answerRequire(&$model, $data, $question) {

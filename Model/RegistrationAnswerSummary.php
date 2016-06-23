@@ -257,7 +257,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
  */
 	public function getAggregate($registration) {
 		$this->RegistrationAnswer = ClassRegistry::init('Registrations.RegistrationAnswer', true);
-		// 質問データのとりまとめ
+		// 項目データのとりまとめ
 		//$questionsは、registration_question_keyをキーとし、registration_question配下が代入されている。
 		$questions = Hash::combine($registration,
 			'RegistrationPage.{n}.RegistrationQuestion.{n}.key',
@@ -266,7 +266,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		// 集計データを集める際の基本条件
 		$baseConditions = $this->getResultCondition($registration);
 
-		//質問毎に集計
+		//項目毎に集計
 		foreach ($questions as &$question) {
 			if (RegistrationsComponent::isOnlyInputType($question['question_type'])) {
 				continue;
@@ -275,7 +275,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				//集計表示をしない、なので飛ばす
 				continue;
 			}
-			// 戻り値の、この質問の合計登録数を記録しておく。
+			// 戻り値の、この項目の合計登録数を記録しておく。
 			// skip ロジックがあるため、単純にsummaryのcountじゃない..
 			$questionConditions = $baseConditions + array(
 					'RegistrationAnswer.registration_question_key' => $question['key'],
@@ -295,7 +295,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
  * __aggregateAnswerForMatrix
  * matrix aggregate
  *
- * @param array &$question 登録フォーム質問(集計結果を配列追加して返します)
+ * @param array &$question 登録フォーム項目(集計結果を配列追加して返します)
  * @param array $questionConditions get aggregate base condition
  * @return void
  */
@@ -330,7 +330,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
  * __aggregateAnswerForNotMatrix
  * not matrix aggregate
  *
- * @param array &$question 登録フォーム質問(集計結果を配列追加して返します)
+ * @param array &$question 登録フォーム項目(集計結果を配列追加して返します)
  * @param array $questionConditions get aggregate base condition
  * @return void
  */

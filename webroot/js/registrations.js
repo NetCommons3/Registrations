@@ -56,7 +56,7 @@ NetCommonsApp.controller('RegistrationsAnswer',
         $scope.dateAnswer = new Object();
         for (var qIdx = 0; qIdx < registrationPage.registrationQuestion.length; qIdx++) {
           var question = registrationPage.registrationQuestion[qIdx];
-          // 各質問が日付・時刻のタイプならば
+          // 各項目が日付・時刻のタイプならば
           if (question.questionType == variables.TYPE_DATE_AND_TIME) {
             if (answers[question.key]) {
               if (angular.isArray(answers[question.key])) {

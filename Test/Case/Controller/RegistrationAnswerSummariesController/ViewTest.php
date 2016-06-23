@@ -251,7 +251,7 @@ class RegistrationAnswerSummariesControllerViewTest extends WorkflowControllerVi
 			'urlOptions' => array('key' => 'registration_4'),
 			'assert' => array('method' => 'assertTextContains', 'expected' => 'table table-striped table-bordered registration-table-vcenter'),
 		));
-		$results[] = Hash::merge($results[0], array( // 非表示の質問がある
+		$results[] = Hash::merge($results[0], array( // 非表示の項目がある
 			'urlOptions' => array('key' => 'registration_12'),
 			'assert' => array('method' => 'assertTextContains', 'expected' => 'nvd3'),
 		));

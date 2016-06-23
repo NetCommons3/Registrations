@@ -25,7 +25,7 @@ class ValidateAnswerSingleSelectTest extends RegistrationAnswerValidateTest {
 /**
  * __getData
  *
- * @param string $qKey 質問キー
+ * @param string $qKey 項目キー
  * @param int $summaryId サマリID
  * @return array
  */
@@ -54,11 +54,11 @@ class ValidateAnswerSingleSelectTest extends RegistrationAnswerValidateTest {
  */
 	public function dataProviderValidationError() {
 		$data = $this->__getData('qKey_1', 3);
-		// 通常の質問
+		// 通常の項目
 		$normalQuestion = $this->_getQuestion(2);
-		// 解答必須質問
+		// 解答必須項目
 		$requireQuestion = Hash::merge($normalQuestion, array('is_require' => RegistrationsComponent::REQUIRES_REQUIRE));
-		// その他登録がある質問
+		// その他登録がある項目
 		$otherQuestion = Hash::merge($normalQuestion, array('RegistrationChoice' => array(array('other_choice_type' => 1))));
 		return array(
 			array($data, 3, $normalQuestion, 'answer_value', 'aaa',

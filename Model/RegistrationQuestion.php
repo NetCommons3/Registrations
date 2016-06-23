@@ -170,7 +170,7 @@ class RegistrationQuestion extends RegistrationsAppModel {
 				),
 			),
 		);
-		// 範囲制限設定された質問の場合
+		// 範囲制限設定された項目の場合
 		if ($this->data['RegistrationQuestion']['is_range'] == true) {
 			$this->validate = Hash::merge($this->validate, array(
 				'min' => array(
@@ -204,10 +204,10 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		$isSkip = $this->data['RegistrationQuestion']['is_skip'];
 		// 付属の選択肢以下のvalidate
 		if ($this->_checkChoiceExists() && isset($this->data['RegistrationChoice'])) {
-			// この質問種別に必要な選択肢データがちゃんとあるなら選択肢をバリデート
+			// この項目種別に必要な選択肢データがちゃんとあるなら選択肢をバリデート
 			$validationErrors = array();
 			foreach ($this->data['RegistrationChoice'] as $cIndex => $choice) {
-				// 質問データバリデータ
+				// 項目データバリデータ
 				$this->RegistrationChoice->create();
 				$this->RegistrationChoice->set($choice);
 				$options['choiceIndex'] = $cIndex;
@@ -359,9 +359,9 @@ class RegistrationQuestion extends RegistrationsAppModel {
 
 /**
  * _getResultDisplayList
- * 質問種別に応じて許されるisResultDisplayの設定値
+ * 項目種別に応じて許されるisResultDisplayの設定値
  *
- * @param int $questionType 質問種別
+ * @param int $questionType 項目種別
  * @return array
  */
 	protected function _getResultDisplayList($questionType) {
