@@ -16,10 +16,6 @@
 
 	<?php echo $this->element('Registrations.Registrations/add_button'); ?>
 
-	<div class="pull-left">
-		<?php echo $this->element('Registrations.Registrations/answer_status'); ?>
-	</div>
-
 	<div class="clearfix"></div>
 
 	<p>
