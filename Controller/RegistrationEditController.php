@@ -75,13 +75,6 @@ class RegistrationEditController extends RegistrationsAppController {
 					),
 					'label' => array('registrations', 'Set questions'),
 				),
-				'edit_result' => array(
-					'url' => array(
-						'controller' => 'registration_edit',
-						'action' => 'edit_result',
-					),
-					'label' => array('registrations', 'Set result display'),
-				),
 				'edit' => array(
 					'url' => array(
 						'controller' => 'registration_edit',
@@ -224,55 +217,13 @@ class RegistrationEditController extends RegistrationsAppController {
 				$registration);
 
 			// 次の画面へリダイレクト
-			$this->redirect($this->_getActionUrl('edit_result'));
+			$this->redirect($this->_getActionUrl('edit'));
 		} else {
 			// 登録フォームデータが取り出せている場合、それをキャッシュに書く
 			$this->Session->write(
 				self::REGISTRATION_EDIT_SESSION_INDEX . $this->_getRegistrationEditSessionIndex(),
 				$this->_sorted($this->_registration));
 			$this->__setupViewParameters($this->_registration, '');
-		}
-	}
-
-/**
- * edit_result
- *
- * @throws BadRequestException
- * @return void
- */
-	public function edit_result() {
-		// 処理対象の登録フォームデータが見つかっていない場合、エラー
-		if (empty($this->_registration)) {
-			$this->throwBadRequest();
-			return false;
-		}
-
-		if ($this->request->is('post') || $this->request->is('put')) {
-
-			$postRegistration = $this->request->data;
-
-			// 集計設定画面では集計に纏わる情報のみがPOSTされるので安心してマージ
-			$registration = Hash::merge($this->_registration, $postRegistration);
-			// バリデート
-			$this->Registration->set($registration);
-			if (! $this->Registration->validates(
-				array('validate' => RegistrationsComponent::REGISTRATION_VALIDATE_TYPE))) {
-				$this->__setupViewParameters($registration, $this->_getActionUrl('edit_question'));
-				return;
-			}
-			// それをキャッシュに書く
-			$this->Session->write(
-				self::REGISTRATION_EDIT_SESSION_INDEX . $this->_getRegistrationEditSessionIndex(),
-				$registration);
-
-			// 次の画面へリダイレクト
-			$this->redirect($this->_getActionUrl('edit'));
-
-		} else {
-			$this->Session->write(
-				self::REGISTRATION_EDIT_SESSION_INDEX . $this->_getRegistrationEditSessionIndex(),
-				$this->_registration);
-			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_question'));
 		}
 	}
 
@@ -305,7 +256,7 @@ class RegistrationEditController extends RegistrationsAppController {
 			// エラー
 			if ($saveRegistration == false) {
 				$registration['Registration']['status'] = $beforeStatus;
-				$this->__setupViewParameters($registration, $this->_getActionUrl('edit_result'));
+				$this->__setupViewParameters($registration, $this->_getActionUrl('edit_question'));
 				return;
 			}
 
@@ -337,7 +288,7 @@ class RegistrationEditController extends RegistrationsAppController {
 			$this->Session->write(
 				$this->_getRegistrationEditSessionIndex(),
 				$this->_registration);
-			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_result'));
+			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_question'));
 		}
 	}
 
