@@ -153,15 +153,15 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		//トランザクションBegin
 		$this->begin();
 		try {
-			if ($frameSetting['display_type'] == RegistrationsComponent::DISPLAY_TYPE_SINGLE) {
-				// このフレームに設定されている全てのレコードを消す
-				// POSTされた登録フォームのレコードのみ作成する
-				$ret = $this->saveDisplayRegistrationForSingle($data);
-			} else {
+			//if ($frameSetting['display_type'] == RegistrationsComponent::DISPLAY_TYPE_SINGLE) {
+			//	// このフレームに設定されている全てのレコードを消す
+			//	// POSTされた登録フォームのレコードのみ作成する
+			//	$ret = $this->saveDisplayRegistrationForSingle($data);
+			//} else {
 				// hiddenでPOSTされたレコードについて全て処理する
 				// POSTのis_displayが０，１によってdeleteかinsertで処理する
 				$ret = $this->saveDisplayRegistrationForList($data);
-			}
+			//}
 			//トランザクションCommit
 			$this->commit();
 		} catch (Exception $ex) {
@@ -253,6 +253,13 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		if (!$this->save($data, false)) {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}
+
+		// フレームのデフォルトにする
+		$action = "'" . 'registration_answers/view/' . Current::read('Block.id') . '/' . $data['registration_key'] . "'";
+		if (!$this->updateFrameDefaultAction($action)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
 		return true;
 	}
 /**
