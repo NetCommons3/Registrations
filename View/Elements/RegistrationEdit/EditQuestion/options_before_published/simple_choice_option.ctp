@@ -34,37 +34,37 @@
 			'errorArrayName' => 'question.errorMessages.isChoiceHorizon',
 			)); ?>
 		</label>
-		<?php /* 選択肢をランダムにする */ ?>
-		<label class="checkbox-inline" ng-show="question.questionType != <?php echo RegistrationsComponent::TYPE_SINGLE_SELECT_BOX; ?>">
-			<?php echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_choice_random',
-			array(
-			'value' => RegistrationsComponent::USES_USE,
-			'ng-model' => 'question.isChoiceRandom',
-			'ng-checked' => 'question.isChoiceRandom == ' . RegistrationsComponent::USES_USE
-			));
-			?>
-			<?php echo __d('registrations', 'randomaize choices'); ?>
-			<?php echo $this->element(
-			'Registrations.RegistrationEdit/ng_errors', array(
-			'errorArrayName' => 'question.errorMessages.isChoiceRandom',
-			)); ?>
-		</label>
-		<?php /* スキップにする */ ?>
-		<label class="checkbox-inline" ng-show="question.questionType != <?php echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?>">
-			<?php echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
-			array(
-			'value' => RegistrationsComponent::SKIP_FLAGS_SKIP,
-			'ng-model' => 'question.isSkip',
-			'ng-checked' => 'question.isSkip == ' . RegistrationsComponent::SKIP_FLAGS_SKIP,
-			'ng-disabled' => 'isDisabledSetSkip(page, question)'
-			));
-			?>
-			<?php echo $this->element(
-			'Registrations.RegistrationEdit/ng_errors', array(
-			'errorArrayName' => 'question.errorMessages.isSkip',
-			)); ?>
-			<?php echo __d('registrations', 'set page skip'); ?>
-		</label>
+		<?php ///* 選択肢をランダムにする */ ?>
+		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_SINGLE_SELECT_BOX; ?><!--">-->
+		<!--	--><?php //echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_choice_random',
+		//	array(
+		//	'value' => RegistrationsComponent::USES_USE,
+		//	'ng-model' => 'question.isChoiceRandom',
+		//	'ng-checked' => 'question.isChoiceRandom == ' . RegistrationsComponent::USES_USE
+		//	));
+		//	?>
+		<!--	--><?php //echo __d('registrations', 'randomaize choices'); ?>
+		<!--	--><?php //echo $this->element(
+		//	'Registrations.RegistrationEdit/ng_errors', array(
+		//	'errorArrayName' => 'question.errorMessages.isChoiceRandom',
+		//	)); ?>
+		<!--</label>-->
+		<?php ///* スキップにする */ ?>
+		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?><!--">-->
+		<!--	--><?php //echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
+		//	array(
+		//	'value' => RegistrationsComponent::SKIP_FLAGS_SKIP,
+		//	'ng-model' => 'question.isSkip',
+		//	'ng-checked' => 'question.isSkip == ' . RegistrationsComponent::SKIP_FLAGS_SKIP,
+		//	'ng-disabled' => 'isDisabledSetSkip(page, question)'
+		//	));
+		//	?>
+		<!--	--><?php //echo $this->element(
+		//	'Registrations.RegistrationEdit/ng_errors', array(
+		//	'errorArrayName' => 'question.errorMessages.isSkip',
+		//	)); ?>
+		<!--	--><?php //echo __d('registrations', 'set page skip'); ?>
+		<!--</label>-->
 	</div>
 </div>
 <div class="row">
@@ -73,27 +73,27 @@
 		<ul class="list-group registration-edit-choice-list-group">
 			<li class="list-group-item" ng-repeat="(cIndex, choice) in question.registrationChoice" >
 				<div class="form-inline pull-right">
-					<select name="data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][RegistrationChoice][{{cIndex}}][skip_page_sequence]"
-							class="form-control input-sm"
-							ng-change="changeSkipPageChoice(choice.skipPageSequence)"
-							ng-model="choice.skipPageSequence"
-							ng-if="question.isSkip == <?php echo RegistrationsComponent::SKIP_FLAGS_SKIP; ?>
-							&& question.questionType != <?php echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?>">
-						<option ng-repeat="skipPage in registration.registrationPage | filter: greaterThan('pageSequence', page)"
-								value="{{skipPage.pageSequence}}"
-								ng-selected="choice.skipPageSequence == skipPage.pageSequence || (choice.skipPageSequence == null && skipPage.pageSequence == pageIndex+1)">
-							{{1 * skipPage.pageSequence + 1}}
-						</option>
-						<option value="<?php echo RegistrationsComponent::SKIP_GO_TO_END ?>"
-								ng-selected="choice.skipPageSequence == <?php echo RegistrationsComponent::SKIP_GO_TO_END ?> || (choice.skipPageSequence == null && registration.registrationPage.length-1==pageIndex)">
-							<?php echo __d('registrations', 'goto end'); ?>
-						</option>
-						<option
-								value="{{registration.registrationPage.length}}"
-								title="<?php echo __d('registrations', '(new page will be created)'); ?>">
-							<?php echo __d('registrations', 'create new page for this skip'); ?>
-						</option>
-					</select>
+					<!--<select name="data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][RegistrationChoice][{{cIndex}}][skip_page_sequence]"-->
+					<!--		class="form-control input-sm"-->
+					<!--		ng-change="changeSkipPageChoice(choice.skipPageSequence)"-->
+					<!--		ng-model="choice.skipPageSequence"-->
+					<!--		ng-if="question.isSkip == --><?php //echo RegistrationsComponent::SKIP_FLAGS_SKIP; ?>
+					<!--		&& question.questionType != --><?php //echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?><!--">-->
+					<!--	<option ng-repeat="skipPage in registration.registrationPage | filter: greaterThan('pageSequence', page)"-->
+					<!--			value="{{skipPage.pageSequence}}"-->
+					<!--			ng-selected="choice.skipPageSequence == skipPage.pageSequence || (choice.skipPageSequence == null && skipPage.pageSequence == pageIndex+1)">-->
+					<!--		{{1 * skipPage.pageSequence + 1}}-->
+					<!--	</option>-->
+					<!--	<option value="--><?php //echo RegistrationsComponent::SKIP_GO_TO_END ?><!--"-->
+					<!--			ng-selected="choice.skipPageSequence == --><?php //echo RegistrationsComponent::SKIP_GO_TO_END ?><!-- || (choice.skipPageSequence == null && registration.registrationPage.length-1==pageIndex)">-->
+					<!--		--><?php //echo __d('registrations', 'goto end'); ?>
+					<!--	</option>-->
+					<!--	<option-->
+					<!--			value="{{registration.registrationPage.length}}"-->
+					<!--			title="--><?php //echo __d('registrations', '(new page will be created)'); ?><!--">-->
+					<!--		--><?php //echo __d('registrations', 'create new page for this skip'); ?>
+					<!--	</option>-->
+					<!--</select>-->
 					<button class="btn btn-default" type="button"
 							ng-disabled="question.registrationChoice.length < 2"
 							ng-click="deleteChoice($event, pageIndex, qIndex, choice.choiceSequence)"
