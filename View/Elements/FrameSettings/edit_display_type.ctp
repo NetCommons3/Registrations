@@ -9,12 +9,7 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 ?>
-<label><?php echo __d('registrations', 'Registration display setting'); ?></label>
-<?php echo $this->NetCommonsForm->radio('display_type',
-	array(
-		RegistrationsComponent::DISPLAY_TYPE_SINGLE => __d('registrations', 'Show only one registration'),
-		RegistrationsComponent::DISPLAY_TYPE_LIST => __d('registrations', 'Show registrations list'),
-	),
+<?php echo $this->NetCommonsForm->hidden('display_type',
 	array(
 		'div' => 'form-inline',
 		'hiddenField' => false,

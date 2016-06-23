@@ -78,35 +78,12 @@ class RegistrationsController extends RegistrationsAppController {
  * @return void
  */
 	public function index() {
-		// 表示方法設定値取得
-		list(, $displayNum, $sort, $dir) =
-			$this->RegistrationFrameSetting->getRegistrationFrameSetting(Current::read('Frame.key'));
-
-		// 条件設定値取得
-		$conditions = $this->Registration->getCondition();
-
-		// データ取得
-		$this->Paginator->settings = array_merge(
-			$this->Paginator->settings,
-			array(
-				'conditions' => $conditions,
-				'page' => 1,
-				'order' => array($sort => $dir),
-				'limit' => $displayNum,
-				'recursive' => 0,
-			)
-		);
-		if (!isset($this->params['named']['answer_status'])) {
-			$this->request->params['named']['answer_status'] =
-				RegistrationsComponent::REGISTRATION_ANSWER_VIEW_ALL;
-		}
-		$registration = $this->paginate('Registration', $this->_getPaginateFilter());
-		$this->set('registrations', $registration);
-
-		$this->__setOwnAnsweredKeys();
-
-		if (count($registration) == 0) {
+		// 作成権限なければ emptyRender
+		if (Current::permission('content_creatable')) {
+			// 追加ボタン表示
 			$this->view = 'Registrations/noRegistration';
+		} else {
+			$this->setAction('emptyRender');
 		}
 	}
 

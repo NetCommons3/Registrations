@@ -135,9 +135,10 @@ class RegistrationFrameSetting extends RegistrationsAppModel {
 		$frame = array(
 			'RegistrationFrameSetting' => array(
 				//'id' => '',
-				'display_type' => RegistrationsComponent::DISPLAY_TYPE_LIST,
+				'display_type' => RegistrationsComponent::DISPLAY_TYPE_SINGLE,
 				'display_num_per_page' => RegistrationsComponent::REGISTRATION_DEFAULT_DISPLAY_NUM_PER_PAGE,
 				'sort_type' => 'Registration.modified DESC',
+				'frame_key' => Current::read('Frame.key'),
 			)
 		);
 		return $frame;
