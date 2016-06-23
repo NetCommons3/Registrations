@@ -192,17 +192,19 @@ class RegistrationEditController extends RegistrationsAppController {
 				$this->_registration['Registration'],
 				$postRegistration['Registration']);
 
-			// 発行後の登録フォームは項目情報は書き換えない
+			// 発行後の登録フォームは項目情報は書き換えない→アンケートと違っていつでも編集OK
 			// 未発行の場合はPostデータを上書き設定して
-			if ($this->Registration->hasPublished($registration) == 0) {
-				$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
-			} else {
-				$this->Registration->clearRegistrationId($registration, true);
-				// booleanの値がPOST時と同じようになるように調整
-				$registration['RegistrationPage'] =
-					RegistrationsAppController::changeBooleansToNumbers(
-						$registration['RegistrationPage']);
-			}
+			//if ($this->Registration->hasPublished($registration) == 0) {
+			//	$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
+			//} else {
+			//	$this->Registration->clearRegistrationId($registration, true);
+			//	// booleanの値がPOST時と同じようになるように調整
+			//	$registration['RegistrationPage'] =
+			//		RegistrationsAppController::changeBooleansToNumbers(
+			//			$registration['RegistrationPage']);
+			//}
+			$registration['RegistrationPage'] = $postRegistration['RegistrationPage'];
+
 			// バリデート
 			$this->Registration->set($registration);
 			if (! $this->Registration->validates(
@@ -395,7 +397,8 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->set('newChoiceLabel', __d('registrations', 'new choice'));
 		$this->set('newChoiceColumnLabel', __d('registrations', 'new column choice'));
 		$this->set('newChoiceOtherLabel', __d('registrations', 'other choice'));
-		$this->set('isPublished', $isPublished);
+		//$this->set('isPublished', $isPublished);
+		$this->set('isPublished', false);
 
 		$this->request->data = $registration;
 		$this->request->data['Frame'] = Current::read('Frame');
