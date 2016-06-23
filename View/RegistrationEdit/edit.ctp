@@ -99,30 +99,6 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				</div>
 			</div>
 
-			<div class="form-group" ng-show="registration.registration.isTotalShow == 1">
-				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Counting result display start date')); ?>
-
-				<?php /* 集計結果表示期間設定 */
-					echo $this->QuestionEdit->registrationAttributeCheckbox('total_show_timing',
-						__d('registrations', 'set the aggregate display period'),
-						array(),
-						__d('registrations', 'If not set , it will be displayed after the respondent answers.'));
-				?>
-				<div class="row" ng-show="registration.registration.totalShowTiming != 0">
-					<div class="col-xs-11 col-xs-offset-1">
-						<?php
-							echo $this->QuestionEdit->registrationAttributeDatetime(
-								'total_show_start_period',
-								array(
-									'label' => false,
-									'div' => 'form-inline',
-									'help' => __d('registrations', 'Result will display at this time.')
-								)
-							);
-						?>
-					</div>
-				</div>
-			</div>
 
 			<div class="form-group">
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration method')); ?>
