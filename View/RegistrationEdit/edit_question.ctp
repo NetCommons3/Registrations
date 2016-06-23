@@ -154,23 +154,8 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 					<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/add_question_button'); ?>
 
-					<?php if (! $isPublished): ?>
-						<div class="text-center">
-							<button class="btn btn-danger" type="button"
-									ng-disabled="registration.registrationPage.length < 2"
-									ng-click="deletePage($index, '<?php echo __d('registrations', 'Do you want to delete this page?'); ?>')">
-								<span class="glyphicon glyphicon-remove"></span><?php echo __d('registrations', 'Delete this page'); ?>
-							</button>
-						</div>
-					<?php endif; ?>
 				</div>
 			</uib-tab>
-			<?php if (! $isPublished): ?>
-				<a class="registration-add-page-tab" ng-click="addPage($event)">
-					<span class="glyphicon glyphicon-plus"></span>
-					<span class=""><?php echo __d('registrations', 'Add Page'); ?></span>
-				</a>
-			<?php endif; ?>
 		</uib-tabset>
 
 	</div>
