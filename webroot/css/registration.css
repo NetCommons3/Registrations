@@ -1,0 +1,88 @@
+/*--登録フォーム一覧画面の編集者向け詳細情報枠---*/
+.registration-editor-dl {
+    margin:0px;
+    clear: left;
+}
+.registration-editor-dl dt {
+    float:left;
+    margin-right:1em;
+}
+.registration-editor-dl dd {
+    float:left;
+    margin-right:4em;
+}
+/*--登録フォーム追加画面の過去の登録フォームセレクトリスト用---*/
+.registration-select-box {
+    height:150px;
+    overflow-y: scroll;
+    list-style:none;
+    padding:0px;
+}
+.registration-select-box li {
+    padding:0px 0.5em
+}
+/*--登録フォーム編集画面のページ追加タブスタイル--*/
+.registration-add-page-tab {
+    display: block;
+    padding: 10px 25px;
+    float: left;
+}
+/*--登録フォーム編集画面の質問アコーディオンスタイル---*/
+#RegistrationQuestionEditQuestionForm .panel-title,
+#RegistrationQuestionEditResultForm .panel-title {
+    margin:0px;
+}
+.registration-accordion-header-title {
+    font-size: 16px;
+}
+#RegistrationQuestionEditQuestionForm .registration-accordion-header-title {
+    line-height:2em;
+    padding-left:0.5em;
+}
+/*--登録フォーム編集画面の選択肢リスト---*/
+.registration-edit-choice-list-group {
+    margin-bottom: 5px;
+}
+
+/*--登録フォームマトリクス登録画面---*/
+.registration-matrix-table {
+    margin-bottom:10px;
+}
+.registration-matrix-table td {
+    vertical-align:bottom;
+}
+.registration-matrix-table td .radio label.control-label {
+    display: block;
+    padding: 3px 0px;
+}
+.registration-matrix-table td .checkbox {
+    margin:0.2em 0;
+}
+.registration-matrix-table td input[type="radio"],
+.registration-matrix-table td input[type="checkbox"] {
+    display:block;
+    width:100%;
+    min-height:1em;
+    margin:5px 0px;
+    cursor: pointer;
+}
+.registration-matrix-table td input[type="checkbox"] {
+    margin-left: 0px;
+}
+/*
+ * 集計画面グラフ
+ */
+.registration-chart-wrapper {
+    margin:1em;
+}
+/*------------------------------------------------------------------*/
+table.table.registration-table-vcenter tbody td {
+   vertical-align: middle;
+}
+/*
+ * 縦スクロールバー付き
+ */
+.registration-list-wrapper {
+    max-height:450px;
+    overflow-y: scroll;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "NetCommons3/Registrations",
+  "version": "3.0.0",
+  "homepage": "http://www.netcommons.org/",
+  "moduleType": [
+    "cakephp-plugin"
+  ],
+  "authors": [
+    "NetCommons Community"
+  ],
+  "license": "NetCommons License",
+  "dependencies": {
+    "angular-nvd3":">=0.1.1"
+  }
+}

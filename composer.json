@@ -1,0 +1,63 @@
+{
+    "name":        "netcommons/registrations",
+    "description": "Registrations for NetCommons Plugin",
+    "homepage":    "http://www.netcommons.org/",
+    "license":     "NetCommons License",
+    "authors": [
+        {
+            "name": "Ryuji AMANO (RYUS INC.)",
+            "email": "ryuji@ryus.co.jp",
+            "homepage": "http://ryus.co.jp/",
+            "role": "Developer"
+        },
+        {
+            "name": "Toshihide Hashimoto(AllCreator Co., Ltd.)",
+            "email": "info@allcreator.net",
+            "homepage": "http://allcreator.net",
+            "role": "Developer"
+        },
+        {
+            "name": "Minori Kikuchihara(AllCreator Co., Ltd.)",
+            "email": "info@allcreator.net",
+            "homepage": "http://allcreator.net",
+            "role": "Developer"
+        },
+        {
+            "name": "Rika Fujiwara(AllCreator Co., Ltd.)",
+            "email": "info@allcreator.net",
+            "homepage": "http://allcreator.net",
+            "role": "Developer"
+        },
+        {
+            "name":     "NetCommons Community",
+            "homepage": "https://github.com/NetCommons3/Registrations/graphs/contributors"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "app/Plugin/{$name}": ["type:cakephp-plugin"]
+        }
+    },
+    "require": {
+        "cakedc/migrations":            "~2.2",
+        "netcommons/authorization-keys": "dev-master",
+        "netcommons/blocks":            "dev-master",
+        "netcommons/files":             "dev-master",
+        "netcommons/frames":            "dev-master",
+        "netcommons/m17n":              "dev-master",
+        "netcommons/mails":             "dev-master",
+        "netcommons/net-commons":       "dev-master",
+        "netcommons/pages":             "dev-master",
+        "netcommons/plugin-manager":    "dev-master",
+        "netcommons/topics":            "dev-master",
+        "netcommons/users":             "dev-master",
+        "netcommons/workflow":          "dev-master" ,
+        "netcommons/wysiwyg":           "dev-master",
+        "netcommons/visual-captcha":    "dev-master"
+    },
+    "type":        "cakephp-plugin",
+    "keywords":    ["cakephp", "registrations"],
+    "config": {
+        "vendor-dir": "vendors"
+    }
+}
