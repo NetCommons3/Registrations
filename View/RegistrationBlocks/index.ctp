@@ -47,10 +47,6 @@ echo $this->NetCommonsHtml->script(array(
 						'', __d('registrations', 'Answer CSV'),
 						array('type' => 'center')
 					); ?>
-					<?php echo $this->BlockIndex->tableHeader(
-						'', __d('registrations', 'Templates'),
-						array('type' => 'center')
-					); ?>
 				</tr>
 				</thead>
 				<tbody>
@@ -97,25 +93,6 @@ echo $this->NetCommonsHtml->script(array(
 									'popup-label' => __d('authorization_keys', 'Compression password'),
 									'popup-placeholder' => __d('authorization_keys', 'please input compression password'),
 								)
-							),
-							array('escape' => false, 'type' => 'center')
-							); ?>
-						<?php else: ?>
-							<td></td>
-						<?php endif; ?>
-						<?php if ($registration['Registration']['status'] == WorkflowComponent::STATUS_PUBLISHED): ?>
-							<?php echo $this->BlockIndex->tableData(
-							'',
-							$this->BackTo->linkButton('',
-								NetCommonsUrl::actionUrl(array(
-									'plugin' => 'registrations',
-									'controller' => 'registration_blocks',
-									'action' => 'export',
-									Current::read('Block.id'),
-									$registration['Registration']['key'],
-									'frame_id' => Current::read('Frame.id'))
-								),
-								array('class' => 'btn btn-warning', 'icon' => 'export')
 							),
 							array('escape' => false, 'type' => 'center')
 							); ?>
