@@ -75,22 +75,22 @@ class RegistrationFrameSetting extends RegistrationsAppModel {
 					'message' => __d('net_commons', 'Invalid request.'),
 				),
 			),
-			'display_num_per_page' => array(
-				'number' => array(
-					'rule' => array('numeric'),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-				'inList' => array(
-					'rule' => array('inList', array(1, 5, 10, 20, 50, 100)),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
-			'sort_type' => array(
-				'inList' => array(
-					'rule' => array('inList', array_keys(RegistrationsComponent::getSortOrders())),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
+			//'display_num_per_page' => array(
+			//	'number' => array(
+			//		'rule' => array('numeric'),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//	'inList' => array(
+			//		'rule' => array('inList', array(1, 5, 10, 20, 50, 100)),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
+			//'sort_type' => array(
+			//	'inList' => array(
+			//		'rule' => array('inList', array_keys(RegistrationsComponent::getSortOrders())),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
 		));
 
 		parent::beforeValidate($options);
