@@ -37,9 +37,6 @@
 				<a href="" ng-click="answerStartPeriod=!answerStartPeriod;sort('registration.answerStartPeriod', answerStartPeriod)"><?php echo __d('registrations', 'Implementation date'); ?></a>
 			</th>
 			<th>
-				<a href="" ng-click="isTotalShow=!isTotalShow;sort('registration.isTotalShow', isTotalShow)"><?php echo __d('registrations', 'Aggregates'); ?></a>
-			</th>
-			<th>
 				<a href="" ng-click="modified=!modified;sort('registration.modified', modified)"><?php echo __d('net_commons', 'Updated date'); ?></a>
 			</th>
 		</tr>
@@ -82,11 +79,6 @@
 					{{quest.registration.answerEndPeriod | ncDatetime}}
 					<?php echo __d('registrations', 'Implementation'); ?>
 					)
-				</span>
-			</td>
-			<td>
-				<span ng-if="quest.registration.isTotalShow == <?php echo RegistrationsComponent::EXPRESSION_SHOW ?>">
-					<?php echo __d('registrations', 'On'); ?>
 				</span>
 			</td>
 			<td>
