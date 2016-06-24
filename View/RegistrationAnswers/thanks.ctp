@@ -18,19 +18,19 @@
 	<?php echo $this->element('Registrations.Answers/answer_test_mode_header'); ?>
 
 	<p>
-			<?php echo $registration['Registration']['thanks_content']; ?>
-		</p>
-		<hr>
-
-		<div class="text-center">
-			<?php if ($displayType == RegistrationsComponent::DISPLAY_TYPE_LIST): ?>
-				<?php echo $this->BackTo->indexLinkButton(__d('registrations', 'Back to page')); ?>
-			<?php endif; ?>
-			<?php
-				echo $this->RegistrationUtil->getAggregateButtons($registration,
-					array('title' => __d('registrations', 'Aggregate'),
-							'class' => 'primary',
-			));
-			?>
-		</div>
+		<?php echo $registration['Registration']['thanks_content']; ?>
+	</p>
+		<!--<hr>-->
+		<!---->
+		<!--<div class="text-center">-->
+		<!--	--><?php //if ($displayType == RegistrationsComponent::DISPLAY_TYPE_LIST): ?>
+		<!--		--><?php //echo $this->BackTo->indexLinkButton(__d('registrations', 'Back to page')); ?>
+		<!--	--><?php //endif; ?>
+		<!--	--><?php
+		//		echo $this->RegistrationUtil->getAggregateButtons($registration,
+		//			array('title' => __d('registrations', 'Aggregate'),
+		//					'class' => 'primary',
+		//	));
+		//	?>
+		<!--</div>-->
 </article>
