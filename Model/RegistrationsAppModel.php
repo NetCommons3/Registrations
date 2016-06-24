@@ -12,6 +12,8 @@
  */
 
 App::uses('AppModel', 'Model');
+App::uses('Current', 'NetCommons.Utility');
+App::uses('RegistrationsComponent', 'Registrations.Controller/Component');
 
 /**
  * Summary for RegistrationQuestion Model
