@@ -42,7 +42,8 @@ class RegistrationAnswerHelper extends AppHelper {
 		RegistrationsComponent::TYPE_MATRIX_SELECTION_LIST => 'matrix',
 		RegistrationsComponent::TYPE_MATRIX_MULTIPLE => 'matrix',
 		RegistrationsComponent::TYPE_SINGLE_SELECT_BOX => 'singleList',
-		RegistrationsComponent::TYPE_DATE_AND_TIME => 'dateTimeInput'
+		RegistrationsComponent::TYPE_DATE_AND_TIME => 'dateTimeInput',
+		RegistrationsComponent::TYPE_EMAIL => 'emailInput'
 	);
 
 /**
@@ -396,6 +397,40 @@ class RegistrationAnswerHelper extends AppHelper {
 		$ret .= '</div>';
 		$ret .= '</div></div>';
 		$ret .= $rangeMessage;
+		return $ret;
+	}
+
+/**
+ * メールアドレス
+ *
+ * @param string $index 登録データのPOST用dataのインデックス値
+ * @param string $fieldName フィールド名
+ * @param array $question 項目データ
+ * @param bool $readonly 読み取り専用
+ */
+	public function emailInput($index, $fieldName, $question, $readonly) {
+		if ($readonly) {
+			$ret = nl2br($this->value($fieldName));
+			return $ret;
+		}
+		$ret = $this->NetCommonsForm->email($fieldName, array(
+			'div' => 'form-inline',
+			'type' => 'text',
+			'label' => false,
+			'error' => false,
+			'again' => true,
+		));
+		//$ret .= '<div class="form-group">';
+		//$ret .= '<label class="control-label" style="margin-top: 5px;">
+		//			メールアドレス(確認用)				</label>';
+		//$ret .= $this->NetCommonsForm->input($fieldName . '_confirm', array(
+		//	'div' => 'form-inline',
+		//	'type' => 'text',
+		//	'label' => false,
+		//	'error' => false,
+		//	//'after' => '（確認用）'
+		//));
+		//$ret .='</div>';
 		return $ret;
 	}
 

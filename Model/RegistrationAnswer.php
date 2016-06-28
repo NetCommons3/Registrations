@@ -33,6 +33,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		'Registrations.RegistrationAnswerMatrixSingleChoice',
 		'Registrations.RegistrationAnswerMatrixMultipleChoice',
 		'Registrations.RegistrationAnswerDatetime',
+		'Registrations.RegistrationAnswerEmail',
 	);
 
 /**
@@ -146,6 +147,17 @@ class RegistrationAnswer extends RegistrationsAppModel {
 					'last' => true,
 					'message' => ''
 				),
+				'answerEmailValidation' => array(
+					'rule' => array('answerEmailValidation', $question, $allAnswers),
+					'last' => true,
+					'message' => __d('net_commons', 'Failed on validation errors. Please check the input data.'),
+				),
+				'answerEmailConfirmValidation' => array(
+					'rule' => array('answerEmailConfirmValidation', $question, $allAnswers),
+					'last' => true,
+					'message' => __d('net_commons', 'The input data does not match. Please try again.'),
+				),
+
 			),
 		);
 		parent::beforeValidate($options);

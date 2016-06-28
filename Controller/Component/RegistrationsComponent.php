@@ -220,7 +220,9 @@ class RegistrationsComponent extends Component {
 		self::TYPE_MATRIX_SELECTION_LIST,
 		self::TYPE_MATRIX_MULTIPLE,
 		self::TYPE_DATE_AND_TIME,
-		self::TYPE_SINGLE_SELECT_BOX
+		self::TYPE_SINGLE_SELECT_BOX,
+		self::TYPE_EMAIL,
+		self::TYPE_FILE,
 	);
 
 /**
@@ -510,6 +512,9 @@ class RegistrationsComponent extends Component {
 			return true;
 		}
 		if ($type == self::TYPE_DATE_AND_TIME) {
+			return true;
+		}
+		if ($type == self::TYPE_EMAIL) {
 			return true;
 		}
 		return false;
