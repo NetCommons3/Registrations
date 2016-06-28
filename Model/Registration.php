@@ -191,48 +191,48 @@ class Registration extends RegistrationsAppModel {
 					'message' => __d('registrations', 'start period must be smaller than end period')
 				)
 			),
-			'is_total_show' => array(
-				'boolean' => array(
-					'rule' => array('boolean'),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
-			'total_show_timing' => array(
-				'inList' => array(
-					'rule' => array(
-						'inList',
-						array(RegistrationsComponent::USES_USE, RegistrationsComponent::USES_NOT_USE)
-					),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-				'requireOtherFields' => array(
-					'rule' => array(
-						'requireOtherFields',
-						RegistrationsComponent::USES_USE,
-						array('Registration.total_show_start_period'),
-						'AND'
-					),
-					'message' => __d('registrations', 'if you set the period, please set time.')
-				)
-			),
-			'total_show_start_period' => array(
-				'checkDateTime' => array(
-					'rule' => 'checkDateTime',
-					'message' => __d('registrations', 'Invalid datetime format.')
-				)
-			),
-			'is_no_member_allow' => array(
-				'boolean' => array(
-					'rule' => array('boolean'),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
-			'is_anonymity' => array(
-				'boolean' => array(
-					'rule' => array('boolean'),
-					'message' => __d('net_commons', 'Invalid request.'),
-				),
-			),
+			//'is_total_show' => array(
+			//	'boolean' => array(
+			//		'rule' => array('boolean'),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
+			//'total_show_timing' => array(
+			//	'inList' => array(
+			//		'rule' => array(
+			//			'inList',
+			//			array(RegistrationsComponent::USES_USE, RegistrationsComponent::USES_NOT_USE)
+			//		),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//	'requireOtherFields' => array(
+			//		'rule' => array(
+			//			'requireOtherFields',
+			//			RegistrationsComponent::USES_USE,
+			//			array('Registration.total_show_start_period'),
+			//			'AND'
+			//		),
+			//		'message' => __d('registrations', 'if you set the period, please set time.')
+			//	)
+			//),
+			//'total_show_start_period' => array(
+			//	'checkDateTime' => array(
+			//		'rule' => 'checkDateTime',
+			//		'message' => __d('registrations', 'Invalid datetime format.')
+			//	)
+			//),
+			//'is_no_member_allow' => array(
+			//	'boolean' => array(
+			//		'rule' => array('boolean'),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
+			//'is_anonymity' => array(
+			//	'boolean' => array(
+			//		'rule' => array('boolean'),
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	),
+			//),
 			'is_key_pass_use' => array(
 				'boolean' => array(
 					'rule' => array('boolean'),
