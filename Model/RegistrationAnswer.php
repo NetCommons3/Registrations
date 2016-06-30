@@ -34,6 +34,13 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		'Registrations.RegistrationAnswerMatrixMultipleChoice',
 		'Registrations.RegistrationAnswerDatetime',
 		'Registrations.RegistrationAnswerEmail',
+		'NetCommons.OriginalKey',
+		'Files.Attachment' => [
+			'answer_value_file' => [
+				'contentKeyFieldName' => 'id',
+				'fileNameFieldName' => 'answer_value'
+			]
+		],
 	);
 
 /**

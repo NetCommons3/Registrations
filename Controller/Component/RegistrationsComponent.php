@@ -517,6 +517,9 @@ class RegistrationsComponent extends Component {
 		if ($type == self::TYPE_EMAIL) {
 			return true;
 		}
+		if ($type == self::TYPE_FILE) {
+			return true;
+		}
 		return false;
 	}
 
