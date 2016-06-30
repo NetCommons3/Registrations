@@ -99,6 +99,25 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				</div>
 			</div>
 
+			<div class="form-group">
+				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration number limit')); ?>
+				<?php
+				echo $this->QuestionEdit->registrationAttributeCheckbox('is_limit_number',
+					__d('registrations', 'To limit the number of registrations'));
+				?>
+				<div class="row">
+					<div class="col-xs-11 col-xs-offset-1">
+						<?php
+						echo $this->Html->div(null,
+							$this->NetCommonsForm->input('limit_number',array('label' => __d('registrations', 'Limit number'))),
+							['ng-show' => 'registration.registration.isLimitNumber != 0']
+						);
+						?>
+
+					</div>
+
+				</div>
+			</div>
 
 			<div class="form-group">
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration method')); ?>

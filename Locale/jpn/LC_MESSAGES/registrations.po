@@ -956,3 +956,12 @@ msgstr "メールアドレス"
 
 msgid "File"
 msgstr "ファイル"
+
+msgid "Registration number limit"
+msgstr "登録数制限"
+
+msgid "To limit the number of registrations"
+msgstr "登録数を制限する"
+
+msgid "Limit number"
+msgstr "登録数"
