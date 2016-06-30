@@ -142,6 +142,10 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_EMAIL; ?>">
 											<?php echo $this->element($elementFolder . 'email_option');?>
 										</div>
+										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_FILE; ?>">
+											<?php echo $this->element($elementFolder .
+												'file_option');?>
+										</div>
 									</div>
 								</div>
 							</div >
