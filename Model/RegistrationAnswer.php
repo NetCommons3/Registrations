@@ -38,6 +38,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		'Files.Attachment' => [
 			'answer_value_file' => [
 				'contentKeyFieldName' => 'id',
+				'fileNameFieldName' => 'answer_value'
 			]
 		],
 	);
