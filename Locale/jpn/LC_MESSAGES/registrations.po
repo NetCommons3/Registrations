@@ -956,3 +956,15 @@ msgstr "メールアドレス"
 
 msgid "File"
 msgstr "ファイル"
+
+msgid "Registration number limit"
+msgstr "登録数制限"
+
+msgid "To limit the number of registrations"
+msgstr "登録数を制限する"
+
+msgid "Limit number"
+msgstr "登録数"
+
+msgid "Sorry, but no vacancy left."
+msgstr "制限数に達したため受付けを終了しました。"
