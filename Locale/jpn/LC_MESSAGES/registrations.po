@@ -965,3 +965,6 @@ msgstr "登録数を制限する"
 
 msgid "Limit number"
 msgstr "登録数"
+
+msgid "Sorry, but no vacancy left."
+msgstr "制限数に達したため受付けを終了しました。"
