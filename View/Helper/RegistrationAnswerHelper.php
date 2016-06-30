@@ -446,20 +446,20 @@ class RegistrationAnswerHelper extends AppHelper {
  * @return string Html
  */
 	public function fileInput($index, $fieldName, $question, $readonly) {
-		$fieldName = $fieldName . '_file';
-		// TODO Fix me
 		if ($readonly) {
+			// TODO Fix me
 			$ret = nl2br($this->value($fieldName));
 			return $ret;
 		}
-		$ret = $this->NetCommonsForm->uploadFile($fieldName, array(
+		$fileFieldName = $fieldName . '_file';
+		$ret = $this->NetCommonsForm->uploadFile($fileFieldName, array(
 			'div' => 'form-inline',
 			'type' => 'text',
 			'label' => false,
 			'error' => false,
 		));
 		//$ret .= '<div class="form-group">';
-		//$ret .= '<label class="control-label" style="margin-top: 5px;">
+		//$ret .= '<label class="control-label" stseyle="margin-top: 5px;">
 		//			メールアドレス(確認用)				</label>';
 		//$ret .= $this->NetCommonsForm->input($fieldName . '_confirm', array(
 		//	'div' => 'form-inline',
