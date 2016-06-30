@@ -8,6 +8,8 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+App::uses('NetCommonsTestSuite', 'NetCommons.TestSuite');
+
 /**
  * Registrations All Test Suite
  *
@@ -15,7 +17,7 @@
  * @package NetCommons\Announcements\Test\Case
  * @codeCoverageIgnore
  */
-class AllRegistrationsTest extends CakeTestSuite {
+class AllRegistrationsTest extends NetCommonsTestSuite {
 
 /**
  * All test suite
@@ -24,7 +26,7 @@ class AllRegistrationsTest extends CakeTestSuite {
  */
 	public static function suite() {
 		$plugin = preg_replace('/^All([\w]+)Test$/', '$1', __CLASS__);
-		$suite = new CakeTestSuite(sprintf('All %s Plugin tests', $plugin));
+		$suite = new NetCommonsTestSuite(sprintf('All %s Plugin tests', $plugin));
 		$suite->addTestDirectoryRecursive(CakePlugin::path($plugin) . 'Test' . DS . 'Case');
 		return $suite;
 	}
