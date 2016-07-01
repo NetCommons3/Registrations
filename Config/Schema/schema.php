@@ -1,15 +1,54 @@
-<?php 
+<?php
+/**
+ * Schema file
+ *
+ * @author Noriko Arai <arai@nii.ac.jp>
+ * @author AllCreator <info@allcreator.net>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ * @copyright Copyright 2014, NetCommons Project
+ */
+/**
+ * Schema file
+ *
+ * @author AllCreator <info@allcreator.net>
+ * @package NetCommons\Registration\Config\Schema
+ * @SuppressWarnings(PHPMD.LongVariable)
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ */
 class RegistrationsSchema extends CakeSchema {
 
+/**
+ * Database connection
+ *
+ * @var string
+ */
 	public $connection = 'master';
 
+/**
+ * before
+ *
+ * @param array $event event
+ * @return bool
+ */
 	public function before($event = array()) {
 		return true;
 	}
 
+/**
+ * after
+ *
+ * @param array $event event
+ * @return void
+ */
 	public function after($event = array()) {
 	}
 
+/**
+ * registration_answer_summaries table
+ *
+ * @var array
+ */
 	public $registration_answer_summaries = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'answer_status' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 4, 'unsigned' => false, 'comment' => '登録状態 1ページずつ表示するような登録フォームの場合、途中状態か否か | 0:登録未完了 | 1:登録完了'),
@@ -29,6 +68,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_answers table
+ *
+ * @var array
+ */
 	public $registration_answers = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'matrix_choice_key' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -54,6 +98,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_choices table
+ *
+ * @var array
+ */
 	public $registration_choices = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -80,6 +129,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_frame_display_registrations table
+ *
+ * @var array
+ */
 	public $registration_frame_display_registrations = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'frame_key' => array('type' => 'string', 'null' => false, 'default' => null, 'key' => 'index', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -95,6 +149,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_frame_settings table
+ *
+ * @var array
+ */
 	public $registration_frame_settings = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'display_type' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 4, 'unsigned' => false, 'comment' => '0:単一表示(default)|1:リスト表示'),
@@ -112,6 +171,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_pages table
+ *
+ * @var array
+ */
 	public $registration_pages = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -131,6 +195,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_questions table
+ *
+ * @var array
+ */
 	public $registration_questions = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -164,6 +233,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registration_blocks_settings table
+ *
+ * @var array
+ */
 	public $registration_settings = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'block_key' => array('type' => 'string', 'null' => false, 'default' => null, 'key' => 'index', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -179,6 +253,11 @@ class RegistrationsSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
+/**
+ * registrations table
+ *
+ * @var array
+ */
 	public $registrations = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),

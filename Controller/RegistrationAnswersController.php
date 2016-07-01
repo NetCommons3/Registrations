@@ -16,6 +16,7 @@ App::uses('AppController', 'Controller');
  *
  * @author Allcreator <info@allcreator.net>
  * @package NetCommons\Registrations\Controller
+ * @property RegistrationAnswer $RegistrationAnswer
  */
 class RegistrationAnswersController extends RegistrationsAppController {
 
@@ -167,7 +168,6 @@ class RegistrationAnswersController extends RegistrationsAppController {
  */
 	protected function _viewGuard() {
 		$registrationKey = $this->_getRegistrationKey($this->__registration);
-
 		$quest = $this->__registration['Registration'];
 
 		if (!$this->Session->check('Registration.auth_ok.' . $registrationKey)) {
@@ -283,6 +283,11 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		$registration = $this->__registration;
 		$registrationKey = $this->_getRegistrationKey($this->__registration);
 
+		//登録数制限
+		if ($this->_isLimitNumber($registration)) {
+			$this->render('limit');
+			return;
+		}
 		//
 		$this->_viewGuard();
 
@@ -498,4 +503,24 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		)));
 	}
 
+/**
+ * 登録数制限に達してるかチェック
+ *
+ * @param array $registration Registrationデータ
+ * @return bool
+ */
+	protected function _isLimitNumber($registration) {
+		if ($registration['Registration']['is_limit_number']) {
+			$limit = $registration['Registration']['limit_number'];
+			// 登録数カウント
+			$options = [
+				'conditions' => $this->RegistrationAnswerSummary->getResultCondition($registration)
+			];
+			$answerCount = $this->RegistrationAnswerSummary->find('count', $options);
+			if ($limit <= $answerCount) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

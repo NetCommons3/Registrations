@@ -363,7 +363,7 @@ class RegistrationEditController extends RegistrationsAppController {
  * @return void
  */
 	private function __setupViewParameters($registration, $backUrl) {
-		$isPublished = $this->Registration->hasPublished($registration);
+		//$isPublished = $this->Registration->hasPublished($registration);
 
 		// エラーメッセージはページ、項目、選択肢要素のそれぞれの場所に割り当てる
 		$this->NetCommons->handleValidationError($this->Registration->validationErrors);

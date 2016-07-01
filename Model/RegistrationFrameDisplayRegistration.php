@@ -148,7 +148,7 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		if (! $this->validateFrameDisplayRegistration($data)) {
 			return false;
 		}
-		$frameSetting = $data['RegistrationFrameSetting'];
+		//$frameSetting = $data['RegistrationFrameSetting'];
 
 		//トランザクションBegin
 		$this->begin();
@@ -255,7 +255,8 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		}
 
 		// フレームのデフォルトにする
-		$action = "'" . 'registration_answers/view/' . Current::read('Block.id') . '/' . $data['registration_key'] . "'";
+		$action = "'" . 'registration_answers/view/' . Current::read('Block.id') .
+			'/' . $data['registration_key'] . "'";
 		if (!$this->updateFrameDefaultAction($action)) {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}

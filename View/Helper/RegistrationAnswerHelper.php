@@ -43,7 +43,8 @@ class RegistrationAnswerHelper extends AppHelper {
 		RegistrationsComponent::TYPE_MATRIX_MULTIPLE => 'matrix',
 		RegistrationsComponent::TYPE_SINGLE_SELECT_BOX => 'singleList',
 		RegistrationsComponent::TYPE_DATE_AND_TIME => 'dateTimeInput',
-		RegistrationsComponent::TYPE_EMAIL => 'emailInput'
+		RegistrationsComponent::TYPE_EMAIL => 'emailInput',
+		RegistrationsComponent::TYPE_FILE => 'fileInput'
 	);
 
 /**
@@ -407,6 +408,7 @@ class RegistrationAnswerHelper extends AppHelper {
  * @param string $fieldName フィールド名
  * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
+ * @return string Html
  */
 	public function emailInput($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
@@ -422,6 +424,41 @@ class RegistrationAnswerHelper extends AppHelper {
 		));
 		//$ret .= '<div class="form-group">';
 		//$ret .= '<label class="control-label" style="margin-top: 5px;">
+		//			メールアドレス(確認用)				</label>';
+		//$ret .= $this->NetCommonsForm->input($fieldName . '_confirm', array(
+		//	'div' => 'form-inline',
+		//	'type' => 'text',
+		//	'label' => false,
+		//	'error' => false,
+		//	//'after' => '（確認用）'
+		//));
+		//$ret .='</div>';
+		return $ret;
+	}
+
+/**
+ * ファイル添付
+ *
+ * @param string $index 登録データのPOST用dataのインデックス値
+ * @param string $fieldName フィールド名
+ * @param array $question 項目データ
+ * @param bool $readonly 読み取り専用
+ * @return string Html
+ */
+	public function fileInput($index, $fieldName, $question, $readonly) {
+		if ($readonly) {
+			$ret = nl2br($this->value($fieldName));
+			return $ret;
+		}
+		$fileFieldName = $fieldName . '_file';
+		$ret = $this->NetCommonsForm->uploadFile($fileFieldName, array(
+			'div' => 'form-inline',
+			'type' => 'text',
+			'label' => false,
+			'error' => false,
+		));
+		//$ret .= '<div class="form-group">';
+		//$ret .= '<label class="control-label" stseyle="margin-top: 5px;">
 		//			メールアドレス(確認用)				</label>';
 		//$ret .= $this->NetCommonsForm->input($fieldName . '_confirm', array(
 		//	'div' => 'form-inline',
