@@ -447,9 +447,6 @@ class RegistrationAnswerHelper extends AppHelper {
  */
 	public function fileInput($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
-			// TODO Fix me　ファイル名表時
-			// $fieldName RegistrationAnswer.f2d7f9e391fe0b8b885787147cc3e8ef.0.answer_value
-			// $index f2d7f9e391fe0b8b885787147cc3e8ef クエスチョンキーがこれ
 			$ret = nl2br($this->value($fieldName));
 			return $ret;
 		}

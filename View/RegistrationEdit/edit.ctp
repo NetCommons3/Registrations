@@ -109,7 +109,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 					<div class="col-xs-11 col-xs-offset-1">
 						<?php
 						echo $this->Html->div(null,
-							$this->NetCommonsForm->input('limit_number',array('label' => __d('registrations', 'Limit number'))),
+							$this->NetCommonsForm->input('limit_number', array('label' => __d('registrations', 'Limit number'))),
 							['ng-show' => 'registration.registration.isLimitNumber != 0']
 						);
 						?>
