@@ -148,7 +148,7 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		if (! $this->validateFrameDisplayRegistration($data)) {
 			return false;
 		}
-		$frameSetting = $data['RegistrationFrameSetting'];
+		//$frameSetting = $data['RegistrationFrameSetting'];
 
 		//トランザクションBegin
 		$this->begin();

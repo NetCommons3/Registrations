@@ -119,21 +119,4 @@ class RegistrationsController extends RegistrationsAppController {
 
 		return $filter;
 	}
-
-/**
- * Set view value of answered registration keys
- *
- * @return void
- */
-	private function __setOwnAnsweredKeys() {
-		$answerStat = $this->request->params['named']['answer_status'];
-		if ($answerStat == RegistrationsComponent::REGISTRATION_ANSWER_UNANSWERED) {
-			$this->set('ownAnsweredKeys', array());
-
-			return;
-		}
-
-		$this->set('ownAnsweredKeys', $this->RegistrationsOwnAnswer->getOwnAnsweredKeys());
-	}
-
 }
