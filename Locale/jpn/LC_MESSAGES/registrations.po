@@ -977,3 +977,23 @@ msgstr "登録通知メールを送る"
 
 msgid "Registration mail"
 msgstr "登録メール"
+
+msgid "Notify the applicant by e-mail,if there is metadata of e-mail"
+msgstr "本人にも送る（メールアドレス項目があるときのみ）"
+
+msgid "Registration.mail.default.body"
+msgstr ""
+"{X-PLUGIN_NAME}に回答されたのでお知らせします。\n"
+"ルーム名:{X-ROOM}\n"
+"タイトル:{X-SUBJECT}\n"
+"回答者:{X-USER}\n"
+"回答日時:{X-TO_DATE}\n"
+"\n"
+"回答結果を参照するには下記のリンクをクリックしてください。\n"
+"{X-URL}"
+
+msgid "Registration.mail.popover"
+msgstr ""
+"{X-SITE_NAME} : サイト名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-ROOM} : ルーム名<br>{X-SUBJECT} : タイトル<br>{X-USER} : 回答者<br>{X-"
+"TO_DATE} : 回答日時<br>{X-URL} : 回答結果のURL<br>"
+"{X-DATA} : 登録内容"
