@@ -40,6 +40,10 @@ class RegistrationEditController extends RegistrationsAppController {
  * @var array
  */
 	public $uses = array(
+		// 登録通知メール
+		//'Mails.MailSetting',
+		//'Mails.MailSettingFixedPhrase',
+
 	);
 
 /**
@@ -56,6 +60,8 @@ class RegistrationEditController extends RegistrationsAppController {
 		),
 		'Registrations.Registrations',
 		'NetCommons.NetCommonsTime',
+		// 登録通知メール
+		//'Mails.MailSettings',
 	);
 
 /**
@@ -86,7 +92,10 @@ class RegistrationEditController extends RegistrationsAppController {
 			'cancelUrl' => null
 		),
 		'Wysiwyg.Wysiwyg',
-		);
+		// 登録通知メール
+		//'Blocks.BlockRolePermissionForm',
+		//'Mails.MailForm',
+	);
 
 /**
  * target registration　
@@ -106,6 +115,12 @@ class RegistrationEditController extends RegistrationsAppController {
  * @return void
  */
 	public function beforeFilter() {
+		// 登録通知メール
+		//$this->MailSettings->permission =
+		//	array('mail_answer_receivable');
+		//$this->MailSettings->typeKeys =
+		//	array(MailSettingFixedPhrase::ANSWER_TYPE); //
+
 		parent::beforeFilter();
 		// NetCommonsお約束：編集画面へのURLに編集対象のコンテンツキーが含まれている
 		// まずは、そのキーを取り出す
@@ -243,6 +258,9 @@ class RegistrationEditController extends RegistrationsAppController {
 		}
 
 		if ($this->request->is('post') || $this->request->is('put')) {
+			// 登録通知メール
+			$this->_mailSetting();
+
 			$postRegistration = $this->request->data;
 
 			$beforeStatus = $this->_registration['Registration']['status'];
@@ -286,11 +304,14 @@ class RegistrationEditController extends RegistrationsAppController {
 			}
 			return;
 		} else {
+			// 登録通知メール
+
 			// 指定されて取り出した登録フォームデータをセッションキャッシュに書く
 			$this->Session->write(
 				$this->_getRegistrationEditSessionIndex(),
 				$this->_registration);
 			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_question'));
+			$this->_mailSetting();
 		}
 	}
 
@@ -404,4 +425,36 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
 	}
+
+
+	//protected function _mailSetting() {
+	//	if ($this->request->is('post') || $this->request->is('put')) {
+	//		$result = $this->MailSetting->saveMailSettingAndFixedPhrase($this->request->data);
+	//		if ($result) {
+	//			$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
+	//				'class' => 'success',
+	//				'interval' => NetCommonsComponent::ALERT_SUCCESS_INTERVAL,
+	//			));
+	//			if (! $this->backUrl) {
+	//				return $this->redirect(NetCommonsUrl::backToIndexUrl('default_setting_action'));
+	//			} else {
+	//				return $this->redirect($this->backUrl);
+	//			}
+	//		}
+	//		$this->NetCommons->handleValidationError($this->MailSetting->validationErrors);
+	//		$this->NetCommons->handleValidationError($this->MailSettingFixedPhrase->validationErrors);
+	//		$this->request->data['BlockRolePermission'] = Hash::merge(
+	//			$this->viewVars['permissions']['BlockRolePermissions'],
+	//			$this->request->data['BlockRolePermission']
+	//		);
+	//	} else {
+	//		$mailSettingPlugin = $this->viewVars['mailSettingPlugin'];
+	//		$this->request->data['MailSetting'] = $mailSettingPlugin['MailSetting'];
+	//		$this->request->data['MailSettingFixedPhrase'] = $mailSettingPlugin['MailSettingFixedPhrase'];
+	//		$this->request->data['BlockRolePermission'] =
+	//			$this->viewVars['permissions']['BlockRolePermissions'];
+	//		$this->request->data['Frame'] = Current::read('Frame');
+	//	}
+	//}
+	//
 }
