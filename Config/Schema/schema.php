@@ -288,7 +288,7 @@ class RegistrationsSchema extends CakeSchema {
 		'is_answer_mail_send' => array('type' => 'boolean', 'null' => true, 'default' => '0', 'comment' => '登録フォーム登録時に編集者、編集長にメールで知らせるか否か | 0:知らせない| 1:知らせる
 '),
 		'reply_to' => array('type' => 'string', 'null' => true, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'regist_user_send' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'is_regist_user_send' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'registration_mail_subject' => array('type' => 'string', 'null' => false, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'registration_mail_body' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'is_page_random' => array('type' => 'boolean', 'null' => true, 'default' => '0', 'comment' => 'ページ表示順序ランダム化（※将来機能）

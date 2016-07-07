@@ -26,8 +26,8 @@ class AddRegistrationMail extends CakeMigration {
 			'create_field' => array(
 				'registrations' => array(
 					'reply_to' => array('type' => 'string', 'null' => true, 'collate' => 'utf8_general_ci', 'charset' => 'utf8', 'after' => 'is_answer_mail_send'),
-					'regist_user_send' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'after' => 'reply_to'),
-					'registration_mail_subject' => array('type' => 'string', 'null' => false, 'collate' => 'utf8_general_ci', 'charset' => 'utf8', 'after' => 'regist_user_send'),
+					'is_regist_user_send' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'after' => 'reply_to'),
+					'registration_mail_subject' => array('type' => 'string', 'null' => false, 'collate' => 'utf8_general_ci', 'charset' => 'utf8', 'after' => 'is_regist_user_send'),
 					'registration_mail_body' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8', 'after' => 'registration_mail_subject'),
 				),
 			),
@@ -42,7 +42,7 @@ class AddRegistrationMail extends CakeMigration {
 				),
 			),
 			'drop_field' => array(
-				'registrations' => array('reply_to', 'regist_user_send', 'registration_mail_subject', 'registration_mail_body'),
+				'registrations' => array('reply_to', 'is_regist_user_send', 'registration_mail_subject', 'registration_mail_body'),
 			),
 		),
 	);
