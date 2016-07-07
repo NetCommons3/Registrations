@@ -258,8 +258,6 @@ class RegistrationEditController extends RegistrationsAppController {
 		}
 
 		if ($this->request->is('post') || $this->request->is('put')) {
-			// 登録通知メール
-			$this->_mailSetting();
 
 			$postRegistration = $this->request->data;
 
@@ -311,7 +309,6 @@ class RegistrationEditController extends RegistrationsAppController {
 				$this->_getRegistrationEditSessionIndex(),
 				$this->_registration);
 			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_question'));
-			$this->_mailSetting();
 		}
 	}
 
