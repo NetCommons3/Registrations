@@ -724,7 +724,7 @@ msgstr "この登録フォームの集計結果をみることはできません
 #: /View/RegistrationAnswers/test_mode.ctp:25
 #: /View/RegistrationEdit/edit.ctp:58
 msgid "Registration answer period"
-msgstr "登録フォーム登録期間"
+msgstr "登録期間"
 
 #: /View/RegistrationAnswers/test_mode.ctp:31
 msgid "do not set the answer period"
@@ -741,8 +741,8 @@ msgstr "公開期間を制限しない"
 
 #: /View/RegistrationAnswers/test_mode.ctp:50
 #: /View/RegistrationEdit/edit.ctp:113
-msgid "Registration method"
-msgstr "登録フォーム方式"
+msgid "Auth method"
+msgstr "認証方式"
 
 #: /View/RegistrationAnswers/test_mode.ctp:54
 #: /View/RegistrationEdit/edit.ctp:117
@@ -968,3 +968,12 @@ msgstr "登録数"
 
 msgid "Sorry, but no vacancy left."
 msgstr "制限数に達したため受付けを終了しました。"
+
+msgid "Deliver e-mail when submitted?"
+msgstr "メール配信設定"
+
+msgid "Answer mail send"
+msgstr "登録通知メールを送る"
+
+msgid "Registration mail"
+msgstr "登録メール"

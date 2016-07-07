@@ -22,9 +22,10 @@
 				array(
 					'mailBodyPopoverMessage' => __d('registrations', 'MailSetting.mail_fixed_phrase_body.popover'),
 				),
-				//array(
-				//	'mailBodyPopoverMessage' => __d('mails', 'MailSetting.mail_fixed_phrase_body.popover.answer'),
-				//),
+				array(
+					'mailBodyPopoverMessage' => __d('mails', 'MailSetting.mail_fixed_phrase_body.popover.answer'),
+					'panelHeading' => __d('registrations', 'Registration mail')
+				),
 			),
 			NetCommonsUrl::backToIndexUrl('default_setting_action'),
 			1 // 問合せ先メールアドレス 表示
