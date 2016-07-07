@@ -290,6 +290,20 @@ class Registration extends RegistrationsAppModel {
 					'message' => __d('net_commons', 'Invalid request.'),
 				),
 			),
+			'is_regist_user_send' => array(
+				'boolean' => array(
+					'rule' => array('boolean'),
+					'message' => __d('net_commons', 'Invalid request.'),
+				),
+			),
+			'reply_to' => array(
+				'email' => array(
+					'rule' => array('email', false, null),
+					'message' => sprintf(__d('mails', '%s, please enter by e-mail format'),
+						__d('mails', 'E-mail address to receive a reply')),
+					'allowEmpty' => true,
+				),
+			),
 		));
 
 		parent::beforeValidate($options);
