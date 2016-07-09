@@ -33,7 +33,8 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				'X-SUBJECT' => 'Registration.title',
 			),
 			'keyField' => 'id',
-		),
+			'typeKey' => MailSettingFixedPhrase::ANSWER_TYPE,
+			),
 		'Mails.MailQueueDelete',
 	);
 
