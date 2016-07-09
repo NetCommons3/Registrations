@@ -124,6 +124,35 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				'frame_id' => Current::read('Frame.id'),
 			));
 			$this->setAddEmbedTagValue('X-URL', $url);
+
+			// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
+			$registrationConditions = $this->Registration->getBaseCondition();
+			$registration = $this->Registration->find('first', ['conditions' => $registrationConditions]);
+			if ($registration['Registration']['is_regist_user_send']) {
+				// 本人にもメールする
+				foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
+					if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL){
+						// メール項目あり
+
+						// メアドをregistration_answersから取得
+						$options = [
+							'conditions' => [
+								'registration_answer_summary_id' => $summary['RegistrationAnswerSummary']['id']
+							],
+							'order' => ['RegistrationAnswer.id ASC']
+						];
+						$answers = $this->RegistrationAnswer->find('all', $options);
+						$registUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
+						// 送信先にset
+						$this->setSetting(
+							MailQueueBehavior::MAIL_QUEUE_SETTING_TO_ADDRESSES,
+							[$registUserMail]
+						);
+						// ループから抜ける
+						break;
+					}
+				}
+			}
 		} else {
 			// 完了時以外はメールBehaviorを外す
 			$this->Behaviors->unload('Mails.MailQueue');
