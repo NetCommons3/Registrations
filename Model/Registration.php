@@ -599,6 +599,31 @@ class Registration extends RegistrationsAppModel {
 				$saveRegistration['Registration']['key'],
 				$status);
 
+			// TODO Registrationのステータスが公開なら登録通知メール設定を上書きする
+			// if ($status == WorkflowComponent::STATUS_PUBLISHED) {
+			// 	// 登録通知メール設定を取得
+			// 	$mailSetting = $this->MailSetting->getMailSettingPlugin(
+			// 		$saveRegistration['Registration']['language_id'],
+			// 		'answer_' . $saveRegistration['Registration']['key'],
+			// 		'registrations'
+			// 	);
+			// 	//if (!$mailSetting) {
+			// 	//	$mailSetting = $this->MailSetting->createMailSetting('registrations');
+			// 	//}
+			// 	// 登録通知メール設定を変更
+			// 	//$mailSetting['MailSetting']['reply_to'] = $saveRegistration['Registration']['reply_to']; // ブロックでひとつしか設定できなので使うのはやめた
+			// 	$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_subject'] = $saveRegistration['Registration']['registration_mail_subject'];
+			// 	$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_body'] = $saveRegistration['Registration']['registration_mail_body'];
+			// 	// 登録通知メール設定を保存
+			// 	if ($this->MailSetting->save($mailSetting)) {
+			// 		Hash::insert($mailSetting, 'MailSettingFixedPhrase.mail_setting_id', $this->MailSetting->id);
+			// 		$this->MailSettingFixedPhrase = ClassRegistry::init('Mails.MailSettingFixedPhrase');
+			// 		if (!$this->MailSettingFixedPhrase->save($mailSetting)) {
+			// 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			// 		}
+			// 	}
+			// }
+
 			$this->commit();
 		} catch (Exception $ex) {
 			$this->rollback();
