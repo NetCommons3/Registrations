@@ -159,13 +159,13 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 
 			// X-DATA展開
 			$xData = array();
-			$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':'
-				. $summary['RegistrationAnswerSummary']['id'];
+			$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':' .
+				$summary['RegistrationAnswerSummary']['id'];
 			foreach ($answers as $index => $answer) {
 				// answer_valuesがあるときは選択式
 				$xDataString = $answer['RegistrationQuestion']['question_value'] . ':';
 
-				if (Hash::check($answer, 'RegistrationAnswer.answer_values')){
+				if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
 					// 選択式
 					$xDataString .= implode("\n", $answer['RegistrationAnswer']['answer_values']);
 				} else {
@@ -179,7 +179,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			if ($registration['Registration']['is_regist_user_send']) {
 				// 本人にもメールする
 				foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
-					if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL){
+					if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL) {
 						// メール項目あり
 
 						// メアドをregistration_answersから取得
