@@ -422,36 +422,4 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
 	}
-
-
-	//protected function _mailSetting() {
-	//	if ($this->request->is('post') || $this->request->is('put')) {
-	//		$result = $this->MailSetting->saveMailSettingAndFixedPhrase($this->request->data);
-	//		if ($result) {
-	//			$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
-	//				'class' => 'success',
-	//				'interval' => NetCommonsComponent::ALERT_SUCCESS_INTERVAL,
-	//			));
-	//			if (! $this->backUrl) {
-	//				return $this->redirect(NetCommonsUrl::backToIndexUrl('default_setting_action'));
-	//			} else {
-	//				return $this->redirect($this->backUrl);
-	//			}
-	//		}
-	//		$this->NetCommons->handleValidationError($this->MailSetting->validationErrors);
-	//		$this->NetCommons->handleValidationError($this->MailSettingFixedPhrase->validationErrors);
-	//		$this->request->data['BlockRolePermission'] = Hash::merge(
-	//			$this->viewVars['permissions']['BlockRolePermissions'],
-	//			$this->request->data['BlockRolePermission']
-	//		);
-	//	} else {
-	//		$mailSettingPlugin = $this->viewVars['mailSettingPlugin'];
-	//		$this->request->data['MailSetting'] = $mailSettingPlugin['MailSetting'];
-	//		$this->request->data['MailSettingFixedPhrase'] = $mailSettingPlugin['MailSettingFixedPhrase'];
-	//		$this->request->data['BlockRolePermission'] =
-	//			$this->viewVars['permissions']['BlockRolePermissions'];
-	//		$this->request->data['Frame'] = Current::read('Frame');
-	//	}
-	//}
-	//
 }

@@ -612,9 +612,12 @@ class Registration extends RegistrationsAppModel {
 				//}
 				// 登録通知メール設定を変更
 				$mailSetting['MailSetting']['plugin_key'] = 'registrations';
-				$mailSetting['MailSetting']['reply_to'] = $saveRegistration['Registration']['reply_to'];
-				$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_subject'] = $saveRegistration['Registration']['registration_mail_subject'];
-				$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_body'] = $saveRegistration['Registration']['registration_mail_body'];
+				$mailSetting['MailSetting']['reply_to']
+					= $saveRegistration['Registration']['reply_to'];
+				$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_subject']
+					= $saveRegistration['Registration']['registration_mail_subject'];
+				$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_body']
+					= $saveRegistration['Registration']['registration_mail_body'];
 				$mailSetting['MailSettingFixedPhrase']['plugin_key'] = 'registrations';
 
 				// 登録通知メール設定を保存

@@ -997,3 +997,6 @@ msgstr ""
 "{X-SITE_NAME} : サイト名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-ROOM} : ルーム名<br>{X-SUBJECT} : タイトル<br>{X-USER} : 回答者<br>{X-"
 "TO_DATE} : 回答日時<br>{X-URL} : 回答結果のURL<br>"
 "{X-DATA} : 登録内容"
+
+msgid "RegistrationAnswerSummary ID"
+msgstr "受付ID"
