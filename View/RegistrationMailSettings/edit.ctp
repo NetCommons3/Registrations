@@ -24,7 +24,8 @@
 				),
 				array(
 					'mailBodyPopoverMessage' => __d('mails', 'MailSetting.mail_fixed_phrase_body.popover.answer'),
-					'panelHeading' => __d('registrations', 'Registration mail')
+					'panelHeading' => __d('registrations', 'Registration mail'),
+					'permissionOnly' => true,
 				),
 			),
 			NetCommonsUrl::backToIndexUrl('default_setting_action'),
