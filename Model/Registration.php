@@ -52,6 +52,7 @@ class Registration extends RegistrationsAppModel {
 		'Wysiwyg.Wysiwyg' => array(
 			'fields' => array('total_comment', 'thanks_content')
 		),
+		'Registrations.MailSetting',
 	);
 
 /**
@@ -601,41 +602,7 @@ class Registration extends RegistrationsAppModel {
 
 			// Registrationのステータスが公開なら登録通知メール設定を上書きする
 			if ($status == WorkflowComponent::STATUS_PUBLISHED) {
-				// 登録通知メール設定を取得
-				$mailSetting = $this->MailSetting->getMailSettingPlugin(
-					$saveRegistration['Registration']['language_id'],
-					MailSettingFixedPhrase::ANSWER_TYPE,
-					'registrations'
-				);
-				//if (!$mailSetting) {
-				//	$mailSetting = $this->MailSetting->createMailSetting('registrations');
-				//}
-				// 登録通知メール設定を変更
-				$mailSetting['MailSetting']['plugin_key'] = 'registrations';
-				$mailSetting['MailSetting']['reply_to']
-					= $saveRegistration['Registration']['reply_to'];
-				$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_subject']
-					= $saveRegistration['Registration']['registration_mail_subject'];
-				$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_body']
-					= $saveRegistration['Registration']['registration_mail_body'];
-				$mailSetting['MailSettingFixedPhrase']['plugin_key'] = 'registrations';
-
-				// 登録通知メール設定を保存
-				if ($this->MailSetting->save($mailSetting)) {
-					$mailSetting = Hash::insert(
-						$mailSetting,
-						'MailSettingFixedPhrase.mail_setting_id',
-						$this->MailSetting->id
-					);
-					$this->MailSettingFixedPhrase = ClassRegistry::init(
-						'Mails.MailSettingFixedPhrase'
-					);
-					if (!$this->MailSettingFixedPhrase->save($mailSetting)) {
-						throw new InternalErrorException(
-							__d('net_commons', 'Internal Server Error')
-						);
-					}
-				}
+				$this->updateMailSetting($saveRegistration);
 			}
 
 			$this->commit();
@@ -763,4 +730,5 @@ class Registration extends RegistrationsAppModel {
 			}
 		}
 	}
+
 }

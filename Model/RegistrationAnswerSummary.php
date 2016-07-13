@@ -126,8 +126,8 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			$this->setAddEmbedTagValue('X-URL', $url);
 
 			// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
-			$registrationConditions = $this->Registration->getBaseCondition();
-			$registration = $this->Registration->find('first', ['conditions' => $registrationConditions]);
+			$condition = $this->Registration->getBaseCondition();
+			$registration = $this->Registration->find('first', ['conditions' => $condition]);
 
 			// 登録された項目の取得
 			// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
@@ -158,22 +158,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			));
 
 			// X-DATA展開
-			$xData = array();
-			$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':' .
-				$summary['RegistrationAnswerSummary']['id'];
-			foreach ($answers as $index => $answer) {
-				// answer_valuesがあるときは選択式
-				$xDataString = $answer['RegistrationQuestion']['question_value'] . ':';
-
-				if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
-					// 選択式
-					$xDataString .= implode("\n", $answer['RegistrationAnswer']['answer_values']);
-				} else {
-					$xDataString .= $answer['RegistrationAnswer']['answer_value'];
-				}
-				$xData[] = $xDataString;
-			}
-			$xData = implode("\n", $xData);
+			$xData = $this->_makeXData($summary, $answers);
 			$this->setAddEmbedTagValue('X-DATA', $xData);
 
 			if ($registration['Registration']['is_regist_user_send']) {
@@ -436,6 +421,33 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			'registration_key' => $key,
 			'test_status' => RegistrationsComponent::TEST_ANSWER_STATUS_TEST), true);
 		return true;
+	}
+
+/**
+ * メール送信のX-DATAタグ用文字列の生成
+ * 
+ * @param array $summary RegistrationAnswerSummmaryデータ
+ * @param array $answers RegistrationAnswerデータ（複数）
+ * @return array|string X-DATA
+ */
+	protected function _makeXData($summary, $answers) {
+		$xData = array();
+		$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':' .
+			$summary['RegistrationAnswerSummary']['id'];
+		foreach ($answers as $answer) {
+			// answer_valuesがあるときは選択式
+			$xDataString = $answer['RegistrationQuestion']['question_value'] . ':';
+
+			if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+				// 選択式
+				$xDataString .= implode("\n", $answer['RegistrationAnswer']['answer_values']);
+			} else {
+				$xDataString .= $answer['RegistrationAnswer']['answer_value'];
+			}
+			$xData[] = $xDataString;
+		}
+		$xData = implode("\n", $xData);
+		return $xData;
 	}
 
 }
