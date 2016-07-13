@@ -38,14 +38,14 @@ class MailSettingBehavior extends ModelBehavior {
 		//	$mailSetting = $this->MailSetting->createMailSetting('registrations');
 		//}
 		// 登録通知メール設定を変更
-		$pluginPrefixLowercase = strtolower(Inflector::singularize($model->plugin));
+		$pluginLowercase = strtolower(Inflector::singularize($model->plugin));
 		$mailSetting['MailSetting']['plugin_key'] = 'registrations';
 		$mailSetting['MailSetting']['reply_to']
 			= $saveRegistration[$model->alias]['reply_to'];
 		$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_subject']
-			= $saveRegistration[$model->alias][$pluginPrefixLowercase . '_mail_subject'];
+			= $saveRegistration[$model->alias][$pluginLowercase . '_mail_subject'];
 		$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_body']
-			= $saveRegistration[$model->alias][$pluginPrefixLowercase . '_mail_body'];
+			= $saveRegistration[$model->alias][$pluginLowercase . '_mail_body'];
 		$mailSetting['MailSettingFixedPhrase']['plugin_key'] = $model->plugin;
 
 		// 登録通知メール設定を保存
