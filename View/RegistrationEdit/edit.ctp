@@ -57,6 +57,11 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 			</div>
 
 			<div class="form-group">
+				<?php echo $this->element('Registrations.RegistrationEdit/Edit/mail_setting'); ?>
+				
+			</div>
+			
+			<div class="form-group">
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration answer period')); ?>
 
 				<?php /* 登録フォーム期間設定 */
@@ -120,7 +125,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 			</div>
 
 			<div class="form-group">
-				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration method')); ?>
+				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Auth method')); ?>
 				<?php if (Current::read('Room.space_id') == Space::PUBLIC_SPACE_ID): ?>
 				<?php echo $this->element('Registrations.RegistrationEdit/Edit/method_in_public'); ?>
 				<?php else: ?>
