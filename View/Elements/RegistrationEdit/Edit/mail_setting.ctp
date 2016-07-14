@@ -1,6 +1,6 @@
 <?php echo $this->NetCommonsForm->label('', __d('registrations', 'Deliver e-mail when submitted?')); ?>
 <?php /* 登録通知メール設定 */
-echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
+echo $this->RegistrationEdit->registrationAttributeCheckbox('is_answer_mail_send',
 	__d('registrations', 'Answer mail send'),
 	array());
 ?>
@@ -8,7 +8,7 @@ echo $this->QuestionEdit->registrationAttributeCheckbox('is_answer_mail_send',
 RegistrationsComponent::USES_USE; ?>'">
 	<div class="col-xs-11 col-xs-offset-1">
 		<?php /* 本人にも送る（メールアドレス項目があるときのみ） */
-		echo $this->QuestionEdit->registrationAttributeCheckbox('is_regist_user_send',
+		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_regist_user_send',
 			__d('registrations', 'Notify the applicant by e-mail,if there is metadata of e-mail'),
 			array());
 		?>

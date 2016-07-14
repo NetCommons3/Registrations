@@ -70,7 +70,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration answer period')); ?>
 
 				<?php /* 登録フォーム期間設定 */
-					echo $this->QuestionEdit->registrationAttributeCheckbox('answer_timing',
+					echo $this->RegistrationEdit->registrationAttributeCheckbox('answer_timing',
 						__d('registrations', 'set the answer period'),
 						array(),
 						__d('registrations', 'After approval will be immediately published . Stop of the registration to select the stop from the registration data list .'));
@@ -80,7 +80,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 						<div class="form-inline">
 							<div class="input-group">
 								<?php
-									echo $this->QuestionEdit->registrationAttributeDatetime('answer_start_period',
+									echo $this->RegistrationEdit->registrationAttributeDatetime('answer_start_period',
 									array(
 										'label' => false,
 										'min' => '',
@@ -92,7 +92,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 									<span class="glyphicon glyphicon-minus"></span>
 								</span>
 								<?php
-									echo $this->QuestionEdit->registrationAttributeDatetime('answer_end_period',
+									echo $this->RegistrationEdit->registrationAttributeDatetime('answer_end_period',
 									array(
 										'label' => false,
 										'min' => 'answer_start_period',
@@ -112,7 +112,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 			<div class="form-group">
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration number limit')); ?>
 				<?php
-				echo $this->QuestionEdit->registrationAttributeCheckbox('is_limit_number',
+				echo $this->RegistrationEdit->registrationAttributeCheckbox('is_limit_number',
 					__d('registrations', 'To limit the number of registrations'));
 				?>
 				<div class="row">

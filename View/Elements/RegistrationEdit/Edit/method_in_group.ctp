@@ -23,7 +23,7 @@
 			'value' => RegistrationsComponent::USES_NOT_USE,
 			'ng-model' => 'registration.registration.isImageAuthentication'
 		));
-		echo $this->QuestionEdit->registrationAttributeCheckbox('is_anonymity',
+		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_anonymity',
 			__d('registrations', 'anonymous answer'
 		));
 	?>

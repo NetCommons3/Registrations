@@ -71,7 +71,7 @@ class RegistrationEditController extends RegistrationsAppController {
 	public $helpers = array(
 		'Workflow.Workflow',
 		'NetCommons.TitleIcon',
-		'Registrations.QuestionEdit',
+		'Registrations.RegistrationEdit',
 		'NetCommons.Wizard' => array(
 			'navibar' => array(
 				'edit_question' => array(
