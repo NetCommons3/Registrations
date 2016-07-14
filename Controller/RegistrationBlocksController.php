@@ -78,15 +78,15 @@ class RegistrationBlocksController extends RegistrationsAppController {
 				'block_index' => array(
 					'url' => array('controller' => 'registration_blocks')
 				),
-				'role_permissions' => array(
-					'url' => array('controller' => 'registration_block_role_permissions')
-				),
-				'frame_settings' => array(
-					'url' => array('controller' => 'registration_frame_settings')
-				),
-				'mail_settings' => array(
-					'url' => array('controller' => 'registration_mail_settings')
-				),
+				//'role_permissions' => array(
+				//	'url' => array('controller' => 'registration_block_role_permissions')
+				//),
+				////'frame_settings' => array(
+				////	'url' => array('controller' => 'registration_frame_settings')
+				////),
+				//'mail_settings' => array(
+				//	'url' => array('controller' => 'registration_mail_settings')
+				//),
 			),
 		),
 		'Blocks.BlockIndex',
@@ -107,8 +107,10 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		// 設定画面を表示する前にこのルームの登録フォームブロックがあるか確認
 		// 万が一、まだ存在しない場合には作成しておく
 		// afterFrameSaveが呼ばれないような状況の想定
-		$frame['Frame'] = Current::read('Frame');
-		$this->Registration->afterFrameSave($frame);
+
+		// このタイミングで作るのはやめてみる by Ryuji AMANO
+		//$frame['Frame'] = Current::read('Frame');
+		//$this->Registration->afterFrameSave($frame);
 	}
 
 /**
@@ -117,26 +119,52 @@ class RegistrationBlocksController extends RegistrationsAppController {
  * @return void
  */
 	public function index() {
-		// 条件設定値取得
-		// 条件設定値取得
 		$conditions = $this->Registration->getBaseCondition();
-
-		// データ取得
-		$this->paginate = array(
-			'conditions' => $conditions,
-			'page' => 1,
-			'order' => array('Registration.modified' => 'DESC'),
-			//'limit' => RegistrationsComponent::REGISTRATION_DEFAULT_DISPLAY_NUM_PER_PAGE,
-			'recursive' => 0,
+		unset($conditions['block_id']);
+		$this->Paginator->settings = array(
+			'Registration' => array(
+				'order' => array('Registration.id' => 'desc'),
+				'conditions' => $this->Registration->getBlockConditions($conditions),
+				'recursive' => 0,
+			)
 		);
-		$registration = $this->paginate('Registration');
-		if (! $registration) {
+
+		$registrations = $this->Paginator->paginate('Registration');
+		if (!$registrations) {
 			$this->view = 'not_found';
 			return;
 		}
 
-		$this->set('registrations', $registration);
+		$this->set('registrations', $registrations);
+		$this->request->data['Frame'] = Current::read('Frame');
 	}
+
+/**
+ * index
+ *
+ * @return void
+ */
+	//public function _index() {
+	//	// 条件設定値取得
+	//	// 条件設定値取得
+	//	$conditions = $this->Registration->getBaseCondition();
+	//
+	//	// データ取得
+	//	$this->paginate = array(
+	//		'conditions' => $conditions,
+	//		'page' => 1,
+	//		'order' => array('Registration.modified' => 'DESC'),
+	//		//'limit' => RegistrationsComponent::REGISTRATION_DEFAULT_DISPLAY_NUM_PER_PAGE,
+	//		'recursive' => 0,
+	//	);
+	//	$registration = $this->paginate('Registration');
+	//	if (! $registration) {
+	//		$this->view = 'not_found';
+	//		return;
+	//	}
+	//
+	//	$this->set('registrations', $registration);
+	//}
 
 /**
  * download

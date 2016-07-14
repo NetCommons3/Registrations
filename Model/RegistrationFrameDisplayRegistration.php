@@ -254,9 +254,10 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}
 
-		// フレームのデフォルトにする
-		$action = "'" . 'registration_answers/view/' . Current::read('Block.id') .
-			'/' . $data['registration_key'] . "'";
+		// フレームのデフォルトにする フレームとブロックが関連づいてるのでここまででOK By RyujiAMANO
+		$action = "'" . 'registration_answers/view/';
+		//$action = "'" . 'registration_answers/view/' . Current::read('Block.id') .
+		//	'/' . $data['registration_key'] . "'";
 		if (!$this->updateFrameDefaultAction($action)) {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}
@@ -280,7 +281,8 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 			'Frame.key' => Current::read('Frame.key')
 		);
 		$frameData = array(
-			'default_action' => $action
+			'default_action' => $action,
+			'block_id' => Current::read('Block.id'),
 		);
 		if (! $this->Frame->updateAll($frameData, $conditions)) {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));

@@ -13,9 +13,10 @@
 ?>
 
 <div class="block-setting-body">
-	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_MAIL_SETTING); ?>
+	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
 
 	<div class="tab-content">
+		<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_MAIL_SETTING, true); ?>
 		<?php /** @see MailFormHelper::editFrom() */ ?>
 		<?php echo $this->MailForm->editFrom(
 			array(

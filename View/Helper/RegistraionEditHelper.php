@@ -1,6 +1,6 @@
 <?php
 /**
- * Question Edit Helper
+ * Registration Edit Helper
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Allcreator Co., Ltd. <info@allcreator.net>
@@ -15,7 +15,7 @@ App::uses('AppHelper', 'View/Helper');
  * @author Allcreator Co., Ltd. <info@allcreator.net>
  * @package NetCommons\Registrations\View\Helper
  */
-class QuestionEditHelper extends AppHelper {
+class RegistrationEditHelper extends AppHelper {
 
 /**
  * Other helpers used by FormHelper

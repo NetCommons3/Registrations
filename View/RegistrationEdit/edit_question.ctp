@@ -26,6 +26,11 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 		$elementFolder = 'Registrations.RegistrationEdit/EditQuestion/options_before_published/';
 	}
 ?>
+<?php if (Current::permission('block_editable')) : ?>
+	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
+	<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_SETTING, ['displayAllTab' =>
+		true, 'displayBlockTitle' => true]); ?>
+<?php endif ?>
 
 <article id="nc-registrations-question-edit"
 	 ng-controller="Registrations.edit.question"
@@ -85,14 +90,14 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 							<?php /* ここから項目本体設定 */
 								/* 項目タイトル */
-								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.question_value',
+								echo $this->RegistrationEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.question_value',
 									__d('registrations', 'question title'),
 									array('type' => 'text',
 										'ng-model' => 'question.questionValue',
 										'required' => 'required',
 									));
 								/* 必須 */
-								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_require',
+								echo $this->RegistrationEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_require',
 								__d('registrations', 'Required'),
 								array(
 								'type' => 'checkbox',
@@ -101,14 +106,14 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 								),
 								__d('registrations', 'set answer to this question is required'));
 								/* 項目文 */
-								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.description',
+								echo $this->RegistrationEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.description',
 									__d('registrations', 'question sentence'),
 									array('type' => 'wysiwyg',
 										'id' => false,
 										'ng-model' => 'question.description',
 									));
 								/* 項目種別 */
-								echo $this->QuestionEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.question_type',
+								echo $this->RegistrationEdit->questionInput('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.question_type',
 									__d('registrations', 'Question type'),
 									array('type' => 'select',
 										'required' => true,
