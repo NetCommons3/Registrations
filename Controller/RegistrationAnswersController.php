@@ -17,6 +17,8 @@ App::uses('AppController', 'Controller');
  * @author Allcreator <info@allcreator.net>
  * @package NetCommons\Registrations\Controller
  * @property RegistrationAnswer $RegistrationAnswer
+ * @property RegistrationsOwnAnswerComponent $RegistrationOwnAnswer
+ * @property RegistrationAnswerSummary $RegistrationAnswerSummary
  */
 class RegistrationAnswersController extends RegistrationsAppController {
 

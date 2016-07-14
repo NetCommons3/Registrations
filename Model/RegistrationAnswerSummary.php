@@ -33,7 +33,8 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				'X-SUBJECT' => 'Registration.title',
 			),
 			'keyField' => 'id',
-		),
+			'typeKey' => MailSettingFixedPhrase::ANSWER_TYPE,
+			),
 		'Mails.MailQueueDelete',
 	);
 
@@ -123,6 +124,61 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				'frame_id' => Current::read('Frame.id'),
 			));
 			$this->setAddEmbedTagValue('X-URL', $url);
+
+			// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
+			$condition = $this->Registration->getBaseCondition();
+			$registration = $this->Registration->find('first', ['conditions' => $condition]);
+
+			// 登録された項目の取得
+			// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
+			// AnswerとQuestionがJOINされた形でFindしないと整備機能が発動しない
+			// そうするためにはrecursive=2でないといけないわけだが、recursive=2にするとRoleのFindでSQLエラーになる
+			// 仕方ないのでこの形式で処理を行う
+			// 単純にRegistrationAnswerSummary.idでFindすると、LEFT JOIN の関係で同じ項目が複数でてきてしまう。
+			$questionIds = Hash::extract(
+				$registration['RegistrationPage'],
+				'{n}.RegistrationQuestion.{n}.id');
+			$answers = $this->RegistrationAnswer->find('all', array(
+				'fields' => array('RegistrationAnswer.*', 'RegistrationQuestion.*'),
+				'conditions' => array(
+					'registration_answer_summary_id' => $summary[$this->alias]['id'],
+					'RegistrationQuestion.id' => $questionIds
+				),
+				'recursive' => -1,
+				'joins' => array(
+					array(
+						'table' => 'registration_questions',
+						'alias' => 'RegistrationQuestion',
+						'type' => 'LEFT',
+						'conditions' => array(
+							'RegistrationAnswer.registration_question_key = RegistrationQuestion.key',
+						)
+					)
+				)
+			));
+
+			// X-DATA展開
+			$xData = $this->_makeXData($summary, $answers);
+			$this->setAddEmbedTagValue('X-DATA', $xData);
+
+			if ($registration['Registration']['is_regist_user_send']) {
+				// 本人にもメールする
+				foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
+					if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL) {
+						// メール項目あり
+
+						// メアドをregistration_answersから取得
+						$registUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
+						// 送信先にset
+						$this->setSetting(
+							MailQueueBehavior::MAIL_QUEUE_SETTING_TO_ADDRESSES,
+							[$registUserMail]
+						);
+						// ループから抜ける
+						break;
+					}
+				}
+			}
 		} else {
 			// 完了時以外はメールBehaviorを外す
 			$this->Behaviors->unload('Mails.MailQueue');
@@ -365,6 +421,33 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			'registration_key' => $key,
 			'test_status' => RegistrationsComponent::TEST_ANSWER_STATUS_TEST), true);
 		return true;
+	}
+
+/**
+ * メール送信のX-DATAタグ用文字列の生成
+ * 
+ * @param array $summary RegistrationAnswerSummmaryデータ
+ * @param array $answers RegistrationAnswerデータ（複数）
+ * @return array|string X-DATA
+ */
+	protected function _makeXData($summary, $answers) {
+		$xData = array();
+		$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':' .
+			$summary['RegistrationAnswerSummary']['id'];
+		foreach ($answers as $answer) {
+			// answer_valuesがあるときは選択式
+			$xDataString = $answer['RegistrationQuestion']['question_value'] . ':';
+
+			if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+				// 選択式
+				$xDataString .= implode("\n", $answer['RegistrationAnswer']['answer_values']);
+			} else {
+				$xDataString .= $answer['RegistrationAnswer']['answer_value'];
+			}
+			$xData[] = $xDataString;
+		}
+		$xData = implode("\n", $xData);
+		return $xData;
 	}
 
 }

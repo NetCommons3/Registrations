@@ -160,16 +160,16 @@ class RegistrationSetting extends RegistrationsAppModel {
 		$this->begin();
 
 		try {
-			// ルームに存在するブロックを探す
-			$block = $this->Block->find('first', array(
-				'conditions' => array(
-					'Block.room_id' => $frame['Frame']['room_id'],
-					'Block.plugin_key' => $frame['Frame']['plugin_key'],
-					'Block.language_id' => $frame['Frame']['language_id'],
-				)
-			));
+			// ルームに存在するブロックを探す。登録フォームは常に新規ブロックとする
+			//$block = $this->Block->find('first', array(
+			//	'conditions' => array(
+			//		'Block.room_id' => $frame['Frame']['room_id'],
+			//		'Block.plugin_key' => $frame['Frame']['plugin_key'],
+			//		'Block.language_id' => $frame['Frame']['language_id'],
+			//	)
+			//));
 			// まだない場合
-			if (empty($block)) {
+			//if (empty($block)) {
 				// 作成する
 				$block = $this->Block->save(array(
 					'room_id' => $frame['Frame']['room_id'],
@@ -180,7 +180,7 @@ class RegistrationSetting extends RegistrationsAppModel {
 					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 				}
 				Current::$current['Block'] = $block['Block'];
-			}
+			//}
 
 			$frame['Frame']['block_id'] = $block['Block']['id'];
 			if (!$this->Frame->save($frame)) {

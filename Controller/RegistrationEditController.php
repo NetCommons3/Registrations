@@ -40,6 +40,10 @@ class RegistrationEditController extends RegistrationsAppController {
  * @var array
  */
 	public $uses = array(
+		// 登録通知メール
+		//'Mails.MailSetting',
+		//'Mails.MailSettingFixedPhrase',
+
 	);
 
 /**
@@ -56,6 +60,8 @@ class RegistrationEditController extends RegistrationsAppController {
 		),
 		'Registrations.Registrations',
 		'NetCommons.NetCommonsTime',
+		// 登録通知メール
+		//'Mails.MailSettings',
 	);
 
 /**
@@ -86,7 +92,10 @@ class RegistrationEditController extends RegistrationsAppController {
 			'cancelUrl' => null
 		),
 		'Wysiwyg.Wysiwyg',
-		);
+		// 登録通知メール
+		//'Blocks.BlockRolePermissionForm',
+		//'Mails.MailForm',
+	);
 
 /**
  * target registration　
@@ -106,6 +115,12 @@ class RegistrationEditController extends RegistrationsAppController {
  * @return void
  */
 	public function beforeFilter() {
+		// 登録通知メール
+		//$this->MailSettings->permission =
+		//	array('mail_answer_receivable');
+		//$this->MailSettings->typeKeys =
+		//	array(MailSettingFixedPhrase::ANSWER_TYPE); //
+
 		parent::beforeFilter();
 		// NetCommonsお約束：編集画面へのURLに編集対象のコンテンツキーが含まれている
 		// まずは、そのキーを取り出す
@@ -243,6 +258,7 @@ class RegistrationEditController extends RegistrationsAppController {
 		}
 
 		if ($this->request->is('post') || $this->request->is('put')) {
+
 			$postRegistration = $this->request->data;
 
 			$beforeStatus = $this->_registration['Registration']['status'];
@@ -286,6 +302,8 @@ class RegistrationEditController extends RegistrationsAppController {
 			}
 			return;
 		} else {
+			// 登録通知メール
+
 			// 指定されて取り出した登録フォームデータをセッションキャッシュに書く
 			$this->Session->write(
 				$this->_getRegistrationEditSessionIndex(),

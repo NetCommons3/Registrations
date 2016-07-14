@@ -52,6 +52,7 @@ class Registration extends RegistrationsAppModel {
 		'Wysiwyg.Wysiwyg' => array(
 			'fields' => array('total_comment', 'thanks_content')
 		),
+		'Registrations.MailSetting',
 	);
 
 /**
@@ -288,6 +289,20 @@ class Registration extends RegistrationsAppModel {
 				'boolean' => array(
 					'rule' => array('boolean'),
 					'message' => __d('net_commons', 'Invalid request.'),
+				),
+			),
+			'is_regist_user_send' => array(
+				'boolean' => array(
+					'rule' => array('boolean'),
+					'message' => __d('net_commons', 'Invalid request.'),
+				),
+			),
+			'reply_to' => array(
+				'email' => array(
+					'rule' => array('email', false, null),
+					'message' => sprintf(__d('mails', '%s, please enter by e-mail format'),
+						__d('mails', 'E-mail address to receive a reply')),
+					'allowEmpty' => true,
 				),
 			),
 		));
@@ -585,6 +600,11 @@ class Registration extends RegistrationsAppModel {
 				$saveRegistration['Registration']['key'],
 				$status);
 
+			// Registrationのステータスが公開なら登録通知メール設定を上書きする
+			if ($status == WorkflowComponent::STATUS_PUBLISHED) {
+				$this->updateMailSetting($saveRegistration);
+			}
+
 			$this->commit();
 		} catch (Exception $ex) {
 			$this->rollback();
@@ -710,4 +730,5 @@ class Registration extends RegistrationsAppModel {
 			}
 		}
 	}
+
 }

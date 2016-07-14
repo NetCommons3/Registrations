@@ -224,6 +224,10 @@ class ActionRegistrationAdd extends RegistrationsAppModel {
 				'answer_timing' => RegistrationsComponent::USES_NOT_USE,
 				'is_key_pass_use' => RegistrationsComponent::USES_NOT_USE,
 				'total_show_timing' => RegistrationsComponent::USES_NOT_USE,
+				'registration_mail_subject' =>
+					__d('registrations', 'Registration.mail.default.subject'),
+				'registration_mail_body' =>
+					__d('registrations', 'Registration.mail.default.body'),
 			),
 			$addData);
 
