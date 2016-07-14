@@ -32,6 +32,10 @@ echo $this->NetCommonsHtml->script(array(
 				<thead>
 				<tr>
 					<?php echo $this->BlockIndex->tableHeader(
+						'Frame.block_id'
+					); ?>
+
+					<?php echo $this->BlockIndex->tableHeader(
 						'Registration.status', __d('registrations', 'Status'),
 						array('sort' => true, 'type' => false)
 					); ?>
@@ -52,6 +56,9 @@ echo $this->NetCommonsHtml->script(array(
 				<tbody>
 					<?php foreach ((array)$registrations as $registration) : ?>
 					<?php echo $this->BlockIndex->startTableRow($registration['Registration']['key']); ?>
+						<?php echo $this->BlockIndex->tableData(
+							'Frame.block_id', $registration['Block']['id']
+						); ?>
 						<?php echo $this->BlockIndex->tableData(
 						'',
 						$this->RegistrationStatusLabel->statusLabelManagementWidget($registration),
