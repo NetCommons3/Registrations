@@ -488,7 +488,7 @@ NetCommonsApp.controller('Registrations.edit.question',
         }
         var newIndex = question.registrationChoice.length;
 
-        if (choiceLabel){
+        if (choiceLabel) {
           choice['choiceLabel'] = choiceLabel;
         } else if (otherType != variables.OTHER_CHOICE_TYPE_NO_OTHER_FILED) {
           choice['choiceLabel'] = $scope.newChoiceOtherLabel;
@@ -548,17 +548,16 @@ NetCommonsApp.controller('Registrations.edit.question',
 
       $scope.addPrefecture =
           function($event, pIdx, qIdx, choiceCount, otherType, matrixType) {
-        // TODO 都道府県メタデータの挿入
+        // `都道府県メタデータの挿入
         angular.forEach($scope.prefectures, function(prefecture, index) {
           $scope.addChoice($event, pIdx, qIdx, choiceCount, otherType, matrixType, prefecture);
-        })
-
-      }
-            /**
-         * Change Another Choice
-         *
-         * @return {void}
-         */
+        });
+      };
+      /**
+       * Change Another Choice
+       *
+       * @return {void}
+       */
       $scope.changeAnotherChoice = function(pIdx, qIdx, otherType, matrixType) {
 
         var question = $scope.registration.
