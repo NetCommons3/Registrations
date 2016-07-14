@@ -43,7 +43,7 @@ class RegistrationEditController extends RegistrationsAppController {
 		// 登録通知メール
 		//'Mails.MailSetting',
 		//'Mails.MailSettingFixedPhrase',
-
+		'DataTypes.DataTypeChoice',
 	);
 
 /**
@@ -452,11 +452,31 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->set('newChoiceLabel', __d('registrations', 'new choice'));
 		$this->set('newChoiceColumnLabel', __d('registrations', 'new column choice'));
 		$this->set('newChoiceOtherLabel', __d('registrations', 'other choice'));
+
+		// 都道府県データ
+		$prefectures = $this->_getPrefectures();
+		$this->set('prefectures', $prefectures);
 		//$this->set('isPublished', $isPublished);
 		$this->set('isPublished', false);
 
 		$this->request->data = $registration;
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
+	}
+
+	protected function _getPrefectures() {
+		// メタデータから取得
+		$options = [
+			'conditions' => [
+				'data_type_key' => 'prefecture',
+				'language_id' => Current::read('Language.id'),
+			],
+			'order' => 'DataTypeChoice.weight ASC'
+		];
+		$prefectures = $this->DataTypeChoice->find('all', $options);
+		$prefectures = Hash::extract($prefectures, '{n}.DataTypeChoice.name');
+		// json形式にする
+		$prefectures = json_encode($prefectures);
+		return $prefectures;
 	}
 }

@@ -41,7 +41,9 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 							'<?php echo h($newQuestionLabel); ?>',
 							'<?php echo h($newChoiceLabel); ?>',
 							'<?php echo h($newChoiceColumnLabel); ?>',
-							'<?php echo h($newChoiceOtherLabel); ?>')">
+							'<?php echo h($newChoiceOtherLabel); ?>',
+							<?php echo h($prefectures); ?>
+							)">
 
 	<?php echo $this->element('Registrations.RegistrationEdit/registration_title'); ?>
 
