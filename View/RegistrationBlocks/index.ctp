@@ -18,6 +18,8 @@ echo $this->NetCommonsHtml->script(array(
 	<?php echo $this->BlockIndex->description(); ?>
 
 	<div class="tab-content">
+		<?php echo $this->BlockIndex->create(); ?>
+
 		<?php echo $this->BlockIndex->addLink('',
 		array(
 			'controller' => 'registration_add',
@@ -31,6 +33,10 @@ echo $this->NetCommonsHtml->script(array(
 			<?php echo $this->BlockIndex->startTable(); ?>
 				<thead>
 				<tr>
+					<?php echo $this->BlockIndex->tableHeader(
+						'Frame.block_id'
+					); ?>
+
 					<?php echo $this->BlockIndex->tableHeader(
 						'Registration.status', __d('registrations', 'Status'),
 						array('sort' => true, 'type' => false)
@@ -53,6 +59,9 @@ echo $this->NetCommonsHtml->script(array(
 					<?php foreach ((array)$registrations as $registration) : ?>
 					<?php echo $this->BlockIndex->startTableRow($registration['Registration']['key']); ?>
 						<?php echo $this->BlockIndex->tableData(
+							'Frame.block_id', $registration['Block']['id']
+						); ?>
+						<?php echo $this->BlockIndex->tableData(
 						'',
 						$this->RegistrationStatusLabel->statusLabelManagementWidget($registration),
 						array('escape' => false)
@@ -66,6 +75,7 @@ echo $this->NetCommonsHtml->script(array(
 								'plugin' => 'registrations',
 								'controller' => 'registration_edit',
 								'action' => 'edit_question',
+								'block_id' => $registration['Registration']['block_id'],
 								//Current::read('Block.id'),
 								$registration['Registration']['key'],
 								'frame_id' => Current::read('Frame.id'),
@@ -86,7 +96,7 @@ echo $this->NetCommonsHtml->script(array(
 									'plugin' => 'registrations',
 									'controller' => 'registration_blocks',
 									'action' => 'download',
-									Current::read('Block.id'),
+									$registration['Registration']['block_id'],
 									$registration['Registration']['key'],
 									'frame_id' => Current::read('Frame.id'))),
 									'popup-title' => __d('authorization_keys', 'Compression password'),
@@ -103,6 +113,8 @@ echo $this->NetCommonsHtml->script(array(
 					<?php endforeach; ?>
 				</tbody>
 			<?php echo $this->BlockIndex->endTable(); ?>
+			<?php echo $this->BlockIndex->end(); ?>
+
 			<?php echo $this->element('NetCommons.paginator'); ?>
 		</div>
 	</div>

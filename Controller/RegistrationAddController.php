@@ -103,6 +103,10 @@ class RegistrationAddController extends RegistrationsAppController {
 				// データに不備があった場合
 				$this->NetCommons->handleValidationError($actionModel->validationErrors);
 			}
+		} else {
+			// 新規に登録フォームを作成するときは最初にブロックをつくっておく
+			$frame['Frame'] = Current::read('Frame');
+			$this->Registration->createBlock($frame);
 		}
 
 		// 過去データ 取り出し

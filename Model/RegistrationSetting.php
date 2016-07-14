@@ -153,9 +153,11 @@ class RegistrationSetting extends RegistrationsAppModel {
  */
 	public function saveBlock($frame) {
 		// すでに結びついている場合はBlockは作らないでよい
-		if (! empty($frame['Frame']['block_id'])) {
-			return true;
-		}
+		//var_dump(debug_backtrace());exit();
+		// フレームにブロックが配置されてても新規にブロックを作成したいのでコメントアウト byRyujiAMANO
+		//if (! empty($frame['Frame']['block_id'])) {
+		//	return true;
+		//}
 		//トランザクションBegin
 		$this->begin();
 
@@ -182,11 +184,12 @@ class RegistrationSetting extends RegistrationsAppModel {
 				Current::$current['Block'] = $block['Block'];
 			//}
 
-			$frame['Frame']['block_id'] = $block['Block']['id'];
-			if (!$this->Frame->save($frame)) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-			}
-			Current::$current['Frame']['block_id'] = $block['Block']['id'];
+			// フレームは更新しない
+			//$frame['Frame']['block_id'] = $block['Block']['id'];
+			//if (!$this->Frame->save($frame)) {
+			//	throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			//}
+			//Current::$current['Frame']['block_id'] = $block['Block']['id'];
 
 			$this->commit();
 		} catch (Exception $ex) {

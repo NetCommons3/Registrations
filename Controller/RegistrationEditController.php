@@ -71,7 +71,7 @@ class RegistrationEditController extends RegistrationsAppController {
 	public $helpers = array(
 		'Workflow.Workflow',
 		'NetCommons.TitleIcon',
-		'Registrations.QuestionEdit',
+		'Registrations.RegistrationEdit',
 		'NetCommons.Wizard' => array(
 			'navibar' => array(
 				'edit_question' => array(
@@ -92,6 +92,38 @@ class RegistrationEditController extends RegistrationsAppController {
 			'cancelUrl' => null
 		),
 		'Wysiwyg.Wysiwyg',
+		'Blocks.BlockTabs' => array(
+			'mainTabs' => array(
+				'block_index' => array(
+					'url' => array('controller' => 'registration_blocks')
+				),
+				//'role_permissions' => array(
+				//	'url' => array('controller' => 'registration_block_role_permissions')
+				//),
+				////'frame_settings' => array(
+				////	'url' => array('controller' => 'registration_frame_settings')
+				////),
+				//'mail_settings' => array(
+				//	'url' => array('controller' => 'registration_mail_settings')
+				//),
+			),
+			'blockTabs' => array(
+				'block_settings' => array(
+					'url' => array('controller' => 'registration_edit', 'action' =>
+						'edit_question', 'q_mode' => 'setting')
+				),
+				'role_permissions' => array(
+					'url' => array('controller' => 'registration_block_role_permissions')
+				),
+				//'frame_settings' => array(
+				//	'url' => array('controller' => 'registration_frame_settings')
+				//),
+				'mail_settings' => array(
+					'url' => array('controller' => 'registration_mail_settings')
+				),
+			),
+		),
+
 		// 登録通知メール
 		//'Blocks.BlockRolePermissionForm',
 		//'Mails.MailForm',
@@ -122,10 +154,6 @@ class RegistrationEditController extends RegistrationsAppController {
 		//	array(MailSettingFixedPhrase::ANSWER_TYPE); //
 
 		parent::beforeFilter();
-		// NetCommonsお約束：編集画面へのURLに編集対象のコンテンツキーが含まれている
-		// まずは、そのキーを取り出す
-		// 登録フォームキー
-		$registrationKey = $this->_getRegistrationKeyFromPass();
 
 		// セッションインデックスパラメータ
 		$sessionName =
@@ -143,15 +171,24 @@ class RegistrationEditController extends RegistrationsAppController {
 			// セッションに記録された値がある場合はそちらを優先
 			if ($this->Session->check($sessionName)) {
 				$this->_registration = $this->Session->read($sessionName);
-			} elseif (! empty($registrationKey)) {
+			} else {
+				// NetCommonsお約束：編集画面へのURLに編集対象のコンテンツキーが含まれている
+				// まずは、そのキーを取り出す
+				// 登録フォームキー
+				$registrationKey = $this->_getRegistrationKeyFromPass();
+				if ($registrationKey) {
+					$conditions = [$this->Registration->alias . '.key' => $registrationKey];
+				} else {
+					// 登録フォームキーが指定されてなければブロックIDから
+					$blockId = Current::read('Block.id');
+					$conditions = [$this->Registration->alias . '.block_id' => $blockId];
+				}
 				// 登録フォームキーの指定がある場合は過去データ編集と判断
 				// 指定された登録フォームデータを取得
 				// NetCommonsお約束：履歴を持つタイプのコンテンツデータはgetWorkflowContentsで取り出す
 				$this->_registration = $this->Registration->getWorkflowContents('first', array(
 					'recursive' => 0,
-					'conditions' => array(
-						$this->Registration->alias . '.key' => $registrationKey
-					)
+					'conditions' => $conditions
 				));
 				// NetCommonsお約束：編集の場合には改めて編集権限をチェックする必要がある
 				// getWorkflowContentsはとりあえず自分が「見られる」コンテンツデータを取ってきてしまうので
