@@ -19,6 +19,9 @@
 		<button type="button" class="btn btn-default pull-right" ng-click="addChoice($event, pageIndex, qIndex, question.registrationChoice.length, '<?php echo RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED ?>', '<?php echo RegistrationsComponent::MATRIX_TYPE_ROW_OR_NO_MATRIX; ?>');">
 			<span class="glyphicon glyphicon-plus"></span><?php echo __d('registrations', 'add choices'); ?>
 		</button>
+		<button type="button" class="btn btn-default pull-right" ng-click="addPrefecture($event, pageIndex, qIndex, question.registrationChoice.length, '<?php echo RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED ?>', '<?php echo RegistrationsComponent::MATRIX_TYPE_ROW_OR_NO_MATRIX; ?>');">
+			<span class="glyphicon glyphicon-plus"></span><?php echo __d('registrations', 'add prefecture'); ?>
+		</button>
 		<?php /* 選択肢を横並びにする */ ?>
 		<label class="checkbox-inline" ng-show="question.questionType != <?php echo RegistrationsComponent::TYPE_SINGLE_SELECT_BOX; ?>">
 			<?php echo $this->NetCommonsForm->checkbox('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_choice_horizon',
@@ -49,7 +52,7 @@
 		//	'errorArrayName' => 'question.errorMessages.isChoiceRandom',
 		//	)); ?>
 		<!--</label>-->
-		<?php ///* スキップにする */ ?>s
+		<?php ///* スキップにする */ ?>
 		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?><!--">-->
 			<?php echo $this->NetCommonsForm->hidden('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
 			array(
