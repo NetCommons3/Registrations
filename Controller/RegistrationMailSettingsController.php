@@ -32,12 +32,27 @@ class RegistrationMailSettingsController extends MailSettingsController {
 				'block_index' => array(
 					'url' => array('controller' => 'registration_blocks')
 				),
+				//'role_permissions' => array(
+				//	'url' => array('controller' => 'registration_block_role_permissions')
+				//),
+				////'frame_settings' => array(
+				////	'url' => array('controller' => 'registration_frame_settings')
+				////),
+				//'mail_settings' => array(
+				//	'url' => array('controller' => 'registration_mail_settings')
+				//),
+			),
+			'blockTabs' => array(
+				'block_settings' => array(
+					'url' => array('controller' => 'registration_edit', 'action' =>
+						'edit_question', 'q_mode' => 'setting')
+				),
 				'role_permissions' => array(
 					'url' => array('controller' => 'registration_block_role_permissions')
 				),
-				'frame_settings' => array(
-					'url' => array('controller' => 'registration_frame_settings')
-				),
+				//'frame_settings' => array(
+				//	'url' => array('controller' => 'registration_frame_settings')
+				//),
 				'mail_settings' => array(
 					'url' => array('controller' => 'registration_mail_settings')
 				),

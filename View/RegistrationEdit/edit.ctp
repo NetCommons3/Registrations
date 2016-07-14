@@ -16,6 +16,11 @@ echo $this->NetCommonsHtml->script(array(
 ));
 $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppController::changeBooleansToNumbers($this->data));
 ?>
+<?php if (Current::permission('block_editable')) : ?>
+	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
+	<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_SETTING, ['displayAllTab' =>
+		true, 'displayBlockTitle' => true]); ?>
+<?php endif ?>
 
 <article
 	id="nc-registrations-setting-edit"
