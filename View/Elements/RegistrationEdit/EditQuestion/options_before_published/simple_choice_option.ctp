@@ -49,7 +49,7 @@
 		//	'errorArrayName' => 'question.errorMessages.isChoiceRandom',
 		//	)); ?>
 		<!--</label>-->
-		<?php ///* スキップにする */ ?>s
+		<?php ///* スキップにする */ ?>
 		<!--<label class="checkbox-inline" ng-show="question.questionType != --><?php //echo RegistrationsComponent::TYPE_MULTIPLE_SELECTION; ?><!--">-->
 			<?php echo $this->NetCommonsForm->hidden('RegistrationPage.{{pageIndex}}.RegistrationQuestion.{{qIndex}}.is_skip',
 			array(
