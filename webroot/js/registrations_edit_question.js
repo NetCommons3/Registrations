@@ -71,7 +71,7 @@ NetCommonsApp.controller('Registrations.edit.question',
       $scope.initialize =
           function(frameId, isPublished, registration,
           newPageLabel, newQuestionLabel, newChoiceLabel,
-          newChoiceColumnLabel, newChoiceOtherLabel) {
+          newChoiceColumnLabel, newChoiceOtherLabel, prefectures) {
 
         $scope.frameId = frameId;
         $scope.isPublished = isPublished;
@@ -79,6 +79,7 @@ NetCommonsApp.controller('Registrations.edit.question',
         $scope.registration.registrationPage =
             $scope.toArray(registration.registrationPage);
         $scope.activeTabIndex = 0;
+        $scope.prefectures = prefectures;
 
         // 各ページ処理
         for (var pIdx = 0; pIdx < $scope.registration.registrationPage.length; pIdx++) {
@@ -475,7 +476,7 @@ NetCommonsApp.controller('Registrations.edit.question',
          * @return {void}
          */
       $scope.addChoice =
-          function($event, pIdx, qIdx, choiceCount, otherType, matrixType) {
+          function($event, pIdx, qIdx, choiceCount, otherType, matrixType, choiceLabel = '') {
         var page = $scope.registration.registrationPage[pIdx];
         var question = page.registrationQuestion[qIdx];
         var choice = new Object();
@@ -487,7 +488,9 @@ NetCommonsApp.controller('Registrations.edit.question',
         }
         var newIndex = question.registrationChoice.length;
 
-        if (otherType != variables.OTHER_CHOICE_TYPE_NO_OTHER_FILED) {
+        if (choiceLabel) {
+          choice['choiceLabel'] = choiceLabel;
+        } else if (otherType != variables.OTHER_CHOICE_TYPE_NO_OTHER_FILED) {
           choice['choiceLabel'] = $scope.newChoiceOtherLabel;
         } else {
           if (matrixType == variables.MATRIX_TYPE_ROW_OR_NO_MATRIX) {
@@ -542,11 +545,19 @@ NetCommonsApp.controller('Registrations.edit.question',
           $event.stopPropagation();
         }
       };
+
+      $scope.addPrefecture =
+          function($event, pIdx, qIdx, choiceCount, otherType, matrixType) {
+        // `都道府県メタデータの挿入
+        angular.forEach($scope.prefectures, function(prefecture, index) {
+          $scope.addChoice($event, pIdx, qIdx, choiceCount, otherType, matrixType, prefecture);
+        });
+      };
       /**
-         * Change Another Choice
-         *
-         * @return {void}
-         */
+       * Change Another Choice
+       *
+       * @return {void}
+       */
       $scope.changeAnotherChoice = function(pIdx, qIdx, otherType, matrixType) {
 
         var question = $scope.registration.

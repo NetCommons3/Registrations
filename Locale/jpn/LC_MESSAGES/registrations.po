@@ -1007,3 +1007,6 @@ msgstr ""
 
 msgid "RegistrationAnswerSummary ID"
 msgstr "受付ID"
+
+msgid "add prefecture"
+msgstr "都道府県選択肢の追加"
