@@ -464,6 +464,11 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->request->data['Block'] = Current::read('Block');
 	}
 
+/**
+ * DataTypeから都道府県データを取得してJSON形式で返す
+ *
+ * @return string json形式の都道府県リスト
+ */
 	protected function _getPrefectures() {
 		// メタデータから取得
 		$options = [
