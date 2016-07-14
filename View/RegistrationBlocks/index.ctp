@@ -18,6 +18,8 @@ echo $this->NetCommonsHtml->script(array(
 	<?php echo $this->BlockIndex->description(); ?>
 
 	<div class="tab-content">
+		<?php echo $this->BlockIndex->create(); ?>
+
 		<?php echo $this->BlockIndex->addLink('',
 		array(
 			'controller' => 'registration_add',
@@ -110,6 +112,8 @@ echo $this->NetCommonsHtml->script(array(
 					<?php endforeach; ?>
 				</tbody>
 			<?php echo $this->BlockIndex->endTable(); ?>
+			<?php echo $this->BlockIndex->end(); ?>
+
 			<?php echo $this->element('NetCommons.paginator'); ?>
 		</div>
 	</div>

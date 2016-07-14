@@ -22,6 +22,12 @@ class Registration extends RegistrationsAppModel {
  * @var array
  */
 	public $actsAs = array(
+		'Blocks.Block' => array(
+			'name' => 'Registration.title',
+			'loadModels' => array(
+				'WorkflowComment' => 'Workflow.WorkflowComment',
+			)
+		),
 		'NetCommons.OriginalKey',
 		'Workflow.Workflow',
 		'Workflow.WorkflowComment',
@@ -394,7 +400,8 @@ class Registration extends RegistrationsAppModel {
  * @return mixed On success Model::$data if its not empty or true, false on failure
  * @throws InternalErrorException
  */
-	public function afterFrameSave($data) {
+	//public function afterFrameSave($data) {
+	public function createBlock($data) {
 		$frame['Frame'] = $data['Frame'];
 
 		$this->begin();
@@ -535,8 +542,8 @@ class Registration extends RegistrationsAppModel {
 		// 設定画面を表示する前にこのルームの登録フォームブロックがあるか確認
 		// 万が一、まだ存在しない場合には作成しておく
 		// afterFrameSaveが呼ばれず、また最初に設定画面が開かれもしなかったような状況の想定
-		$frame['Frame'] = Current::read('Frame');
-		$this->afterFrameSave($frame);
+		//$frame['Frame'] = Current::read('Frame');
+		//$this->createBlock($frame);
 
 		//トランザクションBegin
 		$this->begin();
@@ -588,12 +595,15 @@ class Registration extends RegistrationsAppModel {
 			if (! $this->RegistrationPage->saveRegistrationPage($registration['RegistrationPage'])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
-			// フレーム内表示対象登録フォームに登録する
-			if (! $this->RegistrationFrameDisplayRegistration->saveDisplayRegistration(array(
-				'registration_key' => $saveRegistration['Registration']['key'],
-				'frame_key' => Current::read('Frame.key')
-			))) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			// フレームにブロックが関連づいてなければ、関連づける。
+			if (! Current::read('Frame.block_id')) {
+				// フレーム内表示対象登録フォームに登録する
+				if (! $this->RegistrationFrameDisplayRegistration->saveDisplayRegistration(array(
+					'registration_key' => $saveRegistration['Registration']['key'],
+					'frame_key' => Current::read('Frame.key')
+				))) {
+					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+				}
 			}
 			// これまでのテスト登録データを消す
 			$this->RegistrationAnswerSummary->deleteTestAnswerSummary(

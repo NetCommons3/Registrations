@@ -97,11 +97,12 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		// NetCommonsお約束：編集画面へのURLに編集対象のコンテンツキーが含まれている
 		// まずは、そのキーを取り出す
 		// 登録フォームキー
-		$registrationKey = $this->_getRegistrationKeyFromPass();
+		//$registrationKey = $this->_getRegistrationKeyFromPass();
 
 		// キーで指定された登録フォームデータを取り出しておく
 		$conditions = $this->Registration->getWorkflowConditions(
-			array('Registration.key' => $registrationKey)
+			//array('Registration.key' => $registrationKey)
+			array('Registration.block_id' => Current::read('Block.id'))
 		);
 
 		$this->__registration = $this->Registration->find('first', array(
