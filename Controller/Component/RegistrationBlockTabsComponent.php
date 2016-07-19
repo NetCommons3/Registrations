@@ -7,7 +7,17 @@
 * @license http://www.netcommons.org/license.txt NetCommons License
 */
 
+/**
+ * Class RegistrationBlockTabsComponent
+ */
 class RegistrationBlockTabsComponent extends Component {
+
+/**
+ * initialize BlockTabsヘルパの設定
+ *
+ * @param Controller $controller コントローラ
+ * @return void
+ */
 	public function initialize(Controller $controller) {
 		$controller->helpers['Blocks.BlockTabs'] = array(
 			'mainTabs' => array(
