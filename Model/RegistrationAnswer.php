@@ -293,9 +293,14 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		return true;
 	}
 
+/**
+ * サマリとQuestion.idから登録データ(answer)を返す
+ *
+ * @param array $summary 登録データサマリ
+ * @param array $questionIds QustionIdのリスト
+ * @return array|null
+ */
 	public function getAnswersBySummary($summary, $questionIds) {
-
-		//$answers = $summary['RegistrationAnswer'];
 		// 何回もSQLを発行するのは無駄かなと思いつつも
 		// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
 		// このクラスからでも利用できないかと試みたが

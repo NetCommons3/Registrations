@@ -323,7 +323,6 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			$summary['RegistrationAnswer'] = $answers;
 		}
 		$this->set('summaries', $summaries);
-
 	}
 
 /**
