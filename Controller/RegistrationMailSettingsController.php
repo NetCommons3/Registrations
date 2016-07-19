@@ -32,15 +32,6 @@ class RegistrationMailSettingsController extends MailSettingsController {
 				'block_index' => array(
 					'url' => array('controller' => 'registration_blocks')
 				),
-				//'role_permissions' => array(
-				//	'url' => array('controller' => 'registration_block_role_permissions')
-				//),
-				////'frame_settings' => array(
-				////	'url' => array('controller' => 'registration_frame_settings')
-				////),
-				//'mail_settings' => array(
-				//	'url' => array('controller' => 'registration_mail_settings')
-				//),
 			),
 			'blockTabs' => array(
 				'block_settings' => array(
@@ -50,11 +41,13 @@ class RegistrationMailSettingsController extends MailSettingsController {
 				'role_permissions' => array(
 					'url' => array('controller' => 'registration_block_role_permissions')
 				),
-				//'frame_settings' => array(
-				//	'url' => array('controller' => 'registration_frame_settings')
-				//),
 				'mail_settings' => array(
 					'url' => array('controller' => 'registration_mail_settings')
+				),
+				'answer_list' => array(
+					'url' => array('controller' => 'registration_blocks', 'action' =>
+						'answer_list'),
+					'label' => ['registrations', 'Answer List'],
 				),
 			),
 		),
@@ -69,6 +62,9 @@ class RegistrationMailSettingsController extends MailSettingsController {
  */
 	public function beforeFilter() {
 		parent::beforeFilter();
+		// 親クラスが独自コントローラのためcomponentsがマージされないので自分で読みこむ。
+		$this->RegistrationBlockTabs =
+			$this->Components->load('Registrations.RegistrationBlockTabs');
 
 		// メール設定 多段の場合にセット
 		$this->MailSettings->permission =

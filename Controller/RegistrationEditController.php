@@ -60,8 +60,7 @@ class RegistrationEditController extends RegistrationsAppController {
 		),
 		'Registrations.Registrations',
 		'NetCommons.NetCommonsTime',
-		// 登録通知メール
-		//'Mails.MailSettings',
+		'Registrations.RegistrationBlockTabs',
 	);
 
 /**
@@ -92,37 +91,30 @@ class RegistrationEditController extends RegistrationsAppController {
 			'cancelUrl' => null
 		),
 		'Wysiwyg.Wysiwyg',
-		'Blocks.BlockTabs' => array(
-			'mainTabs' => array(
-				'block_index' => array(
-					'url' => array('controller' => 'registration_blocks')
-				),
-				//'role_permissions' => array(
-				//	'url' => array('controller' => 'registration_block_role_permissions')
-				//),
-				////'frame_settings' => array(
-				////	'url' => array('controller' => 'registration_frame_settings')
-				////),
-				//'mail_settings' => array(
-				//	'url' => array('controller' => 'registration_mail_settings')
-				//),
-			),
-			'blockTabs' => array(
-				'block_settings' => array(
-					'url' => array('controller' => 'registration_edit', 'action' =>
-						'edit_question', 'q_mode' => 'setting')
-				),
-				'role_permissions' => array(
-					'url' => array('controller' => 'registration_block_role_permissions')
-				),
-				//'frame_settings' => array(
-				//	'url' => array('controller' => 'registration_frame_settings')
-				//),
-				'mail_settings' => array(
-					'url' => array('controller' => 'registration_mail_settings')
-				),
-			),
-		),
+		//'Blocks.BlockTabs' => array(
+		//	'mainTabs' => array(
+		//		'block_index' => array(
+		//			'url' => array('controller' => 'registration_blocks')
+		//		),
+		//	),
+		//	'blockTabs' => array(
+		//		'block_settings' => array(
+		//			'url' => array('controller' => 'registration_edit', 'action' =>
+		//				'edit_question', 'q_mode' => 'setting')
+		//		),
+		//		'role_permissions' => array(
+		//			'url' => array('controller' => 'registration_block_role_permissions')
+		//		),
+		//		'mail_settings' => array(
+		//			'url' => array('controller' => 'registration_mail_settings')
+		//		),
+		//		'answer_list' => array(
+		//			'url' => array('controller' => 'registration_blocks', 'action' =>
+		//				'answer_list'),
+		//			'label' => ['registrations', 'Answer List'],
+		//		),
+		//	),
+		//),
 
 		// 登録通知メール
 		//'Blocks.BlockRolePermissionForm',
@@ -179,7 +171,7 @@ class RegistrationEditController extends RegistrationsAppController {
 				if ($registrationKey) {
 					$conditions = [$this->Registration->alias . '.key' => $registrationKey];
 				} else {
-					// 登録フォームキーが指定されてなければブロックIDから
+					// 登録フォームキーが指定されてなければブロックIDから。編集時にブロックタブから遷移したとき
 					$blockId = Current::read('Block.id');
 					$conditions = [$this->Registration->alias . '.block_id' => $blockId];
 				}
@@ -196,6 +188,13 @@ class RegistrationEditController extends RegistrationsAppController {
 					$this->_registration = null;
 				}
 			}
+		}
+		if ($this->_registration === null ||
+			! Hash::check($this->_registration, 'Registration.id')) {
+			// 登録フォーム新規作成時はブロック設定以外のタブは表示しない
+			unset($this->helpers['Blocks.BlockTabs']['blockTabs']['role_permissions']);
+			unset($this->helpers['Blocks.BlockTabs']['blockTabs']['mail_settings']);
+			unset($this->helpers['Blocks.BlockTabs']['blockTabs']['answer_list']);
 		}
 		// ここへは設定画面の一覧から来たのか、一般画面の一覧から来たのか
 		$this->_decideSettingLayout();

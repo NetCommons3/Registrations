@@ -10,7 +10,7 @@
  */
 ?>
 	<h1 class="">
-		<?php if ($this->request->named['q_mode'] !== 'setting') :?>
+		<?php if (! Current::permission('block_editable')) : ?>
 
 			<?php if (isset($this->data['Registration']['title_icon'])) {
 				echo $this->TitleIcon->titleIcon($this->data['Registration']['title_icon']);

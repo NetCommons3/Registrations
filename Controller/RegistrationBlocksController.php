@@ -46,6 +46,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		'Registrations.RegistrationFrameSetting',
 		'Registrations.RegistrationAnswerSummary',
 		'Registrations.RegistrationAnswerSummaryCsv',
+		'Registrations.RegistrationAnswer',
 		'Blocks.Block',
 		'Registrations.RegistrationExport',
 	);
@@ -87,6 +88,26 @@ class RegistrationBlocksController extends RegistrationsAppController {
 				//'mail_settings' => array(
 				//	'url' => array('controller' => 'registration_mail_settings')
 				//),
+			),
+			'blockTabs' => array(
+				'block_settings' => array(
+					'url' => array('controller' => 'registration_edit', 'action' =>
+						'edit_question', 'q_mode' => 'setting')
+				),
+				'role_permissions' => array(
+					'url' => array('controller' => 'registration_block_role_permissions')
+				),
+				//'frame_settings' => array(
+				//	'url' => array('controller' => 'registration_frame_settings')
+				//),
+				'mail_settings' => array(
+					'url' => array('controller' => 'registration_mail_settings')
+				),
+				'answer_list' => array(
+					'url' => array('controller' => 'registration_blocks', 'action' =>
+						'answer_list'),
+					'label' => ['registrations', 'Answer List'],
+				),
 			),
 		),
 		'Blocks.BlockIndex',
@@ -227,6 +248,81 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		$downloadFileName = $registration['Registration']['title'] . '.csv';
 		// 出力
 		return $csvFile->zipDownload(rawurlencode($zipFileName), $downloadFileName, $zipPassword);
+	}
+
+/**
+ * 登録一覧
+ *
+ * @return void
+ * @throws InternalErrorException
+ */
+	public function answer_list() {
+		// NetCommonsお約束：コンテンツ操作のためのURLには対象のコンテンツキーが必ず含まれている
+		// まずは、そのキーを取り出す
+		// 登録フォームキー
+		$registrationKey = $this->_getRegistrationKeyFromPass();
+		// キー情報をもとにデータを取り出す
+		if ($registrationKey) {
+			$conditions = [$this->Registration->alias . '.key' => $registrationKey];
+		} else {
+			// 登録フォームキーが指定されてなければブロックIDから
+			$blockId = Current::read('Block.id');
+			$conditions = [$this->Registration->alias . '.block_id' => $blockId];
+		}
+		// 登録一覧は公開されてる登録フォームが対象。
+		$conditions = Hash::merge([
+				'Registration.is_active' => true,
+				'Registration.language_id' => Current::read('Language.id'),
+			],
+			$conditions);
+		$registration = $this->Registration->find('first', array(
+			'conditions' => $conditions,
+			'recursive' => -1
+		));
+		//$registration = $this->RegistrationAnswerSummaryCsv->getRegistrationForAnswerCsv(
+		//	$registrationKey
+		//);
+
+		if (!$registration) {
+			// 公開されてなければメッセージをだして一覧へ
+			$this->_setFlashMessageAndRedirect(
+				__d('registrations', 'The registration form has not been published.'));
+			return;
+		}
+		$registrationKey = $registration['Registration']['key'];
+		$this->set('registration', $registration);
+		// 一覧用に登録データを取得する
+		$this->Paginator->settings = array_merge(
+			$this->Paginator->settings,
+			array(
+				'RegistrationAnswerSummary' => [
+					'conditions' => array(
+						'answer_status' => RegistrationsComponent::ACTION_ACT,
+						'test_status' => RegistrationsComponent::TEST_ANSWER_STATUS_PEFORM,
+						'registration_key' => $registrationKey,
+					),
+					//'limit' => $this->_frameSetting['BlogFrameSetting']['articles_per_page'],
+					'order' => 'RegistrationAnswerSummary.modified DESC',
+				]
+			)
+		);
+		$summaries = $this->Paginator->paginate('RegistrationAnswerSummary');
+		if (empty($summaries)) {
+			$this->set('summaries', $summaries);
+			return;
+		}
+
+		// 項目のIDを取得
+		$questionIds = Hash::extract(
+			$registration['RegistrationPage'],
+			'{n}.RegistrationQuestion.{n}.id');
+
+		// summary loop
+		foreach ($summaries as & $summary) {
+			$answers = $this->RegistrationAnswer->getAnswersBySummary($summary, $questionIds);
+			$summary['RegistrationAnswer'] = $answers;
+		}
+		$this->set('summaries', $summaries);
 	}
 
 /**

@@ -63,14 +63,9 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 		<div class="panel-body">
 
-			<uib-tabset active="activeTabIndex">
-				<uib-tab ng-repeat="(pageIndex, page) in registration.registrationPage" index="$index">
-					<uib-tab-heading>
-						<span class="glyphicon glyphicon-exclamation-sign text-danger" ng-if="page.hasError"></span>
-						{{pageIndex+1}}
-					</uib-tab-heading>
+			<div ng-repeat="(pageIndex, page) in registration.registrationPage" index="$index">
 
-					<div class="tab-body">
+				<div class="tab-body">
 						<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/add_question_button', array('isPublished' => $isPublished)); ?>
 						<div class="clearfix"></div>
 
@@ -163,8 +158,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 					<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/add_question_button'); ?>
 
 				</div>
-			</uib-tab>
-		</uib-tabset>
+			</div>
 
 	</div>
 

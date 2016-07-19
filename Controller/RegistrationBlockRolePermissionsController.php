@@ -47,6 +47,7 @@ class RegistrationBlockRolePermissionsController extends RegistrationBlocksContr
 				'edit' => 'block_permission_editable',
 			),
 		),
+		'Registrations.RegistrationBlockTabs',
 	);
 
 /**
@@ -56,37 +57,31 @@ class RegistrationBlockRolePermissionsController extends RegistrationBlocksContr
  */
 	public $helpers = array(
 		'Blocks.BlockRolePermissionForm',
-		'Blocks.BlockTabs' => array(
-			'mainTabs' => array(
-				'block_index' => array(
-					'url' => array('controller' => 'registration_blocks')
-				),
-				//'role_permissions' => array(
-				//	'url' => array('controller' => 'registration_block_role_permissions')
-				//),
-				////'frame_settings' => array(
-				////	'url' => array('controller' => 'registration_frame_settings')
-				////),
-				//'mail_settings' => array(
-				//	'url' => array('controller' => 'registration_mail_settings')
-				//),
-			),
-			'blockTabs' => array(
-				'block_settings' => array(
-					'url' => array('controller' => 'registration_edit', 'action' =>
-						'edit_question', 'q_mode' => 'setting')
-				),
-				'role_permissions' => array(
-					'url' => array('controller' => 'registration_block_role_permissions')
-				),
-				//'frame_settings' => array(
-				//	'url' => array('controller' => 'registration_frame_settings')
-				//),
-				'mail_settings' => array(
-					'url' => array('controller' => 'registration_mail_settings')
-				),
-			),
-		),
+		//'Blocks.BlockTabs' => array(
+		//	'mainTabs' => array(
+		//		'block_index' => array(
+		//			'url' => array('controller' => 'registration_blocks')
+		//		),
+		//	),
+		//	'blockTabs' => array(
+		//		'block_settings' => array(
+		//			'url' => array('controller' => 'registration_edit', 'action' =>
+		//				'edit_question', 'q_mode' => 'setting')
+		//		),
+		//		'role_permissions' => array(
+		//			'url' => array('controller' => 'registration_block_role_permissions')
+		//		),
+		//		'mail_settings' => array(
+		//			'url' => array('controller' => 'registration_mail_settings')
+		//		),
+		//		'answer_list' => array(
+		//			'url' => array('controller' => 'registration_blocks', 'action' =>
+		//				'answer_list'),
+		//			'label' => ['registrations', 'Answer List'],
+		//		),
+		//
+		//	),
+		//),
 		'NetCommons.Date',
 	);
 
