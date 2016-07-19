@@ -7,13 +7,16 @@
 	</p>
 
 <?php else: ?>
+	<?php
+	$questions = $registration['RegistrationPage'][0]['RegistrationQuestion'];
+	?>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<th>
 						<?php echo __d('registrations', 'RegistrationAnswerSummary ID'); ?>
 					</th>
-					<?php foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $question)
+					<?php foreach ($questions as $question)
 						: ?>
 						<th>
 							<?php echo h($question['question_value']);?>
@@ -26,16 +29,23 @@
 							<td>
 								<?php echo h($summary['RegistrationAnswerSummary']['id']); ?>
 							</td>
-							<?php foreach ($summary['RegistrationAnswer'] as $answer): ?>
-								<?php
+							<?php
+							// question.idをキーanswer_valueを値とした連想配列をつくる
+							$answers = array();
+							foreach ($summary['RegistrationAnswer'] as $answer) {
 								if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
-									$value = implode(',', $answer['RegistrationAnswer']['answer_values']);
+									$value = h(implode(',',
+										$answer['RegistrationAnswer']['answer_values']));
 								} else {
-									$value = $answer['RegistrationAnswer']['answer_value'];
+									$value = h($answer['RegistrationAnswer']['answer_value']);
 								}
-								?>
+								// ε(　　　　 v ﾟωﾟ)　＜ファイルはファイルへのリンクをつける
+							}
+							$answers[$answer['RegistrationQuestion']['id']] = $value;
+							?>
+							<?php foreach ($questions as $question) : ?>
 								<td>
-									<?php echo h($value); ?>
+									<?php echo Hash::get($answers, $question['id'], '') ?>
 								</td>
 							<?php endforeach;?>
 						</tr>
