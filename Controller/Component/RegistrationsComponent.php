@@ -20,13 +20,6 @@ App::uses('Component', 'Controller');
 class RegistrationsComponent extends Component {
 
 /**
- * コンテンツキーがパスに含まれる位置
- *
- * @var int
- */
-	const	REGISTRATION_KEY_PASS_INDEX = 1;
-
-/**
  * バリデートタイプ
  * ウィザード画面で形成中の判定をしてほしいときに使う
  */
