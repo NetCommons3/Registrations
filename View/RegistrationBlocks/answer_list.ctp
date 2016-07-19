@@ -7,9 +7,7 @@
 	</p>
 
 <?php else: ?>
-	<?php
-	$questions = $registration['RegistrationPage'][0]['RegistrationQuestion'];
-	?>
+	<?php $questions = $registration['RegistrationPage'][0]['RegistrationQuestion']; ?>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -66,8 +64,7 @@
 					])
 				));
 			?>
-			<?php echo $this->NetCommonsForm->hidden('Frame.id')
-			; ?>
+			<?php echo $this->NetCommonsForm->hidden('Frame.id'); ?>
 			<?php echo $this->NetCommonsForm->hidden('Block.id'); ?>
 
 			<?php echo $this->NetCommonsForm->hidden('key'); ?>

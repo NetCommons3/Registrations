@@ -429,7 +429,6 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
  * when registration is published, delete answer summary
  *
  * @param int $key registration key
- * @param int $status publish status
  * @return bool
  */
 	public function deleteAnswerSummary($key) {
@@ -440,7 +439,6 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 	}
 
 /**
- *
  * メール送信のX-DATAタグ用文字列の生成
  *
  * @param array $summary RegistrationAnswerSummmaryデータ
