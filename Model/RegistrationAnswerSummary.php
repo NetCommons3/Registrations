@@ -15,6 +15,7 @@ App::uses('RegistrationsAppModel', 'Registrations.Model');
 App::uses('WorkflowComponent', 'Workflow.Controller/Component');
 App::uses('NetCommonsTime', 'NetCommons.Utility');
 App::uses('NetCommonsUrl', 'NetCommons.Utility');
+App::uses('MailSettingFixedPhrase', 'Mails.Model');
 
 /**
  * Summary for RegistrationAnswerSummary Model
@@ -425,7 +426,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 
 /**
  * メール送信のX-DATAタグ用文字列の生成
- * 
+ *
  * @param array $summary RegistrationAnswerSummmaryデータ
  * @param array $answers RegistrationAnswerデータ（複数）
  * @return array|string X-DATA

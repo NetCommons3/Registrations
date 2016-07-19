@@ -104,7 +104,7 @@ class RegistrationsAppController extends AppController {
  * _decideSettingLayout
  *
  * セッティング系の画面からの流れなのかどうかを判断し、レイアウトを決める
- * 
+ *
  * @return void
  */
 	protected function _decideSettingLayout() {
@@ -260,8 +260,8 @@ class RegistrationsAppController extends AppController {
  * @return string
  */
 	protected function _getRegistrationKeyFromPass() {
-		if (isset($this->params['pass'][RegistrationsComponent::REGISTRATION_KEY_PASS_INDEX])) {
-			$key = $this->params['pass'][RegistrationsComponent::REGISTRATION_KEY_PASS_INDEX];
+		if (isset($this->params['key'])) {
+			$key = $this->params['key'];
 			if (strpos($key, 's_id:') === 0) {
 				return '';
 			}
