@@ -164,24 +164,25 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 			// AnswerとQuestionがJOINされた形でFindしないと整備機能が発動しない
 			// そうするためにはrecursive=2でないといけないわけだが、recursive=2にするとRoleのFindでSQLエラーになる
 			// 仕方ないのでこの形式で処理を行う
-			$answers = $this->RegistrationAnswer->find('all', array(
-				'fields' => array('RegistrationAnswer.*', 'RegistrationQuestion.*'),
-				'conditions' => array(
-					'registration_answer_summary_id' => $summary[$this->alias]['id'],
-					'RegistrationQuestion.id' => $questionIds
-				),
-				'recursive' => -1,
-				'joins' => array(
-					array(
-						'table' => 'registration_questions',
-						'alias' => 'RegistrationQuestion',
-						'type' => 'LEFT',
-						'conditions' => array(
-							'RegistrationAnswer.registration_question_key = RegistrationQuestion.key',
-						)
-					)
-				)
-			));
+			//$answers = $this->RegistrationAnswer->find('all', array(
+			//	'fields' => array('RegistrationAnswer.*', 'RegistrationQuestion.*'),
+			//	'conditions' => array(
+			//		'registration_answer_summary_id' => $summary[$this->alias]['id'],
+			//		'RegistrationQuestion.id' => $questionIds
+			//	),
+			//	'recursive' => -1,
+			//	'joins' => array(
+			//		array(
+			//			'table' => 'registration_questions',
+			//			'alias' => 'RegistrationQuestion',
+			//			'type' => 'LEFT',
+			//			'conditions' => array(
+			//				'RegistrationAnswer.registration_question_key = RegistrationQuestion.key',
+			//			)
+			//		)
+			//	)
+			//));
+			$answers = $this->RegistrationAnswer->getAnswersBySummary($summary, $questionIds);
 			$retArray[] = $this->_getRows($registration, $summary, $answers);
 		}
 

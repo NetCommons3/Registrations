@@ -1010,3 +1010,12 @@ msgstr "受付ID"
 
 msgid "add prefecture"
 msgstr "都道府県選択肢の追加"
+
+msgid "Answer List"
+msgstr "登録一覧"
+
+msgid "The registration form has not been published."
+msgstr "この登録フォームはまだ公開されていません。"
+
+msgid "Registration data"
+msgstr "登録データ"

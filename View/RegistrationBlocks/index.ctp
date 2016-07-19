@@ -53,6 +53,10 @@ echo $this->NetCommonsHtml->script(array(
 						'', __d('registrations', 'Answer CSV'),
 						array('type' => 'center')
 					); ?>
+					<?php echo $this->BlockIndex->tableHeader(
+						'', __d('registrations', 'Answer List'),
+						array('type' => 'center')
+					); ?>
 				</tr>
 				</thead>
 				<tbody>
@@ -106,7 +110,17 @@ echo $this->NetCommonsHtml->script(array(
 							),
 							array('escape' => false, 'type' => 'center')
 							); ?>
+							<?php echo $this->BlockIndex->tableData(
+								'',
+								$this->NetCommonsHtml->link(__d('registrations', 'Answer List'), [
+									'action' => 'answer_list',
+									$registration['Registration']['key']
+								]),
+								array('escape' => false)
+							); ?>
+
 						<?php else: ?>
+							<td></td>
 							<td></td>
 						<?php endif; ?>
 					<?php echo $this->BlockIndex->endTableRow(); ?>

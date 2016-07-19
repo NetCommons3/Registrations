@@ -56,6 +56,11 @@ class RegistrationMailSettingsController extends MailSettingsController {
 				'mail_settings' => array(
 					'url' => array('controller' => 'registration_mail_settings')
 				),
+				'answer_list' => array(
+					'url' => array('controller' => 'registration_blocks', 'action' =>
+						'answer_list'),
+					'label' => ['registrations', 'Answer List'],
+				),
 			),
 		),
 		'Mails.MailForm',
