@@ -326,6 +326,31 @@ class RegistrationBlocksController extends RegistrationsAppController {
 	}
 
 /**
+ * delete answer
+ *
+ * @return void
+ */
+	public function delete_answer() {
+		if (! $this->request->is('delete')) {
+			$this->throwBadRequest();
+			return;
+		}
+
+		$registrationKey = $this->_getRegistrationKeyFromPass();
+		// 削除処理
+		if (! $this->RegistrationAnswerSummary->deleteAnswerSummary($registrationKey)) {
+			$this->throwBadRequest();
+			return;
+		}
+
+			$this->redirect(NetCommonsUrl::actionUrl([
+				'action' => 'answer_list',
+				'frame_id' => Current::read('Frame.id'),
+				'key' => $registrationKey,
+			]));
+	}
+
+/**
  * _setFlashMessageAndRedirect
  *
  * @param string $message flash error message
