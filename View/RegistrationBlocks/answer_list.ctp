@@ -31,7 +31,18 @@
 							// question.idをキーanswer_valueを値とした連想配列をつくる
 							$answers = array();
 							foreach ($summary['RegistrationAnswer'] as $answer) {
-								if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+								if (isset($answer['UploadFile'])) {
+									$value = $this->NetCommonsHtml->link(
+										$answer['RegistrationAnswer']['answer_value'],
+										$this->NetCommonsHtml->url(
+											[
+												'action' => 'download_file',
+												$answer['RegistrationAnswer']['id'],
+												'answer_value_file',
+											]
+										)
+									);
+								} elseif (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
 									$value = h(implode(',',
 										$answer['RegistrationAnswer']['answer_values']));
 								} else {

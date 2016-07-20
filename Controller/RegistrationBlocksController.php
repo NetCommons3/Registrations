@@ -64,6 +64,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			),
 		),
 		'Paginator',
+		'Files.Download',
 	);
 
 /**
@@ -348,6 +349,23 @@ class RegistrationBlocksController extends RegistrationsAppController {
 				'frame_id' => Current::read('Frame.id'),
 				'key' => $registrationKey,
 			]));
+	}
+
+/**
+ * 添付ファイルダウンロード
+ *
+ * @return mixed
+ */
+	public function download_file() {
+		// ここから元コンテンツを取得する処理
+		$answerId = $this->params['key'];
+		return $this->Download->doDownload(
+			$answerId,
+			[
+				'field' => 'answer_value_file',
+				'download' => true,
+			]
+		);
 	}
 
 /**
