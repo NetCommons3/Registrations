@@ -15,6 +15,12 @@ echo $this->NetCommonsHtml->script(array(
 ));
 $jsPastRegistrations = NetCommonsAppController::camelizeKeyRecursive($pastRegistrations);
 ?>
+<?php if (Current::permission('block_editable')) : ?>
+	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
+	<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_SETTING, ['displayAllTab' =>
+		true, 'displayBlockTitle' => true]); ?>
+<?php endif ?>
+
 
 <div ng-controller="Registrations.add"
 	 ng-init="initialize(<?php echo h(json_encode($jsPastRegistrations)); ?>,
@@ -38,10 +44,6 @@ $jsPastRegistrations = NetCommonsAppController::camelizeKeyRecursive($pastRegist
 
 			<div class="form-group col-xs-12">
 				<?php echo $this->element('Registrations.RegistrationAdd/create_new'); ?>
-			</div>
-
-			<div class="form-group col-xs-12">
-				<?php echo $this->element('Registrations.RegistrationAdd/create_template'); ?>
 			</div>
 
 			<div class="form-group col-xs-12">
