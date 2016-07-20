@@ -122,7 +122,14 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 							?>
 							<div class="row form-group">
 								<div class="col-xs-12">
-									<div class="well">
+									<div class="well" ng-hide="
+									question.questionType == <?php echo
+									RegistrationsComponent::TYPE_FILE; ?> ||
+									question.questionType == <?php echo
+									RegistrationsComponent::TYPE_EMAIL; ?> ||
+									question.questionType == <?php echo
+									RegistrationsComponent::TYPE_TEXT_AREA; ?>
+									">
 										<div ng-if="question.questionType == <?php echo RegistrationsComponent::TYPE_SELECTION; ?>">
 											<?php echo $this->element($elementFolder . 'simple_choice_option'); ?>
 										</div>
