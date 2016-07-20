@@ -462,6 +462,7 @@ class RegistrationsComponent extends Component {
  * @var int
  */
 	const REGISTRATION_DOWNLOAD_FILE_ANSWER_ID_PATH_INDEX = 0;
+
 /**
  * getSortOrders
  *
