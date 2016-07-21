@@ -169,7 +169,6 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			$this->setSetting(MailQueueBehavior::MAIL_QUEUE_SETTING_MAIL_BODY_AFTER,
 				__d('registrations', 'Registration.mail.after.body'));
 
-
 			if ($registration['Registration']['is_regist_user_send']) {
 				// 本人にもメールする
 				foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
