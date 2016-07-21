@@ -112,13 +112,16 @@ echo $this->NetCommonsHtml->script(array(
 							); ?>
 							<?php echo $this->BlockIndex->tableData(
 								'',
-								$this->NetCommonsHtml->link(__d('registrations', 'Answer List'), [
+								$this->NetCommonsHtml->link(__d('registrations', 'Answer List'),
+									[
 									'action' => 'answer_list',
 									$registration['Registration']['key']
-								]),
+									],
+									[
+										'class' => 'btn btn-default'
+									]),
 								array('escape' => false)
 							); ?>
-
 						<?php else: ?>
 							<td></td>
 							<td></td>

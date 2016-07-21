@@ -138,6 +138,7 @@ class ActionRegistrationAdd extends RegistrationsAppModel {
 		$baseCondition = $this->Registration->getBaseCondition(array(
 			'Registration.id' => $check['past_registration_id']
 		));
+		unset($baseCondition['block_id']);
 		$cnt = $this->Registration->find('count', array(
 			'conditions' => $baseCondition,
 			'recursive' => -1

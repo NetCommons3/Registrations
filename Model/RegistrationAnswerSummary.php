@@ -425,6 +425,20 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 	}
 
 /**
+ * deleteAnswerSummary
+ * when registration is published, delete answer summary
+ *
+ * @param int $key registration key
+ * @return bool
+ */
+	public function deleteAnswerSummary($key) {
+		$this->deleteAll(array(
+			'registration_key' => $key,
+			), true);
+		return true;
+	}
+
+/**
  * メール送信のX-DATAタグ用文字列の生成
  *
  * @param array $summary RegistrationAnswerSummmaryデータ

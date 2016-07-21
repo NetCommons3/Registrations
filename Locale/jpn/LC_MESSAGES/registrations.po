@@ -1019,3 +1019,9 @@ msgstr "この登録フォームはまだ公開されていません。"
 
 msgid "Registration data"
 msgstr "登録データ"
+
+msgid "Delete Answer"
+msgstr "データ削除"
+
+msgid "Delete all answer"
+msgstr "登録データを全て削除"

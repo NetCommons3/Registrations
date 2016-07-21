@@ -43,6 +43,8 @@ class RegistrationAddController extends RegistrationsAppController {
 			),
 		),
 		'Registrations.Registrations',
+		'Registrations.RegistrationBlockTabs',
+
 	);
 
 /**
@@ -112,7 +114,7 @@ class RegistrationAddController extends RegistrationsAppController {
 		// 過去データ 取り出し
 		$pastRegistrations = $this->Registration->find('all',
 			array(
-				'conditions' => $this->Registration->getBaseCondition(),
+				'conditions' => Hash::remove($this->Registration->getBaseCondition(), 'block_id'),
 				'offset' => 0,
 				'limit' => 1000,
 				'recursive' => -1,

@@ -457,6 +457,13 @@ class RegistrationsComponent extends Component {
 	const REGISTRATION_FINGER_PRINT_FILENAME = 'finger_print.txt';
 
 /**
+ * 添付ファイルダウンロード時のanswer.id path index
+ *
+ * @var int
+ */
+	const REGISTRATION_DOWNLOAD_FILE_ANSWER_ID_PATH_INDEX = 0;
+
+/**
  * getSortOrders
  *
  * @return array

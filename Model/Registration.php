@@ -650,6 +650,10 @@ class Registration extends RegistrationsAppModel {
 				'registration_key' => $data['Registration']['key']), true, false)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
+			// ブロック削除
+			//Blockデータ削除
+			$blockKey = Current::read('Block.key');
+			$this->deleteBlock($blockKey);
 			$this->commit();
 		} catch (Exception $ex) {
 			//トランザクションRollback

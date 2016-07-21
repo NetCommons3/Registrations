@@ -64,6 +64,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			),
 		),
 		'Paginator',
+		'Files.Download',
 	);
 
 /**
@@ -323,6 +324,48 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			$summary['RegistrationAnswer'] = $answers;
 		}
 		$this->set('summaries', $summaries);
+	}
+
+/**
+ * delete answer
+ *
+ * @return void
+ */
+	public function delete_answer() {
+		if (! $this->request->is('delete')) {
+			$this->throwBadRequest();
+			return;
+		}
+
+		$registrationKey = $this->_getRegistrationKeyFromPass();
+		// 削除処理
+		if (! $this->RegistrationAnswerSummary->deleteAnswerSummary($registrationKey)) {
+			$this->throwBadRequest();
+			return;
+		}
+
+			$this->redirect(NetCommonsUrl::actionUrl([
+				'action' => 'answer_list',
+				'frame_id' => Current::read('Frame.id'),
+				'key' => $registrationKey,
+			]));
+	}
+
+/**
+ * 添付ファイルダウンロード
+ *
+ * @return mixed
+ */
+	public function download_file() {
+		// ここから元コンテンツを取得する処理
+		$answerId = $this->params['key'];
+		return $this->Download->doDownload(
+			$answerId,
+			[
+				'field' => 'answer_value_file',
+				'download' => true,
+			]
+		);
 	}
 
 /**
