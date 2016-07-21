@@ -848,7 +848,7 @@ msgstr "登録期間を設定する"
 
 #: /View/RegistrationEdit/edit.ctp:71
 msgid "After approval will be immediately published . Stop of the registration to select the stop from the registration data list ."
-msgstr "登録できる期間を設定します。登録フォームの表示／非表示の制御ではありません。表示の制御は表示設定画面で行います。"
+msgstr "登録できる期間を設定します。"
 
 #: /View/RegistrationEdit/edit.ctp:97
 msgid "set the aggregate display period"
@@ -1030,3 +1030,6 @@ msgstr "データ削除"
 
 msgid "Delete all answer"
 msgstr "登録データを全て削除"
+
+msgid "E-mail notifications are disabled"
+msgstr "このフォームではメール通知は許可されていません。"

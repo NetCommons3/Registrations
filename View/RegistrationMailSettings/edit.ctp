@@ -30,7 +30,7 @@
 				),
 			),
 			NetCommonsUrl::backToIndexUrl('default_setting_action'),
-			1 // 問合せ先メールアドレス 表示
+			0 // 問合せ先メールアドレス 非表示
 		); ?>
 	</div>
 </div>

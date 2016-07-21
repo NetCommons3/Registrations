@@ -6,7 +6,13 @@ echo $this->RegistrationEdit->registrationAttributeCheckbox('is_answer_mail_send
 ?>
 <div class="row" ng-show="registration.registration.isAnswerMailSend == '<?php echo
 RegistrationsComponent::USES_USE; ?>'">
+
 	<div class="col-xs-11 col-xs-offset-1">
+		<?php if (! Hash::get($mailSetting, 'MailSetting.is_mail_send')) : ?>
+			<div class="alert alert-warning">
+				<?php echo __d('registrations', 'E-mail notifications are disabled'); ?>
+			</div>
+		<?php endif ?>
 		<?php /* 本人にも送る（メールアドレス項目があるときのみ） */
 		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_regist_user_send',
 			__d('registrations', 'Notify the applicant by e-mail,if there is metadata of e-mail'),
