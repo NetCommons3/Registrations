@@ -578,6 +578,8 @@ class Registration extends RegistrationsAppModel {
 				$this->setTopicValue('answer_period_end', null);
 			}
 
+			// Block.nameが入ってるとBlockビヘイビアが名前を同期してくれないのでremove
+			$registration = Hash::remove($registration, 'Block.name');
 			$saveRegistration = $this->save($registration, false);
 			if (! $saveRegistration) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
