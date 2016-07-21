@@ -144,12 +144,18 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		$conditions = $this->Registration->getBaseCondition();
 		unset($conditions['block_id']);
 		$this->Paginator->settings = array(
-			'Registration' => array(
-				'order' => array('Registration.id' => 'desc'),
-				'conditions' => $this->Registration->getBlockConditions($conditions),
-				'recursive' => 0,
-			)
+			'Registration' => $this->Registration->getBlockIndexSettings([
+				'conditions' => $conditions,
+				'recursive' => 0
+			])
 		);
+		//$this->Paginator->settings = array(
+		//	'Registration' => array(
+		//		'order' => array('Registration.id' => 'desc'),
+		//		'conditions' => $this->Registration->getBlockConditions($conditions),
+		//		'recursive' => 0,
+		//	)
+		//);
 
 		$registrations = $this->Paginator->paginate('Registration');
 		if (!$registrations) {

@@ -61,7 +61,7 @@ echo $this->NetCommonsHtml->script(array(
 				</thead>
 				<tbody>
 					<?php foreach ((array)$registrations as $registration) : ?>
-					<?php echo $this->BlockIndex->startTableRow($registration['Registration']['key']); ?>
+					<?php echo $this->BlockIndex->startTableRow($registration['Block']['id']); ?>
 						<?php echo $this->BlockIndex->tableData(
 							'Frame.block_id', $registration['Block']['id']
 						); ?>
