@@ -580,6 +580,8 @@ class Registration extends RegistrationsAppModel {
 
 			// Block.nameが入ってるとBlockビヘイビアが名前を同期してくれないのでremove
 			$registration = Hash::remove($registration, 'Block.name');
+			// modified に値があると modified が更新されないのでnullに
+			$registration['Registration']['modified'] = null;
 			$saveRegistration = $this->save($registration, false);
 			if (! $saveRegistration) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
