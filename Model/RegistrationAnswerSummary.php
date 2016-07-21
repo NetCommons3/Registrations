@@ -123,12 +123,15 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				'action' => 'index',
 				Current::read('Block.id'),
 				'frame_id' => Current::read('Frame.id'),
-			));
+			), true);
 			$this->setAddEmbedTagValue('X-URL', $url);
 
 			// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
 			$condition = $this->Registration->getBaseCondition();
 			$registration = $this->Registration->find('first', ['conditions' => $condition]);
+
+			// X-SUBJECT設定
+			$this->setAddEmbedTagValue('X-SUBJECT', $registration['Registration']['title']);
 
 			// 登録された項目の取得
 			// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
@@ -161,6 +164,10 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			// X-DATA展開
 			$xData = $this->_makeXData($summary, $answers);
 			$this->setAddEmbedTagValue('X-DATA', $xData);
+
+			// TO_ADDRESSESには表示しない（ルーム配信のみ表示）末尾定型文を追加（登録フォーム回答）
+			$this->setSetting(MailQueueBehavior::MAIL_QUEUE_SETTING_MAIL_BODY_AFTER,
+				__d('registrations', 'Registration.mail.after.body'));
 
 			if ($registration['Registration']['is_regist_user_send']) {
 				// 本人にもメールする

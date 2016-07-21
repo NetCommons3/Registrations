@@ -48,7 +48,6 @@
 								} else {
 									$value = h($answer['RegistrationAnswer']['answer_value']);
 								}
-								// ε(　　　　 v ﾟωﾟ)　＜ファイルはファイルへのリンクをつける
 							}
 							$answers[$answer['RegistrationQuestion']['id']] = $value;
 							?>

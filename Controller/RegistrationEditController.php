@@ -41,7 +41,7 @@ class RegistrationEditController extends RegistrationsAppController {
  */
 	public $uses = array(
 		// 登録通知メール
-		//'Mails.MailSetting',
+		'Mails.MailSetting',
 		//'Mails.MailSettingFixedPhrase',
 		'DataTypes.DataTypeChoice',
 	);
@@ -461,6 +461,14 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->request->data = $registration;
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
+
+		// メール通知設定
+		$conditions = [
+			'plugin_key' => 'registrations',
+			'block_key' => Current::read('Block.key')
+		];
+		$mailSetting = $this->MailSetting->find('first', ['conditions' => $conditions]);
+		$this->set('mailSetting', $mailSetting);
 	}
 
 /**
