@@ -20,6 +20,48 @@
 	<p>
 		<?php echo $registration['Registration']['thanks_content']; ?>
 	</p>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>
+					<?php echo __d('registrations', 'RegistrationAnswerSummary ID') ?>
+				</th>
+				<td>
+					<?php echo $summary['RegistrationAnswerSummary']['id']; ?>
+				</td>
+			</tr>
+			<?php foreach ($answers as $answer) : ?>
+				<tr>
+					<th>
+						<?php echo h($answer['RegistrationQuestion']['question_value']); ?>
+					</th>
+					<td>
+						<?php
+						if (isset($answer['UploadFile'])) {
+							$value = $this->NetCommonsHtml->link(
+								$answer['RegistrationAnswer']['answer_value'],
+								$this->NetCommonsHtml->url(
+									[
+										'action' => 'download_file',
+										$answer['RegistrationAnswer']['id'],
+										'answer_value_file',
+									]
+								)
+							);
+						} elseif (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+							$value = h(implode(',',
+								$answer['RegistrationAnswer']['answer_values']));
+						} else {
+							$value = h($answer['RegistrationAnswer']['answer_value']);
+						}
+						echo $value;
+						?>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+
 		<!--<hr>-->
 		<!---->
 		<!--<div class="text-center">-->

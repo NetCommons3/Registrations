@@ -407,6 +407,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 				Current::read('Block.id'),
 				$this->_getRegistrationKey($this->__registration),
 				'frame_id' => Current::read('Frame.id'),
+				'summary_id' => $summary['RegistrationAnswerSummary']['id']
 			));
 			$this->redirect($url);
 		}
@@ -441,6 +442,16 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		// 後始末
 		// 登録中にたまっていたセッションキャッシュをクリア
 		$this->Session->delete('Registrations.' . $qKey);
+
+		// 登録データを取得
+		$summary = $this->RegistrationAnswerSummary->findById($this->request->named['summary_id']);
+		// 項目のIDを取得
+		$questionIds = Hash::extract(
+			$this->__registration['RegistrationPage'],
+			'{n}.RegistrationQuestion.{n}.id');
+		$answers = $this->RegistrationAnswer->getAnswersBySummary($summary, $questionIds);
+		$this->set('summary', $summary);
+		$this->set('answers', $answers);
 
 		// View変数にセット
 		$this->request->data['Frame'] = Current::read('Frame');
