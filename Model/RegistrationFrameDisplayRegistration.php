@@ -255,7 +255,7 @@ class RegistrationFrameDisplayRegistration extends RegistrationsAppModel {
 		}
 
 		// フレームのデフォルトにする フレームとブロックが関連づいてるのでここまででOK By RyujiAMANO
-		$action = "'" . 'registration_answers/view/';
+		$action = "'" . 'registration_answers/view/' . "'";
 		//$action = "'" . 'registration_answers/view/' . Current::read('Block.id') .
 		//	'/' . $data['registration_key'] . "'";
 		if (!$this->updateFrameDefaultAction($action)) {
