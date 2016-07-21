@@ -1033,3 +1033,6 @@ msgstr "登録データを全て削除"
 
 msgid "E-mail notifications are disabled"
 msgstr "このフォームではメール通知は許可されていません。"
+
+msgid "Thank you for registering."
+msgstr "ご登録ありがとうございました。"

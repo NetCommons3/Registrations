@@ -229,6 +229,8 @@ class ActionRegistrationAdd extends RegistrationsAppModel {
 					__d('registrations', 'Registration.mail.default.subject'),
 				'registration_mail_body' =>
 					__d('registrations', 'Registration.mail.default.body'),
+				'thanks_content' =>
+					__d('registrations', 'Thank you for registering.'),
 			),
 			$addData);
 
