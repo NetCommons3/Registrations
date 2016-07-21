@@ -77,6 +77,9 @@ class RegistrationAddController extends RegistrationsAppController {
 		// NetCommonsお約束：投稿権限のある人物しかこのアクションにアクセスできない
 		// それは$componentsの組み込みでallow => add => content_creatableで担保される
 		// アクション処理内でチェックする必要はない
+		unset($this->helpers['Blocks.BlockTabs']['blockTabs']['role_permissions']);
+		unset($this->helpers['Blocks.BlockTabs']['blockTabs']['mail_settings']);
+		unset($this->helpers['Blocks.BlockTabs']['blockTabs']['answer_list']);
 
 		// POSTされたデータを読み取り
 		if ($this->request->is('post')) {
