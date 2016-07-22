@@ -390,7 +390,7 @@ class Registration extends RegistrationsAppModel {
 	}
 
 /**
- * After frame save hook
+ * ブロック作成
  *
  * このルームにすでに登録フォームブロックが存在した場合で、かつ、現在フレームにまだブロックが結びついてない場合、
  * すでに存在するブロックと現在フレームを結びつける
@@ -547,7 +547,8 @@ class Registration extends RegistrationsAppModel {
 		$this->begin();
 
 		try {
-			$registration['Registration']['block_id'] = Current::read('Frame.block_id');
+			//$registration['Registration']['block_id'] = Current::read('Frame.block_id');
+			$registration['Registration']['block_id'] = Current::read('Block.id');
 			// is_no_member_allowの値によってis_repeat_allowを決定する
 			$registration['Registration']['is_repeat_allow'] = RegistrationsComponent::USES_NOT_USE;
 			//if (Hash::get(

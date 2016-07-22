@@ -42,11 +42,12 @@ class RegistrationDeleteRegistrationTest extends WorkflowDeleteTest {
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
 		'plugin.registrations.registration_setting',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
+		//'plugin.registrations.registration_frame_setting',
+		//'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_setting',
 		'plugin.authorization_keys.authorization_keys',
 		'plugin.workflow.workflow_comment',
+		'plugin.site_manager.site_setting',
 	);
 
 /**
@@ -91,9 +92,9 @@ class RegistrationDeleteRegistrationTest extends WorkflowDeleteTest {
  */
 	private function __getAssociation($registrationKey) {
 		$association = array(
-			'RegistrationFrameDisplayRegistration' => array(
-				'registration_key' => $registrationKey,
-			),
+			//'RegistrationFrameDisplayRegistration' => array(
+			//	'registration_key' => $registrationKey,
+			//),
 			'RegistrationAnswerSummary' => array(
 				'registration_key' => $registrationKey,
 			),
@@ -193,7 +194,7 @@ class RegistrationDeleteRegistrationTest extends WorkflowDeleteTest {
 		$data = $this->__getData(2, 'registration_2');
 		return array(
 			array($data, 'Registrations.Registration', 'deleteAll'),
-			array($data, 'Registrations.RegistrationFrameDisplayRegistration', 'deleteAll'),
+			//array($data, 'Registrations.RegistrationFrameDisplayRegistration', 'deleteAll'),
 			array($data, 'Registrations.RegistrationAnswerSummary', 'deleteAll'),
 		);
 	}
