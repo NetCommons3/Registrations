@@ -16,7 +16,7 @@ echo $this->NetCommonsHtml->script(array(
 ));
 $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppController::changeBooleansToNumbers($this->data));
 ?>
-<?php if (Current::permission('block_editable')) : ?>
+<?php if (Current::permission('block_editable') && $this->layout === 'NetCommons.setting') : ?>
 	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
 	<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_SETTING, ['displayAllTab' =>
 		true, 'displayBlockTitle' => true]); ?>
@@ -159,8 +159,8 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				<?php echo $this->element('Registrations.RegistrationEdit/Edit/delete_form'); ?>
 			</div>
 		<?php endif; ?>
-
+	</div>
 	<?php echo $this->Workflow->comments(); ?>
 
-	</div>
+
 </article>

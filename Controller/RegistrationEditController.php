@@ -346,6 +346,9 @@ class RegistrationEditController extends RegistrationsAppController {
 				$this->_registration);
 			$this->__setupViewParameters($this->_registration, $this->_getActionUrl('edit_question'));
 		}
+		$registrationKey = $this->_registration['Registration']['key'];
+		$comments = $this->Registration->getCommentsByContentKey($registrationKey);
+		$this->set('comments', $comments);
 	}
 
 /**

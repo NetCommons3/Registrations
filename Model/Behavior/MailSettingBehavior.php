@@ -31,34 +31,49 @@ class MailSettingBehavior extends ModelBehavior {
 		// 登録通知メール設定を取得
 		$mailSetting = $model->MailSetting->getMailSettingPlugin(
 			$saveRegistration[$model->alias]['language_id'],
-			MailSettingFixedPhrase::ANSWER_TYPE,
+			array(MailSettingFixedPhrase::DEFAULT_TYPE, MailSettingFixedPhrase::ANSWER_TYPE),
 			$model->plugin
 		);
-		//if (!$mailSetting) {
-		//	$mailSetting = $this->MailSetting->createMailSetting('registrations');
-		//}
+		if (! Hash::check($mailSetting, 'MailSetting.id')) {
+			// まだメール設定がないときは、登録フォームで登録通知メールONならメール設定も送信する設定にする。
+			//$mailSetting = $model->MailSetting->createMailSetting($model->alias);
+			$mailSetting['MailSetting']['is_mail_send'] =
+				$saveRegistration['Registration']['is_answer_mail_send'];
+		}
 		// 登録通知メール設定を変更
 		$pluginLowercase = strtolower(Inflector::singularize($model->plugin));
-		$mailSetting['MailSetting']['plugin_key'] = 'registrations';
+		$mailSetting['MailSetting']['plugin_key'] = strtolower($model->plugin);
 		$mailSetting['MailSetting']['reply_to']
 			= $saveRegistration[$model->alias]['reply_to'];
-		$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_subject']
+		$mailSetting['MailSettingFixedPhrase']['answer']['mail_fixed_phrase_subject']
 			= $saveRegistration[$model->alias][$pluginLowercase . '_mail_subject'];
-		$mailSetting['MailSettingFixedPhrase']['mail_fixed_phrase_body']
+		$mailSetting['MailSettingFixedPhrase']['answer']['mail_fixed_phrase_body']
 			= $saveRegistration[$model->alias][$pluginLowercase . '_mail_body'];
-		$mailSetting['MailSettingFixedPhrase']['plugin_key'] = $model->plugin;
+		$mailSetting['MailSettingFixedPhrase']['answer']['plugin_key'] = strtolower($model->plugin);
 
 		// 登録通知メール設定を保存
 		if ($model->MailSetting->save($mailSetting)) {
 			$mailSetting = Hash::insert(
 				$mailSetting,
-				'MailSettingFixedPhrase.mail_setting_id',
+				'MailSettingFixedPhrase.answer.mail_setting_id',
+				$model->MailSetting->id
+			);
+			$mailSetting = Hash::insert(
+				$mailSetting,
+				'MailSettingFixedPhrase.contents.mail_setting_id',
 				$model->MailSetting->id
 			);
 			$model->MailSettingFixedPhrase = ClassRegistry::init(
 				'Mails.MailSettingFixedPhrase'
 			);
-			if (!$model->MailSettingFixedPhrase->save($mailSetting)) {
+			$answerPhrase = $mailSetting['MailSettingFixedPhrase']['answer'];
+			if (!$model->MailSettingFixedPhrase->save($answerPhrase)) {
+				throw new InternalErrorException(
+					__d('net_commons', 'Internal Server Error')
+				);
+			}
+			$contentsPhrase = $mailSetting['MailSettingFixedPhrase']['contents'];
+			if (!$model->MailSettingFixedPhrase->save($contentsPhrase)) {
 				throw new InternalErrorException(
 					__d('net_commons', 'Internal Server Error')
 				);

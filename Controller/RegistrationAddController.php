@@ -117,6 +117,10 @@ class RegistrationAddController extends RegistrationsAppController {
 		// 過去データ 取り出し
 		$pastRegistrations = $this->Registration->find('all',
 			array(
+				'fields' => array(
+					'id', 'title', 'status', 'answer_timing', 'answer_start_period', 'answer_end_period',
+				),
+
 				'conditions' => Hash::remove($this->Registration->getBaseCondition(), 'block_id'),
 				'offset' => 0,
 				'limit' => 1000,

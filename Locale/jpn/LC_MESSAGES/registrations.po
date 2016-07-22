@@ -1032,7 +1032,7 @@ msgid "Delete all answer"
 msgstr "登録データを全て削除"
 
 msgid "E-mail notifications are disabled"
-msgstr "このフォームではメール通知は許可されていません。"
+msgstr "このフォームではメール通知は許可されていないため設定できません。"
 
 msgid "Thank you for registering."
 msgstr "ご登録ありがとうございました。"
