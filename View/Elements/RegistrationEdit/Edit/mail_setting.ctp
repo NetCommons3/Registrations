@@ -1,4 +1,9 @@
 <?php echo $this->NetCommonsForm->label('', __d('registrations', 'Deliver e-mail when submitted?')); ?>
+<?php if (Hash::get($mailSetting, 'MailSetting.is_mail_send') === false) : ?>
+	<div class="alert alert-warning">
+		<?php echo __d('registrations', 'E-mail notifications are disabled'); ?>
+	</div>
+<?php else : ?>
 <?php /* 登録通知メール設定 */
 echo $this->RegistrationEdit->registrationAttributeCheckbox('is_answer_mail_send',
 	__d('registrations', 'Answer mail send'),
@@ -8,11 +13,8 @@ echo $this->RegistrationEdit->registrationAttributeCheckbox('is_answer_mail_send
 RegistrationsComponent::USES_USE; ?>'">
 
 	<div class="col-xs-11 col-xs-offset-1">
-		<?php if (! Hash::get($mailSetting, 'MailSetting.is_mail_send')) : ?>
-			<div class="alert alert-warning">
-				<?php echo __d('registrations', 'E-mail notifications are disabled'); ?>
-			</div>
-		<?php endif ?>
+
+
 		<?php /* 本人にも送る（メールアドレス項目があるときのみ） */
 		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_regist_user_send',
 			__d('registrations', 'Notify the applicant by e-mail,if there is metadata of e-mail'),
@@ -62,4 +64,6 @@ RegistrationsComponent::USES_USE; ?>'">
 		</div>
 
 	</div>
+
 </div>
+<?php endif ?>
