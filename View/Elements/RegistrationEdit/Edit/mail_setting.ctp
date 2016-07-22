@@ -1,6 +1,5 @@
 <?php echo $this->NetCommonsForm->label('', __d('registrations', 'Deliver e-mail when submitted?')); ?>
 <?php if (Hash::get($mailSetting, 'MailSetting.is_mail_send') === false) : ?>
-	<?php echo $ok ?>
 	<div class="alert alert-warning">
 		<?php echo __d('registrations', 'E-mail notifications are disabled'); ?>
 	</div>
