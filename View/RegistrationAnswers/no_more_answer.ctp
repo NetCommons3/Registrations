@@ -9,4 +9,4 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 ?>
-<?php echo __d('registrations', 'you will not be able to answer this registration.'); ?>
+<?php echo __d('registrations', 'you will not be able to answer this registration.');
