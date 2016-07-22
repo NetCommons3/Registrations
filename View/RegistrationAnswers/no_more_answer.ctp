@@ -10,8 +10,3 @@
  */
 ?>
 <?php echo __d('registrations', 'you will not be able to answer this registration.'); ?>
-<?php if ($displayType == RegistrationsComponent::DISPLAY_TYPE_LIST): ?>
-	<div class="text-center">
-	    <?php echo $this->BackTo->pageLinkButton(__d('registrations', 'Back to Top'), array('icon' => 'chevron-left')); ?>
-	</div>
-<?php endif;
