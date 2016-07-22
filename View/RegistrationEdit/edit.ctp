@@ -159,8 +159,8 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				<?php echo $this->element('Registrations.RegistrationEdit/Edit/delete_form'); ?>
 			</div>
 		<?php endif; ?>
-
+	</div>
 	<?php echo $this->Workflow->comments(); ?>
 
-	</div>
+
 </article>
