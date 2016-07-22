@@ -300,7 +300,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
  * @param array $questionIds QustionIdのリスト
  * @return array|null
  */
-	public function getAnswersBySummary($summary, $questionIds) {
+	public function getAnswersBySummary($summary, $questionIds, $aliasName = 'RegistrationAnswerSummary') {
 		// 何回もSQLを発行するのは無駄かなと思いつつも
 		// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
 		// このクラスからでも利用できないかと試みたが
@@ -310,7 +310,7 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		$answers = $this->find('all', array(
 			'fields' => array('RegistrationAnswer.*', 'RegistrationQuestion.*'),
 			'conditions' => array(
-				'registration_answer_summary_id' => $summary['RegistrationAnswerSummary']['id'],
+				'registration_answer_summary_id' => $summary[$aliasName]['id'],
 				'RegistrationQuestion.id' => $questionIds
 			),
 			'recursive' => -1,

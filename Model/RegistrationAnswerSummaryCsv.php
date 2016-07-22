@@ -182,7 +182,10 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 			//		)
 			//	)
 			//));
-			$answers = $this->RegistrationAnswer->getAnswersBySummary($summary, $questionIds);
+			$answers = $this->RegistrationAnswer->getAnswersBySummary(
+				$summary,
+				$questionIds,
+				$this->alias);
 			$retArray[] = $this->_getRows($registration, $summary, $answers);
 		}
 
