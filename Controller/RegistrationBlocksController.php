@@ -48,7 +48,6 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		'Registrations.RegistrationAnswerSummaryCsv',
 		'Registrations.RegistrationAnswer',
 		'Blocks.Block',
-		'Registrations.RegistrationExport',
 	);
 
 /**
