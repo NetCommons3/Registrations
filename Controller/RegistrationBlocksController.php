@@ -141,15 +141,24 @@ class RegistrationBlocksController extends RegistrationsAppController {
  * @return void
  */
 	public function index() {
+		// 未使用のまま残ってるregistraionsのブロックを削除する
+		$this->_deleteNotUsedBlocks();
+
 		$conditions = $this->Registration->getBaseCondition();
 		unset($conditions['block_id']);
 		$this->Paginator->settings = array(
-			'Registration' => array(
-				'order' => array('Registration.id' => 'desc'),
-				'conditions' => $this->Registration->getBlockConditions($conditions),
-				'recursive' => 0,
-			)
+			'Registration' => $this->Registration->getBlockIndexSettings([
+				'conditions' => $conditions,
+				'recursive' => 0
+			])
 		);
+		//$this->Paginator->settings = array(
+		//	'Registration' => array(
+		//		'order' => array('Registration.id' => 'desc'),
+		//		'conditions' => $this->Registration->getBlockConditions($conditions),
+		//		'recursive' => 0,
+		//	)
+		//);
 
 		$registrations = $this->Paginator->paginate('Registration');
 		if (!$registrations) {
@@ -160,33 +169,6 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		$this->set('registrations', $registrations);
 		$this->request->data['Frame'] = Current::read('Frame');
 	}
-
-/**
- * index
- *
- * @return void
- */
-	//public function _index() {
-	//	// 条件設定値取得
-	//	// 条件設定値取得
-	//	$conditions = $this->Registration->getBaseCondition();
-	//
-	//	// データ取得
-	//	$this->paginate = array(
-	//		'conditions' => $conditions,
-	//		'page' => 1,
-	//		'order' => array('Registration.modified' => 'DESC'),
-	//		//'limit' => RegistrationsComponent::REGISTRATION_DEFAULT_DISPLAY_NUM_PER_PAGE,
-	//		'recursive' => 0,
-	//	);
-	//	$registration = $this->paginate('Registration');
-	//	if (! $registration) {
-	//		$this->view = 'not_found';
-	//		return;
-	//	}
-	//
-	//	$this->set('registrations', $registration);
-	//}
 
 /**
  * download
@@ -386,5 +368,46 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			'action' => 'index',
 			'frame_id' => Current::read('Frame.id')
 		)));
+	}
+
+/**
+ * 24時間以上Registrationと関連づいてないゴミブロックを削除する
+ *
+ * @return void
+ */
+	protected function _deleteNotUsedBlocks() {
+		// 24時間以上Registrationsと関連づいてないブロックを探す。
+		$date = new DateTime(NetCommonsTime::getNowDatetime());
+		$date->sub(new DateInterval('P1D'));
+
+		$options = [
+			'conditions' => [
+				'Block.plugin_key' => 'registrations',
+				'Registration.id' => null,
+				'Block.modified <' => $date->format('Y-m-d H:i:s'),
+			],
+			'joins' => [
+				[
+					'table' => $this->Registration->table,
+					'alias' => $this->Registration->alias,
+					'type' => 'LEFT',
+					'conditions' => array(
+						'Block.id = Registration.block_id',
+					)
+				],
+			],
+			// ブロックのIDだけ取得できればOK
+			'fields' => ['Block.id']
+		];
+
+		$blocks = $this->Block->find('all', $options);
+		$blockIds = Hash::extract($blocks, '{n}.Block.id');
+		if (empty($blockIds)) {
+			return;
+		}
+		// 削除実行
+		$this->Block->begin();
+		$this->Block->deleteAll(['Block.id' => $blockIds]);
+		$this->Block->commit();
 	}
 }
