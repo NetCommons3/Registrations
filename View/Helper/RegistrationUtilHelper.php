@@ -207,9 +207,6 @@ class RegistrationUtilHelper extends AppHelper {
 		if (isset($options['class'])) {
 			$btnClass = 'btn btn-' . $options['class'];
 		}
-		if (isset($options['size'])) {
-			$btnClass .= ' btn-' . $options['size'];
-		}
 
 		$title = '';
 		if (isset($options['title'])) {
