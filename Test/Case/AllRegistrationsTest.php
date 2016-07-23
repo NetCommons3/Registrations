@@ -32,6 +32,10 @@ class AllRegistrationsTest extends NetCommonsTestSuite {
 		$suite->addTestDirectoryRecursive(
 			CakePlugin::path($plugin) . 'Test' . DS . 'Case' . DS . 'Model'
 		);
+		// View
+		$suite->addTestDirectoryRecursive(
+			CakePlugin::path($plugin) . 'Test' . DS . 'Case' . DS . 'View'
+		);
 		return $suite;
 	}
 }
