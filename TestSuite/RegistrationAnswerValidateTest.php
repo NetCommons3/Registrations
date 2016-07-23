@@ -46,6 +46,7 @@ class RegistrationAnswerValidateTest extends NetCommonsModelTestCase {
 		'plugin.registrations.registration_choice',
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
+		'plugin.site_manager.site_setting',
 	);
 
 /**

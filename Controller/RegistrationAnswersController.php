@@ -31,7 +31,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		'Registrations.RegistrationPage',
 		'Registrations.RegistrationAnswerSummary',
 		'Registrations.RegistrationAnswer',
-		'Registrations.RegistrationFrameSetting',
+		//'Registrations.RegistrationFrameSetting',
 	);
 
 /**
@@ -114,9 +114,9 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		}
 
 		// 現在の表示形態を調べておく
-		list($this->__displayType) = $this->RegistrationFrameSetting->getRegistrationFrameSetting(
-			Current::read('Frame.key')
-		);
+		//list($this->__displayType) = $this->RegistrationFrameSetting->getRegistrationFrameSetting(
+		//	Current::read('Frame.key')
+		//);
 
 		// 以下のisAbleto..の内部関数にてNetCommonsお約束である編集権限、参照権限チェックを済ませています
 		// 閲覧可能か

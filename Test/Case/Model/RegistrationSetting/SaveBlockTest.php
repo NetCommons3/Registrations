@@ -152,7 +152,7 @@ class RegistrationSettingSaveBlockTest extends NetCommonsModelTestCase {
 	public function dataProviderSaveOnExceptionError() {
 		return array(
 			array($this->_getData(4, 'frame_8', null), 'Blocks.Block', 'save'),
-			array($this->_getData(4, 'frame_8', null), 'Frames.Frame', 'save'),
+			//array($this->_getData(4, 'frame_8', null), 'Frames.Frame', 'save'),
 		);
 	}
 }

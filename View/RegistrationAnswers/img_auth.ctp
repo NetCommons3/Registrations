@@ -26,9 +26,6 @@
 	?>
 
 	<div class="text-center">
-		<?php if ($displayType == RegistrationsComponent::DISPLAY_TYPE_LIST): ?>
-			<?php echo $this->BackTo->pageLinkButton(__d('net_commons', 'Cancel'), array('icon' => 'remove')); ?>
-		<?php endif; ?>
 		<?php echo $this->NetCommonsForm->button(
 		__d('net_commons', 'NEXT') . ' <span class="glyphicon glyphicon-chevron-right"></span>',
 		array(

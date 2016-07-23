@@ -43,12 +43,11 @@ class RegistrationBlocksController extends RegistrationsAppController {
  */
 	public $uses = array(
 		'Registrations.Registration',
-		'Registrations.RegistrationFrameSetting',
+		//'Registrations.RegistrationFrameSetting',
 		'Registrations.RegistrationAnswerSummary',
 		'Registrations.RegistrationAnswerSummaryCsv',
 		'Registrations.RegistrationAnswer',
 		'Blocks.Block',
-		'Registrations.RegistrationExport',
 	);
 
 /**

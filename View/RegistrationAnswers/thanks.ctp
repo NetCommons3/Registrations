@@ -62,17 +62,4 @@
 		</tbody>
 	</table>
 
-		<!--<hr>-->
-		<!---->
-		<!--<div class="text-center">-->
-		<!--	--><?php //if ($displayType == RegistrationsComponent::DISPLAY_TYPE_LIST): ?>
-		<!--		--><?php //echo $this->BackTo->indexLinkButton(__d('registrations', 'Back to page')); ?>
-		<!--	--><?php //endif; ?>
-		<!--	--><?php
-		//		echo $this->RegistrationUtil->getAggregateButtons($registration,
-		//			array('title' => __d('registrations', 'Aggregate'),
-		//					'class' => 'primary',
-		//	));
-		//	?>
-		<!--</div>-->
 </article>

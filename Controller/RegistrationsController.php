@@ -27,8 +27,7 @@ class RegistrationsController extends RegistrationsAppController {
  * @var array
  */
 	public $uses = array(
-		'Registrations.RegistrationFrameSetting',
-		'Registrations.RegistrationFrameDisplayRegistration',
+		//'Registrations.RegistrationFrameSetting',
 	);
 
 /**

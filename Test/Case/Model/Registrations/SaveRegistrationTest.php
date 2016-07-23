@@ -47,9 +47,10 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
 		'plugin.registrations.registration_setting',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
+		//'plugin.registrations.registration_frame_setting',
+		//'plugin.registrations.registration_frame_display_registration',
 		'plugin.workflow.workflow_comment',
+		'plugin.mails.mail_setting_fixed_phrase',
 	);
 
 /**
@@ -249,7 +250,7 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		return array(
 			array($data, 'Registrations.Registration', 'save'),
 			array($data, 'Registrations.RegistrationPage', 'saveRegistrationPage'),
-			array($data, 'Registrations.RegistrationFrameDisplayRegistration', 'saveDisplayRegistration'),
+			//array($data, 'Registrations.RegistrationFrameDisplayRegistration', 'saveDisplayRegistration'),
 		);
 	}
 

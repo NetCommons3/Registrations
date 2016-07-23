@@ -49,6 +49,7 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 		'plugin.registrations.registration_choice',
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
+		'plugin.site_manager.site_setting',
 	);
 
 /**
@@ -92,6 +93,20 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 
 		// このloadではモックがロードされる
 		$this->$model->Behaviors->load('MailQueue');
+
+		// Registrationモデルをモックに
+		$registration['Registration'] = (new RegistrationFixture())->records[0];
+		$questionFixture = new RegistrationQuestionFixture();
+		$registration['RegistrationPage'][0]['RegistrationQuestion'] = $questionFixture->getQuestions(
+			1,
+			1,
+			2,
+			1
+		);
+		$registrationMock = $this->getMockForModel('Registrations.Registration', ['find']);
+		$registrationMock->expects($this->any())
+			->method('find')
+			->will($this->returnValue($registration));
 	}
 
 /**

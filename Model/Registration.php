@@ -125,8 +125,8 @@ class Registration extends RegistrationsAppModel {
 			'RegistrationPage' => 'Registrations.RegistrationPage',
 			'RegistrationSetting' =>
 				'Registrations.RegistrationSetting',
-			'RegistrationFrameDisplayRegistration' =>
-				'Registrations.RegistrationFrameDisplayRegistration',
+			//'RegistrationFrameDisplayRegistration' =>
+			//	'Registrations.RegistrationFrameDisplayRegistration',
 			'RegistrationAnswerSummary' =>
 				'Registrations.RegistrationAnswerSummary',
 		]);
@@ -390,7 +390,7 @@ class Registration extends RegistrationsAppModel {
 	}
 
 /**
- * After frame save hook
+ * ブロック作成
  *
  * このルームにすでに登録フォームブロックが存在した場合で、かつ、現在フレームにまだブロックが結びついてない場合、
  * すでに存在するブロックと現在フレームを結びつける
@@ -439,30 +439,30 @@ class Registration extends RegistrationsAppModel {
  * @param array $addConditions 追加条件
  * @return array
  */
-	public function getCondition($addConditions = array()) {
-		// 基本条件（ワークフロー条件）
-		$conditions = $this->getBaseCondition($addConditions);
-		// 現在フレームに表示設定されている登録フォームか
-		$keys = $this->RegistrationFrameDisplayRegistration->find(
-			'list',
-			array(
-				'conditions' => array(
-					'RegistrationFrameDisplayRegistration.frame_key' => Current::read('Frame.key')),
-				'fields' => array('RegistrationFrameDisplayRegistration.registration_key'),
-				'recursive' => -1
-			)
-		);
-		$conditions['Registration.key'] = $keys;
-
-		$periodCondition = $this->_getPeriodConditions();
-		$conditions[] = $periodCondition;
-
-		if (! Current::read('User.id')) {
-			$conditions['is_no_member_allow'] = RegistrationsComponent::PERMISSION_PERMIT;
-		}
-		$conditions = Hash::merge($conditions, $addConditions);
-		return $conditions;
-	}
+	//public function getCondition($addConditions = array()) {
+	//	// 基本条件（ワークフロー条件）
+	//	$conditions = $this->getBaseCondition($addConditions);
+	//	// 現在フレームに表示設定されている登録フォームか
+	//	$keys = $this->RegistrationFrameDisplayRegistration->find(
+	//		'list',
+	//		array(
+	//			'conditions' => array(
+	//				'RegistrationFrameDisplayRegistration.frame_key' => Current::read('Frame.key')),
+	//			'fields' => array('RegistrationFrameDisplayRegistration.registration_key'),
+	//			'recursive' => -1
+	//		)
+	//	);
+	//	$conditions['Registration.key'] = $keys;
+	//
+	//	$periodCondition = $this->_getPeriodConditions();
+	//	$conditions[] = $periodCondition;
+	//
+	//	if (! Current::read('User.id')) {
+	//		$conditions['is_no_member_allow'] = RegistrationsComponent::PERMISSION_PERMIT;
+	//	}
+	//	$conditions = Hash::merge($conditions, $addConditions);
+	//	return $conditions;
+	//}
 
 /**
  * 時限公開のconditionsを返す
@@ -547,7 +547,8 @@ class Registration extends RegistrationsAppModel {
 		$this->begin();
 
 		try {
-			$registration['Registration']['block_id'] = Current::read('Frame.block_id');
+			//$registration['Registration']['block_id'] = Current::read('Frame.block_id');
+			$registration['Registration']['block_id'] = Current::read('Block.id');
 			// is_no_member_allowの値によってis_repeat_allowを決定する
 			$registration['Registration']['is_repeat_allow'] = RegistrationsComponent::USES_NOT_USE;
 			//if (Hash::get(
@@ -598,15 +599,15 @@ class Registration extends RegistrationsAppModel {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 			// フレームにブロックが関連づいてなければ、関連づける。
-			if (! Current::read('Frame.block_id')) {
-				// フレーム内表示対象登録フォームに登録する
-				if (! $this->RegistrationFrameDisplayRegistration->saveDisplayRegistration(array(
-					'registration_key' => $saveRegistration['Registration']['key'],
-					'frame_key' => Current::read('Frame.key')
-				))) {
-					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-				}
-			}
+			//if (! Current::read('Frame.block_id')) {
+			//	// フレーム内表示対象登録フォームに登録する
+			//	if (! $this->RegistrationFrameDisplayRegistration->saveDisplayRegistration(array(
+			//		'registration_key' => $saveRegistration['Registration']['key'],
+			//		'frame_key' => Current::read('Frame.key')
+			//	))) {
+			//		throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			//	}
+			//}
 			// これまでのテスト登録データを消す
 			$this->RegistrationAnswerSummary->deleteTestAnswerSummary(
 				$saveRegistration['Registration']['key'],
@@ -644,11 +645,11 @@ class Registration extends RegistrationsAppModel {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
-			// 登録フォーム表示設定削除
-			if (! $this->RegistrationFrameDisplayRegistration->deleteAll(array(
-				'registration_key' => $data['Registration']['key']), true, false)) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-			}
+			//// 登録フォーム表示設定削除
+			//if (! $this->RegistrationFrameDisplayRegistration->deleteAll(array(
+			//	'registration_key' => $data['Registration']['key']), true, false)) {
+			//	throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			//}
 			// 登録フォーム登録削除
 			if (! $this->RegistrationAnswerSummary->deleteAll(array(
 				'registration_key' => $data['Registration']['key']), true, false)) {

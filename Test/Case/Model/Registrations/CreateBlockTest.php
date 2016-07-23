@@ -1,6 +1,6 @@
 <?php
 /**
- * Registrations::saveExportKey()のテスト
+ * Registrations::afterFrameSave()のテスト
  *
  * @property Registrations $Registrations
  *
@@ -15,12 +15,12 @@ App::uses('NetCommonsModelTestCase', 'NetCommons.TestSuite');
 App::uses('RegistrationsComponent', 'Registrations.Controller/Component');
 
 /**
- * Registrations::saveExportKey()のテスト
+ * Registrations::afterFrameSave()のテスト
  *
  * @author Allcreator <info@allcreator.net>
  * @package NetCommons\Registrations\Test\Case\Model\Registrations
  */
-class RegistrationSaveExportKeyTest extends NetCommonsModelTestCase {
+class RegistrationCreateBlockTest extends NetCommonsModelTestCase {
 
 /**
  * Plugin name
@@ -45,7 +45,6 @@ class RegistrationSaveExportKeyTest extends NetCommonsModelTestCase {
 		'plugin.registrations.registration_frame_setting',
 		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_setting',
-		'plugin.authorization_keys.authorization_keys',
 	);
 
 /**
@@ -60,7 +59,7 @@ class RegistrationSaveExportKeyTest extends NetCommonsModelTestCase {
  *
  * @var array
  */
-	protected $_methodName = 'saveExportKey';
+	protected $_methodName = 'createBlock';
 
 /**
  * setUp method
@@ -77,47 +76,81 @@ class RegistrationSaveExportKeyTest extends NetCommonsModelTestCase {
 	}
 
 /**
+ * テストDataの取得
+ *
+ * @param string $frameId frame id
+ * @param string $blockId block id
+ * @param string $roomId room id
+ * @return array
+ */
+	private function __getData($frameId, $blockId, $roomId) {
+		$data = array();
+		$data['Frame']['id'] = $frameId;
+		$data['Frame']['block_id'] = $blockId;
+		$data['Frame']['language_id'] = 2;
+		$data['Frame']['room_id'] = $roomId;
+		$data['Frame']['plugin_key'] = 'registrations';
+
+		return $data;
+	}
+
+/**
  * Saveのテスト
  *
+ * @param array $data 登録データ
+ * @dataProvider dataProviderSave
  * @return void
  */
-	public function testSave() {
+	public function testSave($data) {
 		$model = $this->_modelName;
 		$method = $this->_methodName;
 
-		$registrationId = 1;
-		//登録データ取得
-		$before = $this->$model->find('first', array(
-			'recursive' => -1,
-			'conditions' => array('id' => $registrationId),
-		));
-
 		//テスト実行
-		$result = $this->$model->$method($registrationId, 'testExportKey');
+		$result = $this->$model->$method($data);
 		$this->assertNotEmpty($result);
 
 		//登録データ取得
-		$actual = $this->$model->find('first', array(
-			'recursive' => -1,
-			'conditions' => array('id' => $registrationId),
-		));
+		//$actual = $this->Frame->find('first', array(
+		//	'recursive' => -1,
+		//	'conditions' => array('id' => $data['Frame']['id']),
+		//));
+		//$actualBlockId = $actual['Frame']['block_id'];
+		//// block_idが設定されていて
+		//$this->assertNotEmpty($actualBlockId);
+		$actualBlockId = $this->$model->Block->id;
 
-		$this->assertNotEquals($before[$model]['export_key'], $actual[$model]['export_key']);
-		$this->assertEqual('testExportKey', $actual[$model]['export_key']);
+		$block = $this->Block->find('first', array(
+			'recursive' => -1,
+			'conditions' => array('id' => $actualBlockId),
+		));
+		$this->assertNotEmpty($block);
+
+		//そのブロックは登録フォームのもので
+		$this->assertTextEquals($block['Block']['plugin_key'], 'registrations');
+
+		//$actualBlockKey = $block['Block']['key'];
+		//// 登録フォームのフレーム設定情報もできていること
+		//$setting = $this->RegistrationSetting->find('first', array(
+		//	'recursive' => -1,
+		//	'conditions' => array('block_key' => $actualBlockKey),
+		//));
+		//$this->assertNotEmpty($setting);
 	}
+
 /**
- * SaveのExceptionErrorテスト
+ * SaveのDataProvider
+ *
+ * ### 戻り値
+ *  - data 登録データ
  *
  * @return void
  */
-	public function testSaveOnExceptionError() {
-		$model = $this->_modelName;
-		$method = $this->_methodName;
-
-		$this->_mockForReturnFalse($model, $model, 'saveField');
-		$this->setExpectedException('InternalErrorException');
-		//テスト実行
-		$registrationId = 1;
-		$this->$model->$method($registrationId, 'testExportKey');
+	public function dataProviderSave() {
+		return array(
+			array($this->__getData(6, 2, 1)), //
+			array($this->__getData(14, null, 1)), //
+			array($this->__getData(16, null, 4)), //
+		);
 	}
+
 }
