@@ -17,7 +17,7 @@ App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
  * @author Allcreator <info@allcreator.net>
  * @package NetCommons\Registrations\Test\Case\Controller\Component\RegistrationOwnAnswerComponent
  */
-class RegistrationOwnAnswerComponentgetOwnAnsweredKeysTest extends NetCommonsControllerTestCase {
+class RegistrationOwnAnswerComponentGetOwnAnsweredKeysTest extends NetCommonsControllerTestCase {
 
 /**
  * Fixtures
