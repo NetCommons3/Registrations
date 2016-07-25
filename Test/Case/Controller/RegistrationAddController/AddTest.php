@@ -57,6 +57,9 @@ class RegistrationAddControllerAddTest extends WorkflowControllerAddTest {
  * @return void
  */
 	public function setUp() {
+		//ログアウト Web UI でテスト中にログインしてるとテストがログイン済みとして実行されるようなので
+		TestAuthGeneral::logout($this);
+
 		parent::setUp();
 		$this->Registration = ClassRegistry::init('Registrations.Registration');
 		$this->Registration->Behaviors->unload('AuthorizationKey');
@@ -174,9 +177,9 @@ class RegistrationAddControllerAddTest extends WorkflowControllerAddTest {
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => $data['Frame']['id']),
 		)));
 		// ブロックIDのhidden-inputがあるか
-		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Block][id]', 'value' => $data['Block']['id']),
-		)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Block][id]', 'value' => $data['Block']['id']),
+		//)));
 		// 作成方法選択肢オプションがあるか
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[ActionRegistrationAdd][create_option]', 'value' => null),
@@ -194,19 +197,19 @@ class RegistrationAddControllerAddTest extends WorkflowControllerAddTest {
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[ActionRegistrationAdd][past_registration_id]', 'value' => null),
 		)));
 		// テンプレートファイル読み込みがあるか
-		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[ActionRegistrationAdd][template_file]', 'value' => null),
-		)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[ActionRegistrationAdd][template_file]', 'value' => null),
+		//)));
 
-		//フレームID指定なしテスト
-		array_push($results, Hash::merge($results[$base], array(
-			'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id']),
-			'assert' => array('method' => 'assertNotEmpty'),
-		)));
-		array_push($results, Hash::merge($results[$base], array(
-			'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id']),
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => null),
-		)));
+		//フレームID指定なしテスト （ありえないはず。 by RyujiAMANO）
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id']),
+		//	'assert' => array('method' => 'assertNotEmpty'),
+		//)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id']),
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => null),
+		//)));
 
 		return $results;
 	}
