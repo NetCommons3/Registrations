@@ -86,43 +86,51 @@ class RegistrationFixture extends CakeTestFixture {
 			'id' => 1,
 			'is_latest' => 0,
 			'is_no_member_allow' => true,
+			'block_id' => 1,
 		),
 		array(
 			'id' => 2,
 			'is_latest' => 0,
 			'is_no_member_allow' => true,
+			'block_id' => 2,
 		),
 		array(
 			'id' => 3,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 13,
 		),
 		array(
 			'id' => 4,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 14,
 		),
 		array(
 			'id' => 5,
 			'is_key_pass_use' => true,
 			'is_total_show' => false,
+			'block_id' => 11,
 		),
 		array(
 			'id' => 6,
 			'is_key_pass_use' => true,
 			'is_total_show' => false,
+			'block_id' => 11,
 		),
 		array(
 			'id' => 7,
 			'is_image_authentication' => true,
 			'total_show_timing' => '1',
 			'total_show_start_period' => '2033-01-01 00:00:00',
+			'block_id' => 12,
 		),
 		array(
 			'id' => 8,
 			'is_image_authentication' => true,
 			'total_show_timing' => '1',
 			'total_show_start_period' => '2033-01-01 00:00:00',
+			'block_id' => 12,
 		),
 		array(
 			'id' => 9,
