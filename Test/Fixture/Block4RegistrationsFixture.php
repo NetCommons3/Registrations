@@ -7,7 +7,9 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-
+/**
+ * Class Block4RegistrationsFixture
+ */
 class Block4RegistrationsFixture extends BlockFixture {
 
 /**
@@ -76,10 +78,29 @@ class Block4RegistrationsFixture extends BlockFixture {
  * @return void
  */
 	public function init() {
-		// 継承元のrecordsとこのFixtureのaddRecordsをマージ。
-		foreach ($this->addRecords as $record) {
-			$this->records[] = $record;
+		for ($id = 11; $id <= 52; $id = $id + 2) {
+			$this->records[] = [
+				'id' => $id,
+				'language_id' => 1,
+				'room_id' => 1,
+				'key' => 'block_' . $id + 1,
+				'name' => 'Block name ' . $id + 1,
+				'public_type' => 1,
+
+			];
+			$this->records[] = [
+				'id' => $id + 1,
+				'language_id' => 2,
+				'room_id' => 1,
+				'key' => 'block_' . $id,
+				'name' => 'Block name ' . $id,
+				'public_type' => 1,
+			];
 		}
+		// 継承元のrecordsとこのFixtureのaddRecordsをマージ。
+		//foreach ($this->addRecords as $record) {
+		//	$this->records[] = $record;
+		//}
 		parent::init();
 	}
 

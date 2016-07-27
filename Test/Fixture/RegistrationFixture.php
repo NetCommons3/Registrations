@@ -136,123 +136,145 @@ class RegistrationFixture extends CakeTestFixture {
 			'id' => 9,
 			'is_latest' => 0,
 			'is_repeat_allow' => false,
+			'block_id' => 15,
 		),
 		array(
 			'id' => 10,
 			'is_latest' => 0,
 			'is_repeat_allow' => false,
+			'block_id' => 16,
 		),
 		array(
 			'id' => 11,
 			'is_anonymity' => true,
 			'is_repeat_allow' => false,
+			'block_id' => 17,
 		),
 		array(
 			'id' => 12,
 			'is_anonymity' => true,
 			'is_repeat_allow' => false,
+			'block_id' => 18,
 		),
 		array(
 			'id' => 13,
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 19,
 		),
 		array(
 			'id' => 14,
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 20,
 		),
 		array(
 			'id' => 15,
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 21,
 		),
 		array(
 			'id' => 16,
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 22,
 		),
 		array(
 			'id' => 17,
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 23,
 		),
 		array(
 			'id' => 18,
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 24,
 		),
 		array(
 			'id' => 19,
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 25,
 		),
 		array(
 			'id' => 20,
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 26,
 		),
 		array(
 			'id' => 21,
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 27,
 		),
 		array(
 			'id' => 22,
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 28,
 		),
 		array(
 			'id' => 23,
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 29,
 		),
 		array(
 			'id' => 24,
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 30,
 		),
 		array(
 			'id' => 25,
 			'is_active' => 0,
 			'status' => 2, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 31,
 		),
 		array(
 			'id' => 26,
 			'is_active' => 0,
 			'status' => 2, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 32,
 		),
 		array(
 			'id' => 27,
 			'is_active' => 0,
 			'status' => 2, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 33,
 		),
 		array(
 			'id' => 28,
 			'is_active' => 0,
 			'status' => 2, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 34,
 		),
 		array(
 			'id' => 29,
 			'is_active' => 0,
 			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 35,
 		),
 		array(
 			'id' => 30,
 			'is_active' => 0,
 			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 36,
 		),
 		array(
 			'id' => 31,
@@ -260,6 +282,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'is_active' => 0,
 			'is_latest' => 1,
 			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 15,
 		),
 		array(
 			'id' => 32,
@@ -267,6 +290,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'is_active' => 0,
 			'is_latest' => 1,
 			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 16,
 		),
 		array(
 			'id' => 33,
@@ -274,6 +298,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'is_active' => 0,
 			'is_latest' => 1,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 1,
 		),
 		array(
 			'id' => 34,
@@ -281,26 +306,31 @@ class RegistrationFixture extends CakeTestFixture {
 			'is_active' => 0,
 			'is_latest' => 1,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 2,
 		),
 		array(
 			'id' => 35,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 37,
 		),
 		array(
 			'id' => 36,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 38,
 		),
 		array(
 			'id' => 37,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 39,
 		),
 		array(
 			'id' => 38,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'block_id' => 40,
 		),
 		array(
 			'id' => 39,
@@ -309,6 +339,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 41,
 		),
 		array(
 			'id' => 40,
@@ -319,6 +350,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 42,
 		),
 		array(
 			'id' => 41,
@@ -327,6 +359,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 43,
 		),
 		array(
 			'id' => 42,
@@ -335,6 +368,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 44,
 		),
 		array(
 			'id' => 43,
@@ -343,6 +377,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 45,
 		),
 		array(
 			'id' => 44,
@@ -351,6 +386,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 46,
 		),
 
 		array(
@@ -360,6 +396,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 47,
 		),
 		array(
 			'id' => 46,
@@ -368,6 +405,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '1999-01-01 00:00:00',
 			'answer_end_period' => '2000-01-01 00:00:00',
+			'block_id' => 48,
 		),
 		array(
 			'id' => 47,
@@ -376,6 +414,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2000-01-01 00:00:00',
 			'answer_end_period' => '2001-01-01 00:00:00',
+			'block_id' => 49,
 		),
 		array(
 			'id' => 48,
@@ -384,6 +423,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2000-01-01 00:00:00',
 			'answer_end_period' => '2001-01-01 00:00:00',
+			'block_id' => 50,
 		),
 		array(
 			'id' => 49,
@@ -392,6 +432,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2000-01-01 00:00:00',
 			'answer_end_period' => '2001-01-01 00:00:00',
+			'block_id' => 51,
 		),
 		array(
 			'id' => 50,
@@ -400,6 +441,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2000-01-01 00:00:00',
 			'answer_end_period' => '2001-01-01 00:00:00',
+			'block_id' => 52,
 		),
 	);
 
