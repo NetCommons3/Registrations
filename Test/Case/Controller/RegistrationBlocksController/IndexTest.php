@@ -47,6 +47,8 @@ class RegistrationBlocksControllerIndexTest extends BlocksControllerTest {
 		'plugin.registrations.registration_question',
 		'plugin.registrations.registration_choice',
 		'plugin.registrations.registration_answer_summary',
+		'plugin.registrations.block4registrations',
+		'plugin.registrations.frame4registrations',
 	);
 
 /**
@@ -63,6 +65,7 @@ class RegistrationBlocksControllerIndexTest extends BlocksControllerTest {
  */
 	public function setUp() {
 		parent::setUp();
+
 		$this->Registration = ClassRegistry::init('Registrations.Registration');
 		$this->Registration->Behaviors->unload('AuthorizationKey');
 	}
@@ -105,7 +108,7 @@ class RegistrationBlocksControllerIndexTest extends BlocksControllerTest {
 		$editLink['controller'] = 'registration_edit';
 		$editLink['action'] = 'edit_question';
 		$editLink['block_id'] = $blockId;
-		$editLink['key'] = 'registration_4';
+		$editLink['key'] = 'registration_2';
 		$editLink['q_mode'] = 'setting';
 		$this->assertRegExp(
 			'/<a href=".*?' . preg_quote(NetCommonsUrl::actionUrl($editLink), '/') . '.*?".*?>/', $result
