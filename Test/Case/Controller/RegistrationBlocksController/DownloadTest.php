@@ -50,6 +50,8 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
 		'plugin.authorization_keys.authorization_keys',
+		'plugin.registrations.block4registrations',
+		'plugin.registrations.frame4registrations',
 	);
 
 /**
@@ -124,22 +126,22 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
  *
  * @return void
  */
-	public function testIndexNoneFrameBlock() {
-		//テスト実施
-		// フレーム、ブロック指定なし
-		$url = array(
-			'plugin' => 'test_registrations',
-			'controller' => 'test_registration_blocks',
-			'action' => 'download',
-			'key' => 'registration_2',
-		);
-
-		$this->_testPostAction('post', array(
-			'AuthorizationKey' => array(
-				'authorization_key' => 'ABC'
-			)
-		), $url, 'InternalErrorException');
-	}
+	//public function testIndexNoneFrameBlock() {
+	//	//テスト実施
+	//	// フレーム、ブロック指定なし
+	//	$url = array(
+	//		'plugin' => 'test_registrations',
+	//		'controller' => 'test_registration_blocks',
+	//		'action' => 'download',
+	//		'key' => 'registration_2',
+	//	);
+	//
+	//	$this->_testPostAction('post', array(
+	//		'AuthorizationKey' => array(
+	//			'authorization_key' => 'ABC'
+	//		)
+	//	), $url, 'InternalErrorException');
+	//}
 
 /**
  * download()の不正登録フォーム指定テスト
@@ -233,8 +235,8 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
  * @return void
  */
 	public function testDownloadBigData() {
-		$frameId = '6';
-		$blockId = '2';
+		$frameId = '26';
+		$blockId = '18';
 		$url = array(
 			'plugin' => 'test_registrations',
 			'controller' => 'test_registration_blocks',
@@ -246,8 +248,10 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 		$this->_testPostAction('post', array(
 			'AuthorizationKey' => array(
 				'authorization_key' => 'ABC'
-			)
-		), $url);
+			),
+			'Block' => [
+				'id' => $blockId,
+			]), $url);
 		$this->assertEqual(count($this->controller->returnValue[3]), 3);	// header line + 2 records
 	}
 }

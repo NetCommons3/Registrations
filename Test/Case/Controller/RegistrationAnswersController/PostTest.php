@@ -36,6 +36,8 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
 		'plugin.authorization_keys.authorization_keys',
+		'plugin.registrations.block4registrations',
+		'plugin.registrations.frame4registrations',
 	);
 
 /**
@@ -82,8 +84,8 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		));
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
+				'Frame' => array('id' => 19),
+				'Block' => array('id' => 11),
 				'AuthorizationKeys' => array('key' => 'test')
 			)
 		);
@@ -94,7 +96,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 
 		TestAuthGeneral::login($this, Role::ROOM_ROLE_KEY_GENERAL_USER);
 
-		$this->_testPostAction('post', $data, array('action' => 'key_auth', 'frame_id' => 6, 'block_id' => 2, 'key' => 'registration_6'));
+		$this->_testPostAction('post', $data, array('action' => 'key_auth', 'frame_id' => 19, 'block_id' => 11, 'key' => 'registration_6'));
 		$result = $this->headers['Location'];
 
 		$this->assertTextContains('registration_6', $result);
@@ -122,8 +124,8 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		));
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
+				'Frame' => array('id' => 19),
+				'Block' => array('id' => 11),
 				'AuthorizationKeys' => array('key' => 'test')
 			)
 		);
@@ -134,7 +136,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 
 		TestAuthGeneral::login($this, Role::ROOM_ROLE_KEY_GENERAL_USER);
 
-		$result = $this->_testPostAction('post', $data, array('action' => 'key_auth', 'frame_id' => 6, 'block_id' => 2, 'key' => 'registration_6'));
+		$result = $this->_testPostAction('post', $data, array('action' => 'key_auth', 'frame_id' => 19, 'block_id' => 11, 'key' => 'registration_6'));
 
 		// 認証キーcomponentをMockにしてるからエラーメッセージが入らない
 		// 同じ画面を表示していることでエラー画面になっていると判断する
@@ -164,8 +166,8 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		));
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
+				'Frame' => array('id' => 20),
+				'Block' => array('id' => 12),
 				'VisualCaptcha' => array('test' => 'test')	// Mock使うんでなんでもよい
 			)
 		);
@@ -176,7 +178,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 
 		TestAuthGeneral::login($this, Role::ROOM_ROLE_KEY_GENERAL_USER);
 
-		$this->_testPostAction('post', $data, array('action' => 'img_auth', 'frame_id' => 6, 'block_id' => 2, 'key' => 'registration_8'));
+		$this->_testPostAction('post', $data, array('action' => 'img_auth', 'frame_id' => 20, 'block_id' => 12, 'key' => 'registration_8'));
 		$result = $this->headers['Location'];
 
 		$this->assertTextContains('registration_8', $result);
@@ -205,8 +207,8 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		));
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
+				'Frame' => array('id' => 20),
+				'Block' => array('id' => 12),
 				'VisualCaptcha' => array('test' => 'test')	// Mock使うんでなんでもよい
 			)
 		);
@@ -217,7 +219,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 
 		TestAuthGeneral::login($this, Role::ROOM_ROLE_KEY_GENERAL_USER);
 
-		$result = $this->_testPostAction('post', $data, array('action' => 'img_auth', 'frame_id' => 6, 'block_id' => 2, 'key' => 'registration_8'));
+		$result = $this->_testPostAction('post', $data, array('action' => 'img_auth', 'frame_id' => 20, 'block_id' => 12, 'key' => 'registration_8'));
 
 		// componentをMockにしてるからエラーメッセージが入らない
 		// 同じ画面を表示していることでエラー画面になっていると判断する
@@ -246,7 +248,8 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		}
 
 		//テスト実施
-		$result = $this->_testPostAction('post', $data, Hash::merge(array('action' => 'view'), $urlOptions), $exception, $return);
+		$urlOptions = Hash::merge(array('action' => 'view'), $urlOptions);
+		$result = $this->_testPostAction('post', $data, $urlOptions, $exception, $return);
 
 		//正常の場合、リダイレクト
 		if (! $exception) {
@@ -283,24 +286,25 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 						array(
 							'answer_value' => '|choice_2:choice label1',
 							'registration_question_key' => 'qKey_1')
-					)))
+					))
+			)
 		);
 		$errData = $data;
 		$errData['data']['RegistrationAnswer']['registration_2'][0]['answer_value'] = '|choice_800:nainainai';
-		$skipData = array(
-			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
-				'RegistrationPage' => array('page_sequence' => 0),
-				'RegistrationAnswer' => array(
-					'registration_4' => array(
-						array(
-							'answer_value' => '|choice_6:choice label3',
-							'registration_question_key' => 'qKey_3')
-					)))
-		);
-		$skipNoSelectData = $skipData;
-		$skipNoSelectData['data']['RegistrationAnswer']['registration_4'][0]['answer_value'] = '';
+		//$skipData = array(
+		//	'data' => array(
+		//		'Frame' => array('id' => 21),
+		//		'Block' => array('id' => 13),
+		//		'RegistrationPage' => array('page_sequence' => 0),
+		//		'RegistrationAnswer' => array(
+		//			'registration_4' => array(
+		//				array(
+		//					'answer_value' => '|choice_6:choice label3',
+		//					'registration_question_key' => 'qKey_3')
+		//			)))
+		//);
+		//$skipNoSelectData = $skipData;
+		//$skipNoSelectData['data']['RegistrationAnswer']['registration_4'][0]['answer_value'] = '';
 
 		return array(
 			array(
@@ -313,16 +317,16 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 				'role' => Role::ROOM_ROLE_KEY_GENERAL_USER,
 				'urlOptions' => array('frame_id' => 6, 'block_id' => 2, 'key' => 'registration_2'),
 				'assert' => 'err'),
-			array(
-				'data' => $skipData,
-				'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
-				'urlOptions' => array('frame_id' => 6, 'block_id' => 2, 'key' => 'registration_4'),
-				'assert' => 'name="data[RegistrationPage][page_sequence]" value="4"'),
-			array(
-				'data' => $skipNoSelectData,
-				'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
-				'urlOptions' => array('frame_id' => 6, 'block_id' => 2, 'key' => 'registration_4'),
-				'assert' => 'name="data[RegistrationPage][page_sequence]" value="1"'),
+			//array(
+			//	'data' => $skipData,
+			//	'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
+			//	'urlOptions' => array('frame_id' => 21, 'block_id' => 13, 'key' => 'registration_4'),
+			//	'assert' => 'name="data[RegistrationPage][page_sequence]" value="4"'),
+			//array(
+			//	'data' => $skipNoSelectData,
+			//	'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
+			//	'urlOptions' => array('frame_id' => 21, 'block_id' => 13, 'key' => 'registration_4'),
+			//	'assert' => 'name="data[RegistrationPage][page_sequence]" value="1"'),
 		);
 	}
 
@@ -338,11 +342,11 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
+				'Frame' => array('id' => 26),
+				'Block' => array('id' => 18),
 			)
 		);
-		$this->_testPostAction('post', $data, array('action' => 'confirm', 'frame_id' => 6, 'block_id' => 2, 'key' => 'registration_12'));
+		$this->_testPostAction('post', $data, array('action' => 'confirm', 'frame_id' => 26, 'block_id' => 18, 'key' => 'registration_12'));
 		$result = $this->headers['Location'];
 		$this->assertTextContains('thanks', $result);
 		TestAuthGeneral::logout($this);

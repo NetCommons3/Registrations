@@ -220,11 +220,11 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_10'),
 			'assert' => array('method' => 'assertNotEmpty'),
 		);
-		//--自分の記事の編集(公開すみ)＝追加ボタンがない
-		$results[6] = array(
-			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_18'),
-			'assert' => array('method' => 'assertNotContains', 'expected' => __d('registrations', 'Add Question')),
-		);
+		//--自分の記事の編集(公開すみ)＝追加ボタンがない→登録フォームでは公開後も編集可能なので追加ボタンはある
+		//$results[6] = array(
+		//	'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_18'),
+		//	'assert' => array('method' => 'assertNotContains', 'expected' => __d('registrations', 'Add Question')),
+		//);
 		return $results;
 	}
 
@@ -353,11 +353,11 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => null),
 		)));
 		// いったん公開して、その後の一時保存データに対して編集している
-		// その場合でも項目変更は不可能だ
-		array_push($results, Hash::merge($results[0], array(
-			'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_2'),
-			'assert' => array('method' => 'assertNotContains', 'expected' => __d('registrations', 'Add Question')),
-		)));
+		// その場合でも項目変更は不可能だ→登録フォームでは編集
+		//array_push($results, Hash::merge($results[0], array(
+		//	'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_2'),
+		//	'assert' => array('method' => 'assertNotContains', 'expected' => __d('registrations', 'Add Question')),
+		//)));
 
 		return $results;
 	}
@@ -465,20 +465,20 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 					'message' => 'question.errorMessages.questionType',
 				)
 			)),
-			Hash::merge($result, array(
-				'validationError' => array(
-					'field' => 'RegistrationPage.0.RegistrationQuestion.0.is_choice_random',
-					'value' => 'aa',
-					'message' => 'question.errorMessages.isChoiceRandom',
-				)
-			)),
-			Hash::merge($result, array(
-				'validationError' => array(
-					'field' => 'RegistrationPage.0.RegistrationQuestion.0.is_skip',
-					'value' => 'aa',
-					'message' => 'question.errorMessages.isSkip',
-				)
-			)),
+			//Hash::merge($result, array(
+			//	'validationError' => array(
+			//		'field' => 'RegistrationPage.0.RegistrationQuestion.0.is_choice_random',
+			//		'value' => 'aa',
+			//		'message' => 'question.errorMessages.isChoiceRandom',
+			//	)
+			//)),
+			//Hash::merge($result, array(
+			//	'validationError' => array(
+			//		'field' => 'RegistrationPage.0.RegistrationQuestion.0.is_skip',
+			//		'value' => 'aa',
+			//		'message' => 'question.errorMessages.isSkip',
+			//	)
+			//)),
 			Hash::merge($result, array(
 				'validationError' => array(
 					'field' => 'RegistrationPage.0.RegistrationQuestion.0.RegistrationChoice.0.choice_label',
