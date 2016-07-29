@@ -342,11 +342,11 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 6),
-				'Block' => array('id' => 2),
+				'Frame' => array('id' => 26),
+				'Block' => array('id' => 18),
 			)
 		);
-		$this->_testPostAction('post', $data, array('action' => 'confirm', 'frame_id' => 6, 'block_id' => 2, 'key' => 'registration_12'));
+		$this->_testPostAction('post', $data, array('action' => 'confirm', 'frame_id' => 26, 'block_id' => 18, 'key' => 'registration_12'));
 		$result = $this->headers['Location'];
 		$this->assertTextContains('thanks', $result);
 		TestAuthGeneral::logout($this);
