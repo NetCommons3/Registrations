@@ -258,15 +258,15 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][title]', 'value' => null),
 		)));
-		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][answer_timing]', 'value' => null),
-		)));
-		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][total_show_timing]', 'value' => null),
-		)));
-		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][is_no_member_allow]', 'value' => null),
-		)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][answer_timing]', 'value' => null),
+		//)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][total_show_timing]', 'value' => null),
+		//)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][is_no_member_allow]', 'value' => null),
+		//)));
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][is_key_pass_use]', 'value' => null),
 		)));
@@ -276,9 +276,9 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 		//array_push($results, Hash::merge($results[$base], array(
 		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][is_repeat_allow]', 'value' => null),
 		//)));
-		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][is_anonymity]', 'value' => null),
-		)));
+		//array_push($results, Hash::merge($results[$base], array(
+		//	'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Registration][is_anonymity]', 'value' => null),
+		//)));
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'textarea', 'name' => 'data[Registration][thanks_content]', 'value' => null),
 		)));
@@ -431,13 +431,13 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 					'message' => sprintf(__d('net_commons', 'Please input %s.'), __d('registrations', 'Title')),
 				)
 			)),
-			Hash::merge($result, array(
-				'validationError' => array(
-					'field' => 'Registration.answer_timing',
-					'value' => 'aa',
-					'message' => __d('net_commons', 'Invalid request.'),
-				)
-			)),
+			//Hash::merge($result, array(
+			//	'validationError' => array(
+			//		'field' => 'Registration.answer_timing',
+			//		'value' => 'aa',
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	)
+			//)),
 			Hash::merge($resultPeriodOn, array(
 				'validationError' => array(
 					'field' => 'Registration.answer_start_period',
@@ -452,35 +452,35 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 					'message' => __d('registrations', 'start period must be smaller than end period'),
 				)
 			)),
-			Hash::merge($result, array(
-				'validationError' => array(
-					'field' => 'Registration.total_show_timing',
-					'value' => 'aa',
-					'message' => __d('net_commons', 'Invalid request.'),
-				)
-			)),
+			//Hash::merge($result, array(
+			//	'validationError' => array(
+			//		'field' => 'Registration.total_show_timing',
+			//		'value' => 'aa',
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	)
+			//)),
 			//5
-			Hash::merge($resultPeriodOn2, array(
-				'validationError' => array(
-					'field' => 'Registration.total_show_start_period',
-					'value' => '',
-					'message' => __d('registrations', 'if you set the period, please set time.'),
-				)
-			)),
-			Hash::merge($result, array(
-				'validationError' => array(
-					'field' => 'Registration.is_no_member_allow',
-					'value' => 'aa',
-					'message' => __d('net_commons', 'Invalid request.'),
-				)
-			)),
-			Hash::merge($result, array(
-				'validationError' => array(
-					'field' => 'Registration.is_anonymity',
-					'value' => 'aa',
-					'message' => __d('net_commons', 'Invalid request.'),
-				)
-			)),
+			//Hash::merge($resultPeriodOn2, array(
+			//	'validationError' => array(
+			//		'field' => 'Registration.total_show_start_period',
+			//		'value' => '',
+			//		'message' => __d('registrations', 'if you set the period, please set time.'),
+			//	)
+			//)),
+			//Hash::merge($result, array(
+			//	'validationError' => array(
+			//		'field' => 'Registration.is_no_member_allow',
+			//		'value' => 'aa',
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	)
+			//)),
+			//Hash::merge($result, array(
+			//	'validationError' => array(
+			//		'field' => 'Registration.is_anonymity',
+			//		'value' => 'aa',
+			//		'message' => __d('net_commons', 'Invalid request.'),
+			//	)
+			//)),
 			Hash::merge($result, array(
 				'validationError' => array(
 					'field' => 'Registration.is_key_pass_use',
