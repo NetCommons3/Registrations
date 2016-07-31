@@ -100,7 +100,7 @@ echo $this->NetCommonsHtml->script(array(
 									'plugin' => 'registrations',
 									'controller' => 'registration_blocks',
 									'action' => 'download',
-									$registration['Registration']['block_id'],
+									'block_id' => $registration['Registration']['block_id'],
 									$registration['Registration']['key'],
 									'frame_id' => Current::read('Frame.id'))),
 									'popup-title' => __d('authorization_keys', 'Compression password'),
