@@ -408,7 +408,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 	public function dataProviderEditValidationError() {
 		$data = $this->__getData();
 		$dataPeriodOn = Hash::merge($data, array('Registration' => array('answer_timing' => '1')));
-		$dataPeriodOn2 = Hash::merge($data, array('Registration' => array('total_show_timing' => '1')));
+		//$dataPeriodOn2 = Hash::merge($data, array('Registration' => array('total_show_timing' => '1')));
 
 		$result = array(
 			'data' => $data,
@@ -418,10 +418,10 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 			'data' => $dataPeriodOn,
 			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
 		);
-		$resultPeriodOn2 = array(
-			'data' => $dataPeriodOn2,
-			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
-		);
+		//$resultPeriodOn2 = array(
+		//	'data' => $dataPeriodOn2,
+		//	'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
+		//);
 
 		return array(
 			Hash::merge($result, array(
