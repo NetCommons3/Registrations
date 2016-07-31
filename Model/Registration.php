@@ -537,6 +537,7 @@ class Registration extends RegistrationsAppModel {
  * @return bool
  */
 	public function saveRegistration(&$registration) {
+		$this->loadModels(['Frames.Frame']);
 		// 設定画面を表示する前にこのルームの登録フォームブロックがあるか確認
 		// 万が一、まだ存在しない場合には作成しておく
 		// afterFrameSaveが呼ばれず、また最初に設定画面が開かれもしなかったような状況の想定
@@ -598,16 +599,17 @@ class Registration extends RegistrationsAppModel {
 			if (! $this->RegistrationPage->saveRegistrationPage($registration['RegistrationPage'])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
-			// フレームにブロックが関連づいてなければ、関連づける。
-			//if (! Current::read('Frame.block_id')) {
-			//	// フレーム内表示対象登録フォームに登録する
-			//	if (! $this->RegistrationFrameDisplayRegistration->saveDisplayRegistration(array(
-			//		'registration_key' => $saveRegistration['Registration']['key'],
-			//		'frame_key' => Current::read('Frame.key')
-			//	))) {
-			//		throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-			//	}
-			//}
+			// フレームのdefault_actionが設定されてないなら、設定する。
+			if (! Current::read('Frame.default_action')) {
+				// フレームのdefault_actionを更新する
+				$frame = Current::read('Frame');
+				$frame['default_action'] = 'registration_answers/view/';
+				$frame['block_id'] = Current::read('Block.id');
+
+				if (! $this->Frame->save($frame)) {
+					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+				}
+			}
 			// これまでのテスト登録データを消す
 			$this->RegistrationAnswerSummary->deleteTestAnswerSummary(
 				$saveRegistration['Registration']['key'],
