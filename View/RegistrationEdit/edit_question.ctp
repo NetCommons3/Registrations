@@ -65,23 +65,23 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 			<div ng-repeat="(pageIndex, page) in registration.registrationPage" index="$index">
 
-				<div class="tab-body">
+				<uib-accordion class="tab-body">
 						<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/add_question_button', array('isPublished' => $isPublished)); ?>
 						<div class="clearfix"></div>
 
 						<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/hidden_page_info_set'); ?>
 
 					<uib-accordion close-others="true">
-						<uib-accordion-group
-								class="form-horizontal"
+						<div uib-accordion-group
+								class="form-horizontal panel-default"
 								ng-repeat="(qIndex, question) in page.registrationQuestion"
 								is-open="question.isOpen">
 
-							<uib-accordion-heading>
+							<div uib-accordion-heading>
 								<?php /* 項目ヘッダーセット（移動ボタン、削除ボタンなどの集合体 */
 									echo $this->element('Registrations.RegistrationEdit/EditQuestion/accordion_heading', array('isPublished' => $isPublished)); ?>
 								<div class="clearfix"></div>
-							</uib-accordion-heading>
+							</div>
 
 							<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/hidden_question_info_set'); ?>
 
@@ -159,7 +159,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 								</div>
 							</div >
 
-						</uib-accordion-group>
+						</div>
 					</uib-accordion>
 
 					<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/add_question_button'); ?>
