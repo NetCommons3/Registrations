@@ -36,7 +36,7 @@ class RegistrationSettingSaveRegistrationSettingTest extends NetCommonsSaveTest 
  */
 	public $fixtures = array(
 		'plugin.registrations.registration',
-		'plugin.registrations.registration_setting',
+		'plugin.registrations.block_setting_for_registration',
 		'plugin.registrations.registration_frame_setting',
 		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_page',
@@ -130,7 +130,7 @@ class RegistrationSettingSaveRegistrationSettingTest extends NetCommonsSaveTest 
  */
 	public function dataProviderSaveOnExceptionError() {
 		return array(
-			array($this->_getData(1, 'block_1', 1), 'Registrations.RegistrationSetting', 'save'),
+			array($this->_getData(1, 'block_1', 1), 'Blocks.BlockSetting', 'saveMany'),
 		);
 	}
 /**

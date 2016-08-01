@@ -178,20 +178,6 @@ class Init extends CakeMigration {
 					),
 					'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB'),
 				),
-				'registration_settings' => array(
-					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-					'block_key' => array('type' => 'string', 'null' => false, 'default' => null, 'key' => 'index', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-					'use_workflow' => array('type' => 'boolean', 'null' => false, 'default' => '1'),
-					'created_user' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
-					'modified_user' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
-					'indexes' => array(
-						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'fk_registration_blocks_settings_blocks1_idx' => array('column' => 'block_key', 'unique' => 0),
-					),
-					'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB'),
-				),
 				'registrations' => array(
 					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 					'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -239,7 +225,7 @@ class Init extends CakeMigration {
 		),
 		'down' => array(
 			'drop_table' => array(
-				'registration_answer_summaries', 'registration_answers', 'registration_choices', 'registration_frame_display_registrations', 'registration_frame_settings', 'registration_pages', 'registration_questions', 'registration_settings', 'registrations'
+				'registration_answer_summaries', 'registration_answers', 'registration_choices', 'registration_frame_display_registrations', 'registration_frame_settings', 'registration_pages', 'registration_questions', 'registrations'
 			),
 		),
 	);

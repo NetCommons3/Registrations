@@ -10,30 +10,20 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-App::uses('RegistrationsAppModel', 'Registrations.Model');
+App::uses('BlockSettingBehavior', 'Blocks.Model/Behavior');
+App::uses('BlockBaseModel', 'Blocks.Model');
 
 /**
  * Summary for RegistrationBlocksSetting Model
  */
-class RegistrationSetting extends RegistrationsAppModel {
+class RegistrationSetting extends BlockBaseModel {
 
 /**
- * Validation rules
+ * Custom database table name
  *
- * @var array
+ * @var string
  */
-	public $validate = array(
-		'block_key' => array(
-			'notBlank' => array(
-				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
-				'allowEmpty' => false,
-				'required' => true,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
+	public $useTable = false;
 
 /**
  * use behaviors
@@ -42,6 +32,9 @@ class RegistrationSetting extends RegistrationsAppModel {
  */
 	public $actsAs = array(
 		'Blocks.BlockRolePermission',
+		'Blocks.BlockSetting' => array(
+			BlockSettingBehavior::FIELD_USE_WORKFLOW,
+		),
 	);
 
 /**
@@ -66,25 +59,11 @@ class RegistrationSetting extends RegistrationsAppModel {
 /**
  * getSetting
  *
- * @return mix RegistrationBlockSetting data
+ * @return array RegistrationBlockSetting data
  */
 	public function getSetting() {
 		$blockSetting = $this->Block->find('all', array(
 			'recursive' => -1,
-			'fields' => array(
-				$this->Block->alias . '.*',
-				$this->alias . '.*',
-			),
-			'joins' => array(
-				array(
-					'table' => $this->table,
-					'alias' => $this->alias,
-					'type' => 'INNER',
-					'conditions' => array(
-						$this->Block->alias . '.key' . ' = ' . $this->alias . ' .block_key',
-					),
-				),
-			),
 			'conditions' => array(
 				'Block.id' => Current::read('Block.id')
 			),
@@ -92,8 +71,9 @@ class RegistrationSetting extends RegistrationsAppModel {
 		if (! $blockSetting) {
 			return $blockSetting;
 		}
-		return $blockSetting[0];
+		return Hash::merge($blockSetting[0], $this->getBlockSetting());
 	}
+
 /**
  * Save registration settings
  *
@@ -106,18 +86,18 @@ class RegistrationSetting extends RegistrationsAppModel {
 		$this->begin();
 
 		// idが未設定の場合は、指定されたblock_keyを頼りに既存レコードがないか調査
-		$existRecord = $this->find('first', array(
-			'recursive' => -1,
-			'fields' => 'id',
-			'conditions' => array(
-				'block_key' => $data['RegistrationSetting']['block_key'],
-			)
-		));
-		$data = Hash::merge($existRecord, $data);
-		$data = Hash::remove($data, 'RegistrationSetting.created_user');
-		$data = Hash::remove($data, 'RegistrationSetting.created');
-		$data = Hash::remove($data, 'RegistrationSetting.modified_user');
-		$data = Hash::remove($data, 'RegistrationSetting.modified');
+		//$existRecord = $this->find('first', array(
+		//	'recursive' => -1,
+		//	'fields' => 'id',
+		//	'conditions' => array(
+		//		'block_key' => $data['RegistrationSetting']['block_key'],
+		//	)
+		//));
+		//$data = Hash::merge($existRecord, $data);
+		//$data = Hash::remove($data, 'RegistrationSetting.created_user');
+		//$data = Hash::remove($data, 'RegistrationSetting.created');
+		//$data = Hash::remove($data, 'RegistrationSetting.modified_user');
+		//$data = Hash::remove($data, 'RegistrationSetting.modified');
 
 		//バリデーション
 		$this->set($data);
@@ -127,9 +107,7 @@ class RegistrationSetting extends RegistrationsAppModel {
 		}
 
 		try {
-			if (! $this->save($data, false)) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-			}
+			$this->save($data, false);
 
 			//トランザクションCommit
 			$this->commit();
@@ -200,23 +178,22 @@ class RegistrationSetting extends RegistrationsAppModel {
 		}
 		return true;
 	}
+
 /**
  * save setting
  *
- * afterFrameSaveやsaveRegistrationから呼び出される
+ * afterFrameSaveやsaveQuestionnaireから呼び出される
  *
  * @return bool
  * @throws InternalErrorException
  */
 	public function saveSetting() {
 		// block settingはあるか
-		$setting = $this->getSetting();
-		if (! empty($setting)) {
+		if ($this->isExsistBlockSetting()) {
 			return true;
 		}
 		// ないときは作る
-		$blockSetting = $this->create();
-		$blockSetting['RegistrationSetting']['block_key'] = Current::read('Block.key');
+		$blockSetting = $this->createBlockSetting();
 		$ret = $this->saveRegistrationSetting($blockSetting);
 		return $ret;
 	}

@@ -41,10 +41,10 @@ class RegistrationCreateBlockTest extends NetCommonsModelTestCase {
 		'plugin.registrations.registration_choice',
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
-		'plugin.registrations.registration_setting',
+		'plugin.registrations.block_setting_for_registration',
 		'plugin.registrations.registration_frame_setting',
 		'plugin.registrations.registration_frame_display_registration',
-		'plugin.registrations.registration_setting',
+		'plugin.registrations.block_setting_for_registration',
 	);
 
 /**
