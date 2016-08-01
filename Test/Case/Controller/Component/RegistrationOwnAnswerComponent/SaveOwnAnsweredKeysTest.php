@@ -26,7 +26,7 @@ class RegistrationOwnAnswerComponentSaveOwnAnsweredKeysTest extends NetCommonsCo
  */
 	public $fixtures = array(
 		'plugin.registrations.registration',
-		'plugin.registrations.registration_setting',
+		'plugin.registrations.block_setting_for_registration',
 		'plugin.registrations.registration_frame_setting',
 		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_page',
