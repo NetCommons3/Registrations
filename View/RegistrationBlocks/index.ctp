@@ -120,7 +120,7 @@ echo $this->NetCommonsHtml->script(array(
 									[
 										'class' => 'btn btn-default'
 									]),
-								array('escape' => false)
+								array('escape' => false, 'type' => 'center')
 							); ?>
 						<?php else: ?>
 							<td></td>

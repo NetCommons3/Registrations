@@ -34,13 +34,11 @@
 								if (isset($answer['UploadFile'])) {
 									$value = $this->NetCommonsHtml->link(
 										$answer['RegistrationAnswer']['answer_value'],
-										$this->NetCommonsHtml->url(
-											[
-												'action' => 'download_file',
-												$answer['RegistrationAnswer']['id'],
-												'answer_value_file',
-											]
-										)
+										[
+											'action' => 'download_file',
+											$answer['RegistrationAnswer']['id'],
+											'answer_value_file',
+										]
 									);
 								} elseif (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
 									$value = h(implode(',',
@@ -58,7 +56,7 @@
 							<?php endforeach;?>
 						</tr>
 					<?php endforeach;?>
-				
+
 				</tbody>
 			</table>
 		</div>
@@ -68,7 +66,7 @@
 			echo $this->NetCommonsForm->create('',
 				array(
 					'type' => 'delete',
-					'url' => $this->NetCommonsHtml->url([
+					'url' => NetCommonsUrl::blockUrl([
 						'action' => 'delete_answer',
 						'key' => $registration['Registration']['key']
 					])

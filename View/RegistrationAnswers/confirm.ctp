@@ -54,11 +54,11 @@
 
 	<div class="text-center">
 
-		<a class="btn btn-default" href="<?php echo NetCommonsUrl::actionUrl(array(
+		<a class="btn btn-default" href="<?php echo $this->NetCommonsHtml->url(array(
 																	'controller' => 'registration_answers',
 																	'action' => 'view',
-																	Current::read('Block.id'),
-																	$registration['Registration']['key'],
+																	'block_id' => Current::read('Block.id'),
+																	'key' => $registration['Registration']['key'],
 																	'frame_id' => Current::read('Frame.id'))); ?>">
 			<span class="glyphicon glyphicon-chevron-left"></span>
 			<?php echo __d('registrations', 'Start over'); ?>
