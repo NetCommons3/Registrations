@@ -72,6 +72,6 @@ class RegistrationMailSettingsController extends MailSettingsController {
 		$this->MailSettings->typeKeys =
 			array(MailSettingFixedPhrase::DEFAULT_TYPE, MailSettingFixedPhrase::ANSWER_TYPE);
 
-		$this->backUrl = NetCommonsUrl::backToPageUrl(true);
+		$this->backUrl = NetCommonsUrl::backToIndexUrl('default_setting_action');
 	}
 }
