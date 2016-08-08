@@ -63,9 +63,9 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 			<div class="form-group">
 				<?php echo $this->element('Registrations.RegistrationEdit/Edit/mail_setting'); ?>
-				
+
 			</div>
-			
+
 			<div class="form-group">
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Registration answer period')); ?>
 

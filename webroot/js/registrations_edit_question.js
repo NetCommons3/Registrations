@@ -477,7 +477,10 @@ NetCommonsApp.controller('Registrations.edit.question',
            * @return {void}
            */
         $scope.addChoice =
-            function($event, pIdx, qIdx, choiceCount, otherType, matrixType, choiceLabel = '') {
+            function($event, pIdx, qIdx, choiceCount, otherType, matrixType, choiceLabel) {
+          if (! choiceLabel) {
+            choiceLabel = '';
+          }
           var page = $scope.registration.registrationPage[pIdx];
           var question = page.registrationQuestion[qIdx];
           var choice = new Object();

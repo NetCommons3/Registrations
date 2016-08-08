@@ -111,7 +111,7 @@ class RegistrationBlockRolePermissionsController extends RegistrationBlocksContr
 						'class' => 'success',
 					)
 				);
-				$this->redirect(NetCommonsUrl::backToPageUrl(true));
+				$this->redirect(NetCommonsUrl::backToIndexUrl('default_setting_action'));
 				return;
 			}
 			$this->NetCommons->handleValidationError($this->RegistrationSetting->validationErrors);
