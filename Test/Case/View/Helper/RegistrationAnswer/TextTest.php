@@ -67,7 +67,7 @@ EOT;
  */
 	public function testSingleTextNormal() {
 		$expected = <<< EOT
-		<div class="form-inline">
+		<div class="form-group">
 			<input name="data[RegistrationAnswer][qKey1][0][answer_value]" class="form-control" type="text" id="RegistrationAnswerQKey10AnswerValue"/>
 		</div>
 EOT;
@@ -99,7 +99,7 @@ EOT;
 		);
 
 		$expected = <<< EOT
-		<div class="form-inline">
+		<div class="form-group">
 			<input name="data[RegistrationAnswer][qKey1][0][answer_value]" class="form-control" type="text" id="RegistrationAnswerQKey10AnswerValue"/>
 		</div>
 		<span class="help-block">
@@ -127,7 +127,7 @@ EOT;
 		);
 
 		$expected = <<< EOT
-		<div class="form-inline">
+		<div class="form-group">
 			<input name="data[RegistrationAnswer][qKey1][0][answer_value]" class="form-control" type="text" id="RegistrationAnswerQKey10AnswerValue"/>
 		</div>
 		<span class="help-block">

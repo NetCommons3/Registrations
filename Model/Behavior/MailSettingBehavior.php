@@ -43,6 +43,7 @@ class MailSettingBehavior extends ModelBehavior {
 		// 登録通知メール設定を変更
 		$pluginLowercase = strtolower(Inflector::singularize($model->plugin));
 		$mailSetting['MailSetting']['plugin_key'] = strtolower($model->plugin);
+		$mailSetting['MailSetting']['block_key'] = Current::read('Block.key');
 		$mailSetting['MailSetting']['reply_to']
 			= $saveRegistration[$model->alias]['reply_to'];
 		$mailSetting['MailSettingFixedPhrase']['answer']['mail_fixed_phrase_subject']
@@ -50,6 +51,7 @@ class MailSettingBehavior extends ModelBehavior {
 		$mailSetting['MailSettingFixedPhrase']['answer']['mail_fixed_phrase_body']
 			= $saveRegistration[$model->alias][$pluginLowercase . '_mail_body'];
 		$mailSetting['MailSettingFixedPhrase']['answer']['plugin_key'] = strtolower($model->plugin);
+		$mailSetting['MailSettingFixedPhrase']['contents']['plugin_key'] = strtolower($model->plugin);
 
 		// 登録通知メール設定を保存
 		if ($model->MailSetting->save($mailSetting)) {
@@ -67,12 +69,21 @@ class MailSettingBehavior extends ModelBehavior {
 				'Mails.MailSettingFixedPhrase'
 			);
 			$answerPhrase = $mailSetting['MailSettingFixedPhrase']['answer'];
+			//$answerPhrase = array(
+			//	'MailSettingFixedPhrase' => $answerPhrase
+			//);
+			//if (!$model->MailSettingFixedPhrase->save($answerPhrase, ['callbacks' => false])) {
 			if (!$model->MailSettingFixedPhrase->save($answerPhrase)) {
 				throw new InternalErrorException(
 					__d('net_commons', 'Internal Server Error')
 				);
 			}
+			$model->MailSettingFixedPhrase->create();
 			$contentsPhrase = $mailSetting['MailSettingFixedPhrase']['contents'];
+			//$contentsPhrase = array(
+			//	'MailSettingFixedPhrase' => $contentsPhrase
+			//);
+			//if (!$model->MailSettingFixedPhrase->save($contentsPhrase, ['callbacks' => false])) {
 			if (!$model->MailSettingFixedPhrase->save($contentsPhrase)) {
 				throw new InternalErrorException(
 					__d('net_commons', 'Internal Server Error')

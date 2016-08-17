@@ -11,10 +11,10 @@
 ?>
 <div class="form-group">
 	<?php
-		echo $this->NetCommonsForm->hidden('is_no_member_allow', array(
-			'value' => RegistrationsComponent::USES_NOT_USE,
-			'ng-model' => 'registration.registration.isNoMemberAllow'
-		));
+		//echo $this->NetCommonsForm->hidden('is_no_member_allow', array(
+		//	'value' => RegistrationsComponent::USES_NOT_USE,
+		//	'ng-model' => 'registration.registration.isNoMemberAllow'
+		//));
 		echo $this->NetCommonsForm->hidden('is_key_pass_use', array(
 			'value' => RegistrationsComponent::USES_NOT_USE,
 			'ng-model' => 'registration.registration.isKeyPassUse'
@@ -23,8 +23,8 @@
 			'value' => RegistrationsComponent::USES_NOT_USE,
 			'ng-model' => 'registration.registration.isImageAuthentication'
 		));
-		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_anonymity',
-			__d('registrations', 'anonymous answer'
-		));
+		//echo $this->RegistrationEdit->registrationAttributeCheckbox('is_anonymity',
+		//	__d('registrations', 'anonymous answer'
+		//));
 	?>
 </div>

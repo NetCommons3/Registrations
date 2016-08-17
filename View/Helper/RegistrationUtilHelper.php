@@ -76,7 +76,7 @@ class RegistrationUtilHelper extends AppHelper {
 		if ($registration['Registration']['status'] != WorkflowComponent::STATUS_PUBLISHED) {
 			$answerButtonClass = 'info';
 			$answerButtonLabel = __d('registrations', 'Test');
-			$url = NetCommonsUrl::actionUrl(array(
+			$url = Router::actionUrl(array(
 				'controller' => 'registration_answers',
 				'action' => 'test_mode',
 				Current::read('Block.id'),
@@ -85,7 +85,7 @@ class RegistrationUtilHelper extends AppHelper {
 			));
 			return sprintf($buttonStr, $answerButtonClass, '', '', $url, $answerButtonLabel);
 		} else {
-			$url = NetCommonsUrl::actionUrl(array(
+			$url = Router::actionUrl(array(
 				'controller' => 'registration_answers',
 				'action' => 'view',
 				Current::read('Block.id'),

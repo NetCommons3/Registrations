@@ -195,7 +195,7 @@ class RegistrationAnswerHelper extends AppHelper {
 			return $ret;
 		}
 		$ret = $this->NetCommonsForm->input($fieldName, array(
-			'div' => 'form-inline',
+			//'div' => 'form-inline',
 			'type' => 'text',
 			'label' => false,
 			'error' => false,

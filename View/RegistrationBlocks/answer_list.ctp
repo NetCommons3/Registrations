@@ -46,8 +46,8 @@
 								} else {
 									$value = h($answer['RegistrationAnswer']['answer_value']);
 								}
+								$answers[$answer['RegistrationQuestion']['id']] = $value;
 							}
-							$answers[$answer['RegistrationQuestion']['id']] = $value;
 							?>
 							<?php foreach ($questions as $question) : ?>
 								<td>

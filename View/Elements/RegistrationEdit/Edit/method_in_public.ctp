@@ -14,26 +14,22 @@
 		//echo $this->RegistrationEdit->registrationAttributeCheckbox('is_no_member_allow',
 		//	__d('registrations', 'accept the non-members answer')
 		//);
-	echo $this->NetCommonsForm->hidden('is_no_member_allow', array(
-		'value' => RegistrationsComponent::USES_USE,
-		//'ng-model' => 'registration.registration.isNoMemberAllow'
-	));
+	//echo $this->NetCommonsForm->hidden('is_no_member_allow', array(
+	//	'value' => RegistrationsComponent::USES_USE,
+	//	//'ng-model' => 'registration.registration.isNoMemberAllow'
+	//));
 	?>
 	<div>
 		<?php
 			echo $this->RegistrationEdit->registrationAttributeCheckbox('is_key_pass_use',
-				__d('registrations', 'use key phrase'), array(
-				'ng-disabled' => 'registration.registration.isImageAuthentication == ' . RegistrationsComponent::USES_USE . ' || registration.registration.isNoMemberAllow != ' . RegistrationsComponent::USES_USE
-			));
+				__d('registrations', 'use key phrase'));
 			echo $this->element('AuthorizationKeys.edit_form', [
 				'options' => array(
 					'div' => false,
 					'ng-show' => 'registration.registration.isKeyPassUse != 0',
 			)]);
 			echo $this->RegistrationEdit->registrationAttributeCheckbox('is_image_authentication',
-				__d('registrations', 'do image authentication'), array(
-				'ng-disabled' => 'registration.registration.isKeyPassUse == ' . RegistrationsComponent::USES_USE . ' || registration.registration.isNoMemberAllow != ' . RegistrationsComponent::USES_USE
-			));
+				__d('registrations', 'do image authentication'));
 		?>
 	</div>
 	<?php
