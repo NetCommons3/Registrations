@@ -191,7 +191,7 @@ class RegistrationAnswerHelper extends AppHelper {
  */
 	public function singleText($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
-			$ret = $this->value($fieldName);
+			$ret = h($this->value($fieldName));
 			return $ret;
 		}
 		$ret = $this->NetCommonsForm->input($fieldName, array(
@@ -224,11 +224,11 @@ class RegistrationAnswerHelper extends AppHelper {
  * @param string $fieldName フィールド名
  * @param array $question 項目データ
  * @param bool $readonly 読み取り専用
- * @return string 複数選択肢登録のHTML
+ * @return string HTML
  */
 	public function textArea($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
-			$ret = nl2br($this->value($fieldName));
+			$ret = nl2br(h($this->value($fieldName)));
 			return $ret;
 		}
 		$ret = $this->NetCommonsForm->textarea($fieldName, array(
@@ -412,7 +412,7 @@ class RegistrationAnswerHelper extends AppHelper {
  */
 	public function emailInput($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
-			$ret = nl2br($this->value($fieldName));
+			$ret = h(nl2br($this->value($fieldName)));
 			return $ret;
 		}
 		$ret = $this->NetCommonsForm->email($fieldName, array(
@@ -447,7 +447,7 @@ class RegistrationAnswerHelper extends AppHelper {
  */
 	public function fileInput($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
-			$ret = nl2br($this->value($fieldName));
+			$ret = h(nl2br($this->value($fieldName)));
 			return $ret;
 		}
 		$fileFieldName = $fieldName . '_file';
