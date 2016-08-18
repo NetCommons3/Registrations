@@ -54,7 +54,7 @@
 						} else {
 							$value = h($answer['RegistrationAnswer']['answer_value']);
 						}
-						echo $value;
+						echo nl2br($value);
 						?>
 					</td>
 				</tr>
