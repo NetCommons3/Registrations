@@ -267,6 +267,9 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 				$testStatus = RegistrationsComponent::TEST_ANSWER_STATUS_TEST;
 			}
 
+			// サマリ新規作成時は一時保存なので、メール送信させない
+			$this->Behaviors->unload('Mails.MailQueue');
+
 			if (! $this->save(array(
 				'answer_status' => RegistrationsComponent::ACTION_NOT_ACT,
 				'test_status' => $testStatus,
