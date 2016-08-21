@@ -386,10 +386,10 @@ class RegistrationAnswerHelper extends AppHelper {
 		$ret = '<div class="row"><div class="col-sm-4">';
 		$ret .= '<div class="date" >';
 		$ret .= $this->NetCommonsForm->input($fieldName,
-							array('type' => 'text',
+							array('type' => 'datetime',
 								'div' => false,
 								'class' => 'form-control',
-								'datetimepicker',
+								'datetimepicker' => 1,
 								'datetimepicker-options' => $options,
 								'ng-model' => 'dateAnswer[' . "'" . $question['key'] . "'" . ']',
 								//'value' => $this->value($fieldName),
