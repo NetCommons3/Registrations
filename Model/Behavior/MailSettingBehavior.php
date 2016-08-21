@@ -51,7 +51,9 @@ class MailSettingBehavior extends ModelBehavior {
 		$mailSetting['MailSettingFixedPhrase']['answer']['mail_fixed_phrase_body']
 			= $saveRegistration[$model->alias][$pluginLowercase . '_mail_body'];
 		$mailSetting['MailSettingFixedPhrase']['answer']['plugin_key'] = strtolower($model->plugin);
+		$mailSetting['MailSettingFixedPhrase']['answer']['block_key'] = Current::read('Block.key');
 		$mailSetting['MailSettingFixedPhrase']['contents']['plugin_key'] = strtolower($model->plugin);
+		$mailSetting['MailSettingFixedPhrase']['contents']['block_key'] = Current::read('Block.key');
 
 		// 登録通知メール設定を保存
 		if ($model->MailSetting->save($mailSetting)) {
