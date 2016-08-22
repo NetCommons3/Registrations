@@ -390,6 +390,7 @@ class RegistrationAnswerHelper extends AppHelper {
 								'div' => false,
 								'class' => 'form-control',
 								'datetimepicker' => 1,
+								'convert_timezone' => false,
 								'datetimepicker-options' => $options,
 								'ng-model' => 'dateAnswer[' . "'" . $question['key'] . "'" . ']',
 								//'value' => $this->value($fieldName),
