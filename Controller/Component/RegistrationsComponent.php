@@ -484,16 +484,16 @@ class RegistrationsComponent extends Component {
  */
 	public function getQuestionTypeOptionsWithLabel() {
 		return array(
-			self::TYPE_SELECTION => __d('registrations', 'Single choice'),
-			self::TYPE_MULTIPLE_SELECTION => __d('registrations', 'Multiple choice'),
-			self::TYPE_TEXT => __d('registrations', 'Single text'),
-			self::TYPE_TEXT_AREA => __d('registrations', 'Multiple text'),
+			self::TYPE_SELECTION => __d('net_commons', 'Single choice'),
+			self::TYPE_MULTIPLE_SELECTION => __d('net_commons', 'Multiple choice'),
+			self::TYPE_TEXT => __d('net_commons', 'Text'),
+			self::TYPE_TEXT_AREA => __d('net_commons', 'Free style'),
 			//self::TYPE_MATRIX_SELECTION_LIST => __d('registrations', 'Single choice matrix'),
 			//self::TYPE_MATRIX_MULTIPLE => __d('registrations', 'Multiple choice matrix'),
-			self::TYPE_DATE_AND_TIME => __d('registrations', 'Date and time'),
-			self::TYPE_SINGLE_SELECT_BOX => __d('registrations', 'List select'),
-			self::TYPE_EMAIL => __d('registrations', 'Email'),
-			self::TYPE_FILE => __d('registrations', 'File'),
+			self::TYPE_DATE_AND_TIME => __d('net_commons', 'Date and time'),
+			self::TYPE_SINGLE_SELECT_BOX => __d('net_commons', 'List select'),
+			self::TYPE_EMAIL => __d('net_commons', 'Email'),
+			self::TYPE_FILE => __d('net_commons', 'File'),
 		);
 	}
 
