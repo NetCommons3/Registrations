@@ -322,11 +322,12 @@ class RegistrationEditController extends RegistrationsAppController {
 				$this->redirect(NetCommonsUrl::backToIndexUrl('default_setting_action'));
 			} else {
 				// 登録画面（詳細）へリダイレクト
-				if ($saveRegistration['Registration']['status'] == WorkflowComponent::STATUS_PUBLISHED) {
-					$action = 'view';
-				} else {
-					$action = 'test_mode';
-				}
+				$action = 'view';
+				//if ($saveRegistration['Registration']['status'] == WorkflowComponent::STATUS_PUBLISHED) {
+				//	$action = 'view';
+				//} else {
+				//	$action = 'test_mode';
+				//}
 				$urlArray = array(
 					'controller' => 'registration_answers',
 					'action' => $action,
