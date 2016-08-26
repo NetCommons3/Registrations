@@ -24,7 +24,7 @@ $jsPastRegistrations = NetCommonsAppController::camelizeKeyRecursive($pastRegist
 
 <div ng-controller="Registrations.add"
 	 ng-init="initialize(<?php echo h(json_encode($jsPastRegistrations)); ?>,
-						'<?php echo $this->data['ActionRegistrationAdd']['create_option']; ?>')">
+						'<?php echo h($this->data['ActionRegistrationAdd']['create_option']); ?>')">
 	<div class="row">
 
 		<div class="col-xs-12">
