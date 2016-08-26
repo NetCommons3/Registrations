@@ -288,6 +288,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 
 		//登録数制限
 		if ($this->_isLimitNumber($registration)) {
+			$this->set('registration', $registration);
 			$this->render('limit');
 			return;
 		}
