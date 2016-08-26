@@ -5,8 +5,8 @@ NetCommonsApp.constant('moment', moment);
 //NetCommonsApp.requires.push('ngSanitize');
 
 NetCommonsApp.controller('Registrations.edit.question',
-    ['$scope', 'NetCommonsWysiwyg', '$timeout', 'moment',
-      function($scope, NetCommonsWysiwyg, $timeout, moment) {
+    ['$scope', 'NetCommonsWysiwyg', '$timeout', 'moment', 'registrationsMessages',
+      function($scope, NetCommonsWysiwyg, $timeout, moment, registrationsMessages) {
 
         /**
          * tinymce
@@ -56,7 +56,11 @@ NetCommonsApp.controller('Registrations.edit.question',
 
           MATRIX_TYPE_ROW_OR_NO_MATRIX: '0',
 
-          SKIP_GO_TO_END: '99999'
+          SKIP_GO_TO_END: '99999',
+
+          MAX_QUESTION_COUNT: 50,
+          MAX_CHOICE_COUNT: 50
+
         };
 
         $scope.colorPickerPalette =
@@ -70,9 +74,7 @@ NetCommonsApp.controller('Registrations.edit.question',
            * @return {void}
            */
         $scope.initialize =
-            function(frameId, isPublished, registration,
-            newPageLabel, newQuestionLabel, newChoiceLabel,
-            newChoiceColumnLabel, newChoiceOtherLabel, prefectures) {
+            function(frameId, isPublished, registration, prefectures) {
 
           $scope.frameId = frameId;
           $scope.isPublished = isPublished;
@@ -145,12 +147,6 @@ NetCommonsApp.controller('Registrations.edit.question',
 
             }
           }
-
-          $scope.newPageLabel = newPageLabel;
-          $scope.newQuestionLabel = newQuestionLabel;
-          $scope.newChoiceLabel = newChoiceLabel;
-          $scope.newChoiceColumnLabel = newChoiceColumnLabel;
-          $scope.newChoiceOtherLabel = newChoiceOtherLabel;
         };
         /**
          * toArray
@@ -292,7 +288,7 @@ NetCommonsApp.controller('Registrations.edit.question',
         $scope.addPage = function($event) {
           var page = new Object();
           page['pageTitle'] =
-              $scope.newPageLabel +
+              registrationsMessages.newPageLabel +
               ($scope.registration.registrationPage.length + 1);
           page['pageSequence'] =
               $scope.registration.registrationPage.length;
@@ -347,6 +343,11 @@ NetCommonsApp.controller('Registrations.edit.question',
            * @return {void}
            */
         $scope.addQuestion = function($event, pageIndex) {
+          if ($scope.checkMaxQuestion() == false) {
+            alert(registrationsMessages.maxQuestionWarningMsg);
+            return;
+          }
+
           var question = new Object();
           if (!$scope.registration.registrationPage[pageIndex].registrationQuestion) {
             $scope.registration.registrationPage[pageIndex].
@@ -355,7 +356,7 @@ NetCommonsApp.controller('Registrations.edit.question',
           var newIndex =
               $scope.registration.registrationPage[pageIndex].
                   registrationQuestion.length;
-          question['questionValue'] = $scope.newQuestionLabel + (newIndex + 1);
+          question['questionValue'] = registrationsMessages.newQuestionLabel + (newIndex + 1);
           question['questionSequence'] = newIndex;
           question['questionType'] = variables.TYPE_SELECTION;
           question['key'] = '';
@@ -430,10 +431,14 @@ NetCommonsApp.controller('Registrations.edit.question',
            */
         $scope.copyQuestionToAnotherPage =
             function($event, pageIndex, qIndex, copyPageIndex) {
+          if ($scope.checkMaxQuestion() == false) {
+            alert(registrationsMessages.maxQuestionWarningMsg);
+            return;
+          }
+
           var tmpQ = angular.copy(
               $scope.registration.registrationPage[pageIndex].registrationQuestion[qIndex]);
-          $scope.registration.registrationPage[copyPageIndex].
-              registrationQuestion.push(tmpQ);
+          $scope.registration.registrationPage[copyPageIndex].registrationQuestion.push(tmpQ);
 
           $scope._resetRegistrationQuestionSequence(copyPageIndex);
           //$event.stopPropagation();
@@ -478,6 +483,11 @@ NetCommonsApp.controller('Registrations.edit.question',
            */
         $scope.addChoice =
             function($event, pIdx, qIdx, choiceCount, otherType, matrixType, choiceLabel) {
+          if (choiceCount == variables.MAX_CHOICE_COUNT) {
+            alert(registrationsMessages.maxChoiceWarningMsg);
+            return;
+          }
+
           if (! choiceLabel) {
             choiceLabel = '';
           }
@@ -495,12 +505,13 @@ NetCommonsApp.controller('Registrations.edit.question',
           if (choiceLabel) {
             choice['choiceLabel'] = choiceLabel;
           } else if (otherType != variables.OTHER_CHOICE_TYPE_NO_OTHER_FILED) {
-            choice['choiceLabel'] = $scope.newChoiceOtherLabel;
+            choice['choiceLabel'] = registrationsMessages.newChoiceOtherLabel;
           } else {
             if (matrixType == variables.MATRIX_TYPE_ROW_OR_NO_MATRIX) {
-              choice['choiceLabel'] = $scope.newChoiceLabel + (choiceCount + 1);
+              choice['choiceLabel'] = registrationsMessages.newChoiceLabel + (choiceCount + 1);
             } else {
-              choice['choiceLabel'] = $scope.newChoiceColumnLabel + (choiceCount + 1);
+              choice['choiceLabel'] =
+                  registrationsMessages.newChoiceColumnLabel + (choiceCount + 1);
             }
           }
           // skipPageIndex仮設定
@@ -745,4 +756,21 @@ NetCommonsApp.controller('Registrations.edit.question',
             return 'panel-default';
           }
         };
-     }]);
+        /**
+         * 現在の質問数に＋１したらMAXを超えてしまうかどうかのガード
+         *
+         * @return {bool}
+         */
+        $scope.checkMaxQuestion = function() {
+          var ct = 0;
+          var pageArr = $scope.registration.registrationPage;
+          for (var i = 0; i < pageArr.length; i++) {
+            ct += pageArr[i].registrationQuestion.length;
+          }
+          if (ct + 1 > variables.MAX_QUESTION_COUNT) {
+            return false;
+          }
+          return true;
+        };
+
+      }]);
