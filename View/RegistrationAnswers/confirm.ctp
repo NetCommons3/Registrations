@@ -32,14 +32,12 @@
 
 			<?php if (isset($answers[$question['key']])): ?>
 
-				<?php if ($question['is_require'] == RegistrationsComponent::REQUIRES_REQUIRE): ?>
-					<div class="pull-left">
-						<?php echo $this->element('NetCommons.required'); ?>
-					</div>
-				<?php endif ?>
 
 				<label>
 					<?php echo $question['question_value']; ?>
+					<?php if ($question['is_require'] == RegistrationsComponent::REQUIRES_REQUIRE): ?>
+						<?php echo $this->element('NetCommons.required'); ?>
+					<?php endif ?>
 				</label>
 
 				<div class="well form-control-static">
