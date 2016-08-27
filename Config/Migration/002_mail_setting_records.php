@@ -88,18 +88,38 @@ class RegistrationMailSettingRecords extends MailsMigration {
 				'language_id' => '1',
 				'plugin_key' => self::PLUGIN_KEY,
 				'block_key' => null,
-				'type_key' => 'contents',
-				'mail_fixed_phrase_subject' => '', //デフォルト(__d('mails', 'MailSetting.mail_fixed_phrase_subject.answer'))
-				'mail_fixed_phrase_body' => '', //デフォルト(__d('mails', 'MailSetting.mail_fixed_phrase_body.answer'))
+				'type_key' => 'answer',
+				'mail_fixed_phrase_subject' => '[{X-SITE_NAME}-{X-PLUGIN_NAME}]{X-SUBJECT} answer',
+				'mail_fixed_phrase_body' => 'Thank you for your registration.
+
+Registrarion form:{X-SUBJECT}
+
+Registered date:{X-TO_DATE}
+
+
+{X-DATA}
+
+Please print this mail and bring it with you.'
 			),
 			// * 日本語
 			array(
 				'language_id' => '2',
 				'plugin_key' => self::PLUGIN_KEY,
 				'block_key' => null,
-				'type_key' => 'contents',
-				'mail_fixed_phrase_subject' => '', //デフォルト(__d('mails', 'MailSetting.mail_fixed_phrase_subject.answer'))
-				'mail_fixed_phrase_body' => '', //デフォルト(__d('mails', 'MailSetting.mail_fixed_phrase_body.answer'))
+				'type_key' => 'answer',
+				'mail_fixed_phrase_subject' => '[{X-SITE_NAME}-{X-PLUGIN_NAME}]{X-SUBJECT}を受け付けました。',
+				'mail_fixed_phrase_body' => '{X-SUBJECT}の登録通知先メールアドレスとしてあなたのメールアドレスが使用されました。
+もし{X-SUBJECT}への登録に覚えがない場合はこのメールを破棄してください。
+
+
+{X-SUBJECT}を受け付けました。
+
+登録日時:{X-TO_DATE}
+
+
+{X-DATA}
+
+メール内容を印刷の上、会場にご持参ください。',
 			),
 	));
 
