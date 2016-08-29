@@ -85,4 +85,10 @@
 
 		</div>
 
+		<div class="text-center">
+			<?php echo $this->BackTo->indexLinkButton(
+				__d('registrations', 'Back to page'), 'default_setting_action', array('icon' => 'arrow-left')
+			); ?>
+		</div>
+
 <?php endif;

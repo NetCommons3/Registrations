@@ -62,4 +62,7 @@
 		</tbody>
 	</table>
 
+	<footer class="text-center">
+		<?php echo $this->BackTo->pageLinkButton(__d('net_commons', 'Close')); ?>
+	</footer>
 </article>
