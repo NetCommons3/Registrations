@@ -25,6 +25,6 @@
 	<?php echo $this->Workflow->label($registration['Registration']['status']); ?>
 
 	<?php echo $this->TitleIcon->titleIcon($registration['Registration']['title_icon']); ?>
-	<?php echo $registration['Registration']['title']; ?>
-	<small><?php echo $registration['Registration']['sub_title'];?></small>
+	<?php echo h($registration['Registration']['title']); ?>
+	<small><?php echo h($registration['Registration']['sub_title']);?></small>
 </h1>

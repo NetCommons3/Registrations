@@ -34,7 +34,7 @@
 
 
 				<label>
-					<?php echo $question['question_value']; ?>
+					<?php echo h($question['question_value']); ?>
 					<?php if ($question['is_require'] == RegistrationsComponent::REQUIRES_REQUIRE): ?>
 						<?php echo $this->element('NetCommons.required'); ?>
 					<?php endif ?>
