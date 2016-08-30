@@ -89,7 +89,8 @@ class RegistrationAnswersController extends RegistrationsAppController {
  */
 	public function beforeFilter() {
 		// ゲストアクセスOKのアクションを設定
-		$this->Auth->allow('view', 'confirm', 'thanks', 'no_more_answer', 'key_auth', 'img_auth');
+		$this->Auth->allow('view', 'confirm', 'thanks', 'no_more_answer', 'key_auth', 'img_auth',
+			'empty_form');
 
 		// 親クラスのbeforeFilterを済ませる
 		parent::beforeFilter();
@@ -110,7 +111,12 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			'recursive' => 1
 		));
 		if (! $this->__registration) {
-			$this->setAction('throwBadRequest');	// returnをつけるとテストコードが通らない
+			// 権限が無くて表示できないブロックがページに配置されることもあるので、emptyRenderにする。
+			if ($this->action === 'view') {
+				$this->setAction('empty_form');
+				return;
+			}
+			//$this->setAction('throwBadRequest');	// returnをつけるとテストコードが通らない
 		}
 
 		// 現在の表示形態を調べておく
@@ -133,6 +139,15 @@ class RegistrationAnswersController extends RegistrationsAppController {
 				return;
 			}
 		}
+	}
+
+/**
+ * 権限のないviewアクションにきたときに表示（一度も公開されてないフレーム）
+ *
+ * @return void
+ */
+	public function empty_form() {
+		$this->emptyRender();
 	}
 
 /**
