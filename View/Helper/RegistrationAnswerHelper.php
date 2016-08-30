@@ -94,6 +94,7 @@ class RegistrationAnswerHelper extends AppHelper {
 			$afterLabel = '</label></div>';
 			$choices = Hash::sort($question['RegistrationChoice'], '{n}.other_choice_type', 'asc');
 			$options = $this->_getChoiceOptionElement($choices);
+			$options = array_map('h', $options); // escape
 			$otherChoice = Hash::extract($question['RegistrationChoice'],
 				'{n}[other_choice_type!=' . RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED . ']');
 			if ($otherChoice) {
