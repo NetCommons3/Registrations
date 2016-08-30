@@ -55,7 +55,10 @@ class RegistrationAnswerEmailBehavior extends RegistrationAnswerBehavior {
 		if ($question['question_type'] != $this->_myType) {
 			return true;
 		}
-		return Validation::email($data['answer_value']);
+		if ($question['is_require'] === true || $data['answer_value']) {
+			return Validation::email($data['answer_value']);
+		}
+		return true;
 	}
 
 /**
