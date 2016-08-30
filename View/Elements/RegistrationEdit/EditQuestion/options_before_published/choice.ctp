@@ -13,6 +13,7 @@
 	   name="data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][RegistrationChoice][{{choice.choiceSequence}}][choice_label]"
 	   class="form-control input-sm"
 	   ng-model="choice.choiceLabel"
+	   nc-focus="true"
 		/>
 <span ng-if="choice.otherChoiceType != <?php echo RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED; ?>">
 	<?php echo __d('registrations', '(This is [other] choice. Area to enter the text is automatically granted at the time of implementation.)'); ?>
