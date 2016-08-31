@@ -465,6 +465,14 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 
 			if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
 				// 選択式
+				$otherAnswer = Hash::get($answer,
+					'RegistrationAnswer.other_answer_value');
+				if ($otherAnswer) {
+					// 「その他」を取り除いて代わりにその他に入力されたテキストを追加
+					array_pop($answer['RegistrationAnswer']['answer_values']);
+					$answer['RegistrationAnswer']['answer_values'][] =
+						$otherAnswer;
+				}
 				$xDataString .= implode("\n", $answer['RegistrationAnswer']['answer_values']);
 			} else {
 				$xDataString .= $answer['RegistrationAnswer']['answer_value'];
