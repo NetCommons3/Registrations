@@ -41,6 +41,14 @@
 										]
 									);
 								} elseif (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+									$otherAnswer = Hash::get($answer,
+										'RegistrationAnswer.other_answer_value');
+									if ($otherAnswer) {
+										// 「その他」を取り除いて代わりにその他に入力されたテキストを追加
+										array_pop($answer['RegistrationAnswer']['answer_values']);
+										$answer['RegistrationAnswer']['answer_values'][] =
+											$otherAnswer;
+									}
 									$value = h(implode(',',
 										$answer['RegistrationAnswer']['answer_values']));
 								} else {
@@ -83,6 +91,12 @@
 			); ?>
 			<?php echo $this->NetCommonsForm->end(); ?>
 
+		</div>
+
+		<div class="text-center">
+			<?php echo $this->BackTo->indexLinkButton(
+				__d('registrations', 'Back to page'), 'default_setting_action', array('icon' => 'arrow-left')
+			); ?>
 		</div>
 
 <?php endif;

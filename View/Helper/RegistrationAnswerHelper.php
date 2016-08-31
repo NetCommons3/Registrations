@@ -94,6 +94,7 @@ class RegistrationAnswerHelper extends AppHelper {
 			$afterLabel = '</label></div>';
 			$choices = Hash::sort($question['RegistrationChoice'], '{n}.other_choice_type', 'asc');
 			$options = $this->_getChoiceOptionElement($choices);
+			$options = array_map('h', $options); // escape
 			$otherChoice = Hash::extract($question['RegistrationChoice'],
 				'{n}[other_choice_type!=' . RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED . ']');
 			if ($otherChoice) {
@@ -386,10 +387,11 @@ class RegistrationAnswerHelper extends AppHelper {
 		$ret = '<div class="row"><div class="col-sm-4">';
 		$ret .= '<div class="date" >';
 		$ret .= $this->NetCommonsForm->input($fieldName,
-							array('type' => 'text',
+							array('type' => 'datetime',
 								'div' => false,
 								'class' => 'form-control',
-								'datetimepicker',
+								'datetimepicker' => 1,
+								'convert_timezone' => false,
 								'datetimepicker-options' => $options,
 								'ng-model' => 'dateAnswer[' . "'" . $question['key'] . "'" . ']',
 								//'value' => $this->value($fieldName),

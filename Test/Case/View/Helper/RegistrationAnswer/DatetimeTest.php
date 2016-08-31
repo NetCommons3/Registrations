@@ -72,10 +72,13 @@ EOT;
 <div class="row">
 	<div class="col-sm-4">
 		<div class="date">
-			<input name="data[RegistrationAnswer][qKey1][0][answer_value]" class="form-control"
-			datetimepicker="datetimepicker" datetimepicker-options="%s"
-			ng-model="dateAnswer[&#039;qKey1&#039;]"
-			type="text" id="RegistrationAnswerQKey10AnswerValue"/>
+			<divclass="inputtext"style="position:relative;position:relative;">
+				<input name="data[RegistrationAnswer][qKey1][0][answer_value]" class="form-control"
+				datetimepicker="1" datetimepicker-options="%s"
+				ng-model="dateAnswer[&#039;qKey1&#039;]" 
+				data-toggle="dropdown"
+				type="text" id="RegistrationAnswerQKey10AnswerValue"/>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1036,3 +1036,8 @@ msgstr "このフォームではメール通知は許可されていないため
 
 msgid "Thank you for registering."
 msgstr "ご登録ありがとうございました。"
+
+msgid "Number of questions that can be created is up %d . Already it has become %d ."
+msgstr "作成できる項目数は１フォームにつき%dまでです。%d個を超えようとしています。"
+msgid "Number of choices that can be created is up %d per question. Already it has become %d ."
+msgstr "作成できる選択肢の数は１項目につき%dまでです。%d個を超えようとしています。"

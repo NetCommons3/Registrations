@@ -37,11 +37,6 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 	 ng-init="initialize(<?php echo Current::read('Frame.id'); ?>,
 	 						<?php echo (int)$isPublished; ?>,
 							<?php echo h(json_encode($jsRegistration)); ?>,
-							'<?php echo h($newPageLabel); ?>',
-							'<?php echo h($newQuestionLabel); ?>',
-							'<?php echo h($newChoiceLabel); ?>',
-							'<?php echo h($newChoiceColumnLabel); ?>',
-							'<?php echo h($newChoiceOtherLabel); ?>',
 							<?php echo h($prefectures); ?>
 							)">
 

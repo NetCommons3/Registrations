@@ -101,8 +101,8 @@ class RegistrationAnswerControllerViewTest extends WorkflowControllerViewTest {
 		//));
 		$results[3] = Hash::merge($results[0], array( // 未公開
 			'urlOptions' => array('key' => 'registration_36', 'block_id' => 38),
-			'assert' => null,
-			'exception' => 'BadRequestException',
+			'assert' => array('method' => 'assertEmpty'),
+			//'exception' => 'BadRequestException',
 		));
 		$results[4] = Hash::merge($results[0], array( // 非会員NG
 			'urlOptions' => array('key' => 'registration_6', 'block_id' => 11),
@@ -172,8 +172,8 @@ class RegistrationAnswerControllerViewTest extends WorkflowControllerViewTest {
 		$results[2] = Hash::merge($results[0], array( // 未公開
 			'urlOptions' => array('block_id' => '38', 'frame_id' => '46', 'key' =>
 				'registration_36'),
-			'assert' => null,
-			'expected' => 'BadRequestException',
+			'assert' => array('method' => 'assertEmpty'),
+			//'expected' => 'BadRequestException',
 		));
 		// 非会員NG みれる
 		$results[4] = Hash::merge($results[0], array( // 非会員NG

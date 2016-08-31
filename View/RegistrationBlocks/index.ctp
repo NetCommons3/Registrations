@@ -72,7 +72,7 @@ echo $this->NetCommonsHtml->script(array(
 						); ?>
 						<?php echo $this->BlockIndex->tableData(
 						'',
-						$this->TitleIcon->titleIcon($registration['Registration']['title_icon']) . $registration['Registration']['title'],
+						$this->TitleIcon->titleIcon($registration['Registration']['title_icon']) . h($registration['Registration']['title']),
 						array(
 							'escape' => false,
 							'editUrl' => array(

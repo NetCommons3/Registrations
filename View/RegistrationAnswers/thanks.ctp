@@ -49,6 +49,15 @@
 								)
 							);
 						} elseif (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+							$otherAnswer = Hash::get($answer,
+								'RegistrationAnswer.other_answer_value');
+							if ($otherAnswer) {
+								// 「その他」を取り除いて代わりにその他に入力されたテキストを追加
+								array_pop($answer['RegistrationAnswer']['answer_values']);
+								$answer['RegistrationAnswer']['answer_values'][] =
+									$otherAnswer;
+							}
+
 							$value = h(implode(',',
 								$answer['RegistrationAnswer']['answer_values']));
 						} else {
@@ -62,4 +71,7 @@
 		</tbody>
 	</table>
 
+	<footer class="text-center">
+		<?php echo $this->BackTo->pageLinkButton(__d('net_commons', 'Close')); ?>
+	</footer>
 </article>

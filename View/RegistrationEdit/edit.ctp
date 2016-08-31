@@ -129,14 +129,14 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 				</div>
 			</div>
 
-			<div class="form-group">
-				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Auth method')); ?>
 				<?php if (Current::read('Room.space_id') == Space::PUBLIC_SPACE_ID): ?>
-				<?php echo $this->element('Registrations.RegistrationEdit/Edit/method_in_public'); ?>
+					<div class="form-group">
+					<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Auth method')); ?>
+					<?php echo $this->element('Registrations.RegistrationEdit/Edit/method_in_public'); ?>
+					</div>
 				<?php else: ?>
-				<?php echo $this->element('Registrations.RegistrationEdit/Edit/method_in_group'); ?>
+					<?php echo $this->element('Registrations.RegistrationEdit/Edit/method_in_group'); ?>
 				<?php endif; ?>
-			</div>
 
 			<div class="form-group">
 				<?php echo $this->NetCommonsForm->label('', __d('registrations', 'Thanks page message settings')); ?>
