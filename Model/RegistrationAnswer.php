@@ -157,7 +157,8 @@ class RegistrationAnswer extends RegistrationsAppModel {
 				'answerEmailValidation' => array(
 					'rule' => array('answerEmailValidation', $question, $allAnswers),
 					'last' => true,
-					'message' => __d('net_commons', 'Failed on validation errors. Please check the input data.'),
+					'message' => __d('mails', '%s, please enter by e-mail format',
+						$question['question_value']),
 				),
 				'answerEmailConfirmValidation' => array(
 					'rule' => array('answerEmailConfirmValidation', $question, $allAnswers),
