@@ -91,7 +91,7 @@ class RegistrationAnswerHelper extends AppHelper {
 		$otherAnswerFieldName = 'RegistrationAnswer.' . $index . '.0.other_answer_value';
 
 		if (isset($question['RegistrationChoice'])) {
-			$afterLabel = '</label></div>';
+			$afterLabel = false;
 			$choices = Hash::sort($question['RegistrationChoice'], '{n}.other_choice_type', 'asc');
 			$options = $this->_getChoiceOptionElement($choices);
 			$options = array_map('h', $options); // escape
@@ -105,7 +105,7 @@ class RegistrationAnswerHelper extends AppHelper {
 					'disabled' => $readonly,
 					'error' => false,
 				));
-				$afterLabel = $otherInput . $afterLabel;
+				$afterLabel = $otherInput;
 			}
 
 			$inline = false;
