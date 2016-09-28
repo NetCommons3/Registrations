@@ -91,7 +91,7 @@ class RegistrationAnswerHelper extends AppHelper {
 		$otherAnswerFieldName = 'RegistrationAnswer.' . $index . '.0.other_answer_value';
 
 		if (isset($question['RegistrationChoice'])) {
-			$afterLabel = '</label></div>';
+			$afterLabel = false;
 			$choices = Hash::sort($question['RegistrationChoice'], '{n}.other_choice_type', 'asc');
 			$options = $this->_getChoiceOptionElement($choices);
 			$options = array_map('h', $options); // escape
@@ -105,26 +105,27 @@ class RegistrationAnswerHelper extends AppHelper {
 					'disabled' => $readonly,
 					'error' => false,
 				));
-				$afterLabel = $otherInput . $afterLabel;
+				$afterLabel = $otherInput;
 			}
 
-			$radioClass = 'radio';
+			$inline = false;
 			if ($question['is_choice_horizon'] == RegistrationsComponent::USES_USE) {
-				$radioClass = 'radio-inline';
+				$inline = true;
 			}
 			// 下のような形でradioをつくるとHiddenが自動的には付随されなかった！
 			// 仕方ないので意図的に作成している
 			$ret = $this->NetCommonsForm->hidden($fieldName, array('value' => ''));
-			$ret .= $this->Form->input($fieldName, array(
+			$ret .= $this->NetCommonsForm->input($fieldName, array(
 				'type' => 'radio',
 				'options' => $options,
 				'legend' => false,
 				'label' => false,
-				'before' => '<div class="' . $radioClass . '"><label>',
-				'separator' => '</label></div><div class="' . $radioClass . '"><label>',
+				'div' => false,
+				'inline' => $inline,
 				'after' => $afterLabel,
 				'disabled' => $readonly,
 				'error' => false,
+				'hiddenField' => false,
 			));
 		}
 		return $ret;
