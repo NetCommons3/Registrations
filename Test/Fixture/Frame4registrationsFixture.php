@@ -38,7 +38,7 @@ class Frame4registrationsFixture extends FrameFixture {
 		[
 			'id' => 19,
 			'language_id' => 2,
-			'room_id' => 1,
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => 11,
@@ -51,7 +51,7 @@ class Frame4registrationsFixture extends FrameFixture {
 			// 画像認証テスト用
 			'id' => 20,
 			'language_id' => 2,
-			'room_id' => 1,
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => 12,
@@ -62,7 +62,7 @@ class Frame4registrationsFixture extends FrameFixture {
 			// registration_4用
 			'id' => 21,
 			'language_id' => 2,
-			'room_id' => 1,
+			'room_id' => '2',
 			'plugin_key' => 'test_plugin',
 			'box_id' => '3',
 			'block_id' => 13,
@@ -81,7 +81,7 @@ class Frame4registrationsFixture extends FrameFixture {
 			$this->records[] = [
 				'id' => $id + 8, // id19から
 				'language_id' => 1,
-				'room_id' => 1,
+				'room_id' => '2',
 				'plugin_key' => 'test_plugin',
 				'box_id' => '3',
 				'block_id' => $id,
@@ -92,7 +92,7 @@ class Frame4registrationsFixture extends FrameFixture {
 			$this->records[] = [
 				'id' => $id + 9, // id20から
 				'language_id' => 2,
-				'room_id' => 1,
+				'room_id' => '2',
 				'plugin_key' => 'test_plugin',
 				'box_id' => '3',
 				'block_id' => $id + 1,
