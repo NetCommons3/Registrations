@@ -581,7 +581,7 @@ class Registration extends RegistrationsAppModel {
 			}
 
 			// Block.nameが入ってるとBlockビヘイビアが名前を同期してくれないのでremove
-			$registration = Hash::remove($registration, 'Block.name');
+			$registration = Hash::remove($registration, 'BlocksLanguage.name');
 			// modified に値があると modified が更新されないのでnullに
 			$registration['Registration']['modified'] = null;
 			$saveRegistration = $this->save($registration, false);

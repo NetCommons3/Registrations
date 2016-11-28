@@ -72,7 +72,7 @@ class RegistrationGetNextPageTest extends NetCommonsGetTest {
 		Current::$current['Frame']['key'] = 'frame_3';
 		Current::$current['Frame']['room_id'] = '2';
 		Current::$current['Frame']['plugin_key'] = 'registrations';
-		Current::$current['Frame']['language_id'] = '2';
+		Current::$current['FramesLanguage']['language_id'] = '2';
 	}
 
 /**

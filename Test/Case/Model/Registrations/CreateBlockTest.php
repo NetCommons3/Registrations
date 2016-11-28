@@ -87,7 +87,7 @@ class RegistrationCreateBlockTest extends NetCommonsModelTestCase {
 		$data = array();
 		$data['Frame']['id'] = $frameId;
 		$data['Frame']['block_id'] = $blockId;
-		$data['Frame']['language_id'] = 2;
+		$data['FramesLanguage']['language_id'] = 2;
 		$data['Frame']['room_id'] = $roomId;
 		$data['Frame']['plugin_key'] = 'registrations';
 

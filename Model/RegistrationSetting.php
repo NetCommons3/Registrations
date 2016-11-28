@@ -153,7 +153,7 @@ class RegistrationSetting extends BlockBaseModel {
 				// 作成する
 				$block = $this->Block->save(array(
 					'room_id' => $frame['Frame']['room_id'],
-					'language_id' => $frame['Frame']['language_id'],
+					//'language_id' => $frame['Frame']['language_id'],
 					'plugin_key' => $frame['Frame']['plugin_key'],
 				));
 				if (!$block) {
