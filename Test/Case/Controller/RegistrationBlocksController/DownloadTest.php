@@ -51,7 +51,9 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 		'plugin.registrations.registration_answer',
 		'plugin.authorization_keys.authorization_keys',
 		'plugin.registrations.block4registrations',
+		'plugin.registrations.blocks_language4registrations',
 		'plugin.registrations.frame4registrations',
+		'plugin.registrations.frames_language4registrations',
 	);
 
 /**

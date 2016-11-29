@@ -37,7 +37,9 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		'plugin.registrations.registration_answer',
 		'plugin.authorization_keys.authorization_keys',
 		'plugin.registrations.block4registrations',
+		'plugin.registrations.blocks_language4registrations',
 		'plugin.registrations.frame4registrations',
+		'plugin.registrations.frames_language4registrations',
 	);
 
 /**
@@ -124,7 +126,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		));
 		$data = array(
 			'data' => array(
-				'Frame' => array('id' => 19),
+				'Frame' => array('id' => 20),
 				'Block' => array('id' => 11),
 				'AuthorizationKeys' => array('key' => 'test')
 			)

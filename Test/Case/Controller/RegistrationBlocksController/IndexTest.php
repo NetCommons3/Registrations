@@ -48,7 +48,9 @@ class RegistrationBlocksControllerIndexTest extends BlocksControllerTest {
 		'plugin.registrations.registration_choice',
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.block4registrations',
+		'plugin.registrations.blocks_language4registrations',
 		'plugin.registrations.frame4registrations',
+		'plugin.registrations.frames_language4registrations',
 	);
 
 /**

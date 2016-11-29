@@ -1,67 +1,63 @@
 <?php
 /**
- * Block4RegistrationsFixture.php
+ * FrameRegistrationsFixture.php
  *
  * @author   Ryuji AMANO <ryuji@ryus.co.jp>
  * @link http://www.netcommons.org NetCommons Project
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
+App::uses('FramesLanguageFixture', 'Blocks.Test/Fixture');
+
 /**
- * Class Block4RegistrationsFixture
+ * Class Frame4RegistrationsFixture
  */
-class Block4registrationsFixture extends BlockFixture {
+class FramesLanguage4registrationsFixture extends FramesLanguageFixture {
 
 /**
  * Model name
  *
  * @var string
  */
-	public $name = 'Block';
+	public $name = 'FramesLanguage';
 
 /**
  * Full Table Name
  *
  * @var string
  */
-	public $table = 'blocks';
+	public $table = 'frames_languages';
 
 /**
  * Records
  *
+ * @uses RegistrationAnswersControllerPostTest::testKeyAuthPost()
  * @var array
  */
 	public $addRecords = array(
-		// @uses RegistrationAnswersControllerPostTest::testKeyAuthPost()
+		// @see RegistrationAnswersControllerPostTest::testKeyAuthPost()
 		// @uses RegistrationAnswersControllerPostTest::testKeyAuthPostNG()
 		[
-			'id' => 11,
-			'room_id' => '2',
-			'key' => 'block_11',
-			'public_type' => 1,
+			'id' => 19,
+			'language_id' => 2,
+			'frame_id' => 19,
+			'name' => 'frame_19',
 		],
 		// @uses RegistrationAnswersControllerPostTest::testImgAuthPost()
 		// @uses RegistrationAnswersControllerPostTest::testImgAuthPostNG()
 		[
-			'id' => 12,
-			'room_id' => '2',
-			'key' => 'block_12',
-			'public_type' => 1,
-		],
-		// registration_4用
-		[
-			'id' => 13,
-			'room_id' => '2',
-			'key' => 'block_12',
-			'public_type' => 1,
+			// 画像認証テスト用
+			'id' => 20,
+			'frame_id' => 20,
+			'name' => 'frame_20',
 		],
 		[
-			'id' => 14,
-			'room_id' => '2',
-			'key' => 'block_12',
-			'public_type' => 1,
+			// registration_4用
+			'id' => 21,
+			'language_id' => 2,
+			'frame_id' => 21,
+			'name' => 'frame_21',
 		],
-
 	);
 
 /**
@@ -72,23 +68,23 @@ class Block4registrationsFixture extends BlockFixture {
 	public function init() {
 		for ($id = 11; $id <= 52; $id = $id + 2) {
 			$this->records[] = [
-				'id' => $id,
-				'room_id' => '2',
-				'key' => 'block_' . $id + 1,
-				'public_type' => 1,
+				'id' => $id + 8, // id19から
+				'language_id' => 1,
+				'frame_id' => $id + 8, // id19から
+				'name' => 'frame_' . $id + 9,
 			];
 			$this->records[] = [
-				'id' => $id + 1,
-				'room_id' => '2',
-				'key' => 'block_' . $id,
-				'public_type' => 1,
+				'id' => $id + 9, // id20から
+				'language_id' => 2,
+				'frame_id' => $id + 9, // id20から,
+				'name' => 'frame_' . $id + 8,
 			];
 		}
+
 		// 継承元のrecordsとこのFixtureのaddRecordsをマージ。
 		//foreach ($this->addRecords as $record) {
 		//	$this->records[] = $record;
 		//}
 		parent::init();
 	}
-
 }
