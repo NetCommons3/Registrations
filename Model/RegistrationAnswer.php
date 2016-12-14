@@ -327,7 +327,8 @@ class RegistrationAnswer extends RegistrationsAppModel {
 						'RegistrationAnswer.registration_question_key = RegistrationQuestion.key',
 					)
 				)
-			)
+			),
+			'order' => array('RegistrationQuestion.question_sequence' => 'asc'),
 		));
 		return $answers;
 	}

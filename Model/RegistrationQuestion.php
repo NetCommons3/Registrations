@@ -28,6 +28,32 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		'Wysiwyg.Wysiwyg' => array(
 			'fields' => array('question_value')
 		),
+		//多言語
+		'M17n.M17n' => array(
+			'commonFields' => array(
+				'question_sequence',
+				'question_type',
+				'is_require',
+				'question_type_option',
+				'is_choice_random',
+				'is_choice_horizon',
+				'is_skip',
+				'is_jump',
+				'is_range',
+				'min',
+				'max',
+				'is_result_display',
+				'result_display_type',
+			),
+			'associations' => array(
+				'RegistrationChoice' => array(
+					'class' => 'Registrations.RegistrationChoice',
+					'foreignKey' => 'registration_question_id',
+					'isM17n' => true,
+				),
+			),
+			'afterCallback' => false,
+		),
 	);
 
 /**
@@ -91,6 +117,60 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		$this->loadModels([
 			'RegistrationChoice' => 'Registrations.RegistrationChoice',
 		]);
+	}
+
+/**
+ * Called before each find operation. Return false if you want to halt the find
+ * call, otherwise return the (modified) query data.
+ *
+ * @param array $query Data used to execute this query, i.e. conditions, order, etc.
+ * @return mixed true if the operation should continue, false if it should abort; or, modified
+ *  $query to continue with new $query
+ * @link http://book.cakephp.org/2.0/en/models/callback-methods.html#beforefind
+ */
+	public function beforeFind($query) {
+		//hasManyで実行されたとき、多言語の条件追加
+		if (! $this->id && isset($query['conditions']['registration_page_id'])) {
+			$registrationPageId = $query['conditions']['registration_page_id'];
+			$query['conditions']['registration_page_id'] =
+					$this->getRegistrationPageIdsForM17n($registrationPageId);
+			$query['conditions']['OR'] = array(
+				'RegistrationQuestion.language_id' => Current::read('Language.id'),
+				'RegistrationQuestion.is_translation' => false,
+			);
+
+			return $query;
+		}
+
+		return parent::beforeFind($query);
+	}
+
+/**
+ * 多言語データ取得のため、当言語のregistration_page_idから全言語のregistration_page_idを取得する
+ *
+ * @param id $registrationPageId 当言語のregistration_page_id
+ * @return array
+ */
+	public function getRegistrationPageIdsForM17n($registrationPageId) {
+		$registrationPage = $this->RegistrationPage->find('first', array(
+			'recursive' => -1,
+			'callbacks' => false,
+			'fields' => array('id', 'key', 'registration_id'),
+			'conditions' => array('id' => $registrationPageId),
+		));
+
+		$registrationId = $registrationPage['RegistrationPage']['registration_id'];
+		$registrationPageIds = $this->RegistrationPage->find('list', array(
+			'recursive' => -1,
+			'callbacks' => false,
+			'fields' => array('id', 'id'),
+			'conditions' => array(
+				'registration_id' => $this->RegistrationPage->getRegistrationIdsForM17n($registrationId),
+				'key' => $registrationPage['RegistrationPage']['key']
+			),
+		));
+
+		return array_values($registrationPageIds);
 	}
 
 /**
