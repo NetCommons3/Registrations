@@ -1,5 +1,22 @@
 <?php
-class AddFieldsForM17n extends CakeMigration {
+/**
+ * 多言語化対応
+ *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ * @copyright Copyright 2014, NetCommons Project
+ */
+
+App::uses('NetCommonsMigration', 'NetCommons.Config/Migration');
+
+/**
+ * 多言語化対応
+ *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @package NetCommons\Registrations\Config\Migration
+ */
+class AddFieldsForM17n extends NetCommonsMigration {
 
 /**
  * Migration description
