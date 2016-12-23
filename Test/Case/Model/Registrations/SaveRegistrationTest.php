@@ -121,7 +121,6 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		ClassRegistry::removeObject('M17nBehavior');
 		ClassRegistry::addObject('M17nBehavior', $m17nMock);
 		$this->$model->Behaviors->load('M17n');
-
 	}
 
 /**
