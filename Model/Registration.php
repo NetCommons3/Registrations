@@ -59,6 +59,57 @@ class Registration extends RegistrationsAppModel {
 			'fields' => array('total_comment', 'thanks_content')
 		),
 		'Registrations.MailSetting',
+		//多言語
+		'M17n.M17n' => array(
+			'commonFields' => array(
+				'title_icon',
+				'status',
+				'is_active',
+				'is_latest',
+				'answer_timing',
+				'answer_start_period',
+				'answer_end_period',
+				'is_no_member_allow',
+				'is_anonymity',
+				'is_key_pass_use',
+				'is_repeat_allow',
+				'is_total_show',
+				'total_show_timing',
+				'total_show_start_period',
+				'is_image_authentication',
+				'is_open_mail_send',
+				'is_answer_mail_send',
+				'reply_to',
+				'is_regist_user_send',
+				'is_page_random',
+				'is_limit_number',
+				'limit_number',
+				'import_key',
+				'export_key',
+			),
+			'associations' => array(
+				'RegistrationPage' => array(
+					'class' => 'Registrations.RegistrationPage',
+					'foreignKey' => 'registration_id',
+					'associations' => array(
+						'RegistrationQuestion' => array(
+							'class' => 'Registrations.RegistrationQuestion',
+							'foreignKey' => 'registration_page_id',
+							'associations' => array(
+								'RegistrationChoice' => array(
+									'class' => 'Registrations.RegistrationChoice',
+									'foreignKey' => 'registration_question_id',
+									'isM17n' => true,
+								),
+							),
+							'isM17n' => true,
+						),
+					),
+					'isM17n' => true,
+				),
+			),
+			'afterCallback' => false,
+		),
 	);
 
 /**
@@ -581,7 +632,7 @@ class Registration extends RegistrationsAppModel {
 			}
 
 			// Block.nameが入ってるとBlockビヘイビアが名前を同期してくれないのでremove
-			$registration = Hash::remove($registration, 'Block.name');
+			$registration = Hash::remove($registration, 'BlocksLanguage.name');
 			// modified に値があると modified が更新されないのでnullに
 			$registration['Registration']['modified'] = null;
 			$saveRegistration = $this->save($registration, false);
@@ -620,11 +671,13 @@ class Registration extends RegistrationsAppModel {
 				$this->updateMailSetting($saveRegistration);
 			}
 
+			//多言語化の処理
+			$this->set($saveRegistration);
+			$this->saveM17nData();
+
 			$this->commit();
 		} catch (Exception $ex) {
-			$this->rollback();
-			CakeLog::error($ex);
-			throw $ex;
+			$this->rollback($ex);
 		}
 		return $saveRegistration;
 	}

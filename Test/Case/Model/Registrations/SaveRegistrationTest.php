@@ -47,8 +47,6 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
 		'plugin.registrations.block_setting_for_registration',
-		//'plugin.registrations.registration_frame_setting',
-		//'plugin.registrations.registration_frame_display_registration',
 		'plugin.workflow.workflow_comment',
 		'plugin.mails.mail_setting_fixed_phrase',
 	);
@@ -80,7 +78,7 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		Current::$current['Frame']['key'] = 'frame_3';
 		Current::$current['Frame']['room_id'] = '2';
 		Current::$current['Frame']['plugin_key'] = 'registrations';
-		Current::$current['Frame']['language_id'] = '2';
+		Current::$current['FramesLanguage']['language_id'] = '2';
 		$mailQueueMock = $this->getMock('MailQueueBehavior',
 			['setAddEmbedTagValue', 'afterSave']);
 		$mailQueueMock->expects($this->any())
@@ -112,6 +110,17 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		ClassRegistry::removeObject('TopicsBehavior');
 		ClassRegistry::addObject('TopicsBehavior', $topicsMock);
 		$this->$model->Behaviors->load('Topics');
+
+		//M17nのビヘイビアをモックに差し替え
+		$this->$model->Behaviors->unload('M17n');
+		$m17nMock = $this->getMock('M17nBehavior', ['saveM17nData']);
+		$m17nMock->expects($this->any())
+			->method('saveM17nData')
+			->will($this->returnValue(true));
+
+		ClassRegistry::removeObject('M17nBehavior');
+		ClassRegistry::addObject('M17nBehavior', $m17nMock);
+		$this->$model->Behaviors->load('M17n');
 	}
 
 /**

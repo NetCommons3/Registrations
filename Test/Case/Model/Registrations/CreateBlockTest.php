@@ -42,8 +42,6 @@ class RegistrationCreateBlockTest extends NetCommonsModelTestCase {
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.registration_answer',
 		'plugin.registrations.block_setting_for_registration',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.block_setting_for_registration',
 	);
 
@@ -87,7 +85,7 @@ class RegistrationCreateBlockTest extends NetCommonsModelTestCase {
 		$data = array();
 		$data['Frame']['id'] = $frameId;
 		$data['Frame']['block_id'] = $blockId;
-		$data['Frame']['language_id'] = 2;
+		$data['FramesLanguage']['language_id'] = 2;
 		$data['Frame']['room_id'] = $roomId;
 		$data['Frame']['plugin_key'] = 'registrations';
 

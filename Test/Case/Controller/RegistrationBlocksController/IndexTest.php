@@ -41,14 +41,14 @@ class RegistrationBlocksControllerIndexTest extends BlocksControllerTest {
 	public $fixtures = array(
 		'plugin.registrations.registration',
 		'plugin.registrations.block_setting_for_registration',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_page',
 		'plugin.registrations.registration_question',
 		'plugin.registrations.registration_choice',
 		'plugin.registrations.registration_answer_summary',
 		'plugin.registrations.block4registrations',
+		'plugin.registrations.blocks_language4registrations',
 		'plugin.registrations.frame4registrations',
+		'plugin.registrations.frames_language4registrations',
 	);
 
 /**
