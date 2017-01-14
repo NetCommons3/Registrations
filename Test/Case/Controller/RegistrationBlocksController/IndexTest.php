@@ -48,6 +48,7 @@ class RegistrationBlocksControllerIndexTest extends BlocksControllerTest {
 		'plugin.registrations.block4registrations',
 		'plugin.registrations.blocks_language4registrations',
 		'plugin.registrations.frame4registrations',
+		'plugin.registrations.frame_public_language4registrations',
 		'plugin.registrations.frames_language4registrations',
 	);
 
