@@ -46,6 +46,8 @@ class PluginRecords extends NetCommonsMigration {
 			array(
 				'language_id' => '2',
 				'key' => 'registrations',
+				'is_origin' => true,
+				'is_translation' => true,
 				'namespace' => 'netcommons/registrations',
 				'default_action' => 'registrations/index',
 				'default_setting_action' => 'registration_blocks/index',
@@ -58,6 +60,8 @@ class PluginRecords extends NetCommonsMigration {
 			array(
 				'language_id' => '1',
 				'key' => 'registrations',
+				'is_origin' => false,
+				'is_translation' => true,
 				'namespace' => 'netcommons/registrations',
 				'default_action' => 'registrations/index',
 				'default_setting_action' => 'registration_blocks/index',
