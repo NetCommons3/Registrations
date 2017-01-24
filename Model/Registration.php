@@ -107,6 +107,12 @@ class Registration extends RegistrationsAppModel {
 					),
 					'isM17n' => true,
 				),
+				'AuthorizationKey' => array(
+					'class' => 'AuthorizationKeys.AuthorizationKey',
+					'foreignKey' => 'content_id',
+					'fieldForIdentifyPlugin' => array('field' => 'model', 'value' => 'Registration'),
+					'isM17n' => false
+				),
 			),
 			'afterCallback' => false,
 		),
