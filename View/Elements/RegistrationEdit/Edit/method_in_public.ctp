@@ -19,19 +19,28 @@
 	//	//'ng-model' => 'registration.registration.isNoMemberAllow'
 	//));
 	?>
-	<div>
-		<?php
-			echo $this->RegistrationEdit->registrationAttributeCheckbox('is_key_pass_use',
-				__d('registrations', 'use key phrase'));
-			echo $this->element('AuthorizationKeys.edit_form', [
-				'options' => array(
-					'div' => false,
-					'ng-show' => 'registration.registration.isKeyPassUse != 0',
-			)]);
-			echo $this->RegistrationEdit->registrationAttributeCheckbox('is_image_authentication',
-				__d('registrations', 'do image authentication'));
-		?>
+
+	<?php
+		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_image_authentication',
+			__d('registrations', 'do image authentication'), ['ng-disabled' => 'registration.registration.isKeyPassUse == 1']);
+	?>
+
+	<?php
+		echo $this->RegistrationEdit->registrationAttributeCheckbox('is_key_pass_use',
+			__d('registrations', 'use key phrase'), ['ng-disabled' => 'registration.registration.isImageAuthentication == 1']);
+	?>
+	<div class="row">
+		<div class="col-xs-11 col-xs-offset-1">
+			<?php
+				echo $this->element('AuthorizationKeys.edit_form', [
+					'options' => array(
+						'div' => false,
+						'ng-show' => 'registration.registration.isKeyPassUse != 0',
+				)]);
+			?>
+		</div>
 	</div>
+
 	<?php
 		//echo $this->RegistrationEdit->registrationAttributeCheckbox('is_anonymity',
 		//	__d('registrations', 'anonymous answer'
