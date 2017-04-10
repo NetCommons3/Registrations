@@ -63,7 +63,7 @@
 		</a>
 
 		<?php echo $this->NetCommonsForm->button(
-		__d('net_commons', 'Confirm'),
+		__d('net_commons', 'OK'),
 		array(
 		'class' => 'btn btn-primary',
 		'name' => 'confirm_' . 'registration',
