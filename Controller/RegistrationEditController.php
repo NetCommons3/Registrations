@@ -32,7 +32,7 @@ class RegistrationEditController extends RegistrationsAppController {
  *
  * @var array
  */
-	//public $layout = '';
+	public $layout = '';
 
 /**
  * use model
