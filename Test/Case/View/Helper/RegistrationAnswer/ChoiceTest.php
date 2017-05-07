@@ -140,6 +140,7 @@ EOT;
  */
 	public function testMultipleChoice() {
 		$expected = <<< EOT
+<div class="form-input-outer">
 <input type="hidden" name="data[RegistrationAnswer][qKey1][0][answer_value]" value="" id="RegistrationAnswerQKey10AnswerValue"/>
 <div class="checkbox nc-checkbox">
 	<input type="checkbox" name="data[RegistrationAnswer][qKey1][0][answer_value][]" value="cKey1:選択肢1" id="RegistrationAnswerQKey10AnswerValueCKey1選択肢1" />
@@ -158,6 +159,7 @@ EOT;
 	<label for="RegistrationAnswerQKey10AnswerValueCKey3その他">
 		その他
 	</label>
+</div>
 </div>
 <div class="checkbox-inline">
 <input name="data[RegistrationAnswer][qKey1][0][other_answer_value]" class="form-control" type="text" id="RegistrationAnswerQKey10OtherAnswerValue"/>
