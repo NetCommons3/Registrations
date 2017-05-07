@@ -171,7 +171,7 @@ class RegistrationAnswerHelper extends AppHelper {
 				'multiple' => 'checkbox',
 				'options' => $options,
 				'label' => false,
-				'div' => false,
+				'div' => 'form-input-outer',
 				'class' => $checkboxClass . ' nc-checkbox',
 				'disabled' => $readonly,
 				'hiddenField' => !$readonly,
