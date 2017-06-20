@@ -28,8 +28,6 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 	public $fixtures = array(
 		'plugin.registrations.registration',
 		'plugin.registrations.block_setting_for_registration',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_page',
 		'plugin.registrations.registration_question',
 		'plugin.registrations.registration_choice',
@@ -98,7 +96,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 				'id' => $blockId,
 				'key' => $blockKey,
 				'language_id' => '2',
-				'room_id' => '1',
+				'room_id' => '2',
 				'plugin_key' => $this->plugin,
 			),
 			'Registration' => array(
@@ -286,7 +284,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 			'assert' => array('method' => 'assertInput', 'type' => 'button', 'name' => 'save_' . WorkflowComponent::STATUS_IN_DRAFT, 'value' => null),
 		)));
 		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'button', 'name' => 'save_' . WorkflowComponent::STATUS_APPROVED, 'value' => null),
+			'assert' => array('method' => 'assertInput', 'type' => 'button', 'name' => 'save_' . WorkflowComponent::STATUS_APPROVAL_WAITING, 'value' => null),
 		)));
 
 		//--コンテンツなし...編集対象データを指定せずに編集画面へ行くと不正リクエストエラー

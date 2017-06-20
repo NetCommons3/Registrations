@@ -42,8 +42,6 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 	public $fixtures = array(
 		'plugin.registrations.registration',
 		'plugin.registrations.block_setting_for_registration',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_page',
 		'plugin.registrations.registration_question',
 		'plugin.registrations.registration_choice',
@@ -51,7 +49,10 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 		'plugin.registrations.registration_answer',
 		'plugin.authorization_keys.authorization_keys',
 		'plugin.registrations.block4registrations',
+		'plugin.registrations.blocks_language4registrations',
 		'plugin.registrations.frame4registrations',
+		'plugin.registrations.frame_public_language4registrations',
+		'plugin.registrations.frames_language4registrations',
 	);
 
 /**

@@ -9,6 +9,7 @@
  */
 
 App::uses('NetCommonsMigration', 'NetCommons.Config/Migration');
+App::uses('Space', 'Rooms.Model');
 
 /**
  * Add plugin migration
@@ -45,6 +46,8 @@ class PluginRecords extends NetCommonsMigration {
 			array(
 				'language_id' => '2',
 				'key' => 'registrations',
+				'is_origin' => true,
+				'is_translation' => true,
 				'namespace' => 'netcommons/registrations',
 				'default_action' => 'registrations/index',
 				'default_setting_action' => 'registration_blocks/index',
@@ -57,6 +60,8 @@ class PluginRecords extends NetCommonsMigration {
 			array(
 				'language_id' => '1',
 				'key' => 'registrations',
+				'is_origin' => false,
+				'is_translation' => true,
 				'namespace' => 'netcommons/registrations',
 				'default_action' => 'registrations/index',
 				'default_setting_action' => 'registration_blocks/index',
@@ -72,14 +77,7 @@ class PluginRecords extends NetCommonsMigration {
 				'plugin_key' => 'registrations'
 			),
 		),
-		'PluginsRoom' => array(
-			//パブリックスペース
-			array('room_id' => '1', 'plugin_key' => 'registrations', ),
-			////プライベートスペース
-			//array('room_id' => '2', 'plugin_key' => 'registrations', ),
-			//グループスペース
-			array('room_id' => '3', 'plugin_key' => 'registrations', ),
-		),
+		//PluginsRoomは、beforeでセットする
 	);
 
 /**
@@ -89,6 +87,29 @@ class PluginRecords extends NetCommonsMigration {
  * @return bool Should process continue
  */
 	public function before($direction) {
+		$pluginName = $this->records['Plugin'][0]['key'];
+		$this->records['PluginsRoom'] = array(
+			//サイト全体
+			array(
+				'room_id' => Space::getRoomIdRoot(Space::WHOLE_SITE_ID, 'Room'),
+				'plugin_key' => $pluginName
+			),
+			//パブリックスペース
+			array(
+				'room_id' => Space::getRoomIdRoot(Space::PUBLIC_SPACE_ID, 'Room'),
+				'plugin_key' => $pluginName
+			),
+			////プライベートスペース
+			//array(
+			//	'room_id' => Space::getRoomIdRoot(Space::PRIVATE_SPACE_ID, 'Room'),
+			//	'plugin_key' => $pluginName
+			//),
+			//グループスペース
+			array(
+				'room_id' => Space::getRoomIdRoot(Space::COMMUNITY_SPACE_ID, 'Room'),
+				'plugin_key' => $pluginName
+			),
+		);
 		return true;
 	}
 

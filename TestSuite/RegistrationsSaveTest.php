@@ -90,6 +90,9 @@ class RegistrationsSaveTest extends NetCommonsModelTestCase {
 			$data[$this->$model->alias][0],
 			array(
 				'id' => $id,
+				'is_origin' => true,
+				'is_translation' => false,
+				'is_original_copy' => false,
 			)
 		);
 		$expected[$this->$model->alias] = Hash::remove($expected[$this->$model->alias], 'modified');

@@ -28,8 +28,6 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 	public $fixtures = array(
 		'plugin.registrations.registration',
 		'plugin.registrations.block_setting_for_registration',
-		'plugin.registrations.registration_frame_setting',
-		'plugin.registrations.registration_frame_display_registration',
 		'plugin.registrations.registration_page',
 		'plugin.registrations.registration_question',
 		'plugin.registrations.registration_choice',
@@ -97,7 +95,7 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 				'id' => $blockId,
 				'key' => $blockKey,
 				'language_id' => '2',
-				'room_id' => '1',
+				'room_id' => '2',
 				'plugin_key' => $this->plugin,
 			),
 			'Registration' => array(

@@ -25,6 +25,15 @@ class RegistrationPage extends RegistrationsAppModel {
  */
 	public $actsAs = array(
 		'NetCommons.OriginalKey',
+		'M17n.M17n' => array(
+			'associations' => array(
+				'RegistrationQuestion' => array(
+					'class' => 'Registrations.RegistrationQuestion',
+					'foreignKey' => 'registration_page_id',
+				),
+			),
+			'afterCallback' => false,
+		),
 	);
 
 /**
@@ -86,6 +95,64 @@ class RegistrationPage extends RegistrationsAppModel {
 		$this->loadModels([
 			'RegistrationQuestion' => 'Registrations.RegistrationQuestion',
 		]);
+	}
+
+/**
+ * Called before each find operation. Return false if you want to halt the find
+ * call, otherwise return the (modified) query data.
+ *
+ * @param array $query Data used to execute this query, i.e. conditions, order, etc.
+ * @return mixed true if the operation should continue, false if it should abort; or, modified
+ *  $query to continue with new $query
+ * @link http://book.cakephp.org/2.0/en/models/callback-methods.html#beforefind
+ */
+	public function beforeFind($query) {
+		//hasManyで実行されたとき、多言語の条件追加
+		if (! $this->id && isset($query['conditions']['registration_id'])) {
+			$registrationId = $query['conditions']['registration_id'];
+			$query['conditions']['registration_id'] = $this->getRegistrationIdsForM17n($registrationId);
+			$query['conditions']['OR'] = array(
+				'language_id' => Current::read('Language.id'),
+				'is_translation' => false,
+			);
+
+			return $query;
+		}
+
+		return parent::beforeFind($query);
+	}
+
+/**
+ * 多言語データ取得のため、当言語のregistration_idから全言語のregistration_idを取得する
+ *
+ * @param id $registrationId 当言語のregistration_id
+ * @return array
+ */
+	public function getRegistrationIdsForM17n($registrationId) {
+		$registration = $this->Registration->find('first', array(
+			'recursive' => -1,
+			'callbacks' => false,
+			'fields' => array('id', 'key', 'is_active', 'is_latest'),
+			'conditions' => array('id' => $registrationId),
+		));
+
+		$conditions = array(
+			'key' => Hash::get($registration, 'Registration.key', '')
+		);
+		if (Hash::get($registration, 'Registration.is_latest')) {
+			$conditions['is_latest'] = true;
+		} else {
+			$conditions['is_active'] = true;
+		}
+
+		$registrationIds = $this->Registration->find('list', array(
+			'recursive' => -1,
+			'callbacks' => false,
+			'fields' => array('id', 'id'),
+			'conditions' => $conditions,
+		));
+
+		return array_values($registrationIds);
 	}
 
 /**
