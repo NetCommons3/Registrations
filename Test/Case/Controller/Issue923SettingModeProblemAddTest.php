@@ -1,11 +1,18 @@
 <?php
+/**
+ * Issue923SettingModeProblemAddTest
+ *
+ * @author   Ryuji AMANO <ryuji@ryus.co.jp>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ */
 
 App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
 
 /**
- * PagesEditController::add()のテスト
+ * Issue923SettingModeProblemAddTest
  *
- * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @author Ryuji AMANO <ryuji@ryus.co.jp>
  * @package NetCommons\Pages\Test\Case\Controller\PagesEditController
  * @codeCoverageIgnore
  * @SuppressWarnings(PHPMD.NumberOfChildren)
