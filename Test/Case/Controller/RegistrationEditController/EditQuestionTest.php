@@ -348,7 +348,11 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 		//フレームID指定なしでも画面の内容がちゃんと表示されていることを確認している
 		array_push($results, Hash::merge($results[0], array(
 			'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_2'),
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => null),
+			'assert' => [
+				array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => null),
+				// セッティングモードのときは、メール設定が表示されてること
+				array('method' => 'assertContains', 'expected' => '/registrations/registration_mail_settings/'),
+				]
 		)));
 		// いったん公開して、その後の一時保存データに対して編集している
 		// その場合でも項目変更は不可能だ→登録フォームでは編集
