@@ -16,7 +16,7 @@ echo $this->NetCommonsHtml->script(array(
 ));
 $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsAppController::changeBooleansToNumbers($this->data));
 ?>
-<?php if (Current::permission('block_editable') && $this->layout === 'NetCommons.setting') : ?>
+<?php if (Current::permission('block_editable') && $this->PageLayout->layoutSetting) : ?>
 	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
 	<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_SETTING, ['displayAllTab' =>
 		true, 'displayBlockTitle' => true]); ?>

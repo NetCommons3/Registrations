@@ -15,7 +15,7 @@ echo $this->NetCommonsHtml->script(array(
 ));
 $jsPastRegistrations = NetCommonsAppController::camelizeKeyRecursive($pastRegistrations);
 ?>
-<?php if (Current::permission('block_editable') && $this->layout === 'NetCommons.setting') : ?>
+<?php if (Current::permission('block_editable') && $this->PageLayout->layoutSetting) : ?>
 	<?php echo $this->BlockTabs->main(BlockTabsHelper::MAIN_TAB_BLOCK_INDEX); ?>
 	<?php echo $this->BlockTabs->block(BlockTabsHelper::BLOCK_TAB_SETTING, ['displayAllTab' =>
 		true, 'displayBlockTitle' => true]); ?>
@@ -35,7 +35,7 @@ $jsPastRegistrations = NetCommonsAppController::camelizeKeyRecursive($pastRegist
 
 		<?php /* ファイル送信は、FormHelperでform作成時、'type' => 'file' 必要。記述すると enctype="multipart/form-data" が追加される */ ?>
 		<?php echo $this->NetCommonsForm->create('ActionRegistrationAdd', array(
-			'type' => 'file',
+			//'type' => 'file',
 		)); ?>
 			<?php echo $this->NetCommonsForm->hidden('Frame.id'); ?>
 			<?php echo $this->NetCommonsForm->hidden('Block.id'); ?>
