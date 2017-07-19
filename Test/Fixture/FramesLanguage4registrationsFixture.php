@@ -71,13 +71,13 @@ class FramesLanguage4registrationsFixture extends FramesLanguageFixture {
 				'id' => $id + 8, // id19から
 				'language_id' => 1,
 				'frame_id' => $id + 8, // id19から
-				'name' => 'frame_' . $id + 9,
+				'name' => 'frame_' . (string)($id + 9),
 			];
 			$this->records[] = [
 				'id' => $id + 9, // id20から
 				'language_id' => 2,
 				'frame_id' => $id + 9, // id20から,
-				'name' => 'frame_' . $id + 8,
+				'name' => 'frame_' . (string)($id + 8),
 			];
 		}
 

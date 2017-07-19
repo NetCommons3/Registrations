@@ -78,9 +78,9 @@ class Block4registrationsFixture extends BlockFixture {
 				'public_type' => 1,
 			];
 			$this->records[] = [
-				'id' => $id + 1,
+				'id' => ($id + 1),
 				'room_id' => '2',
-				'key' => 'block_' . "$id",
+				'key' => 'block_' . (string)$id,
 				'public_type' => 1,
 			];
 		}

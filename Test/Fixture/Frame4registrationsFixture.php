@@ -78,7 +78,7 @@ class Frame4registrationsFixture extends FrameFixture {
 				'plugin_key' => 'test_plugin',
 				'box_id' => '3',
 				'block_id' => $id,
-				'key' => 'frame_' . $id + 9,
+				'key' => 'frame_' . (string)($id + 9),
 			];
 			$this->records[] = [
 				'id' => $id + 9, // id20から
@@ -86,7 +86,7 @@ class Frame4registrationsFixture extends FrameFixture {
 				'plugin_key' => 'test_plugin',
 				'box_id' => '3',
 				'block_id' => $id + 1,
-				'key' => 'frame_' . $id + 8,
+				'key' => 'frame_' . (string)($id + 8),
 			];
 		}
 

@@ -77,13 +77,13 @@ class BlocksLanguage4registrationsFixture extends BlocksLanguageFixture {
 				'id' => $id,
 				'language_id' => 1,
 				'block_id' => $id,
-				'name' => 'Block name ' . $id + 1,
+				'name' => 'Block name ' . (string)($id + 1),
 			];
 			$this->records[] = [
 				'id' => $id + 1,
 				'language_id' => 2,
 				'block_id' => $id + 1,
-				'name' => 'Block name ' . $id,
+				'name' => 'Block name ' . (string)$id,
 			];
 		}
 		// 継承元のrecordsとこのFixtureのaddRecordsをマージ。
