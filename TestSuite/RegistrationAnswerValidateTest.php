@@ -22,7 +22,7 @@ App::uses('RegistrationChoiceFixture', 'Registrations.Test/Fixture');
  * @author Allcreator <info@allcreator.net>
  * @package NetCommons\Registrations\Test\Case\Model\RegistrationAnswer
  */
-class RegistrationAnswerValidateTest extends NetCommonsModelTestCase {
+abstract class RegistrationAnswerValidateTest extends NetCommonsModelTestCase {
 
 /**
  * Plugin name

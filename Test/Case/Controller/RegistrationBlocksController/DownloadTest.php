@@ -70,15 +70,17 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 	public function setUp() {
 		parent::setUp();
 
-		//ログイン
-		TestAuthGeneral::login($this);
-
 		//テストプラグインのロード
 		NetCommonsCakeTestCase::loadTestPlugin($this, 'Registrations', 'TestRegistrations');
 		NetCommonsCakeTestCase::loadTestPlugin($this, 'Registrations', 'TestFiles');
 
 		//テストコントローラ生成
-		$this->generateNc('TestRegistrations.TestRegistrationBlocks');
+		$this->generateNc('TestRegistrations.TestRegistrationBlocks', array('components' => array(
+			'Flash' => array('set')
+		)));
+
+		//ログイン
+		TestAuthGeneral::login($this);
 	}
 
 /**
@@ -163,8 +165,8 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 			'key' => 'registration_4',
 			'frame_id' => $frameId
 		);
-		$this->controller->Session->expects($this->once())
-			->method('setFlash')
+		$this->controller->Flash->expects($this->once())
+			->method('set')
 			->with(__d('registrations', 'Designation of the registration does not exist.'));
 		$result = $this->_testPostAction('post', array(
 			'AuthorizationKey' => array(
@@ -190,8 +192,8 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 			'key' => 'registration_2',
 			'frame_id' => $frameId
 		);
-		$this->controller->Session->expects($this->once())
-			->method('setFlash')
+		$this->controller->Flash->expects($this->once())
+			->method('set')
 			->with(__d('registrations', 'Setting of password is required always to download answers.'));
 		$result = $this->_testPostAction('post', array(
 			'AuthorizationKey' => array(
@@ -220,8 +222,8 @@ class RegistrationBlocksControllerDownloadTest extends NetCommonsControllerTestC
 			'key' => 'registration_2',
 			'frame_id' => $frameId
 		);
-		$this->controller->Session->expects($this->once())
-			->method('setFlash')
+		$this->controller->Flash->expects($this->once())
+			->method('set')
 			->with(__d('registrations', 'download error'));
 		$this->_testPostAction('post', array(
 			'AuthorizationKey' => array(

@@ -17,7 +17,7 @@ App::uses('NetCommonsModelTestCase', 'NetCommons.TestSuite');
  * @package NetCommons\NetCommons\TestSuite
  * @codeCoverageIgnore
  */
-class RegistrationsSaveTest extends NetCommonsModelTestCase {
+abstract class RegistrationsSaveTest extends NetCommonsModelTestCase {
 
 /**
  * Model name

@@ -55,10 +55,8 @@ class RegistrationAddControllerAddTest extends WorkflowControllerAddTest {
  * @return void
  */
 	public function setUp() {
-		//ログアウト Web UI でテスト中にログインしてるとテストがログイン済みとして実行されるようなので
-		TestAuthGeneral::logout($this);
-
 		parent::setUp();
+
 		$this->Registration = ClassRegistry::init('Registrations.Registration');
 		$this->Registration->Behaviors->unload('AuthorizationKey');
 		$this->ActionRegistrationAdd = ClassRegistry::init('Registrations.ActionRegistrationAdd');
