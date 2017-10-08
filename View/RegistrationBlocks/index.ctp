@@ -50,6 +50,10 @@ echo $this->NetCommonsHtml->script(array(
 						array('sort' => true, 'type' => 'datetime')
 					); ?>
 					<?php echo $this->BlockIndex->tableHeader(
+						'', __d('registrations', 'Answer Number'),
+						array('type' => 'center')
+					); ?>
+					<?php echo $this->BlockIndex->tableHeader(
 						'', __d('registrations', 'Answer CSV'),
 						array('type' => 'center')
 					); ?>
@@ -90,6 +94,11 @@ echo $this->NetCommonsHtml->script(array(
 						'',
 						$registration['Registration']['modified'],
 						array('type' => 'datetime')
+						); ?>
+						<?php echo $this->BlockIndex->tableData(
+							'',
+							$registration['Registration']['all_answer_count'],
+							array('type' => 'number')
 						); ?>
 						<?php if ($registration['Registration']['all_answer_count'] > 0): ?>
 							<?php echo $this->BlockIndex->tableData(
