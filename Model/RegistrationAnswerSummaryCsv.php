@@ -201,6 +201,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 	protected function _putHeader($registration) {
 		$cols = array();
 
+		$cols[] = __d('registrations', 'Registration Number');
 		// "登録者","登録日","回数"
 		$cols[] = __d('registrations', 'Respondent');
 		$cols[] = __d('registrations', 'Answer Date');
@@ -250,7 +251,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		// その他の選択肢の場合は、入力されたその他のテキストを入れる
 
 		$cols = array();
-
+		$cols[] = $summary['RegistrationAnswerSummaryCsv']['serial_number'];
 		$cols[] = $this->_getUserName($registration, $summary);
 		$cols[] = $summary['RegistrationAnswerSummaryCsv']['modified'];
 		$cols[] = $summary['RegistrationAnswerSummaryCsv']['answer_number'];

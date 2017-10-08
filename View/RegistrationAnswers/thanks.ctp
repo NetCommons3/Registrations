@@ -24,10 +24,11 @@
 		<tbody>
 			<tr>
 				<th>
-					<?php echo __d('registrations', 'RegistrationAnswerSummary ID') ?>
+					<?php echo __d('registrations', 'Registration Number') ?>
 				</th>
 				<td>
-					<?php echo $summary['RegistrationAnswerSummary']['id']; ?>
+					<?php //echo $summary['RegistrationAnswerSummary']['id']; ?>
+					<?php echo $summary['RegistrationAnswerSummary']['serial_number']; ?>
 				</td>
 			</tr>
 			<?php foreach ($answers as $answer) : ?>

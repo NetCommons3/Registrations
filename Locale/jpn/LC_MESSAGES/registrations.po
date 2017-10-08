@@ -1044,3 +1044,6 @@ msgstr "作成できる選択肢の数は１項目につき%dまでです。%d�
 
 msgid "Answer Number"
 msgstr "登録数"
+
+msgid "Registration Number"
+msgstr "受付番号"
