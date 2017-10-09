@@ -419,23 +419,12 @@ class RegistrationAnswerHelper extends AppHelper {
 			return $ret;
 		}
 		$ret = $this->NetCommonsForm->email($fieldName, array(
-			'div' => 'form-inline',
+			//'div' => 'form-inline',
 			'type' => 'text',
 			'label' => false,
 			'error' => false,
 			'again' => true,
 		));
-		//$ret .= '<div class="form-group">';
-		//$ret .= '<label class="control-label" style="margin-top: 5px;">
-		//			メールアドレス(確認用)				</label>';
-		//$ret .= $this->NetCommonsForm->input($fieldName . '_confirm', array(
-		//	'div' => 'form-inline',
-		//	'type' => 'text',
-		//	'label' => false,
-		//	'error' => false,
-		//	//'after' => '（確認用）'
-		//));
-		//$ret .='</div>';
 		return $ret;
 	}
 
