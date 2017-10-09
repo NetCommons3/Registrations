@@ -60,6 +60,13 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 	protected $_methodName = 'getAnswerSummaryCsv';
 
 /**
+ * 受付番号
+ *
+ * @var array
+ */
+	protected $_serialNumbers = [];
+
+/**
  * setUp method
  *
  * @return void
@@ -148,7 +155,12 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
  * @return int summary id
  */
 	protected function _insertAnswerSummary($registrationKey, $userId) {
+		if (!isset($this->_serialNumbers[$registrationKey])) {
+			$this->_serialNumbers[$registrationKey] = 0;
+		}
+		$this->_serialNumbers[$registrationKey]++;
 		$summary = array(
+			'serial_number' => $this->_serialNumbers[$registrationKey],
 			'answer_status' => '2',
 			'test_status' => '0',
 			'answer_number' => 1,
@@ -235,9 +247,9 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 
 		//テスト実行
 		$result = $this->$model->$method($registration, 1000, 0);
-		$result = Hash::remove($result, '{n}.1');
+		$result = Hash::remove($result, '{n}.2');
 
-		$expected = Hash::remove($expected, '{n}.1');
+		$expected = Hash::remove($expected, '{n}.2');
 		//チェック
 		$this->assertEquals($expected, $result);
 	}
@@ -251,8 +263,30 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
  * @return array
  */
 	public function dataProviderGet() {
-		$expect = array(array(
-				__d('registrations', 'Respondent'), __d('registrations', 'Answer Date'), __d('registrations', 'Number'),
+		$expect = $this->_getExpect();
+		$expect2 = $this->_getExpect2();
+		$expect3 = $this->_getExpect3();
+		$expect4 = $this->_getExpect4();
+		return array(
+			array('4', $expect),
+			array('2', $expect2),
+			array('12', $expect3),
+			array('22', $expect4),
+		);
+	}
+
+/**
+ * getExpect
+ *
+ * @return array
+ */
+	protected function _getExpect() {
+		$expect = array(
+			array(
+				__d('registrations', 'Registration Number'),
+				__d('registrations', 'Respondent'),
+				__d('registrations', 'Answer Date'),
+				__d('registrations', 'Number'),
 				'1-1. Question_1',
 				'2-1. Question_2',
 				'3-1. Question_3',
@@ -262,9 +296,12 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 				'5-1-2. Question_5:choice label14',
 				'6-1. Question_6',
 				'7-1. Question_7',
-			),	// header
+			), // header
 			array(
-				'Guest', '2016-03-01 01:01:01', '1',
+				'1',
+				'Guest',
+				'2016-03-01 01:01:01',
+				'1',
 				'choice label1',
 				'choice label4|その他の登録',
 				'テキストの登録ですよ',
@@ -274,9 +311,12 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 				'choice label15',
 				'2016-03-01',
 				''
-			),	// data1
+			), // data1
 			array(
-				'Guest', '2016-03-01 01:01:01', '1',
+				'2',
+				'Guest',
+				'2016-03-01 01:01:01',
+				'1',
 				'choice label1',
 				'choice label4',
 				'テキストの登録ですよ',
@@ -286,9 +326,12 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 				'choice label15|choice label16',
 				'2016-03-01',
 				''
-			),	// data2
+			), // data2
 			array(
-				'System Administrator', '2016-03-01 01:01:01', '1',
+				'3',
+				'System Administrator',
+				'2016-03-01 01:01:01',
+				'1',
 				'choice label1',
 				'choice label4|その他の登録',
 				'テキストの登録ですよ',
@@ -298,55 +341,108 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 				'choice label15',
 				'2016-03-01',
 				''
-		));
-		$expect2 = array(array(
-				__d('registrations', 'Respondent'), __d('registrations', 'Answer Date'), __d('registrations', 'Number'),
+			)
+		);
+		return $expect;
+	}
+
+/**
+ * getExpect2
+ *
+ * @return array
+ */
+	protected function _getExpect2() {
+		$expect2 = array(
+			array(
+				__d('registrations', 'Registration Number'),
+				__d('registrations', 'Respondent'),
+				__d('registrations', 'Answer Date'),
+				__d('registrations', 'Number'),
 				'1-1. Question_1',
-		));
-		$expect3 = array(array(
-				__d('registrations', 'Respondent'), __d('registrations', 'Answer Date'), __d('registrations', 'Number'),
+			)
+		);
+		return $expect2;
+	}
+
+/**
+ * getExpect3
+ *
+ * @return array
+ */
+	protected function _getExpect3() {
+		$expect3 = array(
+			array(
+				__d('registrations', 'Registration Number'),
+				__d('registrations', 'Respondent'),
+				__d('registrations', 'Answer Date'),
+				__d('registrations', 'Number'),
 				'1-1. Question_1',
 				'2-1. Question_1',
 				'3-1. Question_1',
-			),	// header
+			), // header
 			array(
-				__d('registrations', 'Anonymity'), '2016-03-01 01:01:01', '1',
+				'1',
+				__d('registrations', 'Anonymity'),
+				'2016-03-01 01:01:01',
+				'1',
 				'choice label27',
 				'',
 				'',
-			),	// data2
+			), // data2
 			array(
-				__d('registrations', 'Anonymity'), '2016-03-01 01:01:01', '1',
+				'2',
+				__d('registrations', 'Anonymity'),
+				'2016-03-01 01:01:01',
+				'1',
 				'choice label27',
 				'',
 				'',
-		));
-		$expect4 = array(array(
-				__d('registrations', 'Respondent'), __d('registrations', 'Answer Date'), __d('registrations', 'Number'),
+			)
+		);
+		return $expect3;
+	}
+
+/**
+ * getExpect4
+ *
+ * @return array
+ */
+	protected function _getExpect4() {
+		$expect4 = array(
+			array(
+				__d('registrations', 'Registration Number'),
+				__d('registrations', 'Respondent'),
+				__d('registrations', 'Answer Date'),
+				__d('registrations', 'Number'),
 				'1-1-1. Question_1:choice label33',
 				'1-1-2. Question_1:choice label34',
-			),	// header
+			), // header
 			array(
-				'Guest', '2016-03-01 01:01:01', '1',
+				'1',
+				'Guest',
+				'2016-03-01 01:01:01',
+				'1',
 				'choice label35',
 				'その他の登録:choice label36',
-			),	// data2
+			), // data2
 			array(
-				'Guest', '2016-03-01 01:01:01', '1',
+				'2',
+				'Guest',
+				'2016-03-01 01:01:01',
+				'1',
 				'', //登録なし
 				'その他の登録:',
-			),	// data3 空登録
+			), // data3 空登録
 			array(// data4 異常登録
-				'Guest', '2016-03-01 01:01:01', '1',
+				'3',
+				'Guest',
+				'2016-03-01 01:01:01',
+				'1',
 				'',
 				'',
-		));
-		return array(
-			array('4', $expect),
-			array('2', $expect2),
-			array('12', $expect3),
-			array('22', $expect4),
+			)
 		);
+		return $expect4;
 	}
 
 }
