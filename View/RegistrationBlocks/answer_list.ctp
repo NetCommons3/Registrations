@@ -12,7 +12,7 @@
 			<table class="table">
 				<thead>
 					<th>
-						<?php echo __d('registrations', 'RegistrationAnswerSummary ID'); ?>
+						<?php echo __d('registrations', 'Registration Number'); ?>
 					</th>
 					<?php foreach ($questions as $question)
 						: ?>
@@ -25,7 +25,7 @@
 					<?php foreach ($summaries as $summary): ?>
 						<tr>
 							<td>
-								<?php echo h($summary['RegistrationAnswerSummary']['id']); ?>
+								<?php echo h($summary['RegistrationAnswerSummary']['serial_number']); ?>
 							</td>
 							<?php
 							// question.idをキーanswer_valueを値とした連想配列をつくる

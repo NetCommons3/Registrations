@@ -51,6 +51,7 @@ class RegistrationsSchema extends CakeSchema {
  */
 	public $registration_answer_summaries = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'serial_number' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => true),
 		'answer_status' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 4, 'unsigned' => false, 'comment' => '登録状態 1ページずつ表示するような登録フォームの場合、途中状態か否か | 0:登録未完了 | 1:登録完了'),
 		'test_status' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 4, 'unsigned' => false, 'comment' => 'テスト時の登録かどうか 0:本番登録 | 1:テスト時登録'),
 		'answer_number' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'comment' => '登録回数　ログインして登録している人物の場合に限定して登録回数をカウントする'),
