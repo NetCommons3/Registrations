@@ -86,3 +86,11 @@ table.table.registration-table-vcenter tbody td {
     max-height:450px;
     overflow-y: scroll;
 }
+#RegistrationAnswerViewForm .checkbox label,
+#RegistrationAnswerViewForm .radio label {
+    margin-left: 10px;
+}
+#RegistrationAnswerViewForm .checkbox-inline+.checkbox-inline,
+#RegistrationAnswerViewForm .radio-inline+.radio-inline {
+    margin-left: 0px;
+} 
