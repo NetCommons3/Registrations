@@ -170,6 +170,7 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 
 		$actual = Hash::remove($actual, $this->$model->alias . '.answer_time');
 		$actual = Hash::remove($actual, $this->$model->alias . '.session_value');
+		$actual = Hash::remove($actual, $this->$model->alias . '.serial_number');
 		$expected = Hash::remove($expected, $this->$model->alias . '.answer_time');
 
 		$this->assertEquals($expected, $actual);

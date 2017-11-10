@@ -326,9 +326,8 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		}
 
 			$this->redirect(NetCommonsUrl::actionUrl([
-				'action' => 'answer_list',
+				'action' => 'index',
 				'frame_id' => Current::read('Frame.id'),
-				'key' => $registrationKey,
 			]));
 	}
 

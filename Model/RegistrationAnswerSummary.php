@@ -103,6 +103,29 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 	);
 
 /**
+ * 登録受け付け番号の発行
+ *
+ * @param array $summary RegistrationAnswerSummary data
+ * @return int
+ */
+	protected function _getNewSerialNumber($summary) {
+		$conditions = [
+			'answer_status' => RegistrationsComponent::ACTION_ACT,
+			'registration_key' => $summary['RegistrationAnswerSummary']['registration_key']
+		];
+		$result = $this->find('first', [
+			'conditions' => $conditions,
+			'order' => 'serial_number DESC',
+			'fields' => ['serial_number'],
+			'recursive' => -1
+		]);
+		$serialNumber = $result['RegistrationAnswerSummary']['serial_number'];
+		$serialNumber = is_null($serialNumber) ? 0 : $serialNumber;
+		$serialNumber++;
+		return $serialNumber;
+	}
+
+/**
  * saveAnswerStatus
  * 登録状態を書き換える
  *
@@ -115,78 +138,11 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		$summary['RegistrationAnswerSummary']['answer_status'] = $status;
 
 		if ($status == RegistrationsComponent::ACTION_ACT) {
+			// シリアルナンバー発行
+			$summary['RegistrationAnswerSummary']['serial_number'] = $this->_getNewSerialNumber($summary);
 			// サマリの状態を完了にして確定する
 			$summary['RegistrationAnswerSummary']['answer_time'] = (new NetCommonsTime())->getNowDatetime();
-			// メールのembed のURL設定を行っておく
-			$url = NetCommonsUrl::actionUrl(array(
-				'controller' => 'registration_blocks',
-				'action' => 'index',
-				Current::read('Block.id'),
-				'frame_id' => Current::read('Frame.id'),
-			), true);
-			$this->setAddEmbedTagValue('X-URL', $url);
-
-			// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
-			$condition = $this->Registration->getBaseCondition();
-			$registration = $this->Registration->find('first', ['conditions' => $condition]);
-
-			// X-SUBJECT設定
-			$this->setAddEmbedTagValue('X-SUBJECT', $registration['Registration']['title']);
-
-			// 登録された項目の取得
-			// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
-			// AnswerとQuestionがJOINされた形でFindしないと整備機能が発動しない
-			// そうするためにはrecursive=2でないといけないわけだが、recursive=2にするとRoleのFindでSQLエラーになる
-			// 仕方ないのでこの形式で処理を行う
-			// 単純にRegistrationAnswerSummary.idでFindすると、LEFT JOIN の関係で同じ項目が複数でてきてしまう。
-			$questionIds = Hash::extract(
-				$registration['RegistrationPage'],
-				'{n}.RegistrationQuestion.{n}.id');
-			$answers = $this->RegistrationAnswer->find('all', array(
-				'fields' => array('RegistrationAnswer.*', 'RegistrationQuestion.*'),
-				'conditions' => array(
-					'registration_answer_summary_id' => $summary[$this->alias]['id'],
-					'RegistrationQuestion.id' => $questionIds
-				),
-				'recursive' => -1,
-				'joins' => array(
-					array(
-						'table' => 'registration_questions',
-						'alias' => 'RegistrationQuestion',
-						'type' => 'LEFT',
-						'conditions' => array(
-							'RegistrationAnswer.registration_question_key = RegistrationQuestion.key',
-						)
-					)
-				)
-			));
-
-			// X-DATA展開
-			$xData = $this->_makeXData($summary, $answers);
-			$this->setAddEmbedTagValue('X-DATA', $xData);
-
-			// TO_ADDRESSESには表示しない（ルーム配信のみ表示）末尾定型文を追加（登録フォーム回答）
-			$this->setSetting(MailQueueBehavior::MAIL_QUEUE_SETTING_MAIL_BODY_AFTER,
-				__d('registrations', 'Registration.mail.after.body'));
-
-			if ($registration['Registration']['is_regist_user_send']) {
-				// 本人にもメールする
-				foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
-					if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL) {
-						// メール項目あり
-
-						// メアドをregistration_answersから取得
-						$registUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
-						// 送信先にset
-						$this->setSetting(
-							MailQueueBehavior::MAIL_QUEUE_SETTING_TO_ADDRESSES,
-							[$registUserMail]
-						);
-						// ループから抜ける
-						break;
-					}
-				}
-			}
+			$this->_sendMails($summary);
 		} else {
 			// 完了時以外はメールBehaviorを外す
 			$this->Behaviors->unload('Mails.MailQueue');
@@ -457,8 +413,10 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
  */
 	protected function _makeXData($summary, $answers) {
 		$xData = array();
-		$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':' .
-			$summary['RegistrationAnswerSummary']['id'];
+		//$xData[] = __d('registrations', 'RegistrationAnswerSummary ID') . ':' .
+		//	$summary['RegistrationAnswerSummary']['id'];
+		$xData[] = __d('registrations', 'Registration Number') . ':' .
+			$summary['RegistrationAnswerSummary']['serial_number'];
 		foreach ($answers as $answer) {
 			// answer_valuesがあるときは選択式
 			$xDataString = $answer['RegistrationQuestion']['question_value'] . ':';
@@ -481,6 +439,94 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		}
 		$xData = implode("\n", $xData);
 		return $xData;
+	}
+
+/**
+ * フォームからの登録時のメール送信処理
+ *
+ * @param array $summary RegistrationAnswerSummary data
+ * @return void
+ */
+	protected function _sendMails($summary) {
+		// メールのembed のURL設定を行っておく
+		$url = NetCommonsUrl::actionUrl(
+			array(
+				'controller' => 'registration_blocks',
+				'action' => 'index',
+				Current::read('Block.id'),
+				'frame_id' => Current::read('Frame.id'),
+			),
+			true
+		);
+		$this->setAddEmbedTagValue('X-URL', $url);
+
+		// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
+		$condition = $this->Registration->getBaseCondition();
+		$registration = $this->Registration->find('first', ['conditions' => $condition]);
+
+		// X-SUBJECT設定
+		$this->setAddEmbedTagValue('X-SUBJECT', $registration['Registration']['title']);
+
+		// 登録された項目の取得
+		// RegistrationAnswerに登録データの取り扱いしやすい形への整備機能を組み込んであるので、それを利用したかった
+		// AnswerとQuestionがJOINされた形でFindしないと整備機能が発動しない
+		// そうするためにはrecursive=2でないといけないわけだが、recursive=2にするとRoleのFindでSQLエラーになる
+		// 仕方ないのでこの形式で処理を行う
+		// 単純にRegistrationAnswerSummary.idでFindすると、LEFT JOIN の関係で同じ項目が複数でてきてしまう。
+		$questionIds = Hash::extract(
+			$registration['RegistrationPage'],
+			'{n}.RegistrationQuestion.{n}.id'
+		);
+		$answers = $this->RegistrationAnswer->find(
+			'all',
+			array(
+				'fields' => array('RegistrationAnswer.*', 'RegistrationQuestion.*'),
+				'conditions' => array(
+					'registration_answer_summary_id' => $summary[$this->alias]['id'],
+					'RegistrationQuestion.id' => $questionIds
+				),
+				'recursive' => -1,
+				'joins' => array(
+					array(
+						'table' => 'registration_questions',
+						'alias' => 'RegistrationQuestion',
+						'type' => 'LEFT',
+						'conditions' => array(
+							'RegistrationAnswer.registration_question_key = RegistrationQuestion.key',
+						)
+					)
+				)
+			)
+		);
+
+		// X-DATA展開
+		$xData = $this->_makeXData($summary, $answers);
+		$this->setAddEmbedTagValue('X-DATA', $xData);
+
+		// TO_ADDRESSESには表示しない（ルーム配信のみ表示）末尾定型文を追加（登録フォーム回答）
+		$this->setSetting(
+			MailQueueBehavior::MAIL_QUEUE_SETTING_MAIL_BODY_AFTER,
+			__d('registrations', 'Registration.mail.after.body')
+		);
+
+		if ($registration['Registration']['is_regist_user_send']) {
+			// 本人にもメールする
+			foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
+				if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL) {
+					// メール項目あり
+
+					// メアドをregistration_answersから取得
+					$registUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
+					// 送信先にset
+					$this->setSetting(
+						MailQueueBehavior::MAIL_QUEUE_SETTING_TO_ADDRESSES,
+						[$registUserMail]
+					);
+					// ループから抜ける
+					break;
+				}
+			}
+		}
 	}
 
 }
