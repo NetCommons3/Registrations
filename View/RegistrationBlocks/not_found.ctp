@@ -17,7 +17,14 @@
 
 	<div class="tab-content">
 		<div class="text-right clearfix">
-			<?php echo $this->element('Registrations.Registrations/add_button'); ?>
+			<?php echo $this->BlockIndex->addLink('',
+				array(
+					'controller' => 'registration_add',
+					'action' => 'add',
+					'frame_id' => Current::read('Frame.id'),
+					'block_id' => Current::read('Block.id'),
+					'q_mode' => 'setting'
+				)); ?>
 		</div>
 
 		<div class="text-left">
