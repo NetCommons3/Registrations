@@ -25,7 +25,6 @@ class RegistrationAddController extends RegistrationsAppController {
  * @var array
  */
 	public $uses = array(
-		'Files.FileModel',					// FileUpload
 		'PluginManager.Plugin',
 	);
 
