@@ -44,11 +44,11 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 	<?php echo $this->Wizard->navibar('edit_question'); ?>
 
+	<?php /* echo $this->element('Registrations.RegistrationEdit/registration_description'); */ ?>
+
+	<?php echo $this->NetCommonsForm->create('RegistrationQuestion', $postUrl); ?>
+
 	<div class="panel panel-default">
-
-		<?php /* echo $this->element('Registrations.RegistrationEdit/registration_description'); */ ?>
-
-		<?php echo $this->NetCommonsForm->create('RegistrationQuestion', $postUrl); ?>
 
 		<?php echo $this->NetCommonsForm->hidden('Frame.id'); ?>
 		<?php echo $this->NetCommonsForm->hidden('Block.id'); ?>
