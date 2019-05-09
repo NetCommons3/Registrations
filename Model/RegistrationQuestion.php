@@ -252,7 +252,7 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		);
 		// 範囲制限設定された項目の場合
 		if ($this->data['RegistrationQuestion']['is_range'] == true) {
-			$this->validate = Hash::merge($this->validate, array(
+			$this->validate = ValidateMerge::merge($this->validate, array(
 				'min' => array(
 					'notBlank' => array(
 						'rule' => array('notBlank'),

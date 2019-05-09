@@ -205,7 +205,7 @@ class Registration extends RegistrationsAppModel {
 		if (Hash::check($options, 'validate') == RegistrationsComponent::REGISTRATION_VALIDATE_TYPE) {
 			$this->validate = Hash::remove($this->validate, 'status');
 		}
-		$this->validate = Hash::merge($this->validate, array(
+		$this->validate = ValidateMerge::merge($this->validate, array(
 			'block_id' => array(
 				'numeric' => array(
 					'rule' => array('numeric'),
