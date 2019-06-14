@@ -49,13 +49,13 @@ class RegistrationAnswerDatetimeBehavior extends RegistrationAnswerBehavior {
 /**
  * answerValidation 登録内容の正当性
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
-	public function answerDatetimeValidation(&$model, $data, $question, $allAnswers) {
+	public function answerDatetimeValidation($model, $data, $question, $allAnswers) {
 		if (! in_array($question['question_type'], $this->_datetmValidateType)) {
 			return true;
 		}
@@ -75,12 +75,12 @@ class RegistrationAnswerDatetimeBehavior extends RegistrationAnswerBehavior {
 /**
  * _validateDatetime 日付・時間の正当性
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param int $questionTypeOption 時間・日付オプション
  * @param string $answer 登録データ
  * @return bool
  */
-	protected function _validateDatetime(&$model, $questionTypeOption, $answer) {
+	protected function _validateDatetime($model, $questionTypeOption, $answer) {
 		if ($questionTypeOption == RegistrationsComponent::TYPE_OPTION_DATE) {
 			if (! Validation::date($answer, 'ymd')) {
 				$model->validationErrors['answer_value'][] =
@@ -109,12 +109,12 @@ class RegistrationAnswerDatetimeBehavior extends RegistrationAnswerBehavior {
 /**
  * _validateDatetime 日付・時間の正当性
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $question 登録データに対応する項目
  * @param string $answer 登録データ
  * @return bool
  */
-	protected function _validateTimeRange(&$model, $question, $answer) {
+	protected function _validateTimeRange($model, $question, $answer) {
 		if ($question['is_range'] != RegistrationsComponent::USES_USE) {
 			return true;
 		}

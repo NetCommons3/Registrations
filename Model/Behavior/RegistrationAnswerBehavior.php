@@ -179,12 +179,12 @@ class RegistrationAnswerBehavior extends ModelBehavior {
 /**
  * answerRequire 登録必須の項目の場合登録されているかの確認
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対応する項目
  * @return bool
  */
-	public function answerRequire(&$model, $data, $question) {
+	public function answerRequire($model, $data, $question) {
 		if ($question['is_require'] != RegistrationsComponent::REQUIRES_REQUIRE) {
 			return true;
 		}

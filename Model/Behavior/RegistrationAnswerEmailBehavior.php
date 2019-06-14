@@ -29,13 +29,13 @@ class RegistrationAnswerEmailBehavior extends RegistrationAnswerBehavior {
 /**
  * answerMaxLength 登録が登録フォームが許す最大長を超えていないかの確認
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対応する項目
  * @param int $max 最大長
  * @return bool
  */
-	public function answerMaxLength(&$model, $data, $question, $max) {
+	public function answerMaxLength($model, $data, $question, $max) {
 		if ($question['question_type'] != $this->_myType) {
 			return true;
 		}
@@ -45,13 +45,13 @@ class RegistrationAnswerEmailBehavior extends RegistrationAnswerBehavior {
 /**
  * answerValidation 登録内容の正当性
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
-	public function answerEmailValidation(&$model, $data, $question, $allAnswers) {
+	public function answerEmailValidation($model, $data, $question, $allAnswers) {
 		if ($question['question_type'] != $this->_myType) {
 			return true;
 		}
@@ -64,13 +64,13 @@ class RegistrationAnswerEmailBehavior extends RegistrationAnswerBehavior {
 /**
  * 確認用メールアドレスが一致するか
  *
- * @param Model &$model Model
+ * @param Model $model Model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
-	public function answerEmailConfirmValidation(&$model, $data, $question, $allAnswers) {
+	public function answerEmailConfirmValidation($model, $data, $question, $allAnswers) {
 		if ($question['question_type'] != $this->_myType) {
 			return true;
 		}
