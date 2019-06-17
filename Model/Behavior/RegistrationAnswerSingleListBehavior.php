@@ -77,13 +77,13 @@ class RegistrationAnswerSingleListBehavior extends RegistrationAnswerBehavior {
 /**
  * answerValidation 登録内容の正当性
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
-	public function answerChoiceValidation(&$model, $data, $question, $allAnswers) {
+	public function answerChoiceValidation($model, $data, $question, $allAnswers) {
 		if (! in_array($question['question_type'], $this->_choiceValidateType)) {
 			return true;
 		}

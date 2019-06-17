@@ -84,13 +84,13 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
 /**
  * answerValidation 登録内容の正当性
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $data Validation対象データ
  * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
  */
-	public function answerMatrixValidation(&$model, $data, $question, $allAnswers) {
+	public function answerMatrixValidation($model, $data, $question, $allAnswers) {
 		if (! in_array($question['question_type'], $this->_matrixValidateType)) {
 			return true;
 		}
@@ -124,12 +124,12 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
 /**
  * checkMatrixAnswerInList
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param string $answers answer value
  * @param int $list choice list ( choice key list)
  * @return bool
  */
-	public function checkMatrixAnswerInList(&$model, $answers, $list) {
+	public function checkMatrixAnswerInList($model, $answers, $list) {
 		$ret = true;
 		foreach ($answers as $matrixRowId => $matrixColAns) {
 			if (!Validation::inList(strval($matrixRowId), $list)) {
@@ -150,13 +150,13 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
 /**
  * checkMatrixOtherAnswer
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $question question
  * @param string $answers answer value
  * @param string $otherAnswer other answer string
  * @return bool
  */
-	public function checkMatrixOtherAnswer(&$model, $question, $answers, $otherAnswer) {
+	public function checkMatrixOtherAnswer($model, $question, $answers, $otherAnswer) {
 		// このやり方だと、「その他」行がマトリクスにある時は必ず入力しなきゃいけなくなる？
 		// 選択肢を何も選択しなかったらAnswerデータが飛んでこないからチェックにかからないか？
 		$rowIds = array_keys($answers);
@@ -182,13 +182,13 @@ class RegistrationAnswerMatrixSingleChoiceBehavior extends RegistrationAnswerBeh
 /**
  * checkMatrixAnswerFill
  *
- * @param object &$model use model
+ * @param object $model use model
  * @param array $question question
  * @param string $answers all row answer value
  * @param array $allAnswers 入力された登録すべて
  * @return array error message
  */
-	public function checkMatrixAnswerFill(&$model, $question, $answers, $allAnswers) {
+	public function checkMatrixAnswerFill($model, $question, $answers, $allAnswers) {
 		if ($model->oneTimeValidateFlag) {	// チェック済
 			return true;
 		}
