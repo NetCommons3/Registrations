@@ -74,7 +74,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 	public function testKeyAuthPost() {
 		$controller = $this->generate('Registrations.RegistrationAnswers', array(
 			'components' => array(
-				'Auth' => array('user'),
+				//'Auth' => array('user'),
 				'Session',
 				'Security',
 				'NetCommons.Permission',
@@ -114,7 +114,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 	public function testKeyAuthPostNG() {
 		$controller = $this->generate('Registrations.RegistrationAnswers', array(
 			'components' => array(
-				'Auth' => array('user'),
+				//'Auth' => array('user'),
 				'Session',
 				'Security',
 				'NetCommons.Permission',
@@ -155,7 +155,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 	public function testImgAuthPost() {
 		$controller = $this->generate('Registrations.RegistrationAnswers', array(
 			'components' => array(
-				'Auth' => array('user'),
+				//'Auth' => array('user'),
 				'Session',
 				'Security',
 				'NetCommons.Permission',
@@ -196,7 +196,7 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 	public function testImgAuthPostNG() {
 		$controller = $this->generate('Registrations.RegistrationAnswers', array(
 			'components' => array(
-				'Auth' => array('user'),
+				//'Auth' => array('user'),
 				'Session',
 				'Security',
 				'NetCommons.Permission',
