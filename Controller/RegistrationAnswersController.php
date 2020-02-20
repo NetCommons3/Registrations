@@ -95,6 +95,9 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		// 親クラスのbeforeFilterを済ませる
 		parent::beforeFilter();
 
+		// CDNキャッシュを作成しない
+		$this->response->header('Pragma', 'no-cache');
+
 		// NetCommonsお約束：編集画面へのURLに編集対象のコンテンツキーが含まれている
 		// まずは、そのキーを取り出す
 		// 登録フォームキー
