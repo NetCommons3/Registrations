@@ -215,7 +215,12 @@ class RegistrationBlocksController extends RegistrationsAppController {
 				}
 				$dataCount = count($datas);	// データ数カウント
 				$offset += $dataCount;		// 次の取得開始位置をずらす
-			} while ($dataCount == self::REGISTRATION_CSV_UNIT_NUMBER);
+
+			// bugfix：https://github.com/NetCommons3/NetCommons3/issues/1340
+			// $datasにはCSVヘッダー行も入るため、DB取得件数+1件(ヘッダー行)の件数になるため、条件が == だと 1000件取得に対して、1001件のカウントになり
+			// 1000件でループを抜けていた。条件を >= に修正する。
+			//} while ($dataCount == self::REGISTRATION_CSV_UNIT_NUMBER);
+			} while ($dataCount >= self::REGISTRATION_CSV_UNIT_NUMBER);
 			// データ取得数が制限値分だけとれている間は繰り返す
 
 		} catch (Exception $e) {
