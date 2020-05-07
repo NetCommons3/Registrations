@@ -35,7 +35,7 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			),
 			'keyField' => 'id',
 			'typeKey' => MailSettingFixedPhrase::ANSWER_TYPE,
-			),
+		),
 		'Mails.MailQueueDelete',
 	);
 
@@ -463,6 +463,20 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		// 本人にもメールする設定でメールアドレス欄があったら、一番最初のメールアドレス宛にメールする
 		$condition = $this->Registration->getBaseCondition();
 		$registration = $this->Registration->find('first', ['conditions' => $condition]);
+
+		/** @see MailSetting::getMailSettingPlugin() */
+		$this->loadModels([
+			'SiteSetting' => 'SiteManager.SiteSetting',
+		]);
+		$mailSettingPlugin = $this->MailSetting->getMailSettingPlugin(
+			null, MailSettingFixedPhrase::ANSWER_TYPE
+		);
+		$isMailSend = Hash::get($mailSettingPlugin, 'MailSetting.is_mail_send');
+
+		if (! $registration['Registration']['is_answer_mail_send'] || ! $isMailSend) {
+			$this->Behaviors->unload('Mails.MailQueue');
+			return;
+		}
 
 		// X-SUBJECT設定
 		$this->setAddEmbedTagValue('X-SUBJECT', $registration['Registration']['title']);
