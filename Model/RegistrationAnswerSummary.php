@@ -530,12 +530,15 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 					// メール項目あり
 
 					// メアドをregistration_answersから取得
-					$registUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
-					// 送信先にset
-					$this->setSetting(
-						MailQueueBehavior::MAIL_QUEUE_SETTING_TO_ADDRESSES,
-						[$registUserMail]
-					);
+					$registerUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
+
+					if (!$this->__isSameLoginUserEmail($registerUserMail)) {
+						// 送信先にset
+						$this->setSetting(
+							MailQueueBehavior::MAIL_QUEUE_SETTING_TO_ADDRESSES,
+							[$registerUserMail]
+						);
+					}
 					// ループから抜ける
 					break;
 				}
@@ -543,4 +546,14 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		}
 	}
 
+/**
+ * __isSameLoginUserEmail
+ *
+ * @param string $registerUserMail email
+ * @return bool
+ */
+	private function __isSameLoginUserEmail($registerUserMail) {
+		$email = Current::read('User.email');
+		return ($email === $registerUserMail);
+	}
 }
