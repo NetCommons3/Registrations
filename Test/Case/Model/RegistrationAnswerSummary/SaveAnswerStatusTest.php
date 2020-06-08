@@ -63,9 +63,13 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
  * @var array
  */
 	protected $_methodName = 'saveAnswerStatus';
+
+/**
+ * @var MailSetting Mock
+ */
 	private $__mailSettingMock;
 
-	/**
+/**
  * setUp method
  *
  * @return void
