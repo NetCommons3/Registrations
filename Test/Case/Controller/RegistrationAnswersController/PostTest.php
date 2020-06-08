@@ -341,6 +341,15 @@ class RegistrationAnswersControllerPostTest extends NetCommonsControllerTestCase
 		//ログイン
 		TestAuthGeneral::login($this, Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR);
 
+		$mailSettingMock = $this->getMockForModel('Mails.MailSetting', ['getMailSettingPlugin']);
+		$mailSettingMock->expects($this->any())
+			->method('getMailSettingPlugin')
+			->will($this->returnValue([
+				'MailSetting' => [
+					'is_mail_send' => false,
+				]
+			]));
+
 		$data = array(
 			'data' => array(
 				'Frame' => array('id' => 26),
