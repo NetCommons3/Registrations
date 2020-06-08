@@ -119,8 +119,8 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			'fields' => ['serial_number'],
 			'recursive' => -1
 		]);
-		$serialNumber = $result['RegistrationAnswerSummary']['serial_number'];
-		$serialNumber = is_null($serialNumber) ? 0 : $serialNumber;
+		$serialNumber = isset($result['RegistrationAnswerSummary']['serial_number']) ?
+			(int)$result['RegistrationAnswerSummary']['serial_number'] : 0;
 		$serialNumber++;
 		return $serialNumber;
 	}
