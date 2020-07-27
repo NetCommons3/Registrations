@@ -471,9 +471,10 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		$mailSettingPlugin = $this->MailSetting->getMailSettingPlugin(
 			null, MailSettingFixedPhrase::ANSWER_TYPE
 		);
-		$isMailSend = Hash::get($mailSettingPlugin, 'MailSetting.is_mail_send');
+//		$isMailSend = Hash::get($mailSettingPlugin, 'MailSetting.is_mail_send');
 
-		if (! $registration['Registration']['is_answer_mail_send'] || ! $isMailSend) {
+//		if (! $registration['Registration']['is_answer_mail_send'] || ! $isMailSend) {
+		if (! $registration['Registration']['is_answer_mail_send']) {
 			$this->Behaviors->unload('Mails.MailQueue');
 			return;
 		}
