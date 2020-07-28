@@ -674,6 +674,7 @@ class Registration extends RegistrationsAppModel {
 
 			// Registrationのステータスが公開なら登録通知メール設定を上書きする
 			if ($status == WorkflowComponent::STATUS_PUBLISHED) {
+				/** @see \MailSettingBehavior::updateMailSetting */
 				$this->updateMailSetting($saveRegistration);
 			}
 
