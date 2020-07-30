@@ -92,7 +92,7 @@ class RegistrationMailSettingRecords extends MailsMigration {
 				'mail_fixed_phrase_subject' => '[{X-SITE_NAME}-{X-PLUGIN_NAME}]{X-SUBJECT} answer',
 				'mail_fixed_phrase_body' => 'Thank you for your registration.
 
-Registrarion form:{X-SUBJECT}
+Registration form:{X-SUBJECT}
 
 Registered date:{X-TO_DATE}
 
