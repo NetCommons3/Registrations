@@ -86,14 +86,7 @@ class MailSettingBehavior extends ModelBehavior {
 				'MailSettingFixedPhrase.contents.mail_setting_id',
 				$model->MailSetting->id
 			);
-			//$model->MailSettingFixedPhrase = ClassRegistry::init(
-			//	'Mails.MailSettingFixedPhrase'
-			//);
 			$answerPhrase = $mailSetting['MailSettingFixedPhrase']['answer'];
-			//$answerPhrase = array(
-			//	'MailSettingFixedPhrase' => $answerPhrase
-			//);
-			//if (!$model->MailSettingFixedPhrase->save($answerPhrase, ['callbacks' => false])) {
 			if (!$model->MailSettingFixedPhrase->save($answerPhrase)) {
 				throw new InternalErrorException(
 					__d('net_commons', 'Internal Server Error')
@@ -101,10 +94,6 @@ class MailSettingBehavior extends ModelBehavior {
 			}
 			$model->MailSettingFixedPhrase->create();
 			$contentsPhrase = $mailSetting['MailSettingFixedPhrase']['contents'];
-			//$contentsPhrase = array(
-			//	'MailSettingFixedPhrase' => $contentsPhrase
-			//);
-			//if (!$model->MailSettingFixedPhrase->save($contentsPhrase, ['callbacks' => false])) {
 			if (!$model->MailSettingFixedPhrase->save($contentsPhrase)) {
 				throw new InternalErrorException(
 					__d('net_commons', 'Internal Server Error')
