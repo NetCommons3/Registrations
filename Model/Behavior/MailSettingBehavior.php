@@ -55,10 +55,8 @@ class MailSettingBehavior extends ModelBehavior {
 		);
 		if (! Hash::check($mailSetting, 'MailSetting.id')) {
 			// まだメール設定がないときは、登録フォームで登録通知メールONならメール設定も送信する設定にする。
-			//$mailSetting = $model->MailSetting->createMailSetting($model->alias);
+			// 　上記はとりやめて、「メール通知機能を使う」と「登録通知メールを送る」のOn/Offは連動しないように変更
 			$model->MailSetting->create();
-			$mailSetting['MailSetting']['is_mail_send'] =
-				$saveRegistration['Registration']['is_answer_mail_send'];
 			$model->MailSettingFixedPhrase->create();
 		}
 		// 登録通知メール設定を変更

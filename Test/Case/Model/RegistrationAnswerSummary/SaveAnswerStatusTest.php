@@ -65,6 +65,11 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 	protected $_methodName = 'saveAnswerStatus';
 
 /**
+ * @var MailSetting Mock
+ */
+	private $__mailSettingMock;
+
+/**
  * setUp method
  *
  * @return void
@@ -105,6 +110,16 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 		$registrationMock->expects($this->any())
 			->method('find')
 			->will($this->returnValue($registration));
+
+		$this->__mailSettingMock = $this->getMockForModel('Mails.MailSetting', ['getMailSettingPlugin']);
+		$this->__mailSettingMock->expects($this->any())
+			->method('getMailSettingPlugin')
+			->will($this->returnValue([
+				'MailSetting' => [
+					'is_mail_send' => false,
+				]
+			]));
+		$this->$model->MailSetting = $this->__mailSettingMock;
 	}
 
 /**
@@ -203,6 +218,7 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 		$model = $this->_modelName;
 		$method = $this->_methodName;
 		$this->_mockForReturnFalse($model, $mockModel, $mockMethod);
+		$this->$model->MailSetting = $this->__mailSettingMock;
 		$result = $this->$model->$method($data, $status);
 		$this->assertFalse($result);
 	}
@@ -237,6 +253,7 @@ class SaveAnswerStatusTest extends NetCommonsModelTestCase {
 		$this->_mockForReturnFalse($model, $mockModel, $mockMethod);
 
 		$this->setExpectedException('InternalErrorException');
+		$this->$model->MailSetting = $this->__mailSettingMock;
 		$this->$model->$method($data, $status);
 	}
 /**

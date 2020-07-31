@@ -90,14 +90,6 @@ msgstr ""
 msgid "Please select past registration."
 msgstr ""
 
-#: Registrations/Model/ActionRegistrationAdd.php:229
-msgid "Registration.mail.default.subject"
-msgstr ""
-
-#: Registrations/Model/ActionRegistrationAdd.php:231
-msgid "Registration.mail.default.body"
-msgstr ""
-
 #: Registrations/Model/ActionRegistrationAdd.php:233
 msgid "Thank you for registering."
 msgstr ""
@@ -162,10 +154,6 @@ msgstr ""
 #: Registrations/Test/Case/Model/RegistrationAnswer/ValidateAnswerTextAreaTest.php:63
 #: Registrations/Test/Case/Model/RegistrationAnswer/ValidateAnswerTextTest.php:69
 msgid "the answer is too long. Please enter under %d letters."
-msgstr ""
-
-#: Registrations/Model/RegistrationAnswerSummary.php:170
-msgid "Registration.mail.after.body"
 msgstr ""
 
 #: Registrations/Model/RegistrationAnswerSummary.php:460
@@ -815,3 +803,23 @@ msgstr ""
 msgid "MailSetting.mail_fixed_phrase_body.popover"
 msgstr ""
 
+msgid "Registration.mail.default.subject"
+msgstr "[{X-SITE_NAME}-{X-PLUGIN_NAME}]{X-SUBJECT} answer"
+
+msgid "Registration.mail.default.body"
+msgstr ""
+"Thank you for your registration.\n"
+"\n"
+"Registration form:{X-SUBJECT}\n"
+"\n"
+"Registered date:{X-TO_DATE}\n"
+"\n"
+"\n"
+"{X-DATA}\n"
+"\n"
+"Please print this mail and bring it with you."
+
+msgid "Registration.mail.after.body"
+msgstr ""
+"Registration detail URL\n"
+"{X-URL}"
