@@ -467,16 +467,6 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		//フォーム設定した文面でメールをおくれるようにMailQueueBehaviorを設定する。
 		$this->__setMailFixedPhraseForAllLanguages($registration);
 
-		///** @see MailSetting::getMailSettingPlugin() */
-		//$this->loadModels([
-		//	'SiteSetting' => 'SiteManager.SiteSetting',
-		//]);
-		//$mailSettingPlugin = $this->MailSetting->getMailSettingPlugin(
-		//	null, MailSettingFixedPhrase::ANSWER_TYPE
-		//);
-		//$isMailSend = Hash::get($mailSettingPlugin, 'MailSetting.is_mail_send');
-		//
-		//if (! $registration['Registration']['is_answer_mail_send'] || ! $isMailSend) {
 		if (! $registration['Registration']['is_answer_mail_send']) {
 			$this->Behaviors->unload('Mails.MailQueue');
 			return;
@@ -532,7 +522,6 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 			foreach ($registration['RegistrationPage'][0]['RegistrationQuestion'] as $index => $question) {
 				if ($question['question_type'] == RegistrationsComponent::TYPE_EMAIL) {
 					// メール項目あり
-
 					// メアドをregistration_answersから取得
 					$registerUserMail = $answers[$index]['RegistrationAnswer']['answer_value'];
 
