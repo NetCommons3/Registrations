@@ -464,6 +464,9 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		$condition = $this->Registration->getBaseCondition();
 		$registration = $this->Registration->find('first', ['conditions' => $condition]);
 
+		//フォーム設定した文面でメールをおくれるようにMailQueueBehaviorを設定する。
+		$this->__setMailFixedPhraseForAllLanguages($registration);
+
 		///** @see MailSetting::getMailSettingPlugin() */
 		//$this->loadModels([
 		//	'SiteSetting' => 'SiteManager.SiteSetting',
@@ -557,4 +560,39 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		$email = Current::read('User.email');
 		return ($email === $registerUserMail);
 	}
+
+/**
+ * MailQueueBehaviorにメール設定をセット。
+ *
+ * 登録フォームの編集画面で登録した登録通知メールの文面をどの言語でも有効にするために自前でセットしている。
+ *
+ * @param array $registration Registration data
+ * @return void
+ */
+	private function __setMailFixedPhraseForAllLanguages(array $registration) {
+		$languageId = $registration['Registration']['language_id'];
+		$typeKey = \MailSettingFixedPhrase::ANSWER_TYPE;
+		$settingPluginKey = 'registrations';
+
+		$mailSettingPlugin = $this->MailSetting->getMailSettingPlugin($languageId, $typeKey, $settingPluginKey);
+
+		// 有効になってる全言語に同じメール設定をセットする
+		foreach ($this->__findActiveLanguageIds() as $languageId) {
+			/** @uses MailQueueBehavior::setMailSettingPlugin() */
+			$this->setMailSettingPlugin($languageId, $typeKey, $settingPluginKey, $mailSettingPlugin);
+		}
+	}
+
+/**
+ * 有効になってる言語IDを取得
+ *
+ * @return int[] Language.id[]
+ */
+	private function __findActiveLanguageIds() : array {
+		/** @var Language $languageModel */
+		$languageModel = ClassRegistry::init('M17n.Language');
+		$languages = $languageModel->getLanguages();
+		return array_map('intval', array_column(array_column($languages, 'Language'), 'id'));
+	}
+
 }
