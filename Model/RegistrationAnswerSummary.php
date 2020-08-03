@@ -563,7 +563,11 @@ class RegistrationAnswerSummary extends RegistrationsAppModel {
 		$typeKey = \MailSettingFixedPhrase::ANSWER_TYPE;
 		$settingPluginKey = 'registrations';
 
-		$mailSettingPlugin = $this->MailSetting->getMailSettingPlugin($languageId, $typeKey, $settingPluginKey);
+		$mailSettingPlugin = $this->MailSetting->getMailSettingPlugin(
+			$languageId,
+			$typeKey,
+			$settingPluginKey
+		);
 
 		// 有効になってる全言語に同じメール設定をセットする
 		foreach ($this->__findActiveLanguageIds() as $languageId) {
