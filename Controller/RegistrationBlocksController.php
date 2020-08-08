@@ -254,7 +254,6 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		// 登録一覧は公開されてる登録フォームが対象。
 		$conditions = Hash::merge([
 				'Registration.is_active' => true,
-				'Registration.language_id' => Current::read('Language.id'),
 			],
 			$conditions);
 		$registration = $this->Registration->find('first', array(

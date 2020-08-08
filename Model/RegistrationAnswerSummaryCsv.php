@@ -94,7 +94,6 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 				'Registration.block_id' => Current::read('Block.id'),
 				'Registration.key' => $registrationKey,
 				'Registration.is_active' => true,
-				'Registration.language_id' => Current::read('Language.id'),
 			),
 			'recursive' => -1
 		));
