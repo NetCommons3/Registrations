@@ -38,18 +38,7 @@
 					</th>
 					<td>
 						<?php
-						if (isset($answer['UploadFile'])) {
-							$value = $this->NetCommonsHtml->link(
-								$answer['RegistrationAnswer']['answer_value'],
-								$this->NetCommonsHtml->url(
-									[
-										'action' => 'download_file',
-										$answer['RegistrationAnswer']['id'],
-										'answer_value_file',
-									]
-								)
-							);
-						} elseif (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
+						if (Hash::check($answer, 'RegistrationAnswer.answer_values')) {
 							$otherAnswer = Hash::get($answer,
 								'RegistrationAnswer.other_answer_value');
 							if ($otherAnswer) {
