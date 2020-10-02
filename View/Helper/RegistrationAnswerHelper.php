@@ -67,6 +67,10 @@ class RegistrationAnswerHelper extends AppHelper {
 			array($index, $fieldName, $question, $readonly));
 
 		if (! RegistrationsComponent::isMatrixInputType($question['question_type'])) {
+			if ($question['question_type'] === RegistrationsComponent::TYPE_FILE) {
+				// 添付ファイルは answer_value_fileフィールドで処理しているのでエラー確認もanswer_value_fileに対しておこなう
+				$fieldName .= '_file';
+			}
 			$ret .= $this->_error($fieldName);
 			$ret .= $this->NetCommonsForm->hidden($baseFieldName . 'registration_answer_summary_id');
 			$ret .= $this->NetCommonsForm->hidden($baseFieldName . 'registration_question_key',
