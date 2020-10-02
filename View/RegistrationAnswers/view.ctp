@@ -55,8 +55,16 @@ $jsAnswers = NetCommonsAppController::camelizeKeyRecursive($answers);
 	?>
 
 		<?php foreach($questionPage['RegistrationQuestion'] as $index => $question): ?>
+			<?php
+			$fieldName = 'answer_value';
+			if ($question['question_type'] === RegistrationsComponent::TYPE_FILE) {
+				// 添付ファイルは answer_value_fileフィールドで処理しているのでエラー確認もanswer_value_fileに対しておこなう
+				$fieldName = 'answer_value_file';
+			}
+			$hasError = $this->Form->isFieldError('RegistrationAnswer.' . $question['key'] . '.0.' . $fieldName);
+			?>
 			<div class="form-group
-							<?php if ($this->Form->isFieldError('RegistrationAnswer.' . $question['key'] . '.0.answer_value')): ?>
+							<?php if ($hasError): ?>
 							has-error
 							<?php endif ?>">
 
