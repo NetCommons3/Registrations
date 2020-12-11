@@ -98,7 +98,6 @@ class RegistrationAnswerHelper extends AppHelper {
 			$afterLabel = false;
 			$choices = Hash::sort($question['RegistrationChoice'], '{n}.other_choice_type', 'asc');
 			$options = $this->_getChoiceOptionElement($choices);
-			$options = array_map('h', $options); // escape
 			$otherChoice = Hash::extract($question['RegistrationChoice'],
 				'{n}[other_choice_type!=' . RegistrationsComponent::OTHER_CHOICE_TYPE_NO_OTHER_FILED . ']');
 			if ($otherChoice) {
@@ -257,7 +256,7 @@ class RegistrationAnswerHelper extends AppHelper {
  */
 	public function singleList($index, $fieldName, $question, $readonly) {
 		if ($readonly) {
-			$answer = $this->value($fieldName);
+			$answer = h($this->value($fieldName));
 			$ret = substr($answer, strrpos($answer, RegistrationsComponent::ANSWER_VALUE_DELIMITER) + 1);
 			return $ret;
 		}
