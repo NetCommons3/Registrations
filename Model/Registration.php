@@ -390,6 +390,11 @@ class Registration extends RegistrationsAppModel {
 					$validationErrors['RegistrationPage'][$pageIndex] =
 						$this->RegistrationPage->validationErrors;
 				}
+
+				$data = $this->RegistrationPage->data['RegistrationPage'];
+				unset($this->RegistrationPage->data['RegistrationPage']);
+				$this->data['RegistrationPage'][$pageIndex] =
+						array_merge($data, $this->RegistrationPage->data);
 			}
 			$this->validationErrors += $validationErrors;
 		}
@@ -641,19 +646,19 @@ class Registration extends RegistrationsAppModel {
 			$registration = Hash::remove($registration, 'BlocksLanguage.name');
 			// modified に値があると modified が更新されないのでnullに
 			$registration['Registration']['modified'] = null;
-			$saveRegistration = $this->save($registration, false);
+			$saveRegistration = $this->save(null, false);
 			if (! $saveRegistration) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 			$registrationId = $this->id;
 
 			// ページ以降のデータを登録
-			$registration = Hash::insert(
-				$registration,
+			$saveRegistration = Hash::insert(
+				$saveRegistration,
 				'RegistrationPage.{n}.registration_id',
 				$registrationId);
 
-			if (! $this->RegistrationPage->saveRegistrationPage($registration['RegistrationPage'])) {
+			if (! $this->RegistrationPage->saveRegistrationPage($saveRegistration['RegistrationPage'])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 			// フレームのdefault_actionが設定されてないなら、設定する。

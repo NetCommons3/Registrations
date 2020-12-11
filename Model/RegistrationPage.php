@@ -317,6 +317,11 @@ class RegistrationPage extends RegistrationsAppModel {
 					$validationErrors['RegistrationQuestion'][$qIndex] =
 						$this->RegistrationQuestion->validationErrors;
 				}
+
+				$data = $this->RegistrationQuestion->data['RegistrationQuestion'];
+				unset($this->RegistrationQuestion->data['RegistrationQuestion']);
+				$this->data['RegistrationQuestion'][$qIndex] =
+						array_merge($data, $this->RegistrationQuestion->data);
 			}
 			$this->validationErrors += $validationErrors;
 		}
