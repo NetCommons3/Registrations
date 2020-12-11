@@ -97,6 +97,9 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		$question = $options['question'];
 		$allAnswers = $options['allAnswers'];
 
+		// 添付ファイル用のバリデーションを一時退避（他のvalidateルールを初期化しておきたいので）
+		$fileValidate = $this->validate['answer_value_file'] ?? [];
+
 		// Answerモデルは繰り返し判定が行われる可能性高いのでvalidateルールは最初に初期化
 		// mergeはしません
 		$this->validate = array(
@@ -168,6 +171,16 @@ class RegistrationAnswer extends RegistrationsAppModel {
 
 			),
 		);
+
+		if ($question['question_type'] === RegistrationsComponent::TYPE_FILE) {
+			if ($question['is_require']) {
+				$this->validate['answer_value_file'] = $fileValidate;
+				$this->validate['answer_value_file']['notBlank'] = [
+					'rule' => array('isFileUpload'),
+					'message' => array(__d('files', 'Please specify the file'))
+				];
+			}
+		}
 		parent::beforeValidate($options);
 
 		return true;
