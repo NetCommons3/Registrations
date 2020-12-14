@@ -464,4 +464,42 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		}
 		return array(RegistrationsComponent::USES_USE, RegistrationsComponent::USES_NOT_USE);
 	}
+
+/**
+ * getAliveCondition
+ * 現在使用中状態であるか判断する。CleanUpプラグインで使用
+ *
+ * @param array $key 
+ * @return array
+ */
+	public function getAliveCondition($key) {
+		return array(
+			'conditions' => array(
+				'RegistrationQuestion.key' => $key,
+				'OR' => array(
+					'Registration.is_active' => '1',
+					'Registration.is_latest' => '1',
+				),
+			),
+			'joins' => array(
+				array(
+					'table' => 'registration_pages',
+					'alias' => 'RegistrationPage',
+					'type' => 'INNER',
+					'conditions' => array(
+						$this->alias . '.registration_page_id = RegistrationPage.id'
+					)
+				),
+				array(
+					'table' => 'registrations',
+					'alias' => 'Registration',
+					'type' => 'INNER',
+					'conditions' => array(
+						'RegistrationPage.registration_id = Registration.id'
+					)
+				)
+			)
+		);
+	}
+
 }
