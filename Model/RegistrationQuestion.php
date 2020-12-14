@@ -477,8 +477,8 @@ class RegistrationQuestion extends RegistrationsAppModel {
 			'conditions' => array(
 				'RegistrationQuestion.key' => $key,
 				'OR' => array(
-					'Registration.is_active' => '1',
-					'Registration.is_latest' => '1',
+					'Registration.is_active' => true,
+					'Registration.is_latest' => true,
 				),
 			),
 			'joins' => array(
