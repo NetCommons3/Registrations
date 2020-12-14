@@ -332,10 +332,11 @@ class RegistrationPage extends RegistrationsAppModel {
  * save RegistrationPage data
  *
  * @param array &$registrationPages registration pages
+ * @param array $block ブロック情報
  * @throws InternalErrorException
  * @return bool
  */
-	public function saveRegistrationPage(&$registrationPages) {
+	public function saveRegistrationPage(&$registrationPages, $block) {
 		$this->loadModels([
 			'RegistrationQuestion' => 'Registrations.RegistrationQuestion',
 		]);
@@ -360,7 +361,7 @@ class RegistrationPage extends RegistrationsAppModel {
 			$page = Hash::insert($page, 'RegistrationQuestion.{n}.registration_page_id', $pageId);
 			// もしもQuestionやChoiceのsaveがエラーになった場合は、
 			// QuestionやChoiceのほうでInternalExceptionErrorが発行されるのでここでは何も行わない
-			$this->RegistrationQuestion->saveRegistrationQuestion($page['RegistrationQuestion']);
+			$this->RegistrationQuestion->saveRegistrationQuestion($page['RegistrationQuestion'], $block);
 		}
 		return true;
 	}
