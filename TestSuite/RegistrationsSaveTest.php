@@ -53,7 +53,11 @@ abstract class RegistrationsSaveTest extends NetCommonsModelTestCase {
 		}
 
 		//テスト実行
-		$result = $this->$model->$method($data[$model]);
+		if ($method == 'saveRegistrationQuestion' || $method == 'saveRegistrationPage') {
+			$result = $this->$model->$method($data[$model], ['block_key' => '1']);
+		} else {
+			$result = $this->$model->$method($data[$model]);
+		}
 		$this->assertNotEmpty($result);
 
 		//idのチェック
@@ -119,7 +123,11 @@ abstract class RegistrationsSaveTest extends NetCommonsModelTestCase {
 		$this->_mockForReturnFalse($model, $mockModel, $mockMethod);
 
 		$this->setExpectedException('InternalErrorException');
-		$this->$model->$method($data);
+		if ($method == 'saveRegistrationQuestion' || $method == 'saveRegistrationPage') {
+			$this->$model->$method($data, ['block_key' => '1']);
+		} else {
+			$this->$model->$method($data);
+		}
 	}
 
 /**
