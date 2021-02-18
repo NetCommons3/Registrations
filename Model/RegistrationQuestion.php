@@ -360,10 +360,11 @@ class RegistrationQuestion extends RegistrationsAppModel {
  * save RegistrationQuestion data
  *
  * @param array &$questions registration questions
+ * @param array $block ブロック情報
  * @throws InternalErrorException
  * @return bool
  */
-	public function saveRegistrationQuestion(&$questions) {
+	public function saveRegistrationQuestion(&$questions, $block) {
 		$this->loadModels([
 			'RegistrationChoice' => 'Registrations.RegistrationChoice',
 		]);
@@ -373,13 +374,26 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		// 決まり処理は上位で行われる
 		// ここでは行わない
 
+		// ブロック情報の準備
+		// ここで準備したブロック情報は、saveに含まれ、
+		// WysiwygBehaviorのafterSaveでblock_keyが設定される
+		$block = [
+			'Block' => $block
+		];
+
 		foreach ($questions as &$question) {
 			// 登録フォームは履歴を取っていくタイプのコンテンツデータなのでSave前にはID項目はカット
 			// （そうしないと既存レコードのUPDATEになってしまうから）
 			$question = Hash::remove($question, 'RegistrationQuestion.id');
+			// WysiwygBehaviorのafterSaveでblock_keyを参照できるように
+			// RegistrationQuestionとBlockは同一次元に配置する
+			$questionForSave = [
+				$this->alias => $question
+			];
+			$questionForSave = array_merge($questionForSave, $block);
 
 			$this->create();
-			if (! $this->save($question, false)) {
+			if (! $this->save($questionForSave, false)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
@@ -450,4 +464,42 @@ class RegistrationQuestion extends RegistrationsAppModel {
 		}
 		return array(RegistrationsComponent::USES_USE, RegistrationsComponent::USES_NOT_USE);
 	}
+
+/**
+ * getAliveCondition
+ * 現在使用中状態であるか判断する。CleanUpプラグインで使用
+ *
+ * @param array $key 判断対象のデータのキー
+ * @return array
+ */
+	public function getAliveCondition($key) {
+		return array(
+			'conditions' => array(
+				'RegistrationQuestion.key' => $key,
+				'OR' => array(
+					'Registration.is_active' => true,
+					'Registration.is_latest' => true,
+				),
+			),
+			'joins' => array(
+				array(
+					'table' => 'registration_pages',
+					'alias' => 'RegistrationPage',
+					'type' => 'INNER',
+					'conditions' => array(
+						$this->alias . '.registration_page_id = RegistrationPage.id'
+					)
+				),
+				array(
+					'table' => 'registrations',
+					'alias' => 'Registration',
+					'type' => 'INNER',
+					'conditions' => array(
+						'RegistrationPage.registration_id = Registration.id'
+					)
+				)
+			)
+		);
+	}
+
 }

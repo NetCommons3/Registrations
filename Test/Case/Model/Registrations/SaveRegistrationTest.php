@@ -153,6 +153,8 @@ class RegistrationSaveRegistrationTest extends WorkflowSaveTest {
 		}
 
 		$data['Frame']['id'] = 6;
+		$data['Block']['id'] = 2;
+		$data['Block']['key'] = 'block_2';
 		return $data;
 	}
 

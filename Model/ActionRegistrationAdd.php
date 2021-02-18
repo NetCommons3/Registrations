@@ -252,9 +252,47 @@ class ActionRegistrationAdd extends RegistrationsAppModel {
 		));
 		// ID値のみクリア
 		$this->Registration->clearRegistrationId($registration);
+		// Wysiwygエディタ内のファイルの複製処理
+		$registration = $this->_copyWysiwygFiles($registration);
 
 		return $registration;
 	}
+/**
+ * _copyWysiwygFiles 
+ * 
+ * 引数で指定された登録フォームの中を分析し、
+ * ウィジウィグに設定されているファイルは複製を作ります
+ * 
+ * @param array $registration 登録フォームデータ
+ * @return array $registration 複製を作り終えた登録フォームデータ
+ */
+	protected function _copyWysiwygFiles($registration) {
+		$wysiswyg = new WysiwygZip();
+		$flatRegistration = Hash::flatten($registration);
+		foreach ($flatRegistration as $key => &$value) {
+			$model = null;
+			if (strpos($key, 'RegistrationQuestion.') !== false) {
+				$model = $this->RegistrationQuestion;
+			} elseif (strpos($key, 'RegistrationPage.') !== false) {
+				$model = $this->RegistrationPage;
+			} elseif (strpos($key, 'Registration.') !== false) {
+				$model = $this->Registration;
+			}
+			if (!$model) {
+				continue;
+			}
+			$columnName = substr($key, strrpos($key, '.') + 1);
+			if ($model->hasField($columnName)) {
+				if ($model->getColumnType($columnName) == 'text') {
+					$wysiswygZipFile = $wysiswyg->createWysiwygZip($value);
+					$value = $wysiswyg->getFromWysiwygZip($wysiswygZipFile);
+				}
+			}
+		}
+		$registration = Hash::expand($flatRegistration);
+		return $registration;
+	}
+
 /**
  * _createFromTemplate
  *

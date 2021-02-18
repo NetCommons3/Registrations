@@ -658,7 +658,8 @@ class Registration extends RegistrationsAppModel {
 				'RegistrationPage.{n}.registration_id',
 				$registrationId);
 
-			if (! $this->RegistrationPage->saveRegistrationPage($saveRegistration['RegistrationPage'])) {
+			if (! $this->RegistrationPage->saveRegistrationPage(
+				$saveRegistration['RegistrationPage'], $saveRegistration['Block'])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 			// フレームのdefault_actionが設定されてないなら、設定する。
