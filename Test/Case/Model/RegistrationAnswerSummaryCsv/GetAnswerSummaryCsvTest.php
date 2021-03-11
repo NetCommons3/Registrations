@@ -246,13 +246,20 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 		$registration = $this->_getRegistration($registrationId);
 
 		//テスト実行
-		$result = $this->$model->$method($registration, 1000, 0);
+		$result = [];
+
+		$result[] = $this->$model->getHeader($registration);
+
+		$rows = $this->$model->$method($registration, 1000, 0);
+		$result = array_merge($result, $rows);
 		$result = Hash::remove($result, '{n}.2');
 
 		$expected = Hash::remove($expected, '{n}.2');
+
 		//チェック
 		$this->assertEquals($expected, $result);
 	}
+
 /**
  * getDefaultChoiceのDataProvider
  *
