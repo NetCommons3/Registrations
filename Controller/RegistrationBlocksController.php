@@ -202,6 +202,10 @@ class RegistrationBlocksController extends RegistrationsAppController {
 			$csvFile = new CsvFileWriter(array(
 				'folder' => $tmpFolder->path
 			));
+			// ヘッダ出力
+			$header = $this->RegistrationAnswerSummaryCsv->getHeader($registration);
+			$csvFile->add($header);
+
 			// 登録データを一気に全部取得するのは、データ爆発の可能性があるので
 			// REGISTRATION_CSV_UNIT_NUMBER分に制限して取得する
 			$offset = 0;
@@ -215,7 +219,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 				}
 				$dataCount = count($datas);	// データ数カウント
 				$offset += $dataCount;		// 次の取得開始位置をずらす
-			} while ($dataCount == self::REGISTRATION_CSV_UNIT_NUMBER);
+			} while ($dataCount === self::REGISTRATION_CSV_UNIT_NUMBER);
 			// データ取得数が制限値分だけとれている間は繰り返す
 
 		} catch (Exception $e) {
