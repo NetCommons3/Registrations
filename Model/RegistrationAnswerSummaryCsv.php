@@ -112,11 +112,6 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		// 指定された登録フォームの登録データをＣｓｖに出力しやすい行形式で返す
 		$retArray = array();
 
-		// $offset == 0 のときのみヘッダ行を出す
-		if ($offset == 0) {
-			$retArray[] = $this->_putHeader($registration);
-		}
-
 		// $registrationにはページデータ、項目データが入っていることを前提とする
 
 		// 登録フォームのkeyを取得
@@ -192,12 +187,12 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 	}
 
 /**
- * _putHeader
+ * getHeader
  *
  * @param array $registration registration data
  * @return array
  */
-	protected function _putHeader($registration) {
+	public function getHeader($registration) {
 		$cols = array();
 
 		$cols[] = __d('registrations', 'Registration Number');
