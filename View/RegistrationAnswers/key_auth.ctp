@@ -8,15 +8,18 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  * @copyright Copyright 2014, NetCommons Project
  */
+echo $this->NetCommonsHtml->script(array(
+	'/authorization_keys/js/key_auth_init.js'
+));
 ?>
-<article>
+<article ng-controller="AuthorizationKey" ng-init="initialize('<?php echo h($postUrl); ?>')">
 	<?php echo $this->element('Registrations.Answers/answer_header'); ?>
 
 	<?php echo $this->element('Registrations.Answers/answer_test_mode_header'); ?>
 
 	<?php
 
-	echo $this->NetCommonsForm->create(null, array('type' => 'post', 'url' => $postUrl));
+	echo $this->NetCommonsForm->create('AuthorizationKeys' . CurrentLib::read('Frame.id'), array('type' => 'post', 'url' => $postUrl));
 	echo $this->NetCommonsForm->hidden('Frame.id');
 	echo $this->NetCommonsForm->hidden('Block.id');
 

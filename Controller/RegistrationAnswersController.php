@@ -196,11 +196,6 @@ class RegistrationAnswersController extends RegistrationsAppController {
 				!isset($this->request->data['RegistrationPage']['page_sequence'])) {
 				// 認証キーコンポーネントお約束：
 				if ($quest['is_key_pass_use'] == RegistrationsComponent::USES_USE) {
-					$this->AuthorizationKey->contentId = $quest['id'];
-					$this->AuthorizationKey->guard(
-						AuthorizationKeyComponent::OPERATION_EMBEDDING,
-						'Registration',
-						$this->__registration);
 					$this->setAction('key_auth');
 					return;
 				}
@@ -223,6 +218,15 @@ class RegistrationAnswersController extends RegistrationsAppController {
  * @return void
  */
 	public function key_auth() {
+		$this->AuthorizationKey->contentId = $this->__registration['Registration']['id'];
+		$this->AuthorizationKey->guard(
+			AuthorizationKeyComponent::OPERATION_EMBEDDING,
+			'Registration',
+			$this->__registration);
+		if ($this->request->is('ajax')) {
+			return;
+		}
+
 		$isKeyPassUse = $this->__registration['Registration']['is_key_pass_use'];
 		if ($isKeyPassUse != RegistrationsComponent::USES_USE) {
 			$this->_redirectAnswerPage();
@@ -377,15 +381,16 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			// 誠にCake流儀でなくて申し訳ないのですが、様々な種別のAnswerデータを
 			// 特殊な文字列加工して統一化した形状でDBに入れている都合上、このような仕儀になっています
 		} else {
-			$this->set('answers', $this->request->data['RegistrationAnswer']);
+			$this->set('answers', $this->request->data['RegistrationAnswer'] ?? null);
 		}
 
+		$nextPageSeq = (int)$nextPageSeq;
 		// 項目情報をView変数にセット
 		$this->request->data['Frame'] = Current::read('Frame');
 		$this->request->data['Block'] = Current::read('Block');
 		$this->request->data['RegistrationPage'] = $registration['RegistrationPage'][$nextPageSeq];
 		$this->set('registration', $registration);
-		$this->set('questionPage', $registration['RegistrationPage'][$nextPageSeq]);
+		$this->set('questionPage', $registration['RegistrationPage'][$nextPageSeq] ?? null);
 		$this->set('displayType', $this->__displayType);
 		$this->NetCommons->handleValidationError($this->RegistrationAnswer->validationErrors);
 
