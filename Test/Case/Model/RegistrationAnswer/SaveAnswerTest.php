@@ -335,6 +335,7 @@ class SaveAnswerTest extends NetCommonsModelTestCase {
 				'RegistrationAnswer.registration_answer_summary_id' => $summaryId,
 				'RegistrationQuestion.language_id' => 2,
 			),
+			'order' => ['RegistrationAnswer.id' => 'asc']
 		));
 		$actual = Hash::remove($actual, '{n}.RegistrationQuestion');
 		$actual = Hash::remove($actual, '{n}.RegistrationChoice');
