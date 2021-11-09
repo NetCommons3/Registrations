@@ -74,9 +74,9 @@ class RegistrationEditHelper extends AppHelper {
 		if (isset($options['ng-model'])) {
 			$ret .= '<div class="has-error" ng-if="' . $errorMsgModelName . '">';
 			$ret .= '<div class="help-block" ng-repeat="errorMessage in ' . $errorMsgModelName . '">';
-				$ret .= '{{errorMessage}}</div></div>';
-			$ret .= '</div></div>';
+			$ret .= '{{errorMessage}}</div></div>';
 		}
+		$ret .= '</div></div>';
 
 		return $ret;
 	}

@@ -60,7 +60,7 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 			<div ng-repeat="(pageIndex, page) in registration.registrationPage" index="$index" ng-cloak>
 
-				<uib-accordion class="tab-body">
+				<div class="tab-body">
 						<?php echo $this->element('Registrations.RegistrationEdit/EditQuestion/add_question_button', array('isPublished' => $isPublished)); ?>
 						<div class="clearfix"></div>
 
