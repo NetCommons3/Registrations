@@ -161,13 +161,12 @@ $jsRegistration = NetCommonsAppController::camelizeKeyRecursive(RegistrationsApp
 
 				</div>
 			</div>
-
-	</div>
+		</div>
 
 		<div class="panel-footer text-center">
 			<?php echo $this->Wizard->buttons('edit_question', $cancelUrl); ?>
 		</div>
-
+	</div>
 
 	<?php echo $this->NetCommonsForm->end(); ?>
 </article>
