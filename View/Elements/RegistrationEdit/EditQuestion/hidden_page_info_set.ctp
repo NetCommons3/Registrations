@@ -15,5 +15,3 @@
 	array('ng-value' => 'page.pageSequence'));
 	echo $this->NetCommonsForm->hidden('RegistrationPage.{{pageIndex}}.key',
 	array('ng-value' => 'page.key'));
-	$this->NetCommonsForm->hidden('RegistrationPage.{{pageIndex}}.page_title',
-	array('ng-value' => 'page.pageTitle'));
