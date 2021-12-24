@@ -450,11 +450,6 @@ class RegistrationEditController extends RegistrationsAppController {
 		$this->set('deleteUrl', array('url' => $this->_getActionUrl('delete')));
 
 		$this->set('questionTypeOptions', $this->Registrations->getQuestionTypeOptionsWithLabel());
-		$this->set('newPageLabel', __d('registrations', 'page'));
-		$this->set('newQuestionLabel', __d('registrations', 'New Question'));
-		$this->set('newChoiceLabel', __d('registrations', 'new choice'));
-		$this->set('newChoiceColumnLabel', __d('registrations', 'new column choice'));
-		$this->set('newChoiceOtherLabel', __d('registrations', 'other choice'));
 
 		// 都道府県データ
 		$prefectures = $this->_getPrefectures();
