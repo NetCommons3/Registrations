@@ -13,6 +13,7 @@
  */
 
 App::uses('RegistrationsAppModel', 'Registrations.Model');
+App::uses('NetCommonsTime', 'NetCommons.Utility');
 
 /**
  * Summary for RegistrationAnswerSummary Model
@@ -62,6 +63,13 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 	);
 
 /**
+ * 日時を変換するクラス
+ *
+ * @var NetCommonsTime
+ */
+	private $__NetCommonsTime;
+
+/**
  * Constructor. Binds the model's database table to the object.
  *
  * @param bool|int|string|array $id Set this ID for this model on startup,
@@ -78,6 +86,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 			'Registration' => 'Registrations.Registration',
 			'RegistrationAnswer' => 'Registrations.RegistrationAnswer',
 		]);
+		$this->__NetCommonsTime = new NetCommonsTime();
 	}
 
 /**
@@ -101,7 +110,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 	}
 
 /**
- * getAnswerSummaryCsv 
+ * getAnswerSummaryCsv
  *
  * @param array $registration registration data
  * @param int $limit record limit
@@ -247,7 +256,10 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		$cols = array();
 		$cols[] = $summary['RegistrationAnswerSummaryCsv']['serial_number'];
 		$cols[] = $this->_getUserName($registration, $summary);
-		$cols[] = $summary['RegistrationAnswerSummaryCsv']['modified'];
+		$cols[] = $this->__NetCommonsTime->dateFormat(
+			$summary['RegistrationAnswerSummaryCsv']['modified'],
+			'Y-m-d H:i:s'
+		);
 		$cols[] = $summary['RegistrationAnswerSummaryCsv']['answer_number'];
 
 		foreach ($registration['RegistrationPage'] as $page) {
