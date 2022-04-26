@@ -81,6 +81,11 @@ class RegistrationAnswer extends RegistrationsAppModel {
 	);
 
 /**
+ * @var null|array Behaviorによって追加される添付ファイルのバリデーションルールのバックアップ
+ */
+	private $__fileValidate = null;
+
+/**
  * Called during validation operations, before validation. Please note that custom
  * validation rules can be defined in $validate.
  *
@@ -97,8 +102,11 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		$question = $options['question'];
 		$allAnswers = $options['allAnswers'];
 
-		// 添付ファイル用のバリデーションを一時退避（他のvalidateルールを初期化しておきたいので）
-		$fileValidate = $this->validate['answer_value_file'] ?? [];
+		// Behaviorによる添付ファイル用のバリデーションをバックアップ（他のvalidateルールを初期化しておきたいので）
+		// └ ファイル項目でないときは、ファイルのバリデーション無し、ファイル項目のみバリデーション有効とするため。
+		if ($this->__fileValidate === null) {
+			$this->__fileValidate = $this->validate['answer_value_file'] ?? [];
+		}
 
 		// Answerモデルは繰り返し判定が行われる可能性高いのでvalidateルールは最初に初期化
 		// mergeはしません
@@ -173,8 +181,8 @@ class RegistrationAnswer extends RegistrationsAppModel {
 		);
 
 		if ($question['question_type'] === RegistrationsComponent::TYPE_FILE) {
+			$this->validate['answer_value_file'] = $this->__fileValidate;
 			if ($question['is_require']) {
-				$this->validate['answer_value_file'] = $fileValidate;
 				$this->validate['answer_value_file']['notBlank'] = [
 					'rule' => array('isFileUpload'),
 					'message' => array(__d('files', 'Please specify the file'))

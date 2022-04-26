@@ -59,7 +59,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 		'NetCommons.Permission' => array(
 			//アクセスの権限
 			'allow' => array(
-				'index,download,export' => 'block_editable',
+				'*' => 'block_editable',
 			),
 		),
 		'Paginator',

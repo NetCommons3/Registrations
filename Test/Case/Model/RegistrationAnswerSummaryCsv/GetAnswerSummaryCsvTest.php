@@ -307,7 +307,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'1',
 				'Guest',
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'choice label1',
 				'choice label4|その他の登録',
@@ -322,7 +322,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'2',
 				'Guest',
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'choice label1',
 				'choice label4',
@@ -337,7 +337,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'3',
 				'System Administrator',
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'choice label1',
 				'choice label4|その他の登録',
@@ -390,7 +390,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'1',
 				__d('registrations', 'Anonymity'),
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'choice label27',
 				'',
@@ -399,7 +399,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'2',
 				__d('registrations', 'Anonymity'),
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'choice label27',
 				'',
@@ -427,7 +427,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'1',
 				'Guest',
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'choice label35',
 				'その他の登録:choice label36',
@@ -435,7 +435,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(
 				'2',
 				'Guest',
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'', //登録なし
 				'その他の登録:',
@@ -443,7 +443,7 @@ class GetAnswerSummaryCsvTest extends NetCommonsGetTest {
 			array(// data4 異常登録
 				'3',
 				'Guest',
-				'2016-03-01 01:01:01',
+				'2016-03-01 10:01:01',
 				'1',
 				'',
 				'',
