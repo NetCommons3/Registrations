@@ -64,7 +64,7 @@ class FramePublicLanguage4registrationsFixture extends FramePublicLanguageFixtur
  * @return void
  */
 	public function init() {
-		for ($id = 11; $id <= 52; $id = $id + 2) {
+		for ($id = 11; $id <= 56; $id = $id + 2) {
 			$this->records[] = [
 				'frame_id' => $id + 8, // id19から
 				'language_id' => '0',

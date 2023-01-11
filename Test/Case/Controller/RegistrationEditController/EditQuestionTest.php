@@ -215,7 +215,7 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 		);
 		//--自分の記事の編集(公開すみ)
 		$results[5] = array(
-			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_10'),
+			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_51'),
 			'assert' => array('method' => 'assertNotEmpty'),
 		);
 		//--自分の記事の編集(公開すみ)＝追加ボタンがない→登録フォームでは公開後も編集可能なので追加ボタンはある

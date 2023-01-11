@@ -82,7 +82,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
  * @param string $registrationKey キー
  * @return array
  */
-	private function __getData($registrationKey = null) {
+	private function __getData($registrationKey = null, $override = []) {
 		$frameId = '6';
 		$blockId = '2';
 		$blockKey = 'block_1';
@@ -147,6 +147,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 				'comment' => 'WorkflowComment save test'
 			),
 		);
+		$data = Hash::merge($data, $override);
 		return $data;
 	}
 
@@ -214,7 +215,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 		);
 		//--自分の記事の編集(公開すみ)
 		$results[4] = array(
-			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_10'),
+			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_51'),
 			'assert' => array('method' => 'assertNotEmpty'),
 		);
 		//--自分の記事の編集(一度も公開していない)
@@ -364,30 +365,31 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
 				'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'key' => 'registration_40'),
 				'exception' => 'BadRequestException', 'return' => 'json'
 			),
-			//--自分の記事(一度も公開していない)
+			// --自分の記事(一度も公開していない)
 			array(
-				'data' => $this->__getData('registration_44'), 'role' => Role::ROOM_ROLE_KEY_GENERAL_USER,
+				//'data' => $this->__getData('registration_44'), 'role' => Role::ROOM_ROLE_KEY_GENERAL_USER,
+				'data' => $this->__getData('registration_44', ['Registration' => ['modified_user' => '4']]), 'role' => Role::ROOM_ROLE_KEY_GENERAL_USER,
 				'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
 			),
 			//--自分の記事(公開)
 			array(
-				'data' => $this->__getData('registration_12'), 'role' => Role::ROOM_ROLE_KEY_GENERAL_USER,
+				'data' => $this->__getData('registration_12', ['Registration' => ['modified_user' => '4']]), 'role' => Role::ROOM_ROLE_KEY_GENERAL_USER,
 				'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
 			),
 			//編集権限あり
 			//--新規作成
 			array(
-				'data' => $data, 'role' => Role::ROOM_ROLE_KEY_EDITOR,
+				'data' => Hash::merge($data, ['Registration' => ['created_user' => '4', 'modified_user' => '4']]), 'role' => Role::ROOM_ROLE_KEY_EDITOR,
 				'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
 			),
 			//フレームID指定なし 新規作成テスト
 			array(
-				'data' => $data, 'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
+				'data' => Hash::merge($data, ['Registration' => ['created_user' => '4', 'modified_user' => '4']]), 'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
 				'urlOptions' => array('frame_id' => null, 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
 			),
 			//--自分の記事(公開)
 			array(
-				'data' => $this->__getData('registration_4'), 'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
+				'data' => $this->__getData('registration_4', ['Registration' => ['modified_user' => '4']]), 'role' => Role::ROOM_ROLE_KEY_ROOM_ADMINISTRATOR,
 				'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 's_id' => 'testSession'),
 			),
 		);
