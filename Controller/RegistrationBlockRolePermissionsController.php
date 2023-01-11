@@ -43,8 +43,10 @@ class RegistrationBlockRolePermissionsController extends RegistrationBlocksContr
 	public $components = array(
 		'NetCommons.Permission' => array(
 			//アクセスの権限
+			// HACK: RegistrationBlocksControllerを継承しているので
+			//       親クラスの "*" 権限指定が上書きされるように "*" 指定をしている。
 			'allow' => array(
-				'edit' => 'block_permission_editable',
+				'*' => 'block_permission_editable',
 			),
 		),
 		'Registrations.RegistrationBlockTabs',
