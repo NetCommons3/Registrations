@@ -80,6 +80,7 @@ class RegistrationEditControllerEditTest extends WorkflowControllerEditTest {
  * テストDataの取得
  *
  * @param string $registrationKey キー
+ * @param array $override デフォルト値を上書きする値
  * @return array
  */
 	private function __getData($registrationKey = null, $override = []) {
