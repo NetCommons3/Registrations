@@ -236,6 +236,7 @@ class RegistrationFixture extends CakeTestFixture {
 			'is_latest' => 1,
 			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
 			'block_id' => 16,
+			//'block_id' => 2, /** @see \RegistrationAddControllerAddTest::__getDataPastReuse */
 		),
 		array(
 			'id' => 33,
@@ -263,7 +264,8 @@ class RegistrationFixture extends CakeTestFixture {
 			'id' => 36,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
-			'block_id' => 38,
+			//'block_id' => 38,
+			'block_id' => 2, /** @see \RegistrationEditControllerDeleteTest::dataProviderDeletePost */
 		),
 		array(
 			'id' => 37,
@@ -275,7 +277,8 @@ class RegistrationFixture extends CakeTestFixture {
 			'id' => 38,
 			'is_active' => 0,
 			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
-			'block_id' => 40,
+			//'block_id' => 40,
+			'block_id' => 2, /** @see \RegistrationEditControllerDeleteTest::dataProviderDeletePost */
 		),
 		array(
 			'id' => 39,
@@ -313,7 +316,8 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
-			'block_id' => 44,
+			//'block_id' => 44,
+			'block_id' => 2, /** @see \RegistrationEditControllerEditQuestionTest::dataProviderEditGetByEditable */
 		),
 		array(
 			'id' => 43,
@@ -331,7 +335,8 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_timing' => '1',
 			'answer_start_period' => '2032-01-01 00:00:00',
 			'answer_end_period' => '2033-01-01 00:00:00',
-			'block_id' => 46,
+			//'block_id' => 46,
+			'block_id' => 2, /** @see \RegistrationEditControllerEditQuestionTest::dataProviderEditGetByCreatable */
 		),
 
 		array(
@@ -388,6 +393,62 @@ class RegistrationFixture extends CakeTestFixture {
 			'answer_end_period' => '2001-01-01 00:00:00',
 			'block_id' => 52,
 		),
+		array(
+			'id' => 51,
+			'key' => 'registration_51',
+			'is_active' => 0,
+			'is_latest' => 1,
+			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			//'block_id' => 16,
+			'block_id' => 2, /** @see \RegistrationAddControllerAddTest::__getDataPastReuse */
+		),
+		array(
+			'id' => 52,
+			'key' => 'registration_51',
+			'is_active' => 0,
+			'is_latest' => 1,
+			'status' => 4, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			//'block_id' => 16,
+			'block_id' => 2, /** @see \RegistrationAddControllerAddTest::__getDataPastReuse */
+		),
+		// ページングテスト用
+		array(
+			'id' => 53,
+			'is_active' => 0,
+			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'answer_timing' => '1',
+			'answer_start_period' => '2032-01-01 00:00:00',
+			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 44,
+		),
+		array(
+			'id' => 54,
+			'is_active' => 0,
+			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'answer_timing' => '1',
+			'answer_start_period' => '2032-01-01 00:00:00',
+			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 46,
+		),
+		array(
+			'id' => 55,
+			'is_active' => 0,
+			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'answer_timing' => '1',
+			'answer_start_period' => '2032-01-01 00:00:00',
+			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 55,
+		),
+		array(
+			'id' => 56,
+			'is_active' => 0,
+			'status' => 3, //  1:公開中、2:公開申請中、3:下書き中、4:差し戻し
+			'answer_timing' => '1',
+			'answer_start_period' => '2032-01-01 00:00:00',
+			'answer_end_period' => '2033-01-01 00:00:00',
+			'block_id' => 56,
+		),
+
 	);
 
 /**
@@ -399,7 +460,7 @@ class RegistrationFixture extends CakeTestFixture {
 		require_once App::pluginPath('Registrations') . 'Config' . DS . 'Schema' . DS . 'schema.php';
 		$this->fields = (new RegistrationsSchema())->tables[Inflector::tableize($this->name)];
 
-		for ($i = 1; $i <= 50; $i = $i + 2) {
+		for ($i = 1; $i <= 56; $i = $i + 2) {
 			$this->records[] = array(
 				'id' => $i,
 				'key' => 'registration_' . strval($i + 1),

@@ -79,7 +79,6 @@ class RegistrationEditControllerDeleteTest extends WorkflowControllerDeleteTest 
 		$frameId = '6';
 		$blockId = '2';
 		$blockKey = 'block_1';
-
 		$data = array(
 			'save_' . WorkflowComponent::STATUS_IN_DRAFT => null,
 			'Frame' => array(

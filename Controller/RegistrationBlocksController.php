@@ -145,6 +145,7 @@ class RegistrationBlocksController extends RegistrationsAppController {
 
 		$conditions = $this->Registration->getBaseCondition();
 		unset($conditions['block_id']);
+		unset($conditions['Registration.block_id']);
 		$this->Paginator->settings = array(
 			'Registration' => $this->Registration->getBlockIndexSettings([
 				'conditions' => $conditions,

@@ -70,7 +70,7 @@ class Block4registrationsFixture extends BlockFixture {
  * @return void
  */
 	public function init() {
-		for ($id = 11; $id <= 52; $id = $id + 2) {
+		for ($id = 11; $id <= 56; $id = $id + 2) {
 			$this->records[] = [
 				'id' => $id,
 				'room_id' => '2',

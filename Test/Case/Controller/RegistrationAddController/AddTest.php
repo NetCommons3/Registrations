@@ -60,6 +60,8 @@ class RegistrationAddControllerAddTest extends WorkflowControllerAddTest {
 		$this->Registration = ClassRegistry::init('Registrations.Registration');
 		$this->Registration->Behaviors->unload('AuthorizationKey');
 		$this->ActionRegistrationAdd = ClassRegistry::init('Registrations.ActionRegistrationAdd');
+
+		Current::write('Block.id', '2');
 	}
 
 /**
@@ -116,7 +118,8 @@ class RegistrationAddControllerAddTest extends WorkflowControllerAddTest {
 			),
 			'ActionRegistrationAdd' => array(
 				'create_option' => 'reuse',
-				'past_registration_id' => '32',
+				//'past_registration_id' => '32',
+				'past_registration_id' => '52',
 			),
 		);
 
