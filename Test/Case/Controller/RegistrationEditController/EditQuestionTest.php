@@ -279,12 +279,11 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][question_value]', 'value' => null),
 		)));
 		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][question_type]', 'value' => null),
+			'assert' => array('method' => 'assertInput', 'type' => 'select', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][question_type]', 'value' => null),
 		)));
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'textarea', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][description]', 'value' => null),
 		)));
-		//10
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][is_choice_random]', 'value' => null),
 		)));
