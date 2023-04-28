@@ -278,7 +278,7 @@ msgstr "その他を選択する場合は、内容を入力してください。
 
 #: /Model/Behavior/RegistrationAnswerTextBehavior.php:64
 msgid "Number required"
-msgstr "数字を入力してください。"
+msgstr "半角数字を入力してください。"
 
 #: /Model/Behavior/RegistrationAnswerTextBehavior.php:76
 msgid "Please enter the answer between %s letters and %s letters."

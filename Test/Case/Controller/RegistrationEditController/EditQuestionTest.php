@@ -215,7 +215,7 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 		);
 		//--自分の記事の編集(公開すみ)
 		$results[5] = array(
-			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_10'),
+			'urlOptions' => array('frame_id' => $data['Frame']['id'], 'block_id' => $data['Block']['id'], 'action' => $this->_myAction, 'key' => 'registration_51'),
 			'assert' => array('method' => 'assertNotEmpty'),
 		);
 		//--自分の記事の編集(公開すみ)＝追加ボタンがない→登録フォームでは公開後も編集可能なので追加ボタンはある
@@ -279,12 +279,11 @@ class RegistrationEditControllerEditQuestionTest extends WorkflowControllerEditT
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][question_value]', 'value' => null),
 		)));
 		array_push($results, Hash::merge($results[$base], array(
-			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][question_type]', 'value' => null),
+			'assert' => array('method' => 'assertInput', 'type' => 'select', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][question_type]', 'value' => null),
 		)));
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'textarea', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][description]', 'value' => null),
 		)));
-		//10
 		array_push($results, Hash::merge($results[$base], array(
 			'assert' => array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[RegistrationPage][{{pageIndex}}][RegistrationQuestion][{{qIndex}}][is_choice_random]', 'value' => null),
 		)));

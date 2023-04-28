@@ -164,7 +164,7 @@ class RegistrationAnswerControllerViewTest extends WorkflowControllerViewTest {
 		);
 		// 自分が書いた＆未公開
 		$results[1] = Hash::merge($results[0], array(
-			'urlOptions' => array('block_id' => '40', 'frame_id' => '48', 'key' =>
+			'urlOptions' => array('block_id' => '2', 'frame_id' => '48', 'key' =>
 				'registration_38'),
 			'assert' => array('method' => 'assertInput', 'type' => 'button', 'name' => 'next_', 'value' => null),
 		));

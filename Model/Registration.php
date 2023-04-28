@@ -452,6 +452,20 @@ class Registration extends RegistrationsAppModel {
 	}
 
 /**
+ * afterFrameSave
+ *
+ * @param array $frame Frame data
+ * @return void
+ */
+	public function afterFrameSave($frame) {
+		// フレームに紐づく登録フォームがあるのにdefault_actionが設定されてなかったら設定する
+		if ($frame['Frame']['block_id'] && empty($frame['Frame']['default_action'])) {
+			$frame['Frame']['default_action'] = 'registration_answers/view';
+			$this->Frame->save($frame, false);
+		}
+	}
+
+/**
  * ブロック作成
  *
  * このルームにすでに登録フォームブロックが存在した場合で、かつ、現在フレームにまだブロックが結びついてない場合、

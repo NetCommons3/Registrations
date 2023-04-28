@@ -86,6 +86,12 @@ class CheckPastRegistrationTest extends NetCommonsGetTest {
 
 		$this->$model->create();
 		$this->$model->set($data);
+
+		// Current Block.idを取得するRegistrationデータにあわせておく。
+		$registration = $this->Registration->findById($check['past_registration_id']);
+		$blockId = $registration['Registration']['block_id'] ?? null;
+		Current::$current['Block']['id'] = $blockId;
+
 		//テスト実行
 		$result = $this->$model->$method($check);
 		//チェック
