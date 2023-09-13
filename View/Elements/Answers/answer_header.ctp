@@ -27,4 +27,9 @@
 	<?php echo $this->TitleIcon->titleIcon($registration['Registration']['title_icon']); ?>
 	<?php echo h($registration['Registration']['title']); ?>
 	<small><?php echo h($registration['Registration']['sub_title']);?></small>
+	<?php if (isset($remainingCount) && $remainingCount > 0) : ?>
+		<div class="registration-answer-header-remaining-count">
+			<small><?php echo __d('registrations', '(Remaining: %s)', $remainingCount);?></small>
+		</div>
+	<?php endif; ?>
 </h1>
