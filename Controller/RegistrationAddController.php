@@ -115,6 +115,7 @@ class RegistrationAddController extends RegistrationsAppController {
 
 		// 過去データ 取り出し
 		$conditions = Hash::remove($this->Registration->getBaseCondition(), 'block_id');
+		unset($conditions['Registration.block_id']);
 		$conditions['Block.room_id'] = Current::read('Room.id');
 		$pastRegistrations = $this->Registration->find('all',
 			array(
