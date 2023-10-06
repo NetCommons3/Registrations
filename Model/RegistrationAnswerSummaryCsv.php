@@ -147,7 +147,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 			),
 			'limit' => $limit,
 			'offset' => $offset,
-			'order' => array('RegistrationAnswerSummaryCsv.created ASC'),
+			'order' => array('RegistrationAnswerSummaryCsv.answer_time ASC'),
 		));
 		if (empty($summaries)) {
 			return $retArray;
@@ -257,7 +257,7 @@ class RegistrationAnswerSummaryCsv extends RegistrationsAppModel {
 		$cols[] = $summary['RegistrationAnswerSummaryCsv']['serial_number'];
 		$cols[] = $this->_getUserName($registration, $summary);
 		$cols[] = $this->__NetCommonsTime->dateFormat(
-			$summary['RegistrationAnswerSummaryCsv']['modified'],
+			$summary['RegistrationAnswerSummaryCsv']['answer_time'],
 			'Y-m-d H:i:s'
 		);
 		$cols[] = $summary['RegistrationAnswerSummaryCsv']['answer_number'];
