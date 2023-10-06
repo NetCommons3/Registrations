@@ -94,3 +94,8 @@ table.table.registration-table-vcenter tbody td {
 #RegistrationAnswerViewForm .radio-inline+.radio-inline {
     margin-left: 0px;
 } 
+
+/*--登録フォーム回答画面のヘッダー---*/
+.registration-answer-header-remaining-count {
+    font-size: 18px;
+}
