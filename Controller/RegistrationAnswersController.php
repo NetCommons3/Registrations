@@ -19,6 +19,8 @@ App::uses('AppController', 'Controller');
  * @property RegistrationAnswer $RegistrationAnswer
  * @property RegistrationsOwnAnswerComponent $RegistrationOwnAnswer
  * @property RegistrationAnswerSummary $RegistrationAnswerSummary
+ * 
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class RegistrationAnswersController extends RegistrationsAppController {
 
@@ -77,6 +79,12 @@ class RegistrationAnswersController extends RegistrationsAppController {
 	private $__ableToAnswerAction = ['view', 'confirm'];
 
 /**
+ * target remainingCount Action
+ *
+ */
+	private $__remainingCountAction = ['view', 'confirm', 'key_auth', 'img_auth'];
+
+/**
  * frame setting display type
  */
 	private $__displayType = null;
@@ -90,7 +98,7 @@ class RegistrationAnswersController extends RegistrationsAppController {
 	public function beforeFilter() {
 		// ゲストアクセスOKのアクションを設定
 		$this->Auth->allow('view', 'confirm', 'thanks', 'no_more_answer', 'key_auth', 'img_auth',
-			'empty_form');
+			'empty_form', 'limit');
 
 		// 親クラスのbeforeFilterを済ませる
 		parent::beforeFilter();
@@ -142,6 +150,16 @@ class RegistrationAnswersController extends RegistrationsAppController {
 				return;
 			}
 		}
+
+		if (in_array($this->action, $this->__remainingCountAction)) {
+			//残りの登録可能数を取得
+			$remainingCount = $this->__remainingCount($this->__registration);
+			if ($remainingCount == 0) {
+				$this->setAction('limit');
+				return;
+			}
+			$this->set('remainingCount', $remainingCount);
+		}
 	}
 
 /**
@@ -151,6 +169,15 @@ class RegistrationAnswersController extends RegistrationsAppController {
  */
 	public function empty_form() {
 		$this->emptyRender();
+	}
+
+/**
+ * 登録数を超過したときに表示
+ *
+ * @return void
+ */
+	public function limit() {
+		$this->set('registration', $this->__registration);
 	}
 
 /**
@@ -308,12 +335,6 @@ class RegistrationAnswersController extends RegistrationsAppController {
 		$registration = $this->__registration;
 		$registrationKey = $this->_getRegistrationKey($this->__registration);
 
-		//登録数制限
-		if ($this->_isLimitNumber($registration)) {
-			$this->set('registration', $registration);
-			$this->render('limit');
-			return;
-		}
 		//
 		$this->_viewGuard();
 
@@ -542,12 +563,12 @@ class RegistrationAnswersController extends RegistrationsAppController {
 	}
 
 /**
- * 登録数制限に達してるかチェック
+ * 残りの登録可能数を取得
  *
  * @param array $registration Registrationデータ
- * @return bool
+ * @return int 残りの登録可能数 登録数制限を行わない場合は-1を返す。
  */
-	protected function _isLimitNumber($registration) {
+	private function __remainingCount($registration) {
 		if ($registration['Registration']['is_limit_number']) {
 			$limit = $registration['Registration']['limit_number'];
 			// 登録数カウント
@@ -555,10 +576,24 @@ class RegistrationAnswersController extends RegistrationsAppController {
 				'conditions' => $this->RegistrationAnswerSummary->getResultCondition($registration)
 			];
 			$answerCount = $this->RegistrationAnswerSummary->find('count', $options);
-			if ($limit <= $answerCount) {
-				return true;
+			if ($limit > $answerCount) {
+				//登録可能
+				return $limit - $answerCount;
+			} else {
+				//登録数制限を超過
+				if ($this->request->is('post') &&
+						($this->action === 'view' || $this->action === 'confirm')) {
+					//回答画面で次へ、もしくは確認画面で決定をクリックしたときはフラッシュメッセージ表示
+					$this->NetCommons->setFlashNotification(
+						__d('net_commons', 'Failed to save.'),
+						['class' => 'danger'],
+						400
+					);
+				}
+				return 0;
 			}
 		}
-		return false;
+		//登録数制限を行わない
+		return -1;
 	}
 }

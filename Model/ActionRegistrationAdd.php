@@ -139,6 +139,7 @@ class ActionRegistrationAdd extends RegistrationsAppModel {
 			'Registration.id' => $check['past_registration_id']
 		));
 		unset($baseCondition['block_id']);
+		unset($baseCondition['Registration.block_id']);
 		$cnt = $this->Registration->find('count', array(
 			'conditions' => $baseCondition,
 			'recursive' => -1
@@ -258,11 +259,11 @@ class ActionRegistrationAdd extends RegistrationsAppModel {
 		return $registration;
 	}
 /**
- * _copyWysiwygFiles 
- * 
+ * _copyWysiwygFiles
+ *
  * 引数で指定された登録フォームの中を分析し、
  * ウィジウィグに設定されているファイルは複製を作ります
- * 
+ *
  * @param array $registration 登録フォームデータ
  * @return array $registration 複製を作り終えた登録フォームデータ
  */

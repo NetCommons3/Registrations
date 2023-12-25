@@ -1047,3 +1047,6 @@ msgstr "登録数"
 
 msgid "Registration Number"
 msgstr "受付番号"
+
+msgid "(Remaining: %s)"
+msgstr "(残り: %s)"

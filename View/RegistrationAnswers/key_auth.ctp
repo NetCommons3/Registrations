@@ -8,9 +8,7 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  * @copyright Copyright 2014, NetCommons Project
  */
-echo $this->NetCommonsHtml->script(array(
-	'/authorization_keys/js/key_auth_init.js'
-));
+echo $this->NetCommonsHtml->css('/registrations/css/registration.css');
 ?>
 <article ng-controller="AuthorizationKey" ng-init="initialize('<?php echo h($postUrl); ?>')">
 	<?php echo $this->element('Registrations.Answers/answer_header'); ?>
