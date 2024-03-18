@@ -284,6 +284,13 @@ class RegistrationAnswer extends RegistrationsAppModel {
 				if (! $targetQuestion) {
 					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 				}
+
+				//HACK: 作りが悪いため、DELETE->INSERTで既存データを初期化してから登録する
+				$this->deleteAll([
+					$this->alias . '.registration_answer_summary_id' => $summaryId,
+					$this->alias . '.registration_question_key' => $targetQuestionKey,
+				], false);
+
 				// データ保存
 				// Matrixタイプの場合はanswerが配列になっているがsaveでかまわない
 				// saveMany中で１回しかValidateしなくてよい関数のためのフラグ

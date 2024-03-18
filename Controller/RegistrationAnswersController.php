@@ -19,7 +19,7 @@ App::uses('AppController', 'Controller');
  * @property RegistrationAnswer $RegistrationAnswer
  * @property RegistrationsOwnAnswerComponent $RegistrationOwnAnswer
  * @property RegistrationAnswerSummary $RegistrationAnswerSummary
- * 
+ *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class RegistrationAnswersController extends RegistrationsAppController {
@@ -390,11 +390,15 @@ class RegistrationAnswersController extends RegistrationsAppController {
 			}
 		}
 		if (! ($this->request->is('post') && $nextPageSeq == $postPageSeq)) {
-			$summary = $this->RegistrationsOwnAnswer->getProgressiveSummaryOfThisUser(
-				$registrationKey);
-			$setAnswers = $this->RegistrationAnswer->getProgressiveAnswerOfThisSummary(
-				$registration,
-				$summary);
+			if (empty($this->request->params['requested'])) {
+				$summary = $this->RegistrationsOwnAnswer->getProgressiveSummaryOfThisUser(
+					$registrationKey);
+				$setAnswers = $this->RegistrationAnswer->getProgressiveAnswerOfThisSummary(
+					$registration,
+					$summary);
+			} else {
+				$setAnswers = [];
+			}
 			$this->set('answers', $setAnswers);
 			$this->request->data['RegistrationAnswer'] = $setAnswers;
 
