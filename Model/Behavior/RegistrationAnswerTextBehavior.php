@@ -69,6 +69,7 @@ class RegistrationAnswerTextBehavior extends RegistrationAnswerBehavior {
  * @param array $question 登録データに対応する項目
  * @param array $allAnswers 入力された登録すべて
  * @return bool
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  */
 	public function answerTextValidation($model, $data, $question, $allAnswers) {
 		if (! in_array($question['question_type'], $this->_textValidateType)) {
@@ -77,7 +78,7 @@ class RegistrationAnswerTextBehavior extends RegistrationAnswerBehavior {
 		$ret = true;
 		// 数値型登録を望まれている場合
 		if ($question['question_type_option'] == RegistrationsComponent::TYPE_OPTION_NUMERIC) {
-			if (!Validation::numeric($data['answer_value'])) {
+			if (mb_strlen($data['answer_value']) !== 0 && !Validation::numeric($data['answer_value'])) {
 				$ret = false;
 				$model->validationErrors['answer_value'][] = __d('registrations', 'Number required');
 			}
@@ -86,7 +87,7 @@ class RegistrationAnswerTextBehavior extends RegistrationAnswerBehavior {
 					$data['answer_value'],
 					intval($question['min']),
 					intval($question['max']));
-				if (!$rangeRes) {
+				if (mb_strlen($data['answer_value']) !== 0 && !$rangeRes) {
 					$ret = false;
 					$model->validationErrors['answer_value'][] = sprintf(
 						__d('registrations', 'Please enter the answer between %s and %s.'),
